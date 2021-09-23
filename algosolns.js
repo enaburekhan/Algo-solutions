@@ -27,4 +27,22 @@ class BST {
           }
       return this;
     }
-  
+    contains(value) {
+        // Average case: O(logn) time | O(logn) space.
+        // Worst case: O(logn) time | O(logn) space.
+            if (value < this.value){
+                if (this.left === null){
+                    return false
+                }else{
+                    return this.left.contains(value)
+                }
+            }else if (value > this.value){
+                if (this.right === null){
+                    return false;
+                }else{
+                    return this.right.contains(value)
+                }
+            }else {
+                return true
+            }
+      }
