@@ -1,3 +1,6 @@
+// Insert, search and delete a BST
+
+
 // Do not edit the class below except for
 // the insert, contains, and remove methods.
 // Feel free to add new properties and methods
@@ -89,4 +92,34 @@ class BST {
             }
         }	
     }
+
     
+
+// Validate a BST
+
+// This is an input class. Do not edit.
+class BST {
+    constructor(value) {
+      this.value = value;
+      this.left = null;
+      this.right = null;
+    }
+  }
+  
+  function validateBst(tree) {
+    // O(n) time | O(d) space complexity
+      return validateBstHelper(tree, -Infinity, Infinity)
+  }
+  
+  function validateBstHelper(tree, minValue, maxValue){
+      if (tree === null) return true;
+      if (tree.value < minValue || tree.value >= maxValue) return false
+      
+      const leftIsValid = validateBstHelper(tree.left, minValue, tree.value);
+      return leftIsValid && validateBstHelper(tree.right, tree.value, maxValue);
+  }
+  
+  // Do not edit the line below.
+  exports.BST = BST;
+  exports.validateBst = validateBst;
+  
