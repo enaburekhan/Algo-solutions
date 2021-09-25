@@ -1,4 +1,4 @@
-// Insert, search and delete a BST
+/* Insert, search and delete a BST  */
 
 
 // Do not edit the class below except for
@@ -122,4 +122,42 @@ class BST {
   // Do not edit the line below.
   exports.BST = BST;
   exports.validateBst = validateBst;
+  
+
+  /* BST traversal */
+
+  function inOrderTraverse(tree, array) {
+    // time O(n) | space O(n).
+      if (tree !== null){
+          inOrderTraverse(tree.left, array);
+          array.push(tree.value);
+          inOrderTraverse(tree.right, array);
+      }
+      return array;
+  }
+  
+  function preOrderTraverse(tree, array) {
+    // time O(n) | space O(n).
+      if (tree !== null){
+          array.push(tree.value);
+          preOrderTraverse(tree.left, array);
+          preOrderTraverse(tree.right, array);
+      }
+      return array;
+  }
+  
+  function postOrderTraverse(tree, array) {
+    // time O(n) | space O(n).
+      if (tree !== null){
+          postOrderTraverse(tree.left, array);
+          postOrderTraverse(tree.right, array);
+          array.push(tree.value);
+      }
+      return array;
+  }
+  
+  // Do not edit the lines below.
+  exports.inOrderTraverse = inOrderTraverse;
+  exports.preOrderTraverse = preOrderTraverse;
+  exports.postOrderTraverse = postOrderTraverse;
   
