@@ -321,6 +321,7 @@ class BST {
 
   /* Find Kth largest value in BST */
 // Non optimal value using brute force approach
+
 // This is an input class. Do not edit.
 class BST {
     constructor(value) {
@@ -350,4 +351,45 @@ class BST {
   exports.findKthLargestValueInBst = findKthLargestValueInBst;
 
   
+  
+  // optimal approach by tracking the values
+
+  // This is an input class. Do not edit.
+class BST {
+    constructor(value) {
+      this.value = value;
+      this.left = null;
+      this.right = null;
+    }
+  }
+  
+  class TreeInfo{
+      constructor(numbersOfNodesVisited, latestNodeValueVisited){
+          this.numbersOfNodesVisited = numbersOfNodesVisited;
+          this.latestNodeValueVisited = latestNodeValueVisited;
+      }
+  }
+  
+  function findKthLargestValueInBst(tree, k) {
+    // time O(h + k), where h is the depth of Bst branch | space )(h) 
+    const treeInfo = new TreeInfo(0, -1);
+      reverseInorderTraverse(tree, k, treeInfo);
+      return treeInfo.latestNodeValueVisited;
+  }
+  
+  function reverseInorderTraverse(node, k, treeInfo){
+      if (node === null || treeInfo.numbersOfNodesVisited >= k) return
+      
+      reverseInorderTraverse(node.right, k, treeInfo);
+      
+      if(treeInfo.numbersOfNodesVisited < k){
+          treeInfo.numbersOfNodesVisited++
+          treeInfo.latestNodeValueVisited = node.value;
+          reverseInorderTraverse(node.left, k, treeInfo)
+      }
+  }
+  
+  // Do not edit the lines below.
+  exports.BST = BST;
+  exports.findKthLargestValueInBst = findKthLargestValueInBst;
   
