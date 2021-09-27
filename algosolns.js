@@ -316,4 +316,38 @@ class BST {
   
   // Do not edit the line below.
   exports.minHeightBst = minHeightBst;
+
+
+
+  /* Find Kth largest value in BST */
+// Non optimal value using brute force approach
+// This is an input class. Do not edit.
+class BST {
+    constructor(value) {
+      this.value = value;
+      this.left = null;
+      this.right = null;
+    }
+  }
+  
+  function findKthLargestValueInBst(tree, k) {
+    // time O(n) | space O(n)
+    const sortedNodeValues = [];
+      inorderTraverse(tree, sortedNodeValues);
+      return sortedNodeValues[sortedNodeValues.length - k];
+  }
+  
+  function inorderTraverse(node, sortedNodeValues){
+      if (node === null) return
+      
+      inorderTraverse(node.left, sortedNodeValues);
+      sortedNodeValues.push(node.value);
+      inorderTraverse(node.right, sortedNodeValues);
+  }
+  
+  // Do not edit the lines below.
+  exports.BST = BST;
+  exports.findKthLargestValueInBst = findKthLargestValueInBst;
+
+  
   
