@@ -393,3 +393,41 @@ class BST {
   exports.BST = BST;
   exports.findKthLargestValueInBst = findKthLargestValueInBst;
   
+
+  
+
+  /* Reconstruct BST */
+
+  // This is an input class. Do not edit.
+class BST {
+    constructor(value, left = null, right = null) {
+      this.value = value;
+      this.left = left;
+      this.right = right;
+    }
+  }
+  
+  function reconstructBst(preOrderTraversalValues) {
+    // time O(n^2) | space O(h)
+    if (preOrderTraversalValues.length === 0) return null;
+      
+      const currentValue = preOrderTraversalValues[0]
+      let rightNodeRootIdx = preOrderTraversalValues.length;
+      
+      for(let idx = 1; idx < preOrderTraversalValues.length; idx++){
+          const value = preOrderTraversalValues[idx]
+          if (value >= currentValue){
+              rightNodeRootIdx = idx;
+              break;
+          }
+      }
+      
+      const leftSubtree = reconstructBst(preOrderTraversalValues.slice(1, rightNodeRootIdx));
+      const rightSubtree = reconstructBst(preOrderTraversalValues.slice(rightNodeRootIdx));
+      return new BST(currentValue, leftSubtree, rightSubtree);
+  }
+  
+  // Do not edit the lines below.
+  exports.BST = BST;
+  exports.reconstructBst = reconstructBst;
+  
