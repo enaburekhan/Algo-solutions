@@ -430,4 +430,48 @@ class BST {
   // Do not edit the lines below.
   exports.BST = BST;
   exports.reconstructBst = reconstructBst;
+
+
+  
+
+  /* Find a successor */
+
+  // This is an input class. Do not edit.
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+    this.parent = null;
+  }
+}
+
+function findSuccessor(tree, node) {
+  // O(n) time | O(n) space.
+  const inOrderTraversalOrder = getInOrderTraversalOrder(tree);
+	
+	for(let idx=0; idx < inOrderTraversalOrder.length; idx++){
+		const currentNode = inOrderTraversalOrder[idx];
+		if(currentNode !== node) continue
+		
+		if(idx === inOrderTraversalOrder.length - 1) return null
+		
+		return inOrderTraversalOrder[idx + 1];
+	}
+}
+
+function getInOrderTraversalOrder(node, order=[]){
+	if(node === null) return order
+	
+	getInOrderTraversalOrder(node.left, order);
+	order.push(node);
+	getInOrderTraversalOrder(node.right, order);
+	
+	return order
+}
+
+// Do not edit the lines below.
+exports.BinaryTree = BinaryTree;
+exports.findSuccessor = findSuccessor;
+
   
