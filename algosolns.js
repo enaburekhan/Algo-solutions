@@ -432,7 +432,7 @@ class BST {
   exports.reconstructBst = reconstructBst;
 
 
-  
+
 
   /* Find a successor */
 
@@ -475,3 +475,36 @@ exports.BinaryTree = BinaryTree;
 exports.findSuccessor = findSuccessor;
 
   
+
+
+/* Height balanced binary tree */
+
+// This is an input class. Do not edit.
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function heightBalancedBinaryTree(tree) {
+  // O(n) time | O(h) space
+  if(tree === null) return true
+	
+	if(Math.abs(maxDepth(tree.left) - maxDepth(tree.right)) > 1) return false
+	
+	return heightBalancedBinaryTree(tree.left) && heightBalancedBinaryTree(tree.right)
+}
+
+function maxDepth(tree){
+	if(tree === null) return 0
+	
+	const left = maxDepth(tree.left);
+	const right = maxDepth(tree.right);
+	return Math.max(left, right) + 1;
+}
+
+// Do not edit the lines below.
+exports.BinaryTree = BinaryTree;
+exports.heightBalancedBinaryTree = heightBalancedBinaryTree;
