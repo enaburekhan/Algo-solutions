@@ -552,3 +552,25 @@ function maxSubsetSumNoAdjacent(array) {
 
 // Do not edit the line below.
 exports.maxSubsetSumNoAdjacent = maxSubsetSumNoAdjacent;
+
+
+
+
+/* Numbers of ways to make change */
+
+function numberOfWaysToMakeChange(n, denoms) {
+  // O(nd) time | O(n) space
+	const ways = new Array(n+1).fill(0);
+	ways[0] = 1;
+	for(const denom of denoms){
+		for(let amount=0; amount < n+1; amount++){
+			if(denom <= amount){
+				ways[amount] += ways[amount - denom]
+			}
+		}
+	}
+	return ways[n];
+}
+
+// Do not edit the line below.
+exports.numberOfWaysToMakeChange = numberOfWaysToMakeChange;
