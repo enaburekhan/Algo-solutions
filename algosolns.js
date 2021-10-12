@@ -574,3 +574,26 @@ function numberOfWaysToMakeChange(n, denoms) {
 
 // Do not edit the line below.
 exports.numberOfWaysToMakeChange = numberOfWaysToMakeChange;
+
+
+
+
+/* Min Number of coins for change */
+
+function minNumberOfCoinsForChange(n, denoms) {
+  // O(nd) time | O(n) space
+	const minNumCoins = new Array(n+1).fill(Infinity);
+	minNumCoins[0] = 0;
+	for(const denom of denoms){
+		for(let amount = 0; amount < n+1; amount++){
+			if(denom <= amount){
+				minNumCoins[amount] = Math.min(minNumCoins[amount], minNumCoins[amount - denom] + 1);
+			}
+		}
+	}
+	return minNumCoins[n] !== Infinity ? minNumCoins[n] : -1
+}
+
+// Do not edit the line below.
+exports.minNumberOfCoinsForChange = minNumberOfCoinsForChange;
+
