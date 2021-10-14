@@ -628,3 +628,19 @@ function levenshteinDistance(str1, str2) {
 
 // Do not edit the line below.
 exports.levenshteinDistance = levenshteinDistance;
+
+
+
+
+/* Solved numbers of ways to traverse a graph */
+
+function numberOfWaysToTraverseGraph(width, height) {
+  // O(2^(n+m)) time | O(n+m) space.
+  if(width === 1 || height === 1) return 1
+	
+	return numberOfWaysToTraverseGraph(width - 1, height) + numberOfWaysToTraverseGraph(width, height - 1);
+}
+
+// Do not edit the line below.
+exports.numberOfWaysToTraverseGraph = numberOfWaysToTraverseGraph;
+
