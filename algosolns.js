@@ -672,3 +672,26 @@ function numberOfWaysToTraverseGraph(width, height) {
 
 // Do not edit the line below.
 exports.numberOfWaysToTraverseGraph = numberOfWaysToTraverseGraph;
+
+
+function numberOfWaysToTraverseGraph(width, height) {
+  // O(n+m) time | O(1) where n is the width of the graph and m is the height.
+  const xdistanceFromCorner = width - 1;
+	const ydistanceFromCorner = height - 1;
+	
+	const numerator = factorial(xdistanceFromCorner + ydistanceFromCorner);
+	const denominator = factorial(xdistanceFromCorner) * factorial(ydistanceFromCorner);
+	
+	return Math.floor(numerator / denominator)
+}
+
+function factorial(num){
+	let result = 1
+	for(let n=2; n < num+1; n++){
+		result *= n
+	}
+	return result;
+}
+
+// Do not edit the line below.
+exports.numberOfWaysToTraverseGraph = numberOfWaysToTraverseGraph;
