@@ -761,6 +761,23 @@ function twoNumberSum(array, targetSum) {
 // Do not edit the line below.
 exports.twoNumberSum = twoNumberSum;
 
+function twoNumberSum(array, targetSum) {
+  // O(n) time | O(n) space.
+	const nums = {};
+	for(const num of array){
+		const potentialMatch = targetSum - num
+		if(potentialMatch in nums){
+			return [potentialMatch, num];
+		}else{
+			nums[num] = true;
+		}
+	}
+	 return [];
+}
+
+// Do not edit the line below.
+exports.twoNumberSum = twoNumberSum;
+
 
 
 
