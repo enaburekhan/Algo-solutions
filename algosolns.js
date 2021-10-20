@@ -845,4 +845,28 @@ function sortedSquaredArray(array) {
   
   // Do not edit the line below.
   exports.sortedSquaredArray = sortedSquaredArray;
+
+
+  function sortedSquaredArray(array) {
+    // O(n) time | O(n) space.
+    const sorted = new Array(array.length).fill(0);
+      let startIdx = 0;
+      let endIdx = array.length - 1;
+      for(let idx = array.length - 1; idx >= 0; idx--){
+          const smallestValue = array[startIdx];
+          const largestValue = array[endIdx];
+          if(Math.abs(smallestValue) > Math.abs(largestValue)){
+              sorted[idx] = smallestValue * smallestValue;
+              startIdx++;
+          }else{
+              sorted[idx] = largestValue * largestValue;
+              endIdx--
+          }
+      }
+       return sorted;
+  }
+  
+  // Do not edit the line below.
+  exports.sortedSquaredArray = sortedSquaredArray;
+  
   
