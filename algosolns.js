@@ -745,57 +745,57 @@
 
 /* Two Number sum */
 
-function twoNumberSum(array, targetSum) {
-  // O(n^2) time | O(1) space.
-	for(let i=0; i < array.length - 1; i++){
-		for(let j=i+1; j < array.length; j++){
-			if(array[i] + array[j] === targetSum){
-				return [array[i], array[j]]
+// function twoNumberSum(array, targetSum) {
+//   // O(n^2) time | O(1) space.
+// 	for(let i=0; i < array.length - 1; i++){
+// 		for(let j=i+1; j < array.length; j++){
+// 			if(array[i] + array[j] === targetSum){
+// 				return [array[i], array[j]]
 			
-			}
-		}
-	}
-	 return [];
-}
+// 			}
+// 		}
+// 	}
+// 	 return [];
+// }
 
-// Do not edit the line below.
-exports.twoNumberSum = twoNumberSum;
+// // Do not edit the line below.
+// exports.twoNumberSum = twoNumberSum;
 
-function twoNumberSum(array, targetSum) {
-  // O(n) time | O(n) space.
-	const nums = {};
-	for(const num of array){
-		const potentialMatch = targetSum - num
-		if(potentialMatch in nums){
-			return [potentialMatch, num];
-		}else{
-			nums[num] = true;
-		}
-	}
-	 return [];
-}
+// function twoNumberSum(array, targetSum) {
+//   // O(n) time | O(n) space.
+// 	const nums = {};
+// 	for(const num of array){
+// 		const potentialMatch = targetSum - num
+// 		if(potentialMatch in nums){
+// 			return [potentialMatch, num];
+// 		}else{
+// 			nums[num] = true;
+// 		}
+// 	}
+// 	 return [];
+// }
 
-// Do not edit the line below.
-exports.twoNumberSum = twoNumberSum;
+// // Do not edit the line below.
+// exports.twoNumberSum = twoNumberSum;
 
 
 
-function twoNumberSum(array, targetSum) {
-  // O(nlogn) time | O(1) space.
-	array.sort((a, b) => a - b);
-	let left = 0;
-	let right = array.length - 1;
-	while(left < right){
-		const currentSum = array[left] + array[right];
-		if(currentSum === targetSum) return [array[left], array[right]];
-		else if(currentSum < targetSum) left++;
-	  else if(currentSum > targetSum) right--;
-	}
-	return [];
-}
+// function twoNumberSum(array, targetSum) {
+//   // O(nlogn) time | O(1) space.
+// 	array.sort((a, b) => a - b);
+// 	let left = 0;
+// 	let right = array.length - 1;
+// 	while(left < right){
+// 		const currentSum = array[left] + array[right];
+// 		if(currentSum === targetSum) return [array[left], array[right]];
+// 		else if(currentSum < targetSum) left++;
+// 	  else if(currentSum > targetSum) right--;
+// 	}
+// 	return [];
+// }
 
-// Do not edit the line below.
-exports.twoNumberSum = twoNumberSum;
+// // Do not edit the line below.
+// exports.twoNumberSum = twoNumberSum;
 
 
 
@@ -824,3 +824,25 @@ exports.twoNumberSum = twoNumberSum;
 // console.log(getSorted(cards));
 
 // // exports.getSorted = getSorted;
+
+
+
+
+
+/* Sorted square array */
+
+function sortedSquaredArray(array) {
+    // O(nlogn) time | O(n) space.
+    const sorted = new Array(array.length).fill(0);
+      
+      for(let idx=0; idx < array.length; idx++){
+          const value = array[idx];
+          sorted[idx] = value * value;
+      }
+      sorted.sort((a, b) => a - b);
+      return sorted;
+  }
+  
+  // Do not edit the line below.
+  exports.sortedSquaredArray = sortedSquaredArray;
+  
