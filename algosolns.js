@@ -868,5 +868,37 @@ function sortedSquaredArray(array) {
   
   // Do not edit the line below.
   exports.sortedSquaredArray = sortedSquaredArray;
+ 
+  
+
+
+
+  /* Tournament winner */
+
+  function tournamentWinner(competitions, results) {
+    // O(n) time | O(k) space.
+    let currentBestTeam = '';
+      const scores = { [currentBestTeam]: 0 };
+      const homeTeamWon = 1;
+      
+      for(let i=0; i < competitions.length; i++){
+          const result = results[i]
+          const [homeTeam, awayTeam] = competitions[i];
+          const winningTeam = result === homeTeamWon ? homeTeam : awayTeam
+          updateScores(winningTeam, 2, scores);
+          if(scores[winningTeam] > scores[currentBestTeam]){
+              currentBestTeam = winningTeam;
+          }
+      }
+       return currentBestTeam;
+  };
+  
+  function updateScores(team, points, scores){
+      if(!(team in scores)) scores[team] = 0;
+      scores[team] += points
+  }
+  
+  // Do not edit the line below.
+  exports.tournamentWinner = tournamentWinner;
   
   
