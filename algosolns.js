@@ -900,5 +900,29 @@ function sortedSquaredArray(array) {
   
   // Do not edit the line below.
   exports.tournamentWinner = tournamentWinner;
+
+
+
+  /* Solved Permutations */
+
+  function getPermutations(array) {
+    // O(n^2 * n!) | O(n*n!).
+      const permutations = [];
+      permutationsHelper(array, [], permutations)
+      return permutations;
+  }
+  
+  function permutationsHelper(array, currentPermutation, permutations){
+      if(!array.length && currentPermutation.length){
+          permutations.push(currentPermutation);
+      }else{
+          for(let i = 0; i < array.length; i++){
+              const newArr = array.slice(0, i).concat(array.slice(i+1));
+              const newPermutation = currentPermutation.concat([array[i]]);
+              permutationsHelper(newArr, newPermutation, permutations);
+          }
+      }
+  }
+  
   
   
