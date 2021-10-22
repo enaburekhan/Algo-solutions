@@ -923,6 +923,34 @@ function sortedSquaredArray(array) {
           }
       }
   }
+
+
+  function getPermutations(array) {
+    // O(n * n!) | O(n * n!).
+      const permutations = [];
+      helperPermutations(0, array, permutations);
+      return permutations
+  }
+  
+  function helperPermutations(i, array, permutations){
+      if(i === array.length - 1){
+          permutations.push(array.slice());
+      }else{
+          for(let j=i; j < array.length; j++){
+              swap(i, j, array);
+              helperPermutations(i+1, array, permutations);
+              swap(i, j, array);
+          }
+      }
+  }
+  
+  function swap(i, j, array){
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+  
+  // Do not edit the line below.
+  exports.getPermutations = getPermutations;
+  
   
   
   
