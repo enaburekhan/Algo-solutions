@@ -982,6 +982,29 @@ function sortedSquaredArray(array) {
   
   // Do not edit the line below.
   exports.tournamentWinner = tournamentWinner;
+
+  
+
+
+  /* Solved non-constructible change */
+
+  function nonConstructibleChange(coins) {
+    // O(nlogn) time | O(1) space.
+      let currentChangeCreated = 0;
+      coins.sort((a, b) => a - b);
+      for(const coin of coins){
+          if(coin > currentChangeCreated + 1){
+              return currentChangeCreated + 1;
+          }else{
+              currentChangeCreated += coin;
+          }
+      }
+       return currentChangeCreated + 1;
+      
+  }
+  
+  // Do not edit the line below.
+  exports.nonConstructibleChange = nonConstructibleChange;
   
   
   
