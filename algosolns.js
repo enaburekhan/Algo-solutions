@@ -1122,7 +1122,7 @@ class BinaryTree {
   
   
 
-  /* Solved node depths */
+  /* Solved node depths using iterative approach*/
 
   function nodeDepths(root) {
     // O(n) time | O(h) space
@@ -1152,5 +1152,27 @@ class BinaryTree {
   
   // Do not edit the line below.
   exports.nodeDepths = nodeDepths;
+
+
+  /* Solved node depths using Recursive approach*/
+
+  function nodeDepths(root, depth = 0) {
+    // O(n) time | O(h) space.
+      if(root === null) return 0;
+      return depth + nodeDepths(root.left, depth + 1) + nodeDepths(root.right, depth + 1);
+  }
+  
+  // This is the class of the input binary tree.
+  class BinaryTree {
+    constructor(value) {
+      this.value = value;
+      this.left = null;
+      this.right = null;
+    }
+  }
+  
+  // Do not edit the line below.
+  exports.nodeDepths = nodeDepths;
+  
   
   
