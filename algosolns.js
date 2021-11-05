@@ -1175,4 +1175,19 @@ class BinaryTree {
   exports.nodeDepths = nodeDepths;
   
   
+
+  /* Solved interview questions */
+
+//   #multiply_nums("2, 3") ➞ 6
+// #multiply_nums("1, 2, 3, 4") ➞ 24
+// #multiply_nums("54, 75, 453, 0") ➞ 0
+// #multiply_nums("10, -2") ➞ -20
+// def multiply_nums(nums)
+//   nums.split(',').map {|x| x.to_i }.inject(1) { |a, b| a*b }
+// end
+// p multiply_nums("2, 3")
+// p multiply_nums("1, 2, 3, 4")
+// p multiply_nums("54, 75, 453, 0")
+// p multiply_nums("10, -2")
+
   
