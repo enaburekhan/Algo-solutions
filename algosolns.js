@@ -1260,3 +1260,44 @@ class BST {
 
 // Do not edit the line below.
 exports.findClosestValueInBst = findClosestValueInBst;
+
+
+
+
+// Branch sums
+
+// This is the class of the input root.
+// Do not edit it.
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function branchSums(root) {
+  // O(n) time | O(n) space.
+	const sums = []
+	calculateBranchSums(root, 0, sums)
+	return sums
+}
+
+function calculateBranchSums(node, runningSum, sums){
+	if(!node) return
+	
+	const currentRunningSum = runningSum + node.value;
+	
+	if(!node.left && !node.right){
+		sums.push(currentRunningSum);
+		return;
+	}
+	
+	calculateBranchSums(node.left, currentRunningSum, sums)
+	calculateBranchSums(node.right, currentRunningSum, sums)
+}
+
+// Do not edit the lines below.
+exports.BinaryTree = BinaryTree;
+exports.branchSums = branchSums;
+
