@@ -1390,3 +1390,23 @@ class Node {
 exports.Node = Node;
 
 
+
+/* Solved minimum waiting time */
+
+function minimumWaitingTime(queries) {
+  // o(nlogn) time | O(1) space.
+	let totalWaitingTime = 0;
+  queries.sort((a, b) => a - b)
+	
+	for(let i=0; i < queries.length; i++){
+		const duration = queries[i]
+		const queriesLeft = queries.length - (i+1)
+		totalWaitingTime += duration * queriesLeft;
+	}
+	return totalWaitingTime;
+}
+
+// Do not edit the line below.
+exports.minimumWaitingTime = minimumWaitingTime;
+
+
