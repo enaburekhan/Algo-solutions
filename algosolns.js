@@ -1410,3 +1410,39 @@ function minimumWaitingTime(queries) {
 exports.minimumWaitingTime = minimumWaitingTime;
 
 
+
+
+/* Solved Balanced binary tree */
+
+// This is an input class. Do not edit.
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function heightBalancedBinaryTree(tree) {
+  // O(n) time | O(h) space.
+  // find the depth of the tree 
+	// determine if its balanced
+	if(tree === null) return true
+	
+	if(Math.abs(maxDepth(tree.left) - maxDepth(tree.right)) > 1) return false
+		 
+	return heightBalancedBinaryTree(tree.left) && heightBalancedBinaryTree(tree.right)	 
+	
+}
+
+function maxDepth(node){
+	if(node === null) return 0;
+	const left = maxDepth(node.left);
+	const right = maxDepth(node.right);
+	
+	return Math.max(left, right) + 1
+}
+
+// Do not edit the lines below.
+exports.BinaryTree = BinaryTree;
+exports.heightBalancedBinaryTree = heightBalancedBinaryTree;
