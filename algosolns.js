@@ -1412,7 +1412,7 @@ exports.minimumWaitingTime = minimumWaitingTime;
 
 
 
-/* Solved Balanced binary tree */
+/* Solved height Balanced binary tree */
 
 // This is an input class. Do not edit.
 class BinaryTree {
@@ -1446,3 +1446,27 @@ function maxDepth(node){
 // Do not edit the lines below.
 exports.BinaryTree = BinaryTree;
 exports.heightBalancedBinaryTree = heightBalancedBinaryTree;
+
+/* Class photos */
+
+function classPhotos(redShirtHeights, blueShirtHeights) {
+  // O(nlogn) time | O(1) space.
+  redShirtHeights.sort((a,b) => a - b);
+	blueShirtHeights.sort((a,b) => a - b);
+	
+	const shirtColorInFrontRow = redShirtHeights[0] < blueShirtHeights[0] ? 'RED' : 'BLUE';
+	
+	for(let i=0; i < redShirtHeights.length; i++){
+		const redShirtHeight = redShirtHeights[i];
+		const blueShirtHeight = blueShirtHeights[i];
+		
+		if(shirtColorInFrontRow === 'RED'){
+			if(redShirtHeight >= blueShirtHeight) return false
+		}else if(blueShirtHeight >= redShirtHeight) return false
+	}
+	  return true;
+}
+
+// Do not edit the line below.
+exports.classPhotos = classPhotos;
+
