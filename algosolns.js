@@ -1470,3 +1470,41 @@ function classPhotos(redShirtHeights, blueShirtHeights) {
 // Do not edit the line below.
 exports.classPhotos = classPhotos;
 
+
+/* Solve tandem bicycle */
+function tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest) {
+  // O(nlogn) time | O(1) space.
+//   sort both color shirts
+// 	if not fastest, reverse one of the color shirts
+// 	initialize totalSpeed = 0
+// 	loop thru one of the shirts
+// 	define rider 1 and 2
+// 	Add max value of speeds to totalSpeed and return it
+	redShirtSpeeds.sort((a,b) => a - b);
+	blueShirtSpeeds.sort((a,b) => a - b);
+	
+	if(!fastest){
+		reverseColorSpeeds(redShirtSpeeds)
+ }
+	let totalSpeed = 0;
+	for(let i=0; i < redShirtSpeeds.length; i++){
+		const rider1 = redShirtSpeeds[i];
+		const rider2 = blueShirtSpeeds[blueShirtSpeeds.length - i - 1]
+		totalSpeed += Math.max(rider1, rider2);
+	}
+	return totalSpeed;
+}
+
+function reverseColorSpeeds(array){
+	let start = 0
+	let end = array.length - 1
+	
+	while(start < end){
+		[array[start], array[end]] = [array[end], array[start]]
+		start++;
+		end--;
+	}
+}
+// Do not edit the line below.
+exports.tandemBicycle = tandemBicycle;
+
