@@ -1536,3 +1536,14 @@ function removeDuplicatesFromLinkedList(linkedList) {
 exports.LinkedList = LinkedList;
 exports.removeDuplicatesFromLinkedList = removeDuplicatesFromLinkedList;
 
+
+/* Solve fibonacci sequence */
+function getNthFib(n) {
+  // O(2^n) time | O(n) space
+	if(n === 1) return 0
+	else if(n === 2) return 1
+	else return getNthFib(n-1) + getNthFib(n-2)
+}
+
+// Do not edit the line below.
+exports.getNthFib = getNthFib;
