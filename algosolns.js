@@ -1684,3 +1684,31 @@ function updateAndShift(array, num, idx){
 // Do not edit the line below.
 exports.findThreeLargestNumbers = findThreeLargestNumbers;
 
+
+/* Solve Bubble sort */
+
+function bubbleSort(array) {
+  //O(n^2) time | O(1) space.
+	let isSorted = false;
+	let counter = 0;
+	while(!isSorted){
+		isSorted = true;
+		for(let i=0; i < array.length - 1 - counter; i++){
+			if(array[i] > array[i+1]){
+				swap(i, i+1, array)
+				isSorted = false
+			}
+		}
+		counter++
+	}
+	return array;
+}
+
+function swap(i, j, array){
+	[array[i], array[j]] = [array[j], array[i]];
+}
+
+// Do not edit the line below.
+exports.bubbleSort = bubbleSort;
+
+
