@@ -1711,4 +1711,61 @@ function swap(i, j, array){
 // Do not edit the line below.
 exports.bubbleSort = bubbleSort;
 
+// /**
+//  * @param {string} s
+//  * @return {number}
+//  */
+//  var romanToInt = function(s) {
+//   const dictionary = {
+//    I: 1,
+//    V: 5,
+//    X: 10,
+//    L: 50,
+//    C: 100,
+//    D: 500,
+//    M: 1000,
+//  };
+ 
+//  let result = 0;
+//  let lastValue = 0;
+ 
+//  Array.from(s).map((letter)=> {
+     
+//      if(result === 0 || lastValue > dictionary[letter] || lastValue === dictionary[letter]){
+//          result += dictionary[letter];
+//          lastValue = dictionary[letter];
+//          return;
+//      }
+     
+//      result -= lastValue;
+//      result += dictionary[letter] - lastValue;
+//  })
+ 
+//  return result;
+ 
+// };
+
+
+/* Solve Insertion sort */
+
+function insertionSort(array) {
+  // O(n^2) time | O(1) space.
+	for(let i=1; i < array.length; i++){
+		let j = i
+		while(j > 0 && array[j] < array[j - 1]){
+			swap(j, j-1, array)
+			j--
+		}
+	}
+	return array
+}
+
+function swap(i, j, array){
+	[array[i], array[j]] = [array[j], array[i]]
+}
+
+// Do not edit the line below.
+exports.insertionSort = insertionSort;
+
+
 
