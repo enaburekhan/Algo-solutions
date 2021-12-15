@@ -1809,7 +1809,7 @@ function isPalindrome(string) {
 exports.isPalindrome = isPalindrome;
 
 
-/* Solve Caesar Cipher Encryptor */
+/* Solve Caesar Cipher Encryptor 1 */
 
 function caesarCipherEncryptor(string, key) {
   // O(n) time | O(n) space
@@ -1826,6 +1826,28 @@ function getLetters(letter, key){
 	
 	return newLetterCode <= 122 ? String.fromCharCode(newLetterCode) :
 	  String.fromCharCode(96 + (newLetterCode % 122));
+}
+
+// Do not edit the line below.
+exports.caesarCipherEncryptor = caesarCipherEncryptor;
+
+
+/* Solve caesar cipher encryption 2 */
+
+function caesarCipherEncryptor(string, key) {
+  // O(n) time | O(n) space.
+	const newLetters = [];
+	const newKey = key % 26;
+	const alphabets = "abcdefghijklmnopqrstuvwxyz".split("");
+	for(const letter of string){
+		newLetters.push(getNewLetters(letter, newKey, alphabets))
+	}
+	return newLetters.join("");
+}
+
+function getNewLetters(letter, key, alphabets){
+	const newLetterCodes = alphabets.indexOf(letter) + key;
+	return alphabets[newLetterCodes % 26];
 }
 
 // Do not edit the line below.
