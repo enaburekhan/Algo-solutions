@@ -1854,5 +1854,33 @@ function getNewLetters(letter, key, alphabets){
 exports.caesarCipherEncryptor = caesarCipherEncryptor;
 
 
+/* Run length Encoding */
+
+function runLengthEncoding(string) {
+  // O(n) time | O(n) space
+	const encodedCharacters = [];
+	let currentRunLength = 1;
+	for(let i=1; i < string.length; i++){
+		const currentChar = string[i];
+		const previousChar = string[i-1];
+		if(previousChar !== currentChar || currentRunLength === 9){
+			encodedCharacters.push(currentRunLength.toString());
+			encodedCharacters.push(previousChar);
+			currentRunLength = 0
+		}
+		 currentRunLength += 1;
+	}
+	
+	  encodedCharacters.push(currentRunLength.toString());
+		encodedCharacters.push(string[string.length - 1])
+	
+	 return encodedCharacters.join('');
+	
+}
+
+// Do not edit the line below.
+exports.runLengthEncoding = runLengthEncoding;
+
+
 
 
