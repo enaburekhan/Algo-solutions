@@ -1882,29 +1882,219 @@
 // exports.runLengthEncoding = runLengthEncoding;
 
 
-function prefix(strs) {
-  if(!strs.length) return "";
-  if(strs.length === 1) return strs[0];
-  let compareStr = strs[0];
-  let count = 0;
-  for(let i=0; i < strs.length; i++){
-    for(let j=compareStr.length; j >= 1; j--){
-      if(compareStr.slice(0, j) === strs[i].slice(0, j)){
-        count += 1;
-        compareStr = compareStr.slice(0, j);
-        break;
-      }
+// function prefix(strs) {
+//   if(!strs.length) return "";
+//   if(strs.length === 1) return strs[0];
+//   let compareStr = strs[0];
+//   let count = 0;
+//   for(let i=0; i < strs.length; i++){
+//     for(let j=compareStr.length; j >= 1; j--){
+//       if(compareStr.slice(0, j) === strs[i].slice(0, j)){
+//         count += 1;
+//         compareStr = compareStr.slice(0, j);
+//         break;
+//       }
+//     }
+//   }
+//    count !== strs.length ? "" : compareStr;
+//    console.log(compareStr); 
+// }
+
+
+// const strs = ["flower","flow","flight"];
+
+// prefix(strs)
+
+
+
+
+
+
+
+
+// function giveMeSomething(strEntry) {
+//   strEntry = "something " + strEntry
+//   return strEntry
+//   }
+
+// console.log(giveMeSomething("is better")) 
+
+// function addIndexes(arr) {
+//   // arr = new Array(arr.length).fill(0);
+//   const newArr = []
+//   for(let i=0; i < arr.length; i++){
+//     newArr.push(arr[i] + i)
+//   }
+//   return newArr;
+// }
+    
+  // console.log(addIndexes([1, 2, 3, 4, 5])) 
+  //  [1, 3, 5, 7, 9]
+
+  // console.log(addIndexes([0, 0, 0, 0, 0]))
+  // [0, 1, 2, 3, 4]
+
+  // console.log(addIndexes([5, 4, 3, 2, 1]))
+  // [5, 5, 5, 5, 5]
+
+  // function calcAge(age) {
+    // console.log(typeof age);
+    // return age *= 365
+    // }
+
+  // console.log(calcAge(65))
+  //  23725
+  // console.log(calcAge(0))
+  // 0
+  // console.log(calcAge(20))
+  // 7300 
+  
+  // function shouldServeDrinks(age, onBreak) {
+  //   if(age >= 18 && onBreak === false ){
+  //   return true
+  //   }else if(age >= 18 && onBreak === true || age < 18 && onBreak === true){
+  //   return false
+  //   }
+  // }
+
+  // console.log(shouldServeDrinks(17, true)) 
+  // false
+  // console.log(shouldServeDrinks(19, false))
+  // true
+
+  // console.log(shouldServeDrinks(30, true))
+  // false
+
+
+  // function addOdds(n) {
+  //   return (n % 2 === 1).reduce((a,b) => a + b, 0);
+  //  // [1, 2, 3, 4].reduce((a, b) => a + b, 0)
+    
+  //  }
+
+  //  console.log(7);
+
+//   function remainder(a, b) {
+//     const mod = a % b
+//     return mod
+    
+//   }
+// console.log(remainder(5, 3))
+
+// function sumPrimes(n) {
+//   if(n < 2) return false;
+
+
+// return n.reduce((a, b) => a + b, 0)
+// }
+
+// console.log(sumPrimes(10));
+
+// N = int(input("enter the last number ") 
+// Sum = 0 
+// for i in range(0,n+1) 
+//    if(i%2!=0) 
+//       Sum=Sum + i 
+// Print(Sum) 
+
+// function addOdds(n) {
+//   let sum = 0;
+//   for(let i=0; i < n; i++){
+//     if(i % 2 !== 0) sum += i
+//   }
+//   return sum
+//   }
+
+//   console.log(addOdds(7));
+
+
+
+// function sumPrimes(n) {
+//   let result = 0;
+//   for(let i=2; i < n; i++){
+//     if(isPrime(i)) result += i
+//   }
+//   return result;
+// }
+
+// function isPrime(val){
+//   for(let i=2; i < val; i++){
+//     if(val % i === 0) return false
+//   }
+//     return true
+// }
+ 
+
+//   console.log(sumPrimes(10));
+
+  // function findBob(arr) {
+  //   for(let i=0; i < arr.length; i++){
+  //     if(arr[i] === "Bob"){
+  //       return i
+  //     }
+  //   }
+  //   return -1
+  // }
+  // const input = ["Fem","Bob","Shaw","James"]
+  // console.log(findBob(["Fem","Bob","Shaw","James"]));
+
+  // function stringFirstHalf(n) {
+  //   const len = n.length 
+  //   const half = Math.floor(len / 2)
+  //   const item = n.substr(0, half)
+  //   return item
+  //  }
+  //   const n = "paused"
+  //  console.log(stringFirstHalf(n)) 
+  //  “pau”
+
+  function societyName(arr) {
+      const result = []
+    for(let i=0; i < arr.length; i++){
+      result.push(arr[0][0], arr[1][0], arr[2][0])
     }
+      const secret = result.filter(onlyUnique)
+      secret.sort();
+      secret.toString();
+      return secret;
   }
-   count !== strs.length ? "" : compareStr;
-   console.log(compareStr); 
-}
 
+   function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+  }
 
-const strs = ["flower","flow","flight"];
+  console.log(societyName(["Adam", "Sarah", "Malcolm"]))
+  // // "AMS"
 
-prefix(strs)
+  // function factorialize(num) {
+  //   if(num > 1){
+  //     return num * factorialize(num - 1)
+  //   }
+  //   return 1
+  // }
+  // console.log(factorialize(3)) 
+  // 6  
 
+  // function temperatureConversion(arr) {
+  //   const F = arr * 1.8 + 32
+  //   return F
+  // }
+  // console.log(temperatureConversion(0));
 
+  // function minMax(arr) {
+  //   const result = []
+  //   arr = arr.sort((a,b) => a + b)
+  //   for(let i=0; i < arr.length; i++){
+  //     result.push(arr[0], arr[arr.length - 1])
+  //   }
+  //   const unique = result.filter(onlyUnique);
+  //   return unique;
+  //  }
 
+  //  function onlyUnique(value, index, self) {
+  //   return self.indexOf(value) === index;
+  // }
+
+  //  console.log(minMax([1, 2, 3, 4, 5])) 
+  // //  [1, 5]
 
