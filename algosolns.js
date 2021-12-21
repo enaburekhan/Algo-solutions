@@ -2054,14 +2054,14 @@
       result.push(arr[0][0], arr[1][0], arr[2][0])
     }
       const secret = result.filter(onlyUnique)
-      secret.sort();
-      secret.toString();
+      secret.sort().join("").toString();
+      // secret.toString();
       return secret;
   }
 
-   function onlyUnique(value, index, self) {
-    return self.indexOf(value) === index;
-  }
+   function onlyUnique(value, index, self){
+     return self.indexOf(value) === index
+   }
 
   console.log(societyName(["Adam", "Sarah", "Malcolm"]))
   // // "AMS"
@@ -2097,4 +2097,29 @@
 
   //  console.log(minMax([1, 2, 3, 4, 5])) 
   // //  [1, 5]
+
+
+
+  /* Solve Generate document */
+  function generateDocument(characters, document) {
+    // O(m + (m + n)) time | O(1) space.
+    for(const character of document){
+      const documentFrequency = countCharacterFrequency(character, document);
+      const characterFrequency = countCharacterFrequency(character, characters);
+      if(documentFrequency > characterFrequency) return false;
+    }
+     return true;
+  }
+  
+  function countCharacterFrequency(character, target){
+    let frequency = 0;
+    for(const char of target){
+      if(char === character) frequency++
+    }
+     return frequency
+  }
+  
+  // Do not edit the line below.
+  exports.generateDocument = generateDocument;
+  
 
