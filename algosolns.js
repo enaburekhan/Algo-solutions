@@ -2148,6 +2148,25 @@
   
   // Do not edit the line below.
   exports.generateDocument = generateDocument;
+
+  function generateDocument(characters, document) {
+    // O(n+m) time | O(c) space.
+    const characterCount = {};
+    for(const character of characters){
+      if(!(character in characterCount)) characterCount[character] = 0
+      characterCount[character]++
+    }
+    
+    for(const character of document){
+      if(!(character in characterCount) || characterCount[character] === 0) return false
+      characterCount[character]--
+    }
+     return true;
+  }
+  
+  // Do not edit the line below.
+  exports.generateDocument = generateDocument;
+  
   
   
 
