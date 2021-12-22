@@ -2186,6 +2186,24 @@
   
   // Do not edit the line below.
   exports.firstNonRepeatingCharacter = firstNonRepeatingCharacter;
+
+  function firstNonRepeatingCharacter(string) {
+    // O(n) time | O(1) space
+    const characterCount = {};
+    for(const character of string){
+      if(!characterCount[character]) characterCount[character] = 0;
+      characterCount[character]++
+    }
+    for(let i=0; i < string.length; i++){
+      const character = string[i]
+      if(characterCount[character] === 1) return i
+    }
+     return -1
+  }
+  
+  // Do not edit the line below.
+  exports.firstNonRepeatingCharacter = firstNonRepeatingCharacter;
+  
   
   
   
