@@ -2048,23 +2048,7 @@
   //  console.log(stringFirstHalf(n)) 
   //  “pau”
 
-  function societyName(arr) {
-      const result = []
-    for(let i=0; i < arr.length; i++){
-      result.push(arr[0][0], arr[1][0], arr[2][0])
-    }
-      const secret = result.filter(onlyUnique)
-      secret.sort().join("").toString();
-      // secret.toString();
-      return secret;
-  }
-
-   function onlyUnique(value, index, self){
-     return self.indexOf(value) === index
-   }
-
-  console.log(societyName(["Adam", "Sarah", "Malcolm"]))
-  // // "AMS"
+  
 
   // function factorialize(num) {
   //   if(num > 1){
@@ -2101,140 +2085,200 @@
 
 
   /* Solve Generate document */
-  function generateDocument(characters, document) {
-    // O(m + (m + n)) time | O(1) space.
-    for(const character of document){
-      const documentFrequency = countCharacterFrequency(character, document);
-      const characterFrequency = countCharacterFrequency(character, characters);
-      if(documentFrequency > characterFrequency) return false;
-    }
-     return true;
-  }
+  // function generateDocument(characters, document) {
+  //   // O(m + (m + n)) time | O(1) space.
+  //   for(const character of document){
+  //     const documentFrequency = countCharacterFrequency(character, document);
+  //     const characterFrequency = countCharacterFrequency(character, characters);
+  //     if(documentFrequency > characterFrequency) return false;
+  //   }
+  //    return true;
+  // }
   
-  function countCharacterFrequency(character, target){
-    let frequency = 0;
-    for(const char of target){
-      if(char === character) frequency++
-    }
-     return frequency
-  }
-  
-  // Do not edit the line below.
-  exports.generateDocument = generateDocument;
-
-
-  function generateDocument(characters, document) {
-    // O(c * (m + n)) time | O(c) space.
-    const alreadyCounted = new Set();
-    for(const character of document){
-      if(character in alreadyCounted) continue
-      
-      const documentFrequency = countCharacterFrequency(character, document);
-      const characterFrequency = countCharacterFrequency(character, characters);
-      if(documentFrequency > characterFrequency) return false
-      
-      alreadyCounted.add(character);
-    }
-     return true;
-  }
-  
-  function countCharacterFrequency(character, target){
-    let frequency = 0;
-    for(const char of target){
-      if(char === character) frequency++
-    }
-     return frequency
-  }
+  // function countCharacterFrequency(character, target){
+  //   let frequency = 0;
+  //   for(const char of target){
+  //     if(char === character) frequency++
+  //   }
+  //    return frequency
+  // }
   
   // Do not edit the line below.
-  exports.generateDocument = generateDocument;
+  // exports.generateDocument = generateDocument;
 
-  function generateDocument(characters, document) {
-    // O(n+m) time | O(c) space.
-    const characterCount = {};
-    for(const character of characters){
-      if(!(character in characterCount)) characterCount[character] = 0
-      characterCount[character]++
-    }
+
+  // function generateDocument(characters, document) {
+  //   // O(c * (m + n)) time | O(c) space.
+  //   const alreadyCounted = new Set();
+  //   for(const character of document){
+  //     if(character in alreadyCounted) continue
+      
+  //     const documentFrequency = countCharacterFrequency(character, document);
+  //     const characterFrequency = countCharacterFrequency(character, characters);
+  //     if(documentFrequency > characterFrequency) return false
+      
+  //     alreadyCounted.add(character);
+  //   }
+  //    return true;
+  // }
+  
+  // function countCharacterFrequency(character, target){
+  //   let frequency = 0;
+  //   for(const char of target){
+  //     if(char === character) frequency++
+  //   }
+  //    return frequency
+  // }
+  
+  // // Do not edit the line below.
+  // exports.generateDocument = generateDocument;
+
+  // function generateDocument(characters, document) {
+  //   // O(n+m) time | O(c) space.
+  //   const characterCount = {};
+  //   for(const character of characters){
+  //     if(!(character in characterCount)) characterCount[character] = 0
+  //     characterCount[character]++
+  //   }
     
-    for(const character of document){
-      if(!(character in characterCount) || characterCount[character] === 0) return false
-      characterCount[character]--
-    }
-     return true;
-  }
+  //   for(const character of document){
+  //     if(!(character in characterCount) || characterCount[character] === 0) return false
+  //     characterCount[character]--
+  //   }
+  //    return true;
+  // }
   
   // Do not edit the line below.
-  exports.generateDocument = generateDocument;
+  // exports.generateDocument = generateDocument;
 
 
 
   /* Solved non-repeating character */
-  function firstNonRepeatingCharacter(string) {
-    // O(n^2) time | O(1) space.
-    for(let idx = 0; idx < string.length; idx++){
-      let foundDuplicate = false;
-      for(let idx2 = 0; idx2 < string.length; idx2++){
-        if(string[idx] === string[idx2] && idx !== idx2) {
-          foundDuplicate = true
-        }
-      }
-       if(!foundDuplicate) return idx
-    }
-       return -1
-  }
+  // function firstNonRepeatingCharacter(string) {
+  //   // O(n^2) time | O(1) space.
+  //   for(let idx = 0; idx < string.length; idx++){
+  //     let foundDuplicate = false;
+  //     for(let idx2 = 0; idx2 < string.length; idx2++){
+  //       if(string[idx] === string[idx2] && idx !== idx2) {
+  //         foundDuplicate = true
+  //       }
+  //     }
+  //      if(!foundDuplicate) return idx
+  //   }
+  //      return -1
+  // }
   
-  // Do not edit the line below.
-  exports.firstNonRepeatingCharacter = firstNonRepeatingCharacter;
+  // // Do not edit the line below.
+  // exports.firstNonRepeatingCharacter = firstNonRepeatingCharacter;
 
-  function firstNonRepeatingCharacter(string) {
-    // O(n) time | O(1) space
-    const characterCount = {};
-    for(const character of string){
-      if(!characterCount[character]) characterCount[character] = 0;
-      characterCount[character]++
-    }
-    for(let i=0; i < string.length; i++){
-      const character = string[i]
-      if(characterCount[character] === 1) return i
-    }
-     return -1
-  }
+  // function firstNonRepeatingCharacter(string) {
+  //   // O(n) time | O(1) space
+  //   const characterCount = {};
+  //   for(const character of string){
+  //     if(!characterCount[character]) characterCount[character] = 0;
+  //     characterCount[character]++
+  //   }
+  //   for(let i=0; i < string.length; i++){
+  //     const character = string[i]
+  //     if(characterCount[character] === 1) return i
+  //   }
+  //    return -1
+  // }
   
-  // Do not edit the line below.
-  exports.firstNonRepeatingCharacter = firstNonRepeatingCharacter;
+  // // Do not edit the line below.
+  // exports.firstNonRepeatingCharacter = firstNonRepeatingCharacter;
   
   
 
 
-  /* Solve three number sum */
-  
-  function threeNumberSum(array, targetSum) {
-    // O(n^2) time | O(n) space
-    const triplets = []
-    array.sort((a,b) => a - b);
-    for(let i=0; i < array.length - 2; i++){
-      let left = i + 1;
-      let right = array.length - 1;
+  // /* Solve three number sum */
+
+  // function threeNumberSum(array, targetSum) {
+  //   // O(n^2) time | O(n) space
+  //   const triplets = []
+  //   array.sort((a,b) => a - b);
+  //   for(let i=0; i < array.length - 2; i++){
+  //     let left = i + 1;
+  //     let right = array.length - 1;
       
-      while(left < right){
-        const currentSum = array[i] + array[left] + array[right];
-        if(currentSum === targetSum){
-          triplets.push([array[i], array[left], array[right]]);
-          left++;
-          right--
-        }else if(currentSum < targetSum){
-          left++
-        }else if(currentSum > targetSum){
-          right--
-        }
-      }
-    }
-     return triplets;
-  }
+  //     while(left < right){
+  //       const currentSum = array[i] + array[left] + array[right];
+  //       if(currentSum === targetSum){
+  //         triplets.push([array[i], array[left], array[right]]);
+  //         left++;
+  //         right--
+  //       }else if(currentSum < targetSum){
+  //         left++
+  //       }else if(currentSum > targetSum){
+  //         right--
+  //       }
+  //     }
+  //   }
+  //    return triplets;
+  // }
   
   // Do not edit the line below.
-  exports.threeNumberSum = threeNumberSum;
+  // exports.threeNumberSum = threeNumberSum;
+
+
+  function societyName(arr) {
+    const result = []
+  for(let i=0; i < arr.length; i++){
+    result.push(arr[0][0], arr[1][0], arr[2][0])
+  }
+    const secret = result.filter(onlyUnique)
+    const joinedSecret = secret.sort().join("");
+    // console.log(typeof(joinedSecret));
+    return joinedSecret;
+}
+
+ function onlyUnique(value, index, self){
+   return self.indexOf(value) === index
+ }
+
+console.log(societyName(["Adam", "Sarah", "Malcolm"]))
+// "AMS"
+
+  const cities = ['London', 'Paris', 'Tokyo'];
+const joinedCities = cities.join();
+
+console.log(joinedCities);
+
+
+/* Merged linked list */
+
+class LinkedList {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+function mergeLinkedLists(headOne, headTwo) {
+  // O(n + m) time | O(1) space.
+	let p1 = headOne;
+	let p1Prev = null;
+	let p2 = headTwo;
+	
+	while(p1 !== null && p2 !== null){
+		if(p1.value < p2.value){
+			p1Prev = p1;
+			p1 = p1.next;
+		}else {
+			if(p1Prev !== null) p1Prev.next = p2
+			p1Prev = p2;
+			p2 = p2.next
+			p1Prev.next = p1;
+		}
+	}
+	 if(p1 === null) p1Prev.next = p2;
+	 return headOne.value < headTwo.value ? headOne : headTwo;
+}
+
+// Do not edit the lines below.
+exports.LinkedList = LinkedList;
+exports.mergeLinkedLists = mergeLinkedLists;
+
     
   
   
