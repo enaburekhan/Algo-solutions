@@ -2221,63 +2221,120 @@
   // exports.threeNumberSum = threeNumberSum;
 
 
-  function societyName(arr) {
-    const result = []
-  for(let i=0; i < arr.length; i++){
-    result.push(arr[0][0], arr[1][0], arr[2][0])
-  }
-    const secret = result.filter(onlyUnique)
-    const joinedSecret = secret.sort().join("");
-    // console.log(typeof(joinedSecret));
-    return joinedSecret;
-}
+//   function societyName(arr) {
+//     const result = []
+//   for(let i=0; i < arr.length; i++){
+//     result.push(arr[0][0], arr[1][0], arr[2][0])
+//   }
+//     const secret = result.filter(onlyUnique)
+//     const joinedSecret = secret.sort().join("");
+//     // console.log(typeof(joinedSecret));
+//     return joinedSecret;
+// }
 
- function onlyUnique(value, index, self){
-   return self.indexOf(value) === index
- }
+//  function onlyUnique(value, index, self){
+//    return self.indexOf(value) === index
+//  }
 
-console.log(societyName(["Adam", "Sarah", "Malcolm"]))
-// "AMS"
+// console.log(societyName(["Adam", "Sarah", "Malcolm"]))
+// // "AMS"
 
-  const cities = ['London', 'Paris', 'Tokyo'];
-const joinedCities = cities.join();
+//   const cities = ['London', 'Paris', 'Tokyo'];
+// const joinedCities = cities.join();
 
-console.log(joinedCities);
+// console.log(joinedCities);
 
 
 /* Merged linked list */
 
-class LinkedList {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
-}
+// class LinkedList {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null;
+//   }
+// }
 
-function mergeLinkedLists(headOne, headTwo) {
-  // O(n + m) time | O(1) space.
-	let p1 = headOne;
-	let p1Prev = null;
-	let p2 = headTwo;
+// function mergeLinkedLists(headOne, headTwo) {
+//   // O(n + m) time | O(1) space.
+// 	let p1 = headOne;
+// 	let p1Prev = null;
+// 	let p2 = headTwo;
 	
-	while(p1 !== null && p2 !== null){
-		if(p1.value < p2.value){
-			p1Prev = p1;
-			p1 = p1.next;
-		}else {
-			if(p1Prev !== null) p1Prev.next = p2
-			p1Prev = p2;
-			p2 = p2.next
-			p1Prev.next = p1;
-		}
-	}
-	 if(p1 === null) p1Prev.next = p2;
-	 return headOne.value < headTwo.value ? headOne : headTwo;
-}
+// 	while(p1 !== null && p2 !== null){
+// 		if(p1.value < p2.value){
+// 			p1Prev = p1;
+// 			p1 = p1.next;
+// 		}else {
+// 			if(p1Prev !== null) p1Prev.next = p2
+// 			p1Prev = p2;
+// 			p2 = p2.next
+// 			p1Prev.next = p1;
+// 		}
+// 	}
+// 	 if(p1 === null) p1Prev.next = p2;
+// 	 return headOne.value < headTwo.value ? headOne : headTwo;
+// }
 
 // Do not edit the lines below.
-exports.LinkedList = LinkedList;
-exports.mergeLinkedLists = mergeLinkedLists;
+// exports.LinkedList = LinkedList;
+// exports.mergeLinkedLists = mergeLinkedLists;
+
+// function removeDuplicate(nums){
+//   let i = 0;
+//   let j = 1;
+//   if(nums.length === 0) return 0;
+//   while(j < nums.length){
+//     if(nums[j] !== nums[i]){
+//       i++;
+//       nums[i] = nums[j]
+//       j++;
+//     }else j++
+//   }
+//    return i+1;
+// }
+
+
+// const input = [0,0,1,1,1,2,2,3,3,4];
+
+// console.log(removeDuplicate(input));
+
+
+
+/* Solve smallest difference */
+
+function smallestDifference(arrayOne, arrayTwo) {
+  // O(nlogn + mlogm) time | O(1) space.
+	arrayOne.sort((a,b) => a - b);
+	arrayTwo.sort((a,b) => a - b);
+	let idx1 = 0;
+	let idx2 = 0;
+	let smallest = Infinity;
+	let current = Infinity;
+	let smallestPair = [];
+	
+	while(idx1 < arrayOne.length && idx2 < arrayTwo.length){
+		const firstNum = arrayOne[idx1];
+		const secondNum = arrayTwo[idx2];
+		if(firstNum < secondNum){
+			current = secondNum - firstNum
+			idx1++;
+		}else if(firstNum > secondNum){
+			current = firstNum - secondNum;
+			idx2++;
+		}else {
+			return [firstNum, secondNum]
+		}
+		 if(smallest > current){
+			 smallest = current
+			 smallestPair = [firstNum, secondNum]
+		 }
+	}
+	 return smallestPair;
+}
+
+// Do not edit the line below.
+exports.smallestDifference = smallestDifference;
+
 
     
   
