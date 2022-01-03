@@ -2506,6 +2506,28 @@ function longestPeak(array) {
 exports.longestPeak = longestPeak;
 
 
+/* Solve array of products */
+
+function arrayOfProducts(array) {
+  // O(n^2) time | O(n) time.
+	const products = [];
+	for(let i=0; i < array.length; i++){
+		let runningProduct = 1
+		for(let j=0; j < array.length; j++){
+			if(i !== j){
+				runningProduct *= array[j]
+			}
+		}
+		products.push(runningProduct);
+	}
+	 return products;
+}
+
+// Do not edit the line below.
+exports.arrayOfProducts = arrayOfProducts;
+
+
+
 
 
 
