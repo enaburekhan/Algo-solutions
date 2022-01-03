@@ -2555,6 +2555,29 @@ function arrayOfProducts(array) {
 exports.arrayOfProducts = arrayOfProducts;
 
 
+function arrayOfProducts(array) {
+  // O(n) time | O(n) space.
+	const products = new Array(array.length).fill(1);
+	
+	let leftRunningProducts = 1
+	for(let i=0; i < array.length; i++){
+		products[i] = leftRunningProducts
+		leftRunningProducts *= array[i];
+	}
+	
+	let rightRunningProducts = 1;
+	for(let i = array.length - 1; i > -1; i--){
+		products[i] *= rightRunningProducts
+		rightRunningProducts *= array[i]
+	}
+	 return products;
+}
+
+// Do not edit the line below.
+exports.arrayOfProducts = arrayOfProducts;
+
+
+
 
 
 
