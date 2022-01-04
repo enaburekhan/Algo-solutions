@@ -320,11 +320,81 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 
 # p ages.classa
 
-p Array.class
-p String.class
-p Class.class
+# p Array.class
+# p String.class
+# p Class.class
 
-Person = Class.new
-john = Person.new
+# Person = Class.new
+# john = Person.new
 
-p john
+# p john
+
+# p Array.ancestors
+
+# p Array.included_modules
+
+# p Array.singleton_class
+
+# class Animal
+#   def self.test
+#   end    
+# end
+
+# p Animal.singleton_methods
+
+# str = "test"
+
+# def str.show
+#   puts self    
+# end
+
+# p str.singleton_methods
+
+# str = "alternative syntax"
+
+# class << str
+#   def display
+#     puts self
+#   end    
+# end
+
+# p str.singleton_class
+
+# class Animal
+#   class << self
+#     def run
+#     end
+
+#     def eat
+#     end
+#   end    
+# end
+
+# p Animal.singleton_methods
+
+# class Cat
+#   singleton_class.send(:attr_reader, :age)    
+# end
+
+# p Cat.age
+
+# def print_once
+#   yield    
+# end
+ 
+# print_once { puts "block is been passed" }
+
+# def one_two_three
+#   yield 1
+#   yield 2
+#   yield 3    
+# end
+
+# one_two_three {|num| puts num * 10 }
+
+def do_something_with_block
+  return "no block given" unless block_given? 
+  yield   
+end
+
+p do_something_with_block
