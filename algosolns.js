@@ -2603,6 +2603,20 @@ function firstDuplicateValue(array) {
 exports.firstDuplicateValue = firstDuplicateValue;
 
 
+function firstDuplicateValue(array) {
+  // O(n) time | O(n) space.
+  const seen = new Set();
+	
+	for(const value of array){
+		if(seen.has(value)) return value;
+		seen.add(value)	 
+	}
+	 return -1;
+}
+
+// Do not edit the line below.
+exports.firstDuplicateValue = firstDuplicateValue;
+
 
 
 
