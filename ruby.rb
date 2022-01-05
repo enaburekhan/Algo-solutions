@@ -392,9 +392,48 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 
 # one_two_three {|num| puts num * 10 }
 
-def do_something_with_block
-  return "no block given" unless block_given? 
-  yield   
-end
+# def do_something_with_block
+#   return "no block given" unless block_given? 
+#   yield   
+# end
 
-p do_something_with_block
+# p do_something_with_block
+
+# say_something = -> { puts "this is a lambda" }
+# say_something.call
+
+# two_times = ->(x) { puts x * 2 }
+
+# two_times.call(10)
+
+# my_proc = Proc.new { |x| puts x * 2 }
+
+# my_proc.call(10)
+
+# my_lambda = -> { return 1 }
+
+# puts "lambda_result: #{my_lambda.call}"
+
+# my_proc = Proc.new { return 1 }
+
+# puts "proc_result: #{my_proc.call}"
+
+# def call_proc
+#   puts "before proc"
+#   my_proc = Proc.new { return 2 }
+#   my_proc.call
+#   puts "after proc"    
+# end
+
+# p call_proc
+
+# def call_proc(my_proc)
+#   count = 500
+#   my_proc.call    
+# end
+
+# count = 1
+
+# my_proc = Proc.new { puts count }
+
+# call_proc(my_proc)

@@ -2302,338 +2302,369 @@
 
 /* Solve smallest difference */
 
-function smallestDifference(arrayOne, arrayTwo) {
-  // O(nlogn + mlogm) time | O(1) space.
-	arrayOne.sort((a,b) => a - b);
-	arrayTwo.sort((a,b) => a - b);
-	let idx1 = 0;
-	let idx2 = 0;
-	let smallest = Infinity;
-	let current = Infinity;
-	let smallestPair = [];
+// function smallestDifference(arrayOne, arrayTwo) {
+//   // O(nlogn + mlogm) time | O(1) space.
+// 	arrayOne.sort((a,b) => a - b);
+// 	arrayTwo.sort((a,b) => a - b);
+// 	let idx1 = 0;
+// 	let idx2 = 0;
+// 	let smallest = Infinity;
+// 	let current = Infinity;
+// 	let smallestPair = [];
 	
-	while(idx1 < arrayOne.length && idx2 < arrayTwo.length){
-		const firstNum = arrayOne[idx1];
-		const secondNum = arrayTwo[idx2];
-		if(firstNum < secondNum){
-			current = secondNum - firstNum
-			idx1++;
-		}else if(firstNum > secondNum){
-			current = firstNum - secondNum;
-			idx2++;
-		}else {
-			return [firstNum, secondNum]
-		}
-		 if(smallest > current){
-			 smallest = current
-			 smallestPair = [firstNum, secondNum]
-		 }
-	}
-	 return smallestPair;
-}
+// 	while(idx1 < arrayOne.length && idx2 < arrayTwo.length){
+// 		const firstNum = arrayOne[idx1];
+// 		const secondNum = arrayTwo[idx2];
+// 		if(firstNum < secondNum){
+// 			current = secondNum - firstNum
+// 			idx1++;
+// 		}else if(firstNum > secondNum){
+// 			current = firstNum - secondNum;
+// 			idx2++;
+// 		}else {
+// 			return [firstNum, secondNum]
+// 		}
+// 		 if(smallest > current){
+// 			 smallest = current
+// 			 smallestPair = [firstNum, secondNum]
+// 		 }
+// 	}
+// 	 return smallestPair;
+// }
 
-// Do not edit the line below.
-exports.smallestDifference = smallestDifference;
-
-
-/* Move Element to the end */
-
-function moveElementToEnd(array, toMove) {
-  // O(n) time | O(1) space.
-	let i = 0;
-	let j = array.length - 1;
-	while(i < j){
-		while(i < j && array[j] === toMove) j--
-		if(array[i] === toMove) swap(i, j, array)
-		i++
-	}
-	 return array
-}
-
-function swap(i, j, array){
-	[array[i], array[j]] = [array[j], array[i]]
-}
-
-// Do not edit the line below.
-exports.moveElementToEnd = moveElementToEnd;
+// // Do not edit the line below.
+// exports.smallestDifference = smallestDifference;
 
 
-/* Solved Monotonic arrays */
+// /* Move Element to the end */
 
-function isMonotonic(array) {
-  // O(n) time | O(1) space.
-	if(array.length <= 2) return true
-	let direction = array[1] - array[0];
+// function moveElementToEnd(array, toMove) {
+//   // O(n) time | O(1) space.
+// 	let i = 0;
+// 	let j = array.length - 1;
+// 	while(i < j){
+// 		while(i < j && array[j] === toMove) j--
+// 		if(array[i] === toMove) swap(i, j, array)
+// 		i++
+// 	}
+// 	 return array
+// }
+
+// function swap(i, j, array){
+// 	[array[i], array[j]] = [array[j], array[i]]
+// }
+
+// // Do not edit the line below.
+// exports.moveElementToEnd = moveElementToEnd;
+
+
+// /* Solved Monotonic arrays */
+
+// function isMonotonic(array) {
+//   // O(n) time | O(1) space.
+// 	if(array.length <= 2) return true
+// 	let direction = array[1] - array[0];
 	
-	for(let i=1; i < array.length; i++){
-		if(direction === 0){
-			direction = array[i] - array[i-1]
-			continue;
-		}
-		if(breaksDirection(direction, array[i-1], array[i])){
-			return false
-		}
-	}
-	 return true;
-}
+// 	for(let i=1; i < array.length; i++){
+// 		if(direction === 0){
+// 			direction = array[i] - array[i-1]
+// 			continue;
+// 		}
+// 		if(breaksDirection(direction, array[i-1], array[i])){
+// 			return false
+// 		}
+// 	}
+// 	 return true;
+// }
 
-function breaksDirection(direction, previousInt, currentInt){
-	const difference = currentInt - previousInt
-	if(direction > 0) return difference < 0;
-	return difference > 0
-}
+// function breaksDirection(direction, previousInt, currentInt){
+// 	const difference = currentInt - previousInt
+// 	if(direction > 0) return difference < 0;
+// 	return difference > 0
+// }
 
-// Do not edit the line below.
-exports.isMonotonic = isMonotonic;
+// // Do not edit the line below.
+// exports.isMonotonic = isMonotonic;
 
 
-function isMonotonic(array) {
-  // O(n) time | O(1) space.
-	let nonIncreasing = true;
-	let nonDecreasing = true;
+// function isMonotonic(array) {
+//   // O(n) time | O(1) space.
+// 	let nonIncreasing = true;
+// 	let nonDecreasing = true;
 	
-	for(let i=0; i < array.length; i++){
-		if(array[i] < array[i-1]) nonDecreasing = false;
-		else if(array[i] > array[i-1]) nonIncreasing = false; 
-	}
-	 return nonIncreasing || nonDecreasing;
-}
+// 	for(let i=0; i < array.length; i++){
+// 		if(array[i] < array[i-1]) nonDecreasing = false;
+// 		else if(array[i] > array[i-1]) nonIncreasing = false; 
+// 	}
+// 	 return nonIncreasing || nonDecreasing;
+// }
 
-// Do not edit the line below.
-exports.isMonotonic = isMonotonic;
-
-
+// // Do not edit the line below.
+// exports.isMonotonic = isMonotonic;
 
 
-/* Solve spiral traverse */
 
-function spiralTraverse(array) {
-  // O(n) time | O(n) space using Iterative approach.
-	let startRow = 0;
-	let endRow = array.length - 1;
-	let startCol = 0;
-	let endCol = array[0].length - 1;
-	const result = [];
+
+// /* Solve spiral traverse */
+
+// function spiralTraverse(array) {
+//   // O(n) time | O(n) space using Iterative approach.
+// 	let startRow = 0;
+// 	let endRow = array.length - 1;
+// 	let startCol = 0;
+// 	let endCol = array[0].length - 1;
+// 	const result = [];
 	
-	while(startRow <= endRow && startCol <= endCol){
-	  for(let col = startCol; col <= endCol; col++){
-			result.push(array[startRow][col])
-		}
+// 	while(startRow <= endRow && startCol <= endCol){
+// 	  for(let col = startCol; col <= endCol; col++){
+// 			result.push(array[startRow][col])
+// 		}
 		
-		for(let row = startRow + 1; row <= endRow; row++){
-			result.push(array[row][endCol])
-		}
+// 		for(let row = startRow + 1; row <= endRow; row++){
+// 			result.push(array[row][endCol])
+// 		}
 		
-		for(let col = endCol -1; col >= startCol; col--){
-			if(startRow === endRow) break;
-			result.push(array[endRow][col])
-		}
+// 		for(let col = endCol -1; col >= startCol; col--){
+// 			if(startRow === endRow) break;
+// 			result.push(array[endRow][col])
+// 		}
 		
-		for(let row = endRow - 1; row > startRow; row--){
-			if(startCol === endCol) break;
-			result.push(array[row][startCol])
-		}
-		startRow += 1;
-		endRow -= 1;
-		startCol += 1;
-		endCol -= 1;
-	}
-	 return result;
-	}
+// 		for(let row = endRow - 1; row > startRow; row--){
+// 			if(startCol === endCol) break;
+// 			result.push(array[row][startCol])
+// 		}
+// 		startRow += 1;
+// 		endRow -= 1;
+// 		startCol += 1;
+// 		endCol -= 1;
+// 	}
+// 	 return result;
+// 	}
 
-// Do not edit the line below.
-exports.spiralTraverse = spiralTraverse;
+// // Do not edit the line below.
+// exports.spiralTraverse = spiralTraverse;
 
 
-function spiralTraverse(array) {
-  // O(n) time | O(n) space using recursive approach.
-	const result = [];
-	spiralFill(array, 0, array.length - 1, 0, array[0].length - 1, result);
-	return result;
-}
+// function spiralTraverse(array) {
+//   // O(n) time | O(n) space using recursive approach.
+// 	const result = [];
+// 	spiralFill(array, 0, array.length - 1, 0, array[0].length - 1, result);
+// 	return result;
+// }
 
-function spiralFill(array, startRow, endRow, startCol, endCol, result){
-	if(startRow > endRow || startCol > endCol) return;
+// function spiralFill(array, startRow, endRow, startCol, endCol, result){
+// 	if(startRow > endRow || startCol > endCol) return;
 	
-	for(let col = startCol; col <= endCol; col++){
-		result.push(array[startRow][col])
-	}
-	for(let row = startRow + 1; row <= endRow; row++){
-		result.push(array[row][endCol])
-	}
-	for(let col = endCol - 1; col >= startCol; col--){
-		if(startRow === endRow) break;
-		result.push(array[endRow][col]);
-	}
-	for(let row = endRow - 1; row > startRow; row--){
-		if(startCol === endCol) break;
-		result.push(array[row][startCol])
-	}
-	spiralFill(array, startRow + 1, endRow - 1, startCol + 1, endCol - 1, result)
-}
+// 	for(let col = startCol; col <= endCol; col++){
+// 		result.push(array[startRow][col])
+// 	}
+// 	for(let row = startRow + 1; row <= endRow; row++){
+// 		result.push(array[row][endCol])
+// 	}
+// 	for(let col = endCol - 1; col >= startCol; col--){
+// 		if(startRow === endRow) break;
+// 		result.push(array[endRow][col]);
+// 	}
+// 	for(let row = endRow - 1; row > startRow; row--){
+// 		if(startCol === endCol) break;
+// 		result.push(array[row][startCol])
+// 	}
+// 	spiralFill(array, startRow + 1, endRow - 1, startCol + 1, endCol - 1, result)
+// }
 
-// Do not edit the line below.
-exports.spiralTraverse = spiralTraverse;
+// // Do not edit the line below.
+// exports.spiralTraverse = spiralTraverse;
 
 
-/* Solve longest peak */
-function longestPeak(array) {
-  // O(n) time | O(1) space.
-	let longestPeakLength = 0;
-	let i = 1;
-	while(i < array.length - 1){
-		const isPeak = array[i-1] < array[i] && array[i] > array[i+1];
-		if(!isPeak) {
-			i++;
-		continue;
-		}
+// /* Solve longest peak */
+// function longestPeak(array) {
+//   // O(n) time | O(1) space.
+// 	let longestPeakLength = 0;
+// 	let i = 1;
+// 	while(i < array.length - 1){
+// 		const isPeak = array[i-1] < array[i] && array[i] > array[i+1];
+// 		if(!isPeak) {
+// 			i++;
+// 		continue;
+// 		}
 		
-		let leftIdx = i - 2;
-		while(leftIdx >= 0 && array[leftIdx] < array[leftIdx + 1]) leftIdx--;
+// 		let leftIdx = i - 2;
+// 		while(leftIdx >= 0 && array[leftIdx] < array[leftIdx + 1]) leftIdx--;
 		
-		let rightIdx = i + 2;
-		while(rightIdx < array.length && array[rightIdx] < array[rightIdx - 1]) rightIdx++;
+// 		let rightIdx = i + 2;
+// 		while(rightIdx < array.length && array[rightIdx] < array[rightIdx - 1]) rightIdx++;
 		
-		const currentPeakLength = rightIdx - leftIdx - 1;
-		longestPeakLength = Math.max(longestPeakLength, currentPeakLength);
-		i = rightIdx;
-  }
-	 return longestPeakLength;
-}
+// 		const currentPeakLength = rightIdx - leftIdx - 1;
+// 		longestPeakLength = Math.max(longestPeakLength, currentPeakLength);
+// 		i = rightIdx;
+//   }
+// 	 return longestPeakLength;
+// }
 	 
 
-// Do not edit the line below.
-exports.longestPeak = longestPeak;
+// // Do not edit the line below.
+// exports.longestPeak = longestPeak;
 
 
-/* Solve array of products */
+// /* Solve array of products */
 
-function arrayOfProducts(array) {
-  // O(n^2) time | O(n) time.
-	const products = [];
-	for(let i=0; i < array.length; i++){
-		let runningProduct = 1
-		for(let j=0; j < array.length; j++){
-			if(i !== j){
-				runningProduct *= array[j]
-			}
+// function arrayOfProducts(array) {
+//   // O(n^2) time | O(n) time.
+// 	const products = [];
+// 	for(let i=0; i < array.length; i++){
+// 		let runningProduct = 1
+// 		for(let j=0; j < array.length; j++){
+// 			if(i !== j){
+// 				runningProduct *= array[j]
+// 			}
+// 		}
+// 		products.push(runningProduct);
+// 	}
+// 	 return products;
+// }
+
+// // Do not edit the line below.
+// exports.arrayOfProducts = arrayOfProducts;
+
+
+// function arrayOfProducts(array) {
+//   // O(n) time | O(n) space.
+// 	const products = new Array(array.length).fill(1);
+// 	const leftProducts = new Array(array.length).fill(1);
+// 	const rightProducts = new Array(array.length).fill(1);
+	
+// 	let leftRunningProduct = 1;
+// 	for(let i = 0; i < array.length; i++){
+// 		leftProducts[i] = leftRunningProduct
+// 		leftRunningProduct *= array[i]
+// 	}
+	
+// 	let rightRunningProduct = 1;
+// 	for(let i = array.length - 1; i > -1; i-- ){
+// 		rightProducts[i] = rightRunningProduct
+// 		rightRunningProduct *= array[i]
+// 	}
+	
+// 	for(let i = 0; i < array.length; i++){
+// 		products[i] = leftProducts[i] * rightProducts[i]
+// 	}
+// 	return products
+// }
+
+// // Do not edit the line below.
+// exports.arrayOfProducts = arrayOfProducts;
+
+
+// function arrayOfProducts(array) {
+//   // O(n) time | O(n) space.
+// 	const products = new Array(array.length).fill(1);
+	
+// 	let leftRunningProducts = 1
+// 	for(let i=0; i < array.length; i++){
+// 		products[i] = leftRunningProducts
+// 		leftRunningProducts *= array[i];
+// 	}
+	
+// 	let rightRunningProducts = 1;
+// 	for(let i = array.length - 1; i > -1; i--){
+// 		products[i] *= rightRunningProducts
+// 		rightRunningProducts *= array[i]
+// 	}
+// 	 return products;
+// }
+
+// // Do not edit the line below.
+// exports.arrayOfProducts = arrayOfProducts;
+
+
+
+// /* First duplicate value */
+
+// function firstDuplicateValue(array) {
+//   // O(n^2) time | O(1) space.
+//   let minimumSecondIndex = array.length;
+	
+// 	for(let i=0; i < array.length; i++){
+// 		const value = array[i];
+// 		for(let j=i+1; j < array.length; j++){
+// 			const compareValue = array[j];
+// 			if(value === compareValue){
+// 				minimumSecondIndex = Math.min(minimumSecondIndex, j)
+// 			}
+// 		}
+// 	}
+	
+// 	 if(minimumSecondIndex === array.length) return -1
+	
+// 	 return array[minimumSecondIndex]
+// }
+
+// // Do not edit the line below.
+// exports.firstDuplicateValue = firstDuplicateValue;
+
+
+// function firstDuplicateValue(array) {
+//   // O(n) time | O(n) space.
+//   const seen = new Set();
+	
+// 	for(const value of array){
+// 		if(seen.has(value)) return value;
+// 		seen.add(value)	 
+// 	}
+// 	 return -1;
+// }
+
+// // Do not edit the line below.
+// exports.firstDuplicateValue = firstDuplicateValue;
+
+
+
+// function firstDuplicateValue(array) {
+//   // O(n) time | O(1) space.
+//   for(const value of array){
+// 		const absValue = Math.abs(value)
+// 		if(array[absValue - 1] < 0) return absValue
+// 		array[absValue - 1] *= -1
+// 	}
+// 	 return -1;
+// }
+
+// // Do not edit the line below.
+// exports.firstDuplicateValue = firstDuplicateValue;
+
+
+// function range(l, r){
+//   list = [];
+//   for(let i = l; i <= r; i++){
+//     list.push(i)
+//   }
+//   return list
+// }
+
+// console.log(range(2, 5));
+
+function mergeOverlappingIntervals(array) {
+  // O(nlogn) time | O(n) space.
+  const sortedArray = array.sort((a,b) => a[0] - b[0]);
+	const mergeInterval = [];
+	let currentInterval = sortedArray[0];
+	mergeInterval.push(currentInterval);
+	
+	for(const nextInterval of sortedArray){
+		const [_, currentIntervalEnd] = currentInterval;
+		const [nextIntervalStart, nextIntervalEnd] = nextInterval
+		if(currentIntervalEnd >= nextIntervalStart){
+			currentInterval[1] = Math.max(currentIntervalEnd, nextIntervalEnd)
+		}else{
+			currentInterval = nextInterval;
+			mergeInterval.push(currentInterval)
 		}
-		products.push(runningProduct);
 	}
-	 return products;
+	 return mergeInterval;
 }
 
 // Do not edit the line below.
-exports.arrayOfProducts = arrayOfProducts;
-
-
-function arrayOfProducts(array) {
-  // O(n) time | O(n) space.
-	const products = new Array(array.length).fill(1);
-	const leftProducts = new Array(array.length).fill(1);
-	const rightProducts = new Array(array.length).fill(1);
-	
-	let leftRunningProduct = 1;
-	for(let i = 0; i < array.length; i++){
-		leftProducts[i] = leftRunningProduct
-		leftRunningProduct *= array[i]
-	}
-	
-	let rightRunningProduct = 1;
-	for(let i = array.length - 1; i > -1; i-- ){
-		rightProducts[i] = rightRunningProduct
-		rightRunningProduct *= array[i]
-	}
-	
-	for(let i = 0; i < array.length; i++){
-		products[i] = leftProducts[i] * rightProducts[i]
-	}
-	return products
-}
-
-// Do not edit the line below.
-exports.arrayOfProducts = arrayOfProducts;
-
-
-function arrayOfProducts(array) {
-  // O(n) time | O(n) space.
-	const products = new Array(array.length).fill(1);
-	
-	let leftRunningProducts = 1
-	for(let i=0; i < array.length; i++){
-		products[i] = leftRunningProducts
-		leftRunningProducts *= array[i];
-	}
-	
-	let rightRunningProducts = 1;
-	for(let i = array.length - 1; i > -1; i--){
-		products[i] *= rightRunningProducts
-		rightRunningProducts *= array[i]
-	}
-	 return products;
-}
-
-// Do not edit the line below.
-exports.arrayOfProducts = arrayOfProducts;
-
-
-
-/* First duplicate value */
-
-function firstDuplicateValue(array) {
-  // O(n^2) time | O(1) space.
-  let minimumSecondIndex = array.length;
-	
-	for(let i=0; i < array.length; i++){
-		const value = array[i];
-		for(let j=i+1; j < array.length; j++){
-			const compareValue = array[j];
-			if(value === compareValue){
-				minimumSecondIndex = Math.min(minimumSecondIndex, j)
-			}
-		}
-	}
-	
-	 if(minimumSecondIndex === array.length) return -1
-	
-	 return array[minimumSecondIndex]
-}
-
-// Do not edit the line below.
-exports.firstDuplicateValue = firstDuplicateValue;
-
-
-function firstDuplicateValue(array) {
-  // O(n) time | O(n) space.
-  const seen = new Set();
-	
-	for(const value of array){
-		if(seen.has(value)) return value;
-		seen.add(value)	 
-	}
-	 return -1;
-}
-
-// Do not edit the line below.
-exports.firstDuplicateValue = firstDuplicateValue;
-
-
-
-function firstDuplicateValue(array) {
-  // O(n) time | O(1) space.
-  for(const value of array){
-		const absValue = Math.abs(value)
-		if(array[absValue - 1] < 0) return absValue
-		array[absValue - 1] *= -1
-	}
-	 return -1;
-}
-
-// Do not edit the line below.
-exports.firstDuplicateValue = firstDuplicateValue;
-
-
-
+exports.mergeOverlappingIntervals = mergeOverlappingIntervals;
 
 
 
