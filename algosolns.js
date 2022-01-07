@@ -2643,33 +2643,58 @@
 
 // console.log(range(2, 5));
 
-function mergeOverlappingIntervals(array) {
-  // O(nlogn) time | O(n) space.
-  const sortedArray = array.sort((a,b) => a[0] - b[0]);
-	const mergeInterval = [];
-	let currentInterval = sortedArray[0];
-	mergeInterval.push(currentInterval);
+// function mergeOverlappingIntervals(array) {
+//   // O(nlogn) time | O(n) space.
+//   const sortedArray = array.sort((a,b) => a[0] - b[0]);
+// 	const mergeInterval = [];
+// 	let currentInterval = sortedArray[0];
+// 	mergeInterval.push(currentInterval);
 	
-	for(const nextInterval of sortedArray){
-		const [_, currentIntervalEnd] = currentInterval;
-		const [nextIntervalStart, nextIntervalEnd] = nextInterval
-		if(currentIntervalEnd >= nextIntervalStart){
-			currentInterval[1] = Math.max(currentIntervalEnd, nextIntervalEnd)
-		}else{
-			currentInterval = nextInterval;
-			mergeInterval.push(currentInterval)
-		}
-	}
-	 return mergeInterval;
+// 	for(const nextInterval of sortedArray){
+// 		const [_, currentIntervalEnd] = currentInterval;
+// 		const [nextIntervalStart, nextIntervalEnd] = nextInterval
+// 		if(currentIntervalEnd >= nextIntervalStart){
+// 			currentInterval[1] = Math.max(currentIntervalEnd, nextIntervalEnd)
+// 		}else{
+// 			currentInterval = nextInterval;
+// 			mergeInterval.push(currentInterval)
+// 		}
+// 	}
+// 	 return mergeInterval;
+// }
+
+// // Do not edit the line below.
+// exports.mergeOverlappingIntervals = mergeOverlappingIntervals;
+
+// This is an input class. Do not edit.
+
+
+/* Validate Bst */
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function validateBst(tree) {
+  // O(n) time | O(d) space.
+	return validateBstHelper(tree, -Infinity, +Infinity)
+}
+
+function validateBstHelper(tree, minValue, maxValue){
+	if(tree === null) return true;
+	
+	if(tree.value < minValue || tree.value >= maxValue) return false
+	
+	const leftIsValid = validateBstHelper(tree.left, minValue, tree.value);
+	return leftIsValid && validateBstHelper(tree.right, tree.value, maxValue)
 }
 
 // Do not edit the line below.
-exports.mergeOverlappingIntervals = mergeOverlappingIntervals;
+exports.BST = BST;
+exports.validateBst = validateBst;
 
-
-
-
-    
-  
   
 

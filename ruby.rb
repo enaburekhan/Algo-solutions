@@ -437,3 +437,90 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 # my_proc = Proc.new { puts count }
 
 # call_proc(my_proc)
+
+
+# def return_binding
+#   foo = 100
+#   binding    
+# end
+
+# puts return_binding.class
+# puts return_binding.eval('foo')
+
+# animal = ['cat', 'dog'].map(&:upcase)
+# p animal
+
+# def to_proc(sym)
+#   Proc.new {|x| x.send(sym)}    
+# end
+
+# p to_proc(:size).call("test1")
+
+# p "Do you like cats?" = ~/like/
+
+# def contain_vowel(str)
+#   str =~ /[aeiou]/    
+# end
+
+# p contain_vowel("test")
+# p contain_vowel("sky")
+
+# def contain_numbers(str)
+#   str =~ /[0-9]/
+# end
+
+# p contain_numbers("The year is 2015")
+# p contain_numbers("The cat is black")
+
+
+# p "5a5".match(/\d.\d/)
+
+# p "5a5".match(/\d\.\d/)
+
+# p "5.5".match(/\d\.\d/)
+
+# p "123abc".match /^\d+$/
+
+# p "123".match /^\d+$/
+
+# m = "David 30".match /(?<name>\w+) (?<age>\d+)/
+
+# p m
+
+# item = "John 20 USA".match /(?<name>\w+) (?<age>\d+) (?<country>\w+)/
+
+# p item
+
+# def number_after_word?(str)
+#  str.match? /(?<=\w) (\d+)/
+# end
+
+#  p number_after_word?("Grade 99")
+
+# puts Numbers::Pi
+
+# module Numbers
+#   def self.double(number)
+#     number * 2
+#   end
+# end
+
+# p Numbers.double(30)
+
+# class Calculator
+# include Numbers    
+# end
+
+# p Calculator.ancestors
+
+module Life
+end
+
+class Animal
+end
+
+class Cat < Animal
+ prepend Life    
+end
+
+p Cat.ancestors
