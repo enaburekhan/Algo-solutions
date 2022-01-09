@@ -2670,31 +2670,89 @@
 
 
 /* Validate Bst */
-class BST {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-  }
-}
+// class BST {
+//   constructor(value) {
+//     this.value = value;
+//     this.left = null;
+//     this.right = null;
+//   }
+// }
 
-function validateBst(tree) {
-  // O(n) time | O(d) space.
-	return validateBstHelper(tree, -Infinity, +Infinity)
-}
+// function validateBst(tree) {
+//   // O(n) time | O(d) space.
+// 	return validateBstHelper(tree, -Infinity, +Infinity)
+// }
 
-function validateBstHelper(tree, minValue, maxValue){
-	if(tree === null) return true;
+// function validateBstHelper(tree, minValue, maxValue){
+// 	if(tree === null) return true;
 	
-	if(tree.value < minValue || tree.value >= maxValue) return false
+// 	if(tree.value < minValue || tree.value >= maxValue) return false
 	
-	const leftIsValid = validateBstHelper(tree.left, minValue, tree.value);
-	return leftIsValid && validateBstHelper(tree.right, tree.value, maxValue)
-}
+// 	const leftIsValid = validateBstHelper(tree.left, minValue, tree.value);
+// 	return leftIsValid && validateBstHelper(tree.right, tree.value, maxValue)
+// }
 
-// Do not edit the line below.
-exports.BST = BST;
-exports.validateBst = validateBst;
+// // Do not edit the line below.
+// exports.BST = BST;
+// exports.validateBst = validateBst;
+
+// function countString(str){
+//   count = {};
+//   const strCase = str.toLowerCase()
+//   // return console.log(strCase)
+//   for(const value of strCase){
+//     if(count.hasOwnProperty(value)){
+//       count[value] += 1
+//     }else{
+//       count[value] = 1
+//     }
+//   }
+//    return count
+// }
+
+// const char = "ababbBc"
+
+// console.log(countString(char))
 
   
+/* Solve BST traversal */
+
+// O(n) time | O(n) space
+function inOrderTraverse(tree, array) {
+  // Write your code here.
+	if(tree !== null){
+		inOrderTraverse(tree.left, array);
+		array.push(tree.value);
+		inOrderTraverse(tree.right, array)
+	}
+	return array
+}
+
+// O(n) time | O(n) space
+function preOrderTraverse(tree, array) {
+  // Write your code here.
+	if(tree !== null){
+		array.push(tree.value);
+	preOrderTraverse(tree.left, array);
+	preOrderTraverse(tree.right, array);
+}
+	return array
+}
+
+// O(n) time | O(n) space
+function postOrderTraverse(tree, array) {
+  // Write your code here.
+	if(tree !== null){
+		postOrderTraverse(tree.left, array);
+		postOrderTraverse(tree.right, array);
+		array.push(tree.value)
+	}
+	 return array
+}
+
+// Do not edit the lines below.
+exports.inOrderTraverse = inOrderTraverse;
+exports.preOrderTraverse = preOrderTraverse;
+exports.postOrderTraverse = postOrderTraverse;
+
 

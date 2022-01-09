@@ -513,14 +513,231 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 
 # p Calculator.ancestors
 
-module Life
+# module Life
+# end
+
+# class Animal
+# end
+
+# class Cat < Animal
+#  prepend Life    
+# end
+
+# p Cat.ancestors
+
+# p "this is some string".scan(/\w+/)
+
+# p "camelCasingTestFooBar".split(/(?=[A-Z])/)
+
+
+# Write a ruby function that prints the numbers from 1 to 100.
+
+# But for multiples of three, it prints 'Ping' instead of the number and for the multiples of five, it prints 'Pong'.
+
+# For numbers that are multiples of both three and five print 'PingPong'
+
+# def multiples_of_100(nums)
+#     if 100 % 15 
+# end
+
+# p multiples_of_100(100)
+# def multiples_of_100
+#   (1..100).each do |i|
+#     if i % 3 == 0 and i % 5 == 0
+#       puts "PingPong"
+#     elsif i % 5 == 0
+#       puts "pong"
+#     elsif i % 3 == 0
+#       puts "ping"
+#     else
+#       puts i
+#     end   
+#   end
+# end
+
+# multiples_of_100
+
+# count = {}
+
+# def count_string(str)
+#   count = {}
+#   str = str.downcase
+#   str.each_char do |ch|
+#     if count.key?(ch)
+#       count[ch] += 1
+#     else
+#       count[ch] = 1
+#     end
+#   end
+#   count
+# end
+
+# char = "ababbBc"
+
+# p count_string(char)
+
+# p [10,20,30].inject { |num, accum| num + accum }
+
+# p [10,20,30].inject(&:+)
+
+# prices = {
+#   bacon: 10,
+#   coconut: 20
+# }
+
+# total_prices = prices.inject(0){ |num, total| num + total[1] }
+
+# p total_prices
+
+# numbers = [1,2,3,4,5]
+
+# p numbers.reject(&:odd?)
+# p numbers.reject(&:even?)
+# p numbers.partition(&:even?)
+
+# p [48,75,19,12,21].sort_by { |n| n.to_s[-1] }
+
+# module List
+#   def add
+#     "Add me"
+#   end
+# end
+
+# class Animal
+#   include List
+# end
+
+# class Cat < Animal
+#   include List
+# end
+
+# class Dog < Animal
+#   extend List
+# end
+
+# cat = Cat.new
+# p cat.add
+# # p Cat.add
+# p Cat.ancestors
+
+# p "*********"
+
+# dog = Dog.new
+# p dog.add
+# p Dog.add
+# p Dog.ancestors
+
+# class FileCabinet
+#   def initialize
+#     @document = [1,2,3]
+#   end
+
+#   def size
+#     @document.size
+#   end
+
+#   def my_each
+#     count = 0
+#     while count < size
+#       yield @document[count]
+#       count += 1
+#     end
+#   end
+# end
+
+# FileCabinet.new.my_each { |doc| p doc }
+
+
+# enum = [1,2,3,4].select
+# p enum.class
+
+# p enum.each { |u| u > 2 }
+
+# loop { p enum.next }
+
+# big_array = Array(1..10_000)
+# p big_array.lazy.map { |n| p n; n**2 }.all? { |n| n < 100 }
+
+# def expensive_method
+#   50000.times { |n| n * n }
+# end
+
+# def measure_time
+#   before = Time.now
+#   yield
+#   Time.now - before
+# end
+
+# p measure_time {expensive_method}
+
+# class PrivateTesting
+
+#   private
+
+#   def internal_testing
+#     "Only for internal use"
+#   end
+# end
+
+# pt = PrivateTesting.new
+# p pt.internal_testing
+# p pt.send(:internal_testing)
+
+# puts self
+# class FindingSelf
+#   # self is the class
+#   puts self
+#   def show_self
+#   # self is the object instance
+#     puts self
+#   end
+# end
+
+# p String.instance_methods(false).size
+
+# p String.private_instance_methods(false).size
+
+# To get a list of methods inherited by a class
+# p Array.instance_methods - Array.instance_methods(false)
+
+# class Total
+#   def initialize
+#     @count = 2
+#   end
+# end
+
+# p Total.new.instance_variables
+
+# class A
+#   def say
+#   end
+# end
+
+# class B < A
+# end
+
+# p B.new.respond_to?(:say)
+
+# class Animal
+#   def self.speak
+#   end
+# end
+
+# p Animal.method(:speak).source_location
+
+module Products
+  def self.included(base)
+    p "> Products included into #{base}"
+  end
 end
 
-class Animal
+class Shop
+  include Products
 end
 
-class Cat < Animal
- prepend Life    
+class Cart
+  include Products
 end
 
-p Cat.ancestors
+# Cart.new
+# p shop.included
