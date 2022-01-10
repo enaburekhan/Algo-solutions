@@ -2806,3 +2806,31 @@ class BST {
 
 // Do not edit the line below.
 exports.minHeightBst = minHeightBst;
+
+function minHeightBst(array) {
+  // Write your code here.
+	return constructMinHeightBst(array, null, 0, array.length - 1)
+}
+
+function constructMinHeightBst(array, bst, startIdx, endIdx){
+	if(endIdx < startIdx) return
+	const midIdx = Math.floor((startIdx + endIdx) / 2);
+	const newBstNode = new BST(array[midIdx]);
+	
+	if(bst === null){
+		bst = newBstNode
+	}else{
+		if(array[midIdx] < bst.value){
+			bst.left = newBstNode;
+			bst = bst.left;
+		}else{
+			bst.right = newBstNode;
+			bst = bst.right;
+		}
+	}
+	
+	constructMinHeightBst(array, bst, startIdx, midIdx - 1);
+	constructMinHeightBst(array, bst, midIdx + 1, endIdx);
+	return bst;
+}
+
