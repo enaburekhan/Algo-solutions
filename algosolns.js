@@ -2955,3 +2955,30 @@ function reconstructBst(preOrderTraversalValues) {
 exports.BST = BST;
 exports.reconstructBst = reconstructBst;
 
+
+class TreeNode{
+	constructor(rootIdx){
+		this.rootIdx = rootIdx;
+	}
+}
+
+function reconstructBst(preOrderTraversalValues) {
+  // O(n) time | O(n) space.
+  const treeNode = new TreeNode(0);
+	return reconstructBstFromRange(-Infinity, Infinity, preOrderTraversalValues, treeNode)
+}
+
+function reconstructBstFromRange(lowerBand, upperBand, preOrderTraversalValues, currentSubtreeInfo){
+	if(currentSubtreeInfo.rootIdx === preOrderTraversalValues.length) return null;
+	
+	const rootValue = preOrderTraversalValues[currentSubtreeInfo.rootIdx];
+	if(rootValue < lowerBand || rootValue >= upperBand) return null;
+	
+	currentSubtreeInfo.rootIdx++;
+	
+	const leftSubtree = reconstructBstFromRange(lowerBand, rootValue, preOrderTraversalValues, currentSubtreeInfo);
+	const rightSubtree = reconstructBstFromRange(rootValue, upperBand, preOrderTraversalValues, currentSubtreeInfo);
+	return new BST(rootValue, leftSubtree, rightSubtree);
+}
+
+
