@@ -2854,67 +2854,104 @@
 
 /* Solve find kth value */
 // This is an input class. Do not edit.
+// class BST {
+//   constructor(value) {
+//     this.value = value;
+//     this.left = null;
+//     this.right = null;
+//   }
+// }
+
+// function findKthLargestValueInBst(tree, k) {
+//   // O(n) time | O(n) space.
+//   const sortedNodeValues = [];
+// 	inOrderTraverse(tree, sortedNodeValues)
+// 	return sortedNodeValues[sortedNodeValues.length - k]
+// }
+
+// function inOrderTraverse(node, sortedNodeValues){
+// 	if(node === null) return;
+	
+// 	inOrderTraverse(node.left, sortedNodeValues);
+// 	sortedNodeValues.push(node.value);
+// 	inOrderTraverse(node.right, sortedNodeValues)
+// }
+
+// // Do not edit the lines below.
+// exports.BST = BST;
+// exports.findKthLargestValueInBst = findKthLargestValueInBst;
+
+
+
+
+// // This is an input class. Do not edit.
+// class BST {
+//   constructor(value) {
+//     this.value = value;
+//     this.left = null;
+//     this.right = null;
+//   }
+// }
+
+// class TreeInfo {
+// 	constructor(numbersOfNodesVisited, latestNodesVistedValue){
+// 		this.numbersOfNodesVisited = numbersOfNodesVisited;
+// 		this.latestNodesVisitedValue = latestNodesVistedValue;
+// 	}
+// }
+
+// function findKthLargestValueInBst(tree, k) {
+//   // O(h + k) time | O(h) space.
+//   const treeInfo = new TreeInfo(0, -1)
+// 	reverseInOrderTraverse(tree, k, treeInfo);
+// 	return treeInfo.latestNodesVisitedValue;
+// }
+
+// function reverseInOrderTraverse(node, k, treeInfo){
+// 	if(node === null || treeInfo.numbersOfNodesVisited >= k) return
+	
+// 	reverseInOrderTraverse(node.right, k, treeInfo);
+	
+// 	if(treeInfo.numbersOfNodesVisited < k){
+// 		treeInfo.numbersOfNodesVisited++;
+// 		treeInfo.latestNodesVisitedValue = node.value
+// 		reverseInOrderTraverse(node.left, k, treeInfo)
+// 	}
+// }
+
+
+/* Reconstruct BST */
+
+// This is an input class. Do not edit.
 class BST {
-  constructor(value) {
+  constructor(value, left = null, right = null) {
     this.value = value;
-    this.left = null;
-    this.right = null;
+    this.left = left;
+    this.right = right;
   }
 }
 
-function findKthLargestValueInBst(tree, k) {
-  // O(n) time | O(n) space.
-  const sortedNodeValues = [];
-	inOrderTraverse(tree, sortedNodeValues)
-	return sortedNodeValues[sortedNodeValues.length - k]
-}
-
-function inOrderTraverse(node, sortedNodeValues){
-	if(node === null) return;
+function reconstructBst(preOrderTraversalValues) {
+  // O(n^2) time | O(n) space.
+  if(preOrderTraversalValues.length === 0) return null;
 	
-	inOrderTraverse(node.left, sortedNodeValues);
-	sortedNodeValues.push(node.value);
-	inOrderTraverse(node.right, sortedNodeValues)
+	const currentValue = preOrderTraversalValues[0];
+	let rightSubtreeRootIdx = preOrderTraversalValues.length;
+	
+	for(let idx = 1; idx < preOrderTraversalValues.length; idx++){
+		const value = preOrderTraversalValues[idx];
+		if(value >= currentValue){
+			rightSubtreeRootIdx = idx;
+			break;
+		}
+	}
+	
+	const leftTree = reconstructBst(preOrderTraversalValues.slice(1, rightSubtreeRootIdx));
+	const rightTree = reconstructBst(preOrderTraversalValues.slice(rightSubtreeRootIdx));
+	return new BST(currentValue, leftTree, rightTree);
 }
 
 // Do not edit the lines below.
 exports.BST = BST;
-exports.findKthLargestValueInBst = findKthLargestValueInBst;
+exports.reconstructBst = reconstructBst;
 
-
-
-
-// This is an input class. Do not edit.
-class BST {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-  }
-}
-
-class TreeInfo {
-	constructor(numbersOfNodesVisited, latestNodesVistedValue){
-		this.numbersOfNodesVisited = numbersOfNodesVisited;
-		this.latestNodesVisitedValue = latestNodesVistedValue;
-	}
-}
-
-function findKthLargestValueInBst(tree, k) {
-  // O(h + k) time | O(h) space.
-  const treeInfo = new TreeInfo(0, -1)
-	reverseInOrderTraverse(tree, k, treeInfo);
-	return treeInfo.latestNodesVisitedValue;
-}
-
-function reverseInOrderTraverse(node, k, treeInfo){
-	if(node === null || treeInfo.numbersOfNodesVisited >= k) return
-	
-	reverseInOrderTraverse(node.right, k, treeInfo);
-	
-	if(treeInfo.numbersOfNodesVisited < k){
-		treeInfo.numbersOfNodesVisited++;
-		treeInfo.latestNodesVisitedValue = node.value
-		reverseInOrderTraverse(node.left, k, treeInfo)
-	}
-}
