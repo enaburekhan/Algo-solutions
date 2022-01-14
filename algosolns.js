@@ -2923,62 +2923,97 @@
 /* Reconstruct BST */
 
 // This is an input class. Do not edit.
-class BST {
-  constructor(value, left = null, right = null) {
+// class BST {
+//   constructor(value, left = null, right = null) {
+//     this.value = value;
+//     this.left = left;
+//     this.right = right;
+//   }
+// }
+
+// function reconstructBst(preOrderTraversalValues) {
+//   // O(n^2) time | O(n) space.
+//   if(preOrderTraversalValues.length === 0) return null;
+	
+// 	const currentValue = preOrderTraversalValues[0];
+// 	let rightSubtreeRootIdx = preOrderTraversalValues.length;
+	
+// 	for(let idx = 1; idx < preOrderTraversalValues.length; idx++){
+// 		const value = preOrderTraversalValues[idx];
+// 		if(value >= currentValue){
+// 			rightSubtreeRootIdx = idx;
+// 			break;
+// 		}
+// 	}
+	
+// 	const leftTree = reconstructBst(preOrderTraversalValues.slice(1, rightSubtreeRootIdx));
+// 	const rightTree = reconstructBst(preOrderTraversalValues.slice(rightSubtreeRootIdx));
+// 	return new BST(currentValue, leftTree, rightTree);
+// }
+
+// // Do not edit the lines below.
+// exports.BST = BST;
+// exports.reconstructBst = reconstructBst;
+
+
+// class TreeNode{
+// 	constructor(rootIdx){
+// 		this.rootIdx = rootIdx;
+// 	}
+// }
+
+// function reconstructBst(preOrderTraversalValues) {
+//   // O(n) time | O(n) space.
+//   const treeNode = new TreeNode(0);
+// 	return reconstructBstFromRange(-Infinity, Infinity, preOrderTraversalValues, treeNode)
+// }
+
+// function reconstructBstFromRange(lowerBand, upperBand, preOrderTraversalValues, currentSubtreeInfo){
+// 	if(currentSubtreeInfo.rootIdx === preOrderTraversalValues.length) return null;
+	
+// 	const rootValue = preOrderTraversalValues[currentSubtreeInfo.rootIdx];
+// 	if(rootValue < lowerBand || rootValue >= upperBand) return null;
+	
+// 	currentSubtreeInfo.rootIdx++;
+	
+// 	const leftSubtree = reconstructBstFromRange(lowerBand, rootValue, preOrderTraversalValues, currentSubtreeInfo);
+// 	const rightSubtree = reconstructBstFromRange(rootValue, upperBand, preOrderTraversalValues, currentSubtreeInfo);
+// 	return new BST(rootValue, leftSubtree, rightSubtree);
+// }
+
+
+/* Solve merged linked list */
+// This is an input class. Do not edit.
+class LinkedList {
+  constructor(value) {
     this.value = value;
-    this.left = left;
-    this.right = right;
+    this.next = null;
   }
 }
 
-function reconstructBst(preOrderTraversalValues) {
-  // O(n^2) time | O(n) space.
-  if(preOrderTraversalValues.length === 0) return null;
+function mergeLinkedLists(headOne, headTwo) {
+  // O(n + m) time | O(1) space.
+	let p1 = headOne;
+	let p1prev = null;
+	let p2 = headTwo;
 	
-	const currentValue = preOrderTraversalValues[0];
-	let rightSubtreeRootIdx = preOrderTraversalValues.length;
-	
-	for(let idx = 1; idx < preOrderTraversalValues.length; idx++){
-		const value = preOrderTraversalValues[idx];
-		if(value >= currentValue){
-			rightSubtreeRootIdx = idx;
-			break;
+	while(p1 !== null && p2 !== null){
+		if(p1.value < p2.value){
+			p1prev = p1;
+			p1 = p1.next;
+		}else{
+			if(p1prev !== null) p1prev.next = p2
+			p1prev = p2;
+			p2 = p2.next;
+			p1prev.next = p1;
 		}
 	}
+	if(p1 === null) p1prev.next = p2;
 	
-	const leftTree = reconstructBst(preOrderTraversalValues.slice(1, rightSubtreeRootIdx));
-	const rightTree = reconstructBst(preOrderTraversalValues.slice(rightSubtreeRootIdx));
-	return new BST(currentValue, leftTree, rightTree);
+	return headOne.value < headTwo.value ? headOne : headTwo
 }
 
 // Do not edit the lines below.
-exports.BST = BST;
-exports.reconstructBst = reconstructBst;
-
-
-class TreeNode{
-	constructor(rootIdx){
-		this.rootIdx = rootIdx;
-	}
-}
-
-function reconstructBst(preOrderTraversalValues) {
-  // O(n) time | O(n) space.
-  const treeNode = new TreeNode(0);
-	return reconstructBstFromRange(-Infinity, Infinity, preOrderTraversalValues, treeNode)
-}
-
-function reconstructBstFromRange(lowerBand, upperBand, preOrderTraversalValues, currentSubtreeInfo){
-	if(currentSubtreeInfo.rootIdx === preOrderTraversalValues.length) return null;
-	
-	const rootValue = preOrderTraversalValues[currentSubtreeInfo.rootIdx];
-	if(rootValue < lowerBand || rootValue >= upperBand) return null;
-	
-	currentSubtreeInfo.rootIdx++;
-	
-	const leftSubtree = reconstructBstFromRange(lowerBand, rootValue, preOrderTraversalValues, currentSubtreeInfo);
-	const rightSubtree = reconstructBstFromRange(rootValue, upperBand, preOrderTraversalValues, currentSubtreeInfo);
-	return new BST(rootValue, leftSubtree, rightSubtree);
-}
-
+exports.LinkedList = LinkedList;
+exports.mergeLinkedLists = mergeLinkedLists;
 
