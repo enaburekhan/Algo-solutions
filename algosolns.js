@@ -2984,36 +2984,69 @@
 
 /* Solve merged linked list */
 // This is an input class. Do not edit.
-class LinkedList {
+// class LinkedList {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null;
+//   }
+// }
+
+// function mergeLinkedLists(headOne, headTwo) {
+  // O(n + m) time | O(1) space.
+// 	let p1 = headOne;
+// 	let p1prev = null;
+// 	let p2 = headTwo;
+	
+// 	while(p1 !== null && p2 !== null){
+// 		if(p1.value < p2.value){
+// 			p1prev = p1;
+// 			p1 = p1.next;
+// 		}else{
+// 			if(p1prev !== null) p1prev.next = p2
+// 			p1prev = p2;
+// 			p2 = p2.next;
+// 			p1prev.next = p1;
+// 		}
+// 	}
+// 	if(p1 === null) p1prev.next = p2;
+	
+// 	return headOne.value < headTwo.value ? headOne : headTwo
+// }
+
+// Do not edit the lines below.
+// exports.LinkedList = LinkedList;
+// exports.mergeLinkedLists = mergeLinkedLists;
+
+
+/* Invert Binary tree */
+
+function invertBinaryTree(tree) {
+  // O(n) time | O(n) space
+	const queue = [tree];
+	
+	while(queue.length){
+		const current = queue.shift();
+		if(current === null) continue;
+		
+		swapLeftAndRight(current);
+		queue.push(current.left);
+		queue.push(current.right);
+	}
+}
+
+function swapLeftAndRight(tree){
+	[tree.left, tree.right] = [tree.right, tree.left]
+}
+
+// This is the class of the input binary tree.
+class BinaryTree {
   constructor(value) {
     this.value = value;
-    this.next = null;
+    this.left = null;
+    this.right = null;
   }
 }
 
-function mergeLinkedLists(headOne, headTwo) {
-  // O(n + m) time | O(1) space.
-	let p1 = headOne;
-	let p1prev = null;
-	let p2 = headTwo;
-	
-	while(p1 !== null && p2 !== null){
-		if(p1.value < p2.value){
-			p1prev = p1;
-			p1 = p1.next;
-		}else{
-			if(p1prev !== null) p1prev.next = p2
-			p1prev = p2;
-			p2 = p2.next;
-			p1prev.next = p1;
-		}
-	}
-	if(p1 === null) p1prev.next = p2;
-	
-	return headOne.value < headTwo.value ? headOne : headTwo
-}
-
-// Do not edit the lines below.
-exports.LinkedList = LinkedList;
-exports.mergeLinkedLists = mergeLinkedLists;
+// Do not edit the line below.
+exports.invertBinaryTree = invertBinaryTree;
 

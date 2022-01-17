@@ -725,19 +725,52 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 
 # p Animal.method(:speak).source_location
 
-module Products
-  def self.included(base)
-    p "> Products included into #{base}"
-  end
-end
+# module Products
+#   def self.included(base)
+#     p "> Products included into #{base}"
+#   end
+# end
 
-class Shop
-  include Products
-end
+# class Shop
+#   include Products
+# end
 
-class Cart
-  include Products
-end
+# class Cart
+#   include Products
+# end
 
 # Cart.new
 # p shop.included
+
+# p "hello"
+
+# puts 1, nil, nil, 2
+
+# class Customer
+#   @@no_of_customers = 0
+
+#   def add_new_customer()
+#       @@no_of_customers += 1
+#   end
+#   def total_no_of_customers()
+#       puts "Total: #{@@no_of_customers}"
+#   end
+# end
+
+
+# cust1 = Customer.new
+# cust2 = Customer.new
+
+# cust1.add_new_customer()
+# cust2.add_new_customer()
+# cust1.total_no_of_customers()
+
+
+# begin
+#   varA = 50
+#   varB = _________ 
+#   raise ZeroDivisionError.new "varB is equal to 0"
+#   puts varA/varB
+# rescue StandardError => e   
+#  puts e.message 
+# end
