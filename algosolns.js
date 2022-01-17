@@ -3050,3 +3050,27 @@ class BinaryTree {
 // Do not edit the line below.
 exports.invertBinaryTree = invertBinaryTree;
 
+function invertBinaryTree(tree) {
+  // O(n) time | O(d) space.
+	if(tree === null) return;
+	
+	swapLeftAndRight(tree);
+	invertBinaryTree(tree.left)
+	invertBinaryTree(tree.right)
+}
+
+function swapLeftAndRight(tree){
+	[tree.left, tree.right] = [tree.right, tree.left]
+}
+
+// This is the class of the input binary tree.
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+// Do not edit the line below.
+exports.invertBinaryTree = invertBinaryTree;
