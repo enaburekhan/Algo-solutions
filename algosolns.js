@@ -3078,6 +3078,48 @@
 
 /* Binary Tree Diameter */
 // This is an input class. Do not edit.
+// class BinaryTree {
+//   constructor(value) {
+//     this.value = value;
+//     this.left = null;
+//     this.right = null;
+//   }
+// }
+
+// function binaryTreeDiameter(tree) {
+  // O(n) time | O(h) space for average and O(n) space for worst case.
+//   return getTreeInfo(tree).diameter
+// }
+
+// function getTreeInfo(tree){
+// 	if(tree === null) return new TreeInfo(0, 0);
+	
+// 	const leftTreeInfo = getTreeInfo(tree.left);
+// 	const rightTreeInfo = getTreeInfo(tree.right);
+// 	const longestPathThroughRoot = leftTreeInfo.height + rightTreeInfo.height
+// 	const maxDiameterSoFar = Math.max(leftTreeInfo.diameter, rightTreeInfo.diameter);
+// 	const currentDiameter = Math.max(longestPathThroughRoot, maxDiameterSoFar);
+// 	const currentHeight = 1 + Math.max(leftTreeInfo.height, rightTreeInfo.height);
+	
+// 	return new TreeInfo(currentHeight, currentDiameter)
+// }
+
+// class TreeInfo {
+// 	constructor(height, diameter){
+// 		this.height = height;
+// 		this.diameter = diameter;
+// 	}
+// }
+
+// // Do not edit the line below.
+// exports.binaryTreeDiameter = binaryTreeDiameter;
+// exports.BinaryTree = BinaryTree;
+
+
+
+/* Height balanced binary tree */
+
+ This is an input class. Do not edit.
 class BinaryTree {
   constructor(value) {
     this.value = value;
@@ -3086,32 +3128,23 @@ class BinaryTree {
   }
 }
 
-function binaryTreeDiameter(tree) {
-  // O(n) time | O(h) space for average and O(n) space for worst case.
-  return getTreeInfo(tree).diameter
-}
-
-function getTreeInfo(tree){
-	if(tree === null) return new TreeInfo(0, 0);
+function heightBalancedBinaryTree(tree) {
+  // O(n) time | O(h) space
+  if(tree === null) return true
 	
-	const leftTreeInfo = getTreeInfo(tree.left);
-	const rightTreeInfo = getTreeInfo(tree.right);
-	const longestPathThroughRoot = leftTreeInfo.height + rightTreeInfo.height
-	const maxDiameterSoFar = Math.max(leftTreeInfo.diameter, rightTreeInfo.diameter);
-	const currentDiameter = Math.max(longestPathThroughRoot, maxDiameterSoFar);
-	const currentHeight = 1 + Math.max(leftTreeInfo.height, rightTreeInfo.height);
+	if(Math.abs(maxDepth(tree.left) - maxDepth(tree.right)) > 1) return false
 	
-	return new TreeInfo(currentHeight, currentDiameter)
+	return heightBalancedBinaryTree(tree.left) && heightBalancedBinaryTree(tree.right)
 }
 
-class TreeInfo {
-	constructor(height, diameter){
-		this.height = height;
-		this.diameter = diameter;
-	}
+function maxDepth(tree){
+	if(tree === null) return 0
+	
+	const left = maxDepth(tree.left);
+	const right = maxDepth(tree.right);
+	return Math.max(left, right) + 1;
 }
 
-// Do not edit the line below.
-exports.binaryTreeDiameter = binaryTreeDiameter;
+// Do not edit the lines below.
 exports.BinaryTree = BinaryTree;
-
+exports.heightBalancedBinaryTree = heightBalancedBinaryTree;
