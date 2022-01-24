@@ -3119,32 +3119,98 @@
 
 /* Height balanced binary tree */
 
- This is an input class. Do not edit.
-class BinaryTree {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-  }
-}
+//  This is an input class. Do not edit.
+// class BinaryTree {
+//   constructor(value) {
+//     this.value = value;
+//     this.left = null;
+//     this.right = null;
+//   }
+// }
 
-function heightBalancedBinaryTree(tree) {
+// function heightBalancedBinaryTree(tree) {
   // O(n) time | O(h) space
-  if(tree === null) return true
+//   if(tree === null) return true
 	
-	if(Math.abs(maxDepth(tree.left) - maxDepth(tree.right)) > 1) return false
+// 	if(Math.abs(maxDepth(tree.left) - maxDepth(tree.right)) > 1) return false
 	
-	return heightBalancedBinaryTree(tree.left) && heightBalancedBinaryTree(tree.right)
-}
+// 	return heightBalancedBinaryTree(tree.left) && heightBalancedBinaryTree(tree.right)
+// }
 
-function maxDepth(tree){
-	if(tree === null) return 0
+// function maxDepth(tree){
+// 	if(tree === null) return 0
 	
-	const left = maxDepth(tree.left);
-	const right = maxDepth(tree.right);
-	return Math.max(left, right) + 1;
-}
+// 	const left = maxDepth(tree.left);
+// 	const right = maxDepth(tree.right);
+// 	return Math.max(left, right) + 1;
+// }
 
 // Do not edit the lines below.
-exports.BinaryTree = BinaryTree;
-exports.heightBalancedBinaryTree = heightBalancedBinaryTree;
+// exports.BinaryTree = BinaryTree;
+// exports.heightBalancedBinaryTree = heightBalancedBinaryTree;
+
+
+
+// //   /* Find Kth largest value in BST */
+// // // Non optimal value using brute force approach
+
+// // // This is an input class. Do not edit.
+// // class BST {
+// //     constructor(value) {
+// //       this.value = value;
+// //       this.left = null;
+// //       this.right = null;
+// //     }
+// //   }
+  
+// //   function findKthLargestValueInBst(tree, k) {
+// //     // time O(n) | space O(n)
+// //     const sortedNodeValues = [];
+// //       inorderTraverse(tree, sortedNodeValues);
+// //       return sortedNodeValues[sortedNodeValues.length - k];
+// //   }
+  
+// //   function inorderTraverse(node, sortedNodeValues){
+// //       if (node === null) return
+      
+// //       inorderTraverse(node.left, sortedNodeValues);
+// //       sortedNodeValues.push(node.value);
+// //       inorderTraverse(node.right, sortedNodeValues);
+// //   }
+  
+// //   // Do not edit the lines below.
+// //   exports.BST = BST;
+// //   exports.findKthLargestValueInBst = findKthLargestValueInBst;
+
+  
+
+
+
+// Validate a BST
+
+// This is an input class. Do not edit.
+class BST {
+    constructor(value) {
+      this.value = value;
+      this.left = null;
+      this.right = null;
+    }
+  }
+  
+  function validateBst(tree) {
+    // O(n) time | O(d) space complexity
+      return validateBstHelper(tree, -Infinity, Infinity)
+  }
+  
+  function validateBstHelper(tree, minValue, maxValue){
+      if (tree === null) return true;
+      if (tree.value < minValue || tree.value >= maxValue) return false
+      
+      const leftIsValid = validateBstHelper(tree.left, minValue, tree.value);
+      return leftIsValid && validateBstHelper(tree.right, tree.value, maxValue);
+  }
+  
+  // Do not edit the line below.
+  exports.BST = BST;
+  exports.validateBst = validateBst;
+  
