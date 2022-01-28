@@ -3189,28 +3189,51 @@
 // Validate a BST
 
 // This is an input class. Do not edit.
-class BST {
-    constructor(value) {
-      this.value = value;
-      this.left = null;
-      this.right = null;
-    }
-  }
+// class BST {
+//     constructor(value) {
+//       this.value = value;
+//       this.left = null;
+//       this.right = null;
+//     }
+//   }
   
-  function validateBst(tree) {
+//   function validateBst(tree) {
     // O(n) time | O(d) space complexity
-      return validateBstHelper(tree, -Infinity, Infinity)
+  //     return validateBstHelper(tree, -Infinity, Infinity)
+  // }
+  
+  // function validateBstHelper(tree, minValue, maxValue){
+  //     if (tree === null) return true;
+  //     if (tree.value < minValue || tree.value >= maxValue) return false
+      
+  //     const leftIsValid = validateBstHelper(tree.left, minValue, tree.value);
+  //     return leftIsValid && validateBstHelper(tree.right, tree.value, maxValue);
+  // }
+  
+  // Do not edit the line below.
+  // exports.BST = BST;
+  // exports.validateBst = validateBst;
+  
+
+  function binarySearch(array, target) {
+    // Write your code here.
+    return binarySearchHelper(array, target, 0, array.length - 1)
   }
   
-  function validateBstHelper(tree, minValue, maxValue){
-      if (tree === null) return true;
-      if (tree.value < minValue || tree.value >= maxValue) return false
-      
-      const leftIsValid = validateBstHelper(tree.left, minValue, tree.value);
-      return leftIsValid && validateBstHelper(tree.right, tree.value, maxValue);
+  function binarySearchHelper(array, target, left, right){
+    while (left <= right){
+      const middle = Math.floor((left + right) / 2);
+      const potentialMatch = array[middle];
+    if(target === potentialMatch) return middle
+      else if(target < potentialMatch){
+        right = middle - 1;
+      }else {
+        left = middle + 1;
+      }
+    }
+     return -1
   }
   
   // Do not edit the line below.
-  exports.BST = BST;
-  exports.validateBst = validateBst;
+  exports.binarySearch = binarySearch;
   
