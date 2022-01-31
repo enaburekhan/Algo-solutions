@@ -3215,25 +3215,46 @@
   // exports.validateBst = validateBst;
   
 
-  function binarySearch(array, target) {
+  // function binarySearch(array, target) {
     // Write your code here.
-    return binarySearchHelper(array, target, 0, array.length - 1)
-  }
+    // return binarySearchHelper(array, target, 0, array.length - 1)
+  // }
   
-  function binarySearchHelper(array, target, left, right){
-    while (left <= right){
-      const middle = Math.floor((left + right) / 2);
-      const potentialMatch = array[middle];
-    if(target === potentialMatch) return middle
-      else if(target < potentialMatch){
-        right = middle - 1;
-      }else {
-        left = middle + 1;
-      }
-    }
-     return -1
-  }
+  // function binarySearchHelper(array, target, left, right){
+  //   while (left <= right){
+  //     const middle = Math.floor((left + right) / 2);
+  //     const potentialMatch = array[middle];
+  //   if(target === potentialMatch) return middle
+  //     else if(target < potentialMatch){
+  //       right = middle - 1;
+  //     }else {
+  //       left = middle + 1;
+  //     }
+  //   }
+  //    return -1
+  // }
   
   // Do not edit the line below.
-  exports.binarySearch = binarySearch;
+  // exports.binarySearch = binarySearch;
+
+
+    function minHeightBst(array) {
+    // time O(NlogN) | space O(N)
+      return constructMinHeightBst(array, null, 0, array.length - 1)
+  }
+  
+  function constructMinHeightBst(array, bst, startIdx, endIdx){
+      if (endIdx < startIdx) return;
+      const midIdx = Math.floor((startIdx + endIdx) / 2);
+      
+      const valueToAdd = array[midIdx]
+      if (bst === null){
+          bst = new BST(valueToAdd)
+      }else {
+          bst.insert(valueToAdd)
+      }
+      constructMinHeightBst(array, bst, startIdx, midIdx - 1);
+      constructMinHeightBst(array, bst, midIdx + 1, endIdx);
+      return bst
+  }
   
