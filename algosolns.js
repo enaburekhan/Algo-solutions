@@ -3257,4 +3257,43 @@
       constructMinHeightBst(array, bst, midIdx + 1, endIdx);
       return bst
   }
+
+  // This is an input class. Do not edit.
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+    this.parent = null;
+  }
+}
+
+function findSuccessor(tree, node) {
+  // O(n) time | O(1) space.
+  const inorderTraversalOrder = getInorderTraversalOrder(tree);
+	
+	for(let idx = 0; idx < inorderTraversalOrder.length; idx++){
+		const currentNode = inorderTraversalOrder[idx];
+		if(currentNode !== node) continue;
+		
+		if(idx === inorderTraversalOrder.length - 1) return null
+		
+		return inorderTraversalOrder[idx + 1]
+	}
+}
+
+function getInorderTraversalOrder(node, order=[]){
+	if (node === null) return order;
+	
+	getInorderTraversalOrder(node.left, order);
+	order.push(node);
+	getInorderTraversalOrder(node.right, order);
+	
+	return order;
+}
+
+// Do not edit the lines below.
+exports.BinaryTree = BinaryTree;
+exports.findSuccessor = findSuccessor;
+
   
