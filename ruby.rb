@@ -799,21 +799,37 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 # count_age(hash)
 
 
+# def count_char(str)
+#     count = {}  
+#   str.each_char do |ch|
+#     if count.include?(ch)
+#       count[ch] += 1
+#     else
+#       count[ch] = 1      
+#     end
+#   end 
+#   count   
+# end 
+
+# str = "aabbbaa"
+
+# p count_char(str)
 
 
-
-def count_char(str)
-    count = {}  
-  str.each_char do |ch|
-    if count.include?(ch)
-      count[ch] += 1
+def two_number_sum(array, target_sum) 
+  hash = {}
+  array.each do |val|
+    potential_match = target_sum - val
+    if hash.include?(potential_match)
+      return [potential_match, val]
     else
-      count[ch] = 1      
+        hash[val] = true
     end
-  end 
-  count   
+  end
+    []
 end
 
-str = "aabbbaa"
+array = [3, 5, -4, 8, 11, 1, -1, 6]
+target_sum = 10
 
-p count_char(str)
+p two_number_sum(array, target_sum)
