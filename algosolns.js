@@ -3296,4 +3296,21 @@ function getInorderTraversalOrder(node, order=[]){
 exports.BinaryTree = BinaryTree;
 exports.findSuccessor = findSuccessor;
 
-  
+ 
+/* Solve two number sum */
+function twoNumberSum(array, targetSum) {
+  // O(n) time | O(n) space.
+	const obj = {}
+	for(const num of array){
+		const potentialMatch = targetSum - num;
+		if (potentialMatch in obj){
+			return [potentialMatch, num];
+		}else {
+			obj[num] = true;
+		}
+	}
+	return []
+}
+
+// Do not edit the line below.
+exports.twoNumberSum = twoNumberSum;
