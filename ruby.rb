@@ -833,3 +833,8 @@ array = [3, 5, -4, 8, 11, 1, -1, 6]
 target_sum = 10
 
 p two_number_sum(array, target_sum)
+
+
+x = [{"a" => 10},{"b" => 20},{"c" => 30}]
+
+p x.reduce(:merge)
