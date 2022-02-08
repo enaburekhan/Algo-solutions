@@ -3366,3 +3366,27 @@ function sortedSquaredArray(array) {
 
 // Do not edit the line below.
 exports.sortedSquaredArray = sortedSquaredArray;
+
+
+function sortedSquaredArray(array) {
+  // O(n) time | O(n) space.
+  const sortedSqArr = new Array(array.length).fill(0);
+	
+	let smallestValueIdx = 0;
+	let largestValueIdx = array.length - 1;
+	for(let i = array.length - 1; i >= 0; i--){
+		const smallestValue = Math.abs(array[smallestValueIdx]);
+		const largestValue = Math.abs(array[largestValueIdx]);
+		if(smallestValue > largestValue){
+			sortedSqArr[i] = smallestValue * smallestValue;
+			smallestValueIdx++;
+		}else {
+			sortedSqArr[i] = largestValue * largestValue;
+			largestValueIdx--;
+		}
+	}
+	 return sortedSqArr;
+}
+
+// Do not edit the line below.
+exports.sortedSquaredArray = sortedSquaredArray;
