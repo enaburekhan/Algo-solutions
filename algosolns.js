@@ -3238,39 +3238,39 @@
   // exports.binarySearch = binarySearch;
 
 
-    function minHeightBst(array) {
+    // function minHeightBst(array) {
     // time O(NlogN) | space O(N)
-      return constructMinHeightBst(array, null, 0, array.length - 1)
-  }
+  //     return constructMinHeightBst(array, null, 0, array.length - 1)
+  // }
   
-  function constructMinHeightBst(array, bst, startIdx, endIdx){
-      if (endIdx < startIdx) return;
-      const midIdx = Math.floor((startIdx + endIdx) / 2);
+  // function constructMinHeightBst(array, bst, startIdx, endIdx){
+  //     if (endIdx < startIdx) return;
+  //     const midIdx = Math.floor((startIdx + endIdx) / 2);
       
-      const valueToAdd = array[midIdx]
-      if (bst === null){
-          bst = new BST(valueToAdd)
-      }else {
-          bst.insert(valueToAdd)
-      }
-      constructMinHeightBst(array, bst, startIdx, midIdx - 1);
-      constructMinHeightBst(array, bst, midIdx + 1, endIdx);
-      return bst
-  }
+  //     const valueToAdd = array[midIdx]
+  //     if (bst === null){
+  //         bst = new BST(valueToAdd)
+  //     }else {
+  //         bst.insert(valueToAdd)
+  //     }
+  //     constructMinHeightBst(array, bst, startIdx, midIdx - 1);
+  //     constructMinHeightBst(array, bst, midIdx + 1, endIdx);
+  //     return bst
+  // }
 
   // This is an input class. Do not edit.
-class BinaryTree {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-    this.parent = null;
-  }
-}
+// class BinaryTree {
+//   constructor(value) {
+//     this.value = value;
+//     this.left = null;
+//     this.right = null;
+//     this.parent = null;
+//   }
+// }
 
-function findSuccessor(tree, node) {
+// function findSuccessor(tree, node) {
   // O(n) time | O(1) space.
-  const inorderTraversalOrder = getInorderTraversalOrder(tree);
+  // const inorderTraversalOrder = getInorderTraversalOrder(tree);
 	
 	for(let idx = 0; idx < inorderTraversalOrder.length; idx++){
 		const currentNode = inorderTraversalOrder[idx];
@@ -3346,4 +3346,23 @@ function isValidSubsequence(array, sequence) {
 
 // Do not edit the line below.
 exports.isValidSubsequence = isValidSubsequence;
+// 
 
+
+
+/* solve sorted squared array */
+
+function sortedSquaredArray(array) {
+  // O(nlogn) time | O(n) time.
+  const sortedSqArr = new Array(array.length).fill(0);
+	
+	for(let i = 0; i < array.length; i++){
+		const value = array[i];
+		sortedSqArr[i] = value * value;
+	}
+	sortedSqArr.sort((a,b) => a - b);
+	return sortedSqArr;
+}
+
+// Do not edit the line below.
+exports.sortedSquaredArray = sortedSquaredArray;

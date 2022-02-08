@@ -816,25 +816,40 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 # p count_char(str)
 
 
-def two_number_sum(array, target_sum) 
-  hash = {}
-  array.each do |val|
-    potential_match = target_sum - val
-    if hash.include?(potential_match)
-      return [potential_match, val]
-    else
-        hash[val] = true
-    end
-  end
-    []
-end
+# def two_number_sum(array, target_sum) 
+#   hash = {}
+#   array.each do |val|
+#     potential_match = target_sum - val
+#     if hash.include?(potential_match)
+#       return [potential_match, val]
+#     else
+#         hash[val] = true
+#     end
+#   end
+#     []
+# end
 
-array = [3, 5, -4, 8, 11, 1, -1, 6]
-target_sum = 10
+# array = [3, 5, -4, 8, 11, 1, -1, 6]
+# target_sum = 10
 
-p two_number_sum(array, target_sum)
+# p two_number_sum(array, target_sum)
 
 
-x = [{"a" => 10},{"b" => 20},{"c" => 30}]
+# x = [{"a" => 10},{"b" => 20},{"c" => 30}]
 
-p x.reduce(:merge)
+# p x.reduce(:merge)
+
+
+class Employee   
+  def initialize     
+      @full_time = false     
+
+      binding.irb     
+
+      @full_time = true  
+
+      puts "Full time: #{@full_time}"   
+  end 
+end  
+
+Employee.new
