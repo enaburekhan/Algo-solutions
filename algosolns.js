@@ -3272,150 +3272,165 @@
   // O(n) time | O(1) space.
   // const inorderTraversalOrder = getInorderTraversalOrder(tree);
 	
-	for(let idx = 0; idx < inorderTraversalOrder.length; idx++){
-		const currentNode = inorderTraversalOrder[idx];
-		if(currentNode !== node) continue;
+// 	for(let idx = 0; idx < inorderTraversalOrder.length; idx++){
+// 		const currentNode = inorderTraversalOrder[idx];
+// 		if(currentNode !== node) continue;
 		
-		if(idx === inorderTraversalOrder.length - 1) return null
+// 		if(idx === inorderTraversalOrder.length - 1) return null
 		
-		return inorderTraversalOrder[idx + 1]
-	}
-}
+// 		return inorderTraversalOrder[idx + 1]
+// 	}
+// }
 
-function getInorderTraversalOrder(node, order=[]){
-	if (node === null) return order;
+// function getInorderTraversalOrder(node, order=[]){
+// 	if (node === null) return order;
 	
-	getInorderTraversalOrder(node.left, order);
-	order.push(node);
-	getInorderTraversalOrder(node.right, order);
+// 	getInorderTraversalOrder(node.left, order);
+// 	order.push(node);
+// 	getInorderTraversalOrder(node.right, order);
 	
-	return order;
-}
+// 	return order;
+// }
 
 // Do not edit the lines below.
-exports.BinaryTree = BinaryTree;
-exports.findSuccessor = findSuccessor;
+// exports.BinaryTree = BinaryTree;
+// exports.findSuccessor = findSuccessor;
 
  
 /* Solve two number sum */
-function twoNumberSum(array, targetSum) {
+// function twoNumberSum(array, targetSum) {
   // O(n) time | O(n) space.
-	const obj = {}
-	for(const num of array){
-		const potentialMatch = targetSum - num;
-		if (potentialMatch in obj){
-			return [potentialMatch, num];
-		}else {
-			obj[num] = true;
-		}
-	}
-	return []
-}
+// 	const obj = {}
+// 	for(const num of array){
+// 		const potentialMatch = targetSum - num;
+// 		if (potentialMatch in obj){
+// 			return [potentialMatch, num];
+// 		}else {
+// 			obj[num] = true;
+// 		}
+// 	}
+// 	return []
+// }
 
 // Do not edit the line below.
-exports.twoNumberSum = twoNumberSum;
+// exports.twoNumberSum = twoNumberSum;
 
 
 /* solve validate subsequence */
 
-function isValidSubsequence(array, sequence) {
+// function isValidSubsequence(array, sequence) {
   // O(n) time | O(1) space.
-	let arrIdx = 0;
-	let seqIdx = 0;
+// 	let arrIdx = 0;
+// 	let seqIdx = 0;
 	
-	while(arrIdx < array.length && seqIdx < sequence.length){
-		if(sequence[seqIdx] === array[arrIdx]) seqIdx++;
-		arrIdx++
-	}
-	return seqIdx == sequence.length
-}
+// 	while(arrIdx < array.length && seqIdx < sequence.length){
+// 		if(sequence[seqIdx] === array[arrIdx]) seqIdx++;
+// 		arrIdx++
+// 	}
+// 	return seqIdx == sequence.length
+// }
 
 // Do not edit the line below.
-exports.isValidSubsequence = isValidSubsequence;
+// exports.isValidSubsequence = isValidSubsequence;
 
 
-function isValidSubsequence(array, sequence) {
+// function isValidSubsequence(array, sequence) {
   // O(n) time | O(1) space.
-	let seqIdx = 0;
-	for(const value of array){
-		if(seqIdx === sequence.length) break;
-		if(sequence[seqIdx] === value) seqIdx++
-	}
-	 return seqIdx == sequence.length
-}
+// 	let seqIdx = 0;
+// 	for(const value of array){
+// 		if(seqIdx === sequence.length) break;
+// 		if(sequence[seqIdx] === value) seqIdx++
+// 	}
+// 	 return seqIdx == sequence.length
+// }
 
 // Do not edit the line below.
-exports.isValidSubsequence = isValidSubsequence;
+// exports.isValidSubsequence = isValidSubsequence;
 // 
 
 
 
 /* solve sorted squared array */
 
-function sortedSquaredArray(array) {
+// function sortedSquaredArray(array) {
   // O(nlogn) time | O(n) time.
-  const sortedSqArr = new Array(array.length).fill(0);
+//   const sortedSqArr = new Array(array.length).fill(0);
 	
-	for(let i = 0; i < array.length; i++){
-		const value = array[i];
-		sortedSqArr[i] = value * value;
-	}
-	sortedSqArr.sort((a,b) => a - b);
-	return sortedSqArr;
-}
+// 	for(let i = 0; i < array.length; i++){
+// 		const value = array[i];
+// 		sortedSqArr[i] = value * value;
+// 	}
+// 	sortedSqArr.sort((a,b) => a - b);
+// 	return sortedSqArr;
+// }
 
 // Do not edit the line below.
-exports.sortedSquaredArray = sortedSquaredArray;
+// exports.sortedSquaredArray = sortedSquaredArray;
 
 
-function sortedSquaredArray(array) {
+// function sortedSquaredArray(array) {
   // O(n) time | O(n) space.
-  const sortedSqArr = new Array(array.length).fill(0);
+//   const sortedSqArr = new Array(array.length).fill(0);
 	
-	let smallestValueIdx = 0;
-	let largestValueIdx = array.length - 1;
-	for(let i = array.length - 1; i >= 0; i--){
-		const smallestValue = Math.abs(array[smallestValueIdx]);
-		const largestValue = Math.abs(array[largestValueIdx]);
-		if(smallestValue > largestValue){
-			sortedSqArr[i] = smallestValue * smallestValue;
-			smallestValueIdx++;
-		}else {
-			sortedSqArr[i] = largestValue * largestValue;
-			largestValueIdx--;
-		}
-	}
-	 return sortedSqArr;
-}
+// 	let smallestValueIdx = 0;
+// 	let largestValueIdx = array.length - 1;
+// 	for(let i = array.length - 1; i >= 0; i--){
+// 		const smallestValue = Math.abs(array[smallestValueIdx]);
+// 		const largestValue = Math.abs(array[largestValueIdx]);
+// 		if(smallestValue > largestValue){
+// 			sortedSqArr[i] = smallestValue * smallestValue;
+// 			smallestValueIdx++;
+// 		}else {
+// 			sortedSqArr[i] = largestValue * largestValue;
+// 			largestValueIdx--;
+// 		}
+// 	}
+// 	 return sortedSqArr;
+// }
 
 // Do not edit the line below.
-exports.sortedSquaredArray = sortedSquaredArray;
+// exports.sortedSquaredArray = sortedSquaredArray;
 
 
-function tournamentWinner(competitions, results) {
+// function tournamentWinner(competitions, results) {
   // O(n) time | O(k) space.
-  const Home_Team_Won = 1;
-	let currentBestTeam = "";
-	const scores = {[currentBestTeam]: 0 }
+//   const Home_Team_Won = 1;
+// 	let currentBestTeam = "";
+// 	const scores = {[currentBestTeam]: 0 }
 	
-	for(let idx = 0; idx < competitions.length; idx++){
-		const result = results[idx];
-		const [homeTeam, awayTeam] = competitions[idx];
-		const winningTeam = result === Home_Team_Won ? homeTeam : awayTeam
+// 	for(let idx = 0; idx < competitions.length; idx++){
+// 		const result = results[idx];
+// 		const [homeTeam, awayTeam] = competitions[idx];
+// 		const winningTeam = result === Home_Team_Won ? homeTeam : awayTeam
 		
-		updateScores(winningTeam, 3, scores)
-		if(scores[winningTeam] > scores[currentBestTeam]){
-			currentBestTeam = winningTeam;
-		}
-	}
-	 return currentBestTeam;
+// 		updateScores(winningTeam, 3, scores)
+// 		if(scores[winningTeam] > scores[currentBestTeam]){
+// 			currentBestTeam = winningTeam;
+// 		}
+// 	}
+// 	 return currentBestTeam;
+// }
+
+// function updateScores(team, points, scores){
+// 	if(!(team in scores)) scores[team] = 0;
+// 	scores[team] += points
+// }
+
+// // Do not edit the line below.
+// exports.tournamentWinner = tournamentWinner;
+
+function fizzBuzz(min, max){
+  for(let i=min; i <= max; i++){
+    if(i % 3 === 0 && i % 5 === 0){
+      console.log('FizzBuzz')
+    }else if(i % 5 === 0){
+       console.log('Buzz');
+    }else if (i % 3 === 0){
+      console.log('Fuzz');
+    }else {
+      console.log(i)
+    }
+  }
 }
 
-function updateScores(team, points, scores){
-	if(!(team in scores)) scores[team] = 0;
-	scores[team] += points
-}
-
-// Do not edit the line below.
-exports.tournamentWinner = tournamentWinner;
-
+console.log(fizzBuzz(1, 100))
