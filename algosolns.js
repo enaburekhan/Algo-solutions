@@ -3419,18 +3419,28 @@
 // // Do not edit the line below.
 // exports.tournamentWinner = tournamentWinner;
 
-function fizzBuzz(min, max){
-  for(let i=min; i <= max; i++){
-    if(i % 3 === 0 && i % 5 === 0){
-      console.log('FizzBuzz')
-    }else if(i % 5 === 0){
-       console.log('Buzz');
-    }else if (i % 3 === 0){
-      console.log('Fuzz');
-    }else {
-      console.log(i)
-    }
-  }
+// function fizzBuzz(min, max){
+//   for(let i=min; i <= max; i++){
+//     if(i % 3 === 0 && i % 5 === 0){
+//       console.log('FizzBuzz')
+//     }else if(i % 5 === 0){
+//        console.log('Buzz');
+//     }else if (i % 3 === 0){
+//       console.log('Fuzz');
+//     }else {
+//       console.log(i)
+//     }
+//   }
+// }
+
+// console.log(fizzBuzz(1, 100))
+
+function reverseNum(num){
+  return(
+    parseFloat(
+      num.toString().split('').reverse().join('')
+    )
+  )
 }
 
-console.log(fizzBuzz(1, 100))
+console.log(reverseNum(378))
