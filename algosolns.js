@@ -3435,12 +3435,41 @@
 
 // console.log(fizzBuzz(1, 100))
 
-function reverseNum(num){
-  return(
-    parseFloat(
-      num.toString().split('').reverse().join('')
-    )
-  )
+// function reverseNum(num){
+//   return(
+//     parseFloat(
+//       num.toString().split('').reverse().join('')
+//     )
+//   )
+// }
+
+// console.log(reverseNum(378))
+
+/* Solved tournament winner */
+function tournamentWinner(competitions, results) {
+  // Write your code here.
+  let currentBestTeam = '';
+	const scores = {[currentBestTeam]: 0}
+	const Home_Team_Won = 1;
+	
+	for(let idx = 0; idx < competitions.length; idx++){
+		const result = results[idx];
+		const [homeTeam, awayTeam] = competitions[idx];
+		
+		const winningTeam = result === Home_Team_Won ? homeTeam : awayTeam
+		updateScores(winningTeam, 3, scores);
+		
+		if(scores[winningTeam] > scores[currentBestTeam]){
+			currentBestTeam = winningTeam
+		}
+	}
+	 return currentBestTeam;
 }
 
-console.log(reverseNum(378))
+function updateScores(team, points, scores){
+	if(!(team in scores)) scores[team] = 0;
+	scores[team] += points
+}
+
+// Do not edit the line below.
+exports.tournamentWinner = tournamentWinner;

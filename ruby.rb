@@ -840,16 +840,24 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 # p x.reduce(:merge)
 
 
-class Employee   
-  def initialize     
-      @full_time = false     
+# class Employee   
+#   def initialize     
+#       @full_time = false     
 
-      binding.irb     
+#       binding.irb     
 
-      @full_time = true  
+#       @full_time = true  
 
-      puts "Full time: #{@full_time}"   
-  end 
-end  
+#       puts "Full time: #{@full_time}"   
+#   end 
+# end  
 
-Employee.new
+# Employee.new
+
+my_counter = 2
+
+while my_counter < 68
+  p my_counter
+  my_counter **= 2
+end
+
