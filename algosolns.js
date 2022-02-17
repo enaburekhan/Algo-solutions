@@ -3446,30 +3446,57 @@
 // console.log(reverseNum(378))
 
 /* Solved tournament winner */
-function tournamentWinner(competitions, results) {
+// function tournamentWinner(competitions, results) {
   // Write your code here.
-  let currentBestTeam = '';
-	const scores = {[currentBestTeam]: 0}
-	const Home_Team_Won = 1;
+//   let currentBestTeam = '';
+// 	const scores = {[currentBestTeam]: 0}
+// 	const Home_Team_Won = 1;
 	
-	for(let idx = 0; idx < competitions.length; idx++){
-		const result = results[idx];
-		const [homeTeam, awayTeam] = competitions[idx];
+// 	for(let idx = 0; idx < competitions.length; idx++){
+// 		const result = results[idx];
+// 		const [homeTeam, awayTeam] = competitions[idx];
 		
-		const winningTeam = result === Home_Team_Won ? homeTeam : awayTeam
-		updateScores(winningTeam, 3, scores);
+// 		const winningTeam = result === Home_Team_Won ? homeTeam : awayTeam
+// 		updateScores(winningTeam, 3, scores);
 		
-		if(scores[winningTeam] > scores[currentBestTeam]){
-			currentBestTeam = winningTeam
-		}
-	}
-	 return currentBestTeam;
-}
+// 		if(scores[winningTeam] > scores[currentBestTeam]){
+// 			currentBestTeam = winningTeam
+// 		}
+// 	}
+// 	 return currentBestTeam;
+// }
 
-function updateScores(team, points, scores){
-	if(!(team in scores)) scores[team] = 0;
-	scores[team] += points
-}
+// function updateScores(team, points, scores){
+// 	if(!(team in scores)) scores[team] = 0;
+// 	scores[team] += points
+// }
 
 // Do not edit the line below.
-exports.tournamentWinner = tournamentWinner;
+// exports.tournamentWinner = tournamentWinner;
+
+
+
+
+  function binarySearch(array, target) {
+    Write your code here.
+    return binarySearchHelper(array, target, 0, array.length - 1)
+  }
+  
+  function binarySearchHelper(array, target, left, right){
+    while (left <= right){
+      const middle = Math.floor((left + right) / 2);
+      const potentialMatch = array[middle];
+    if(target === potentialMatch) return middle
+      else if(target < potentialMatch){
+        right = middle - 1;
+      }else {
+        left = middle + 1;
+      }
+    }
+     return -1
+  }
+  
+  Do not edit the line below.
+  exports.binarySearch = binarySearch;
+
+
