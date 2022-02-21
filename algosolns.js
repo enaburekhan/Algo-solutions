@@ -3477,26 +3477,54 @@
 
 
 
-  function binarySearch(array, target) {
-    Write your code here.
-    return binarySearchHelper(array, target, 0, array.length - 1)
-  }
+  // function binarySearch(array, target) {
+  //   Write your code here.
+  //   return binarySearchHelper(array, target, 0, array.length - 1)
+  // }
   
-  function binarySearchHelper(array, target, left, right){
-    while (left <= right){
-      const middle = Math.floor((left + right) / 2);
-      const potentialMatch = array[middle];
-    if(target === potentialMatch) return middle
-      else if(target < potentialMatch){
-        right = middle - 1;
-      }else {
-        left = middle + 1;
-      }
-    }
-     return -1
-  }
+  // function binarySearchHelper(array, target, left, right){
+  //   while (left <= right){
+  //     const middle = Math.floor((left + right) / 2);
+  //     const potentialMatch = array[middle];
+  //   if(target === potentialMatch) return middle
+  //     else if(target < potentialMatch){
+  //       right = middle - 1;
+  //     }else {
+  //       left = middle + 1;
+  //     }
+  //   }
+  //    return -1
+  // }
   
-  Do not edit the line below.
-  exports.binarySearch = binarySearch;
+  // Do not edit the line below.
+  // exports.binarySearch = binarySearch;
 
 
+/* Solve three number sum */
+
+function threeNumberSum(array, targetSum) {
+  // O(logn^2) time | O(n) space.
+	const triplets = [];
+	array.sort((a,b) => a - b);
+	for(let idx=0; idx < array.length - 2; idx++){
+		let left = idx+1;
+		let right = array.length - 1;
+		
+		while(left < right){
+			const currentSum = array[idx] + array[left] + array[right];
+			if(currentSum === targetSum) {
+				triplets.push([array[idx], array[left], array[right]]);
+				left++;
+				right--;
+			}else if (currentSum < targetSum) {
+				left++
+			}else if (currentSum > targetSum) {
+				right--
+			}
+  	}
+	}
+		return triplets
+}
+
+// Do not edit the line below.
+exports.threeNumberSum = threeNumberSum;
