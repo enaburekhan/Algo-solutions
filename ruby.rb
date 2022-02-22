@@ -854,10 +854,18 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 
 # Employee.new
 
-my_counter = 2
+# my_counter = 2
 
-while my_counter < 68
-  p my_counter
-  my_counter **= 2
-end
+# while my_counter < 68
+#   p my_counter
+#   my_counter **= 2
+# end
+
+arr = [2, 3]
+
+arr[2] = 4
+arr[4] = 6
+
+p arr
+p arr[3]
 

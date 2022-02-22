@@ -3502,29 +3502,66 @@
 
 /* Solve three number sum */
 
-function threeNumberSum(array, targetSum) {
+// function threeNumberSum(array, targetSum) {
   // O(logn^2) time | O(n) space.
-	const triplets = [];
-	array.sort((a,b) => a - b);
-	for(let idx=0; idx < array.length - 2; idx++){
-		let left = idx+1;
-		let right = array.length - 1;
+// 	const triplets = [];
+// 	array.sort((a,b) => a - b);
+// 	for(let idx=0; idx < array.length - 2; idx++){
+// 		let left = idx+1;
+// 		let right = array.length - 1;
 		
-		while(left < right){
-			const currentSum = array[idx] + array[left] + array[right];
-			if(currentSum === targetSum) {
-				triplets.push([array[idx], array[left], array[right]]);
-				left++;
-				right--;
-			}else if (currentSum < targetSum) {
-				left++
-			}else if (currentSum > targetSum) {
-				right--
-			}
-  	}
+// 		while(left < right){
+// 			const currentSum = array[idx] + array[left] + array[right];
+// 			if(currentSum === targetSum) {
+// 				triplets.push([array[idx], array[left], array[right]]);
+// 				left++;
+// 				right--;
+// 			}else if (currentSum < targetSum) {
+// 				left++
+// 			}else if (currentSum > targetSum) {
+// 				right--
+// 			}
+//   	}
+// 	}
+// 		return triplets
+// }
+
+// // Do not edit the line below.
+// exports.threeNumberSum = threeNumberSum;
+
+
+
+/* smallest difference */
+
+function smallestDifference(arrayOne, arrayTwo) {
+  // O(nlogn + mlogn) time | O(1) space.
+	arrayOne.sort((a,b) => a - b);
+	arrayTwo.sort((a,b) => a - b);
+	let smallest = Infinity
+	let current  = Infinity
+	let smallestPair = []
+	let idxOne = 0;
+	let idxTwo = 0;
+	while(idxOne < arrayOne.length && idxTwo < arrayTwo.length){
+		const firstNum = arrayOne[idxOne];
+		const secondNum = arrayTwo[idxTwo];
+		if(firstNum < secondNum){
+			current = secondNum - firstNum;
+			idxOne++
+		}else if(secondNum < firstNum){
+			current = firstNum - secondNum;
+			idxTwo++;
+		}else {
+			return [firstNum, secondNum]
+		}
+		
+		if(smallest > current){
+			smallest = current
+			smallestPair = [firstNum, secondNum]
+		}
 	}
-		return triplets
+	 return smallestPair;
 }
 
 // Do not edit the line below.
-exports.threeNumberSum = threeNumberSum;
+exports.smallestDifference = smallestDifference;
