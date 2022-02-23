@@ -3533,35 +3533,61 @@
 
 /* smallest difference */
 
-function smallestDifference(arrayOne, arrayTwo) {
+// function smallestDifference(arrayOne, arrayTwo) {
   // O(nlogn + mlogn) time | O(1) space.
-	arrayOne.sort((a,b) => a - b);
-	arrayTwo.sort((a,b) => a - b);
-	let smallest = Infinity
-	let current  = Infinity
-	let smallestPair = []
-	let idxOne = 0;
-	let idxTwo = 0;
-	while(idxOne < arrayOne.length && idxTwo < arrayTwo.length){
-		const firstNum = arrayOne[idxOne];
-		const secondNum = arrayTwo[idxTwo];
-		if(firstNum < secondNum){
-			current = secondNum - firstNum;
-			idxOne++
-		}else if(secondNum < firstNum){
-			current = firstNum - secondNum;
-			idxTwo++;
-		}else {
-			return [firstNum, secondNum]
-		}
+// 	arrayOne.sort((a,b) => a - b);
+// 	arrayTwo.sort((a,b) => a - b);
+// 	let smallest = Infinity
+// 	let current  = Infinity
+// 	let smallestPair = []
+// 	let idxOne = 0;
+// 	let idxTwo = 0;
+// 	while(idxOne < arrayOne.length && idxTwo < arrayTwo.length){
+// 		const firstNum = arrayOne[idxOne];
+// 		const secondNum = arrayTwo[idxTwo];
+// 		if(firstNum < secondNum){
+// 			current = secondNum - firstNum;
+// 			idxOne++
+// 		}else if(secondNum < firstNum){
+// 			current = firstNum - secondNum;
+// 			idxTwo++;
+// 		}else {
+// 			return [firstNum, secondNum]
+// 		}
 		
-		if(smallest > current){
-			smallest = current
-			smallestPair = [firstNum, secondNum]
+// 		if(smallest > current){
+// 			smallest = current
+// 			smallestPair = [firstNum, secondNum]
+// 		}
+// 	}
+// 	 return smallestPair;
+// }
+
+// Do not edit the line below.
+// exports.smallestDifference = smallestDifference;
+
+
+
+/* Move element to the end */
+
+function moveElementToEnd(array, toMove) {
+  // Write your code here.
+	let i = 0;
+	let j = array.length - 1;
+	while(i < j){
+		while(i < j && array[j] === toMove)j--
+		if(array[i] === toMove){
+			swap(i, j, array);
 		}
+		i++
 	}
-	 return smallestPair;
+	 return array
+}
+
+function swap(i, j, array){
+	[array[i], array[j]] = [array[j], array[i]]
 }
 
 // Do not edit the line below.
-exports.smallestDifference = smallestDifference;
+exports.moveElementToEnd = moveElementToEnd;
+
