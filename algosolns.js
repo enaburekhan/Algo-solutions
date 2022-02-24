@@ -3570,24 +3570,43 @@
 
 /* Move element to the end */
 
-function moveElementToEnd(array, toMove) {
+// function moveElementToEnd(array, toMove) {
   // Write your code here.
-	let i = 0;
-	let j = array.length - 1;
-	while(i < j){
-		while(i < j && array[j] === toMove)j--
-		if(array[i] === toMove){
-			swap(i, j, array);
-		}
-		i++
-	}
-	 return array
-}
+// 	let i = 0;
+// 	let j = array.length - 1;
+// 	while(i < j){
+// 		while(i < j && array[j] === toMove)j--
+// 		if(array[i] === toMove){
+// 			swap(i, j, array);
+// 		}
+// 		i++
+// 	}
+// 	 return array
+// }
 
-function swap(i, j, array){
-	[array[i], array[j]] = [array[j], array[i]]
+// function swap(i, j, array){
+// 	[array[i], array[j]] = [array[j], array[i]]
+// }
+
+// Do not edit the line below.
+// exports.moveElementToEnd = moveElementToEnd;
+
+
+/* Kadane's algorithm */
+
+function kadanesAlgorithm(array) {
+  // O(n) time | O(1) space.
+	let maxEndingHere = array[0];
+	let maxSoFar = array[0];
+	for(let i=1; i < array.length; i++){
+		let num = array[i];
+		maxEndingHere = Math.max(num, maxEndingHere + num);
+		maxSoFar = Math.max(maxSoFar, maxEndingHere)
+	}
+	 return maxSoFar
 }
 
 // Do not edit the line below.
-exports.moveElementToEnd = moveElementToEnd;
+exports.kadanesAlgorithm = kadanesAlgorithm;
+
 
