@@ -3610,3 +3610,22 @@ function kadanesAlgorithm(array) {
 exports.kadanesAlgorithm = kadanesAlgorithm;
 
 
+function isMonotonic(array) {
+  // O(n) time | O(1) space.
+	let nonIncreasing = true;
+	let nonDecreasing = true;
+	
+	for(let i=1; i < array.length; i++){
+		if(array[i] > array[i-1]){
+			nonIncreasing = false
+		}else if(array[i] < array[i-1]){
+			nonDecreasing = false 
+		}
+	}
+	return nonIncreasing || nonDecreasing
+	
+}
+
+// Do not edit the line below.
+exports.isMonotonic = isMonotonic;
+
