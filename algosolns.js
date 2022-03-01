@@ -3666,4 +3666,35 @@ function spiralTraverse(array) {
 // Do not edit the line below.
 exports.spiralTraverse = spiralTraverse;
 
+function longestPeak(array) {
+  // O(n) time | O(1) space.
+	let longestPeakLength = 0;
+	let i = 1;
+	while(i < array.length - 1){
+		const isPeak = array[i-1] < array[i] && array[i+1] < array[i]
+		if(!isPeak){
+			i += 1;
+			continue;
+		}
+		let leftIdx = i - 2;
+		while(leftIdx >= 0 && array[leftIdx] < array[leftIdx + 1]){
+			leftIdx--;
+		}
+		 let rightIdx = i + 2;
+		 while(rightIdx < array.length && array[rightIdx] < array[rightIdx - 1]){
+			 rightIdx++;
+		 }
+		
+		 let currentPeakLength = rightIdx - leftIdx - 1
+		 
+		 longestPeakLength = Math.max(longestPeakLength, currentPeakLength)
+		 i = rightIdx;
+	}
+	 return longestPeakLength;
+}
+
+// Do not edit the line below.
+exports.longestPeak = longestPeak;
+
+
 
