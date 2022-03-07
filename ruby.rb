@@ -861,11 +861,43 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 #   my_counter **= 2
 # end
 
-arr = [2, 3]
+# arr = [2, 3]
 
-arr[2] = 4
-arr[4] = 6
+# arr[2] = 4
+# arr[4] = 6
+
+# p arr
+# p arr[3]
+
+# require 'erb'
+
+# x = 42
+
+# template = ERB.new <<-EOF
+#   The value of x is: <%= x %>
+# EOF
+
+
+# clauses =  [
+#             { 'id': 1, 'text': 'The quick brown fox' },
+#             { 'id': 2, 'text': 'Jumps over the lazy dog' },
+#             { 'id': 3, 'text': 'And dies' },
+#             { 'id': 4, 'text': 'The white horse is white' },
+#           ] 
+
+# p clauses[0][:text]
+# p clauses[1][:text]
+# p clauses[2][:text]
+#  clauses[3][:text]
+
+# sections = [
+#              { "id": 1, "clauses_ids": [1, 2] }
+#            ] 
+           
+#  puts sections[0][:clauses_ids] = [clauses[0][:text], clauses[1][:text]]         
+
+arr = Array.new(5).fill(1)
 
 p arr
-p arr[3]
 
+p true.class

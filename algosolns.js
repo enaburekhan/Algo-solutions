@@ -3419,22 +3419,6 @@
 // // Do not edit the line below.
 // exports.tournamentWinner = tournamentWinner;
 
-// function fizzBuzz(min, max){
-//   for(let i=min; i <= max; i++){
-//     if(i % 3 === 0 && i % 5 === 0){
-//       console.log('FizzBuzz')
-//     }else if(i % 5 === 0){
-//        console.log('Buzz');
-//     }else if (i % 3 === 0){
-//       console.log('Fuzz');
-//     }else {
-//       console.log(i)
-//     }
-//   }
-// }
-
-// console.log(fizzBuzz(1, 100))
-
 // function reverseNum(num){
 //   return(
 //     parseFloat(
@@ -3594,128 +3578,163 @@
 
 /* Kadane's algorithm */
 
-function kadanesAlgorithm(array) {
+// function kadanesAlgorithm(array) {
   // O(n) time | O(1) space.
-	let maxEndingHere = array[0];
-	let maxSoFar = array[0];
-	for(let i=1; i < array.length; i++){
-		let num = array[i];
-		maxEndingHere = Math.max(num, maxEndingHere + num);
-		maxSoFar = Math.max(maxSoFar, maxEndingHere)
-	}
-	 return maxSoFar
-}
+// 	let maxEndingHere = array[0];
+// 	let maxSoFar = array[0];
+// 	for(let i=1; i < array.length; i++){
+// 		let num = array[i];
+// 		maxEndingHere = Math.max(num, maxEndingHere + num);
+// 		maxSoFar = Math.max(maxSoFar, maxEndingHere)
+// 	}
+// 	 return maxSoFar
+// }
 
 // Do not edit the line below.
-exports.kadanesAlgorithm = kadanesAlgorithm;
+// exports.kadanesAlgorithm = kadanesAlgorithm;
 
 
-function isMonotonic(array) {
+// function isMonotonic(array) {
   // O(n) time | O(1) space.
-	let nonIncreasing = true;
-	let nonDecreasing = true;
+// 	let nonIncreasing = true;
+// 	let nonDecreasing = true;
 	
-	for(let i=1; i < array.length; i++){
-		if(array[i] > array[i-1]){
-			nonIncreasing = false
-		}else if(array[i] < array[i-1]){
-			nonDecreasing = false 
-		}
-	}
-	return nonIncreasing || nonDecreasing
+// 	for(let i=1; i < array.length; i++){
+// 		if(array[i] > array[i-1]){
+// 			nonIncreasing = false
+// 		}else if(array[i] < array[i-1]){
+// 			nonDecreasing = false 
+// 		}
+// 	}
+// 	return nonIncreasing || nonDecreasing
 	
-}
+// }
 
 // Do not edit the line below.
-exports.isMonotonic = isMonotonic;
+// exports.isMonotonic = isMonotonic;
 
 
-function spiralTraverse(array) {
+// function spiralTraverse(array) {
   // O(n) time | O(n) space
-	const result = [];
-	let startRow = 0,
-			endRow = array.length - 1;
-	let startCol = 0,
-			endCol = array[0].length - 1
+// 	const result = [];
+// 	let startRow = 0,
+// 			endRow = array.length - 1;
+// 	let startCol = 0,
+// 			endCol = array[0].length - 1
 	
-	while (startRow <= endRow && startCol <= endCol){
-		for(let col = startCol; col <= endCol; col++){
-			result.push(array[startRow][col])
-		}
-		for(let row = startRow + 1; row <= endRow; row++){
-			result.push(array[row][endCol])
-		}
-		for(let col = endCol - 1; col >= startCol; col--){
-			if(startRow === endRow) break;
-			result.push(array[endRow][col])
-		}
+// 	while (startRow <= endRow && startCol <= endCol){
+// 		for(let col = startCol; col <= endCol; col++){
+// 			result.push(array[startRow][col])
+// 		}
+// 		for(let row = startRow + 1; row <= endRow; row++){
+// 			result.push(array[row][endCol])
+// 		}
+// 		for(let col = endCol - 1; col >= startCol; col--){
+// 			if(startRow === endRow) break;
+// 			result.push(array[endRow][col])
+// 		}
 		
-		for(let row = endRow -1; row > startRow; row--){
-			if(startCol === endCol) break;
-			result.push(array[row][startCol])
-		}
+// 		for(let row = endRow -1; row > startRow; row--){
+// 			if(startCol === endCol) break;
+// 			result.push(array[row][startCol])
+// 		}
 		
-		startRow++;
-		endRow--
-		startCol++
-		endCol--
-	}
-		return result	
-}
+// 		startRow++;
+// 		endRow--
+// 		startCol++
+// 		endCol--
+// 	}
+// 		return result	
+// }
 
 // Do not edit the line below.
-exports.spiralTraverse = spiralTraverse;
+// exports.spiralTraverse = spiralTraverse;
 
-function longestPeak(array) {
+// function longestPeak(array) {
   // O(n) time | O(1) space.
-	let longestPeakLength = 0;
-	let i = 1;
-	while(i < array.length - 1){
-		const isPeak = array[i-1] < array[i] && array[i+1] < array[i]
-		if(!isPeak){
-			i += 1;
-			continue;
-		}
-		let leftIdx = i - 2;
-		while(leftIdx >= 0 && array[leftIdx] < array[leftIdx + 1]){
-			leftIdx--;
-		}
-		 let rightIdx = i + 2;
-		 while(rightIdx < array.length && array[rightIdx] < array[rightIdx - 1]){
-			 rightIdx++;
-		 }
+// 	let longestPeakLength = 0;
+// 	let i = 1;
+// 	while(i < array.length - 1){
+// 		const isPeak = array[i-1] < array[i] && array[i+1] < array[i]
+// 		if(!isPeak){
+// 			i += 1;
+// 			continue;
+// 		}
+// 		let leftIdx = i - 2;
+// 		while(leftIdx >= 0 && array[leftIdx] < array[leftIdx + 1]){
+// 			leftIdx--;
+// 		}
+// 		 let rightIdx = i + 2;
+// 		 while(rightIdx < array.length && array[rightIdx] < array[rightIdx - 1]){
+// 			 rightIdx++;
+// 		 }
 		
-		 let currentPeakLength = rightIdx - leftIdx - 1
+// 		 let currentPeakLength = rightIdx - leftIdx - 1
 		 
-		 longestPeakLength = Math.max(longestPeakLength, currentPeakLength)
-		 i = rightIdx;
-	}
-	 return longestPeakLength;
-}
+// 		 longestPeakLength = Math.max(longestPeakLength, currentPeakLength)
+// 		 i = rightIdx;
+// 	}
+// 	 return longestPeakLength;
+// }
 
 // Do not edit the line below.
-exports.longestPeak = longestPeak;
+// exports.longestPeak = longestPeak;
 
-function arrayOfProducts(array) {
-  // O(n^2) time | O(n) space.
-	const product = [];
+
+/* solve array of products */
+
+// function arrayOfProducts(array) {
+//   // O(n^2) time | O(n) space.
+// 	const product = [];
 	
-	for(let i = 0; i < array.length; i++){
-		 let runningProduct = 1;
-		for(let j=0; j < array.length; j++){
-			if(i !== j){
-				runningProduct *= array[j]
-			}
-			product[i] = runningProduct
-		}
+// 	for(let i = 0; i < array.length; i++){
+// 		 let runningProduct = 1;
+// 		for(let j=0; j < array.length; j++){
+// 			if(i !== j){
+// 				runningProduct *= array[j]
+// 			}
+// 			product[i] = runningProduct
+// 		}
 		 
-	}
-	 return product;
-}
+// 	}
+// 	 return product;
+// }
 
 // Do not edit the line below.
-exports.arrayOfProducts = arrayOfProducts;
+// exports.arrayOfProducts = arrayOfProducts;
 
 
+
+// function fizzBuzz(min, max){
+//   for(let i=min; i <= max; i++){
+//     if(i % 3 === 0 && i % 5 === 0){
+//       console.log('FizzBuzz')
+//     }else if(i % 5 === 0){
+//        console.log('Buzz');
+//     }else if (i % 3 === 0){
+//       console.log('Fuzz');
+//     }else {
+//       console.log(i)
+//     }
+//   }
+// }
+
+// console.log(fizzBuzz(1, 100))
+
+
+/* Solve first duplicate value */
+function firstDuplicateValue(array) {
+  // O(n^2) time | O(1) space.
+  let minimumSecondIndex = array.length;
+	for(let i=0; i < array.length; i++){
+		for(let j=i+1; j < array.length; j++){
+			if(array[i] === array[j]){
+				minimumSecondIndex = Math.min(minimumSecondIndex, j)
+			}
+		}
+	}
+	 if (minimumSecondIndex === array.length) return -1
+	 return array[minimumSecondIndex];
+}
 
 
