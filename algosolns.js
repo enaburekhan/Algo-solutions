@@ -3723,37 +3723,63 @@
 
 
 /* Solve first duplicate value */
-function firstDuplicateValue(array) {
+// function firstDuplicateValue(array) {
   // O(n^2) time | O(1) space.
-  let minimumSecondIndex = array.length;
-	for(let i=0; i < array.length; i++){
-		for(let j=i+1; j < array.length; j++){
-			if(array[i] === array[j]){
-				minimumSecondIndex = Math.min(minimumSecondIndex, j)
-			}
+//   let minimumSecondIndex = array.length;
+// 	for(let i=0; i < array.length; i++){
+// 		for(let j=i+1; j < array.length; j++){
+// 			if(array[i] === array[j]){
+// 				minimumSecondIndex = Math.min(minimumSecondIndex, j)
+// 			}
+// 		}
+// 	}
+// 	 if (minimumSecondIndex === array.length) return -1
+// 	 return array[minimumSecondIndex];
+// }
+
+// function firstDuplicateValue(array) {
+  // O(n) time | O(n) space.
+//   const seen = new Set();
+// 	for(const value of array){
+// 		if(seen.has(value)) return value
+// 		seen.add(value)	
+// 	}
+// 	 return -1
+// }
+
+// function firstDuplicateValue(array) {
+  // O(n) time | O(1) space - where n is the length of the input array.
+//   for(const value of array){
+// 		const absValue = Math.abs(value)
+// 		if(array[absValue - 1] < 0) return absValue
+// 		array[absValue - 1] *= -1
+// 	}
+// 	 return -1
+// }
+
+
+function mergeOverlappingIntervals(array) {
+  // O(nlogn) time | O(n) space. Where n is the length of the input array
+	const sortedArray = array.sort((a,b) => a[0] - b[0]);
+	const mergedArray = [];
+	let currentInterval = sortedArray[0];
+	mergedArray.push(currentInterval);
+	
+	for(const nextInterval of sortedArray){
+		const [_, currentIntervalEnd] = currentInterval;
+		const [nextIntervalStart, nextIntervalEnd] = nextInterval;
+		if(currentIntervalEnd >= nextIntervalStart){
+			currentInterval[1] = Math.max(currentIntervalEnd, nextIntervalEnd)
+			
+		}else{
+			currentInterval = nextInterval
+			mergedArray.push(currentInterval)
 		}
 	}
-	 if (minimumSecondIndex === array.length) return -1
-	 return array[minimumSecondIndex];
+	 return mergedArray;
 }
 
-function firstDuplicateValue(array) {
-  // O(n) time | O(n) space.
-  const seen = new Set();
-	for(const value of array){
-		if(seen.has(value)) return value
-		seen.add(value)	
-	}
-	 return -1
-}
+// Do not edit the line below.
+exports.mergeOverlappingIntervals = mergeOverlappingIntervals;
 
-function firstDuplicateValue(array) {
-  // O(n) time | O(1) space - where n is the length of the input array.
-  for(const value of array){
-		const absValue = Math.abs(value)
-		if(array[absValue - 1] < 0) return absValue
-		array[absValue - 1] *= -1
-	}
-	 return -1
-}
 

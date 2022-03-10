@@ -896,8 +896,51 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
            
 #  puts sections[0][:clauses_ids] = [clauses[0][:text], clauses[1][:text]]         
 
-arr = Array.new(5).fill(1)
+# arr = Array.new(5).fill(1)
 
-p arr
+# p arr
 
-p true.class
+# p true.class
+
+
+# def buy_milk
+# "got milk"
+# end
+# def buy_bacon
+# raise "No bacon left!"
+# end
+# def go_shopping
+# buy_milk
+# buy_bacon
+# end
+# go_shopping
+
+
+# animal = 'cat'
+
+# puts "Hello nice #{animal} you have there!"
+
+# see = " he ll o ".gsub(/^\s+/, '')
+
+# p see
+# puts see
+
+# str = 'ABCD-123'
+
+# p str.split('-')
+
+# puts "Please type your name: "
+# name = gets.chomp
+# puts "#{name}, you are welcome to my world"
+
+# puts 'hello world'[0..4]
+
+# puts 'hello world'[0..-1]
+
+# "Ruby is cool".chars { |ch| p ch }
+
+# puts 'ascii'.chars.map(&:ord)
+
+str = 'My cat is black'
+str[0] = ''
+p str
