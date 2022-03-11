@@ -3758,28 +3758,51 @@
 // }
 
 
-function mergeOverlappingIntervals(array) {
+// function mergeOverlappingIntervals(array) {
   // O(nlogn) time | O(n) space. Where n is the length of the input array
-	const sortedArray = array.sort((a,b) => a[0] - b[0]);
-	const mergedArray = [];
-	let currentInterval = sortedArray[0];
-	mergedArray.push(currentInterval);
+// 	const sortedArray = array.sort((a,b) => a[0] - b[0]);
+// 	const mergedArray = [];
+// 	let currentInterval = sortedArray[0];
+// 	mergedArray.push(currentInterval);
 	
-	for(const nextInterval of sortedArray){
-		const [_, currentIntervalEnd] = currentInterval;
-		const [nextIntervalStart, nextIntervalEnd] = nextInterval;
-		if(currentIntervalEnd >= nextIntervalStart){
-			currentInterval[1] = Math.max(currentIntervalEnd, nextIntervalEnd)
+// 	for(const nextInterval of sortedArray){
+// 		const [_, currentIntervalEnd] = currentInterval;
+// 		const [nextIntervalStart, nextIntervalEnd] = nextInterval;
+// 		if(currentIntervalEnd >= nextIntervalStart){
+// 			currentInterval[1] = Math.max(currentIntervalEnd, nextIntervalEnd)
 			
-		}else{
-			currentInterval = nextInterval
-			mergedArray.push(currentInterval)
-		}
-	}
-	 return mergedArray;
-}
+// 		}else{
+// 			currentInterval = nextInterval
+// 			mergedArray.push(currentInterval)
+// 		}
+// 	}
+// 	 return mergedArray;
+// }
 
 // Do not edit the line below.
-exports.mergeOverlappingIntervals = mergeOverlappingIntervals;
+// exports.mergeOverlappingIntervals = mergeOverlappingIntervals;
+
+// const a = String('11' + 1);
+// console.log(
+//   a
+// )
 
 
+function beautifulDays(i, j, k) {
+  // Write your code here
+  // loop thru the range from i to j
+  // i-reverse(i) % k === 0 count += 1
+  let count = 0;
+   for(let idx = i; idx <= j; idx++){
+       if((idx - reverse(idx)) % k === 0){
+           count += 1;
+       }
+   }
+   return count;
+}
+
+function reverse(index){
+ return parseInt(
+     index.toString().split('').reverse().join('') 
+ )
+}
