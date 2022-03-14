@@ -941,6 +941,36 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 
 # puts 'ascii'.chars.map(&:ord)
 
-str = 'My cat is black'
-str[0] = ''
-p str
+# str = 'My cat is black'
+# str[0] = ''
+# p str
+
+# letters = ['a','b','c','d']
+# p letters.insert(2, 'test')
+# p letters.size
+
+# [[1, 2, 3], [4, 5, 6]].flat_map { |a| p a.inject(:+) }
+
+# numbers = [1, 3, 3, 5, 5]
+# p numbers.uniq
+# p numbers.take(3)
+# p numbers[0,3]
+
+# count = {}
+def count_str(str)
+  count = {}
+  str.each_char do |ch|
+    if count.key?(ch)
+      count[ch] += 1
+    else
+      count[ch] = 1      
+    end
+  end
+  count    
+end
+
+str = "aabbbaa"
+p count_str(str)
+
+
+
