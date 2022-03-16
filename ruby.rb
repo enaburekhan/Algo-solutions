@@ -957,20 +957,49 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 # p numbers[0,3]
 
 # count = {}
-def count_str(str)
-  count = {}
-  str.each_char do |ch|
-    if count.key?(ch)
-      count[ch] += 1
-    else
-      count[ch] = 1      
-    end
-  end
-  count    
-end
+# def count_str(str)
+#   count = {}
+#   str.each_char do |ch|
+#     if count.key?(ch)
+#       count[ch] += 1
+#     else
+#       count[ch] = 1      
+#     end
+#   end
+#   count    
+# end
 
-str = "aabbbaa"
-p count_str(str)
+# str = "aabbbaa"
+# p count_str(str)
+
+# h = { name: 'Jose', age: 29 }
+
+# puts h.merge(age: 30, city: 'Spain')
+
+# class UrlFetcher
+#   attr_reader :config
+#   def initialize(url, options = {})
+#     @config = {
+#       url: url,
+#       port: 80,
+#       verb: "get",
+#       protocol: "http"
+#     }
+#     @config.merge!(options)
+#   end
+# end
+
+#   fetcher = UrlFetcher.new("example.com", port: 8080)
+#   p fetcher.config
 
 
 
+require 'set'
+
+product = Set.new()
+
+product << 1
+product << 1
+product << 2
+
+p product

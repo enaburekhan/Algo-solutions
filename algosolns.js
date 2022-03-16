@@ -3788,21 +3788,38 @@
 // )
 
 
-function beautifulDays(i, j, k) {
+// function beautifulDays(i, j, k) {
   // Write your code here
   // loop thru the range from i to j
   // i-reverse(i) % k === 0 count += 1
-  let count = 0;
-   for(let idx = i; idx <= j; idx++){
-       if((idx - reverse(idx)) % k === 0){
-           count += 1;
-       }
-   }
-   return count;
+//   let count = 0;
+//    for(let idx = i; idx <= j; idx++){
+//        if((idx - reverse(idx)) % k === 0){
+//            count += 1;
+//        }
+//    }
+//    return count;
+// }
+
+// function reverse(index){
+//  return parseInt(
+//      index.toString().split('').reverse().join('') 
+//  )
+// }
+
+
+function twoNumberSum(array, targetSum) {
+  // O(n^2) time | O(1) space.
+	for(let i = 0; i < array.length - 1; i++){
+		for(let j = i+1; j < array.length; j++){
+			if(array[i] + array[j] === targetSum){
+				return [array[i], array[j]];
+			}
+		}
+	}
+	 return [];
 }
 
-function reverse(index){
- return parseInt(
-     index.toString().split('').reverse().join('') 
- )
-}
+// Do not edit the line below.
+exports.twoNumberSum = twoNumberSum;
+
