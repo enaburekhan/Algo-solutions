@@ -3808,18 +3808,39 @@
 // }
 
 
-function twoNumberSum(array, targetSum) {
+// function twoNumberSum(array, targetSum) {
   // O(n^2) time | O(1) space.
-	for(let i = 0; i < array.length - 1; i++){
-		for(let j = i+1; j < array.length; j++){
-			if(array[i] + array[j] === targetSum){
-				return [array[i], array[j]];
-			}
-		}
-	}
-	 return [];
-}
+// 	for(let i = 0; i < array.length - 1; i++){
+// 		for(let j = i+1; j < array.length; j++){
+// 			if(array[i] + array[j] === targetSum){
+// 				return [array[i], array[j]];
+// 			}
+// 		}
+// 	}
+// 	 return [];
+// }
 
 // Do not edit the line below.
-exports.twoNumberSum = twoNumberSum;
+// exports.twoNumberSum = twoNumberSum;
+
+/* Solved tournament winner */
+function tournamentWinner(competitions, results) {
+  Write your code here.
+  let currentBestTeam = '';
+	const scores = {[currentBestTeam]: 0}
+	const Home_Team_Won = 1;
+	
+	for(let idx = 0; idx < competitions.length; idx++){
+		const result = results[idx];
+		const [homeTeam, awayTeam] = competitions[idx];
+		
+		const winningTeam = result === Home_Team_Won ? homeTeam : awayTeam
+		updateScores(winningTeam, 3, scores);
+		
+		if(scores[winningTeam] > scores[currentBestTeam]){
+			currentBestTeam = winningTeam
+		}
+	}
+	 return currentBestTeam;
+}
 

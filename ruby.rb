@@ -994,12 +994,22 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 
 
 
-require 'set'
+# require 'set'
 
-product = Set.new()
+# product = Set.new()
 
-product << 1
-product << 1
-product << 2
+# product << 1
+# product << 1
+# product << 2
 
-p product
+# p product
+
+# p true.class
+# p Array.class
+# p String.class
+# p Class.class
+
+# Person = Class.new
+# p john = Person.new
+
+p Array.ancestors
