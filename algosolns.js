@@ -3824,23 +3824,81 @@
 // exports.twoNumberSum = twoNumberSum;
 
 /* Solved tournament winner */
-function tournamentWinner(competitions, results) {
-  Write your code here.
-  let currentBestTeam = '';
-	const scores = {[currentBestTeam]: 0}
-	const Home_Team_Won = 1;
+// function tournamentWinner(competitions, results) {
+//   Write your code here.
+//   let currentBestTeam = '';
+// 	const scores = {[currentBestTeam]: 0}
+// 	const Home_Team_Won = 1;
 	
-	for(let idx = 0; idx < competitions.length; idx++){
-		const result = results[idx];
-		const [homeTeam, awayTeam] = competitions[idx];
+// 	for(let idx = 0; idx < competitions.length; idx++){
+// 		const result = results[idx];
+// 		const [homeTeam, awayTeam] = competitions[idx];
 		
-		const winningTeam = result === Home_Team_Won ? homeTeam : awayTeam
-		updateScores(winningTeam, 3, scores);
+// 		const winningTeam = result === Home_Team_Won ? homeTeam : awayTeam
+// 		updateScores(winningTeam, 3, scores);
 		
-		if(scores[winningTeam] > scores[currentBestTeam]){
-			currentBestTeam = winningTeam
+// 		if(scores[winningTeam] > scores[currentBestTeam]){
+// 			currentBestTeam = winningTeam
+// 		}
+// 	}
+// 	 return currentBestTeam;
+// }
+
+function subarraySort(array) {
+  // O(n) time | O(1) space. Where n is the length of the input array
+	let minOutOfOrder = Infinity;
+	let maxOutOfOrder = -Infinity;
+	
+	for(let i=0; i < array.length; i++){
+		const num = array[i];
+		if(isOutOfOrder(i, num, array)){
+			minOutOfOrder = Math.min(minOutOfOrder, num);
+			maxOutOfOrder = Math.max(maxOutOfOrder, num);
 		}
 	}
-	 return currentBestTeam;
+	if (minOutOfOrder === Infinity) return [-1, -1];
+	
+	let subArrayLeftIdx = 0;
+	while(minOutOfOrder >= array[subArrayLeftIdx]){
+		subArrayLeftIdx++;
+	}
+	let subArrayRightIdx = array.length - 1;
+	while(maxOutOfOrder <= array[subArrayRightIdx]){
+		subArrayRightIdx--;
+	}
+	return [subArrayLeftIdx, subArrayRightIdx];
 }
+
+function isOutOfOrder(i, num, array){
+	if(i === 0) return num > array[i+1];
+	if(i === array.length - 1) return num < array[i-1];
+	return num > array[i+1] || num < array[i-1]
+}
+
+// Do not edit the line below.
+exports.subarraySort = subarraySort;
+
+
+
+function dictionary(word) {
+  const count = [];
+  for(let i=0; i < word.length; i++){
+    if (word[i].includes(word[i].substr(0, word[i].length - 3)) && word[i].substr(0, word[i].length - 3).length === 4){
+      count.push(word[i].substr(0, word[i].length - 3), word[i])
+    } 
+    else if (word[i].includes(word[i].substr(0, word[i].length)) && word[i].substr(0, word[i].length).length === 4){
+      count.push(word[i].substr(0, word[i].length), word[i]) 
+    }
+    else if ((word[i].substr(0, word[i].length).length === 4) && !(word[i].substr(0, word[i].length)) 
+    ? word[i].substr(0, word[i].length) = true : false)
+     {
+       count.push(count.push(word[i].substr(1, word[i].length), word[i]) )
+    }
+    
+  }
+   return count;
+}
+
+const wrd = ['arrows', 'carrots', 'give', 'me']
+console.log(dictionary(wrd))
 

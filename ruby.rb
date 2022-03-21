@@ -1012,4 +1012,38 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 # Person = Class.new
 # p john = Person.new
 
-p Array.ancestors
+# p Array.ancestors
+
+# class Animal
+#   def self.test
+
+#   end    
+# end
+
+# p Animal.singleton_methods
+
+# s = "abcdefghi"
+# puts s[0, s.length - 3]  # => abcdef
+# puts s[0..-4]            # => abcdef
+
+def dictionary(words)
+  # dict = {}
+
+  # wrds.each do |ch|
+    # if dict.include?(ch) && ch.length === 4
+    #   dict[ch] << ch.slice(0..3)
+    # else
+    #   dict[ch] = ch.slice(0..3)   
+    # end
+
+     
+  # end
+  # dict
+
+  words.each do |wrd|
+    p wrd
+  end
+end
+
+wrd = ['arrows', 'carrots', 'give', 'me']
+p dictionary(wrd)
