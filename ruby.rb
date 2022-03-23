@@ -1026,7 +1026,7 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 # puts s[0, s.length - 3]  # => abcdef
 # puts s[0..-4]            # => abcdef
 
-def dictionary(words)
+# def dictionary(words)
   # dict = {}
 
   # wrds.each do |ch|
@@ -1040,10 +1040,29 @@ def dictionary(words)
   # end
   # dict
 
-  words.each do |wrd|
-    p wrd
-  end
-end
+#   words.each do |wrd|
+#     p wrd
+#   end
+# end
 
-wrd = ['arrows', 'carrots', 'give', 'me']
-p dictionary(wrd)
+# wrd = ['arrows', 'carrots', 'give', 'me']
+# p dictionary(wrd)
+
+
+# say_something = -> { "This is a lambda" }
+
+# p say_something.yield
+# p say_something.call
+
+# my_lambda = -> { puts "Lambda called" }
+# my_lambda.call
+# my_lambda.()
+# my_lambda[]
+# my_lambda.===
+# my_lambda.yield
+
+# transform = ['dog', 'cat'].map(&:capitalize)
+# p transform
+
+p [48, 75, 19, 12, 21].sort_by { |n| n.to_s[-1] }
+

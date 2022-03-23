@@ -3844,61 +3844,100 @@
 // 	 return currentBestTeam;
 // }
 
-function subarraySort(array) {
-  // O(n) time | O(1) space. Where n is the length of the input array
-	let minOutOfOrder = Infinity;
-	let maxOutOfOrder = -Infinity;
+// function subarraySort(array) {
+//   // O(n) time | O(1) space. Where n is the length of the input array
+// 	let minOutOfOrder = Infinity;
+// 	let maxOutOfOrder = -Infinity;
 	
-	for(let i=0; i < array.length; i++){
-		const num = array[i];
-		if(isOutOfOrder(i, num, array)){
-			minOutOfOrder = Math.min(minOutOfOrder, num);
-			maxOutOfOrder = Math.max(maxOutOfOrder, num);
+// 	for(let i=0; i < array.length; i++){
+// 		const num = array[i];
+// 		if(isOutOfOrder(i, num, array)){
+// 			minOutOfOrder = Math.min(minOutOfOrder, num);
+// 			maxOutOfOrder = Math.max(maxOutOfOrder, num);
+// 		}
+// 	}
+// 	if (minOutOfOrder === Infinity) return [-1, -1];
+	
+// 	let subArrayLeftIdx = 0;
+// 	while(minOutOfOrder >= array[subArrayLeftIdx]){
+// 		subArrayLeftIdx++;
+// 	}
+// 	let subArrayRightIdx = array.length - 1;
+// 	while(maxOutOfOrder <= array[subArrayRightIdx]){
+// 		subArrayRightIdx--;
+// 	}
+// 	return [subArrayLeftIdx, subArrayRightIdx];
+// }
+
+// function isOutOfOrder(i, num, array){
+// 	if(i === 0) return num > array[i+1];
+// 	if(i === array.length - 1) return num < array[i-1];
+// 	return num > array[i+1] || num < array[i-1]
+// }
+
+// Do not edit the line below.
+// exports.subarraySort = subarraySort;
+
+
+
+// function dictionary(word) {
+//   const count = [];
+//   for(let i=0; i < word.length; i++){
+//     if (word[i].includes(word[i].substr(0, word[i].length - 3)) && word[i].substr(0, word[i].length - 3).length === 4){
+//       count.push(word[i].substr(0, word[i].length - 3), word[i])
+//     } 
+//     else if (word[i].includes(word[i].substr(0, word[i].length)) && word[i].substr(0, word[i].length).length === 4){
+//       count.push(word[i].substr(0, word[i].length), word[i]) 
+//     }
+//     else if ((word[i].substr(0, word[i].length).length === 4) && !(word[i].substr(0, word[i].length)) 
+//     ? word[i].substr(0, word[i].length) = true : false)
+//      {
+//        count.push(count.push(word[i].substr(1, word[i].length), word[i]) )
+//     }
+    
+//   }
+//    return count;
+// }
+
+// const wrd = ['arrows', 'carrots', 'give', 'me']
+// console.log(dictionary(wrd))
+
+
+function largestRange(array) {
+  // O(n) time | O(n) space. where n is the length of the input array.
+	const nums = {};
+	let bestRange = [];
+	let longestLength = 0;
+	
+	for(const num of array){
+		nums[num] = true;
+	}
+	for(const num of array){
+		if(!nums[num]) continue;
+		nums[num] = false;
+		let currentLength = 1;
+		let left = num - 1;
+		let right = num + 1;
+		
+		while(left in nums){
+			nums[left] = false;
+			currentLength++;
+			left--
+		}
+		while(right in nums){
+			nums[right] = false;
+			currentLength++;
+			right++
+		}
+		if(currentLength > longestLength){
+			longestLength = currentLength;
+			bestRange = [left + 1, right - 1];
 		}
 	}
-	if (minOutOfOrder === Infinity) return [-1, -1];
-	
-	let subArrayLeftIdx = 0;
-	while(minOutOfOrder >= array[subArrayLeftIdx]){
-		subArrayLeftIdx++;
-	}
-	let subArrayRightIdx = array.length - 1;
-	while(maxOutOfOrder <= array[subArrayRightIdx]){
-		subArrayRightIdx--;
-	}
-	return [subArrayLeftIdx, subArrayRightIdx];
-}
-
-function isOutOfOrder(i, num, array){
-	if(i === 0) return num > array[i+1];
-	if(i === array.length - 1) return num < array[i-1];
-	return num > array[i+1] || num < array[i-1]
+	 return bestRange;
 }
 
 // Do not edit the line below.
-exports.subarraySort = subarraySort;
+exports.largestRange = largestRange;
 
-
-
-function dictionary(word) {
-  const count = [];
-  for(let i=0; i < word.length; i++){
-    if (word[i].includes(word[i].substr(0, word[i].length - 3)) && word[i].substr(0, word[i].length - 3).length === 4){
-      count.push(word[i].substr(0, word[i].length - 3), word[i])
-    } 
-    else if (word[i].includes(word[i].substr(0, word[i].length)) && word[i].substr(0, word[i].length).length === 4){
-      count.push(word[i].substr(0, word[i].length), word[i]) 
-    }
-    else if ((word[i].substr(0, word[i].length).length === 4) && !(word[i].substr(0, word[i].length)) 
-    ? word[i].substr(0, word[i].length) = true : false)
-     {
-       count.push(count.push(word[i].substr(1, word[i].length), word[i]) )
-    }
-    
-  }
-   return count;
-}
-
-const wrd = ['arrows', 'carrots', 'give', 'me']
-console.log(dictionary(wrd))
 
