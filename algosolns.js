@@ -3903,41 +3903,63 @@
 // console.log(dictionary(wrd))
 
 
-function largestRange(array) {
+// function largestRange(array) {
   // O(n) time | O(n) space. where n is the length of the input array.
-	const nums = {};
-	let bestRange = [];
-	let longestLength = 0;
+// 	const nums = {};
+// 	let bestRange = [];
+// 	let longestLength = 0;
 	
-	for(const num of array){
-		nums[num] = true;
-	}
-	for(const num of array){
-		if(!nums[num]) continue;
-		nums[num] = false;
-		let currentLength = 1;
-		let left = num - 1;
-		let right = num + 1;
+// 	for(const num of array){
+// 		nums[num] = true;
+// 	}
+// 	for(const num of array){
+// 		if(!nums[num]) continue;
+// 		nums[num] = false;
+// 		let currentLength = 1;
+// 		let left = num - 1;
+// 		let right = num + 1;
 		
-		while(left in nums){
-			nums[left] = false;
-			currentLength++;
-			left--
-		}
-		while(right in nums){
-			nums[right] = false;
-			currentLength++;
-			right++
-		}
-		if(currentLength > longestLength){
-			longestLength = currentLength;
-			bestRange = [left + 1, right - 1];
+// 		while(left in nums){
+// 			nums[left] = false;
+// 			currentLength++;
+// 			left--
+// 		}
+// 		while(right in nums){
+// 			nums[right] = false;
+// 			currentLength++;
+// 			right++
+// 		}
+// 		if(currentLength > longestLength){
+// 			longestLength = currentLength;
+// 			bestRange = [left + 1, right - 1];
+// 		}
+// 	}
+// 	 return bestRange;
+// }
+
+// // Do not edit the line below.
+// exports.largestRange = largestRange;
+
+
+function minRewards(scores) {
+  // O(n^2) time | O(n) space. Where n is the length of the input scores
+	const rewards = scores.map(_ => 1)
+	for(let i=1; i < scores.length; i++){
+		let j = i - 1;
+		if(scores[i] > scores[j]){
+			rewards[i] = rewards[j] + 1
+		}else{
+			while(j >= 0 && scores[j] > scores[j+1]){
+				rewards[j] = Math.max(rewards[j], rewards[j+1] + 1)
+				j--
+			}
 		}
 	}
-	 return bestRange;
+	return rewards.reduce((a, b) => a + b)
 }
 
 // Do not edit the line below.
-exports.largestRange = largestRange;
+exports.minRewards = minRewards;
+
 
 
