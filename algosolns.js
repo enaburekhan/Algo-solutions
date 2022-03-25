@@ -3941,25 +3941,50 @@
 // exports.largestRange = largestRange;
 
 
-function minRewards(scores) {
-  // O(n^2) time | O(n) space. Where n is the length of the input scores
-	const rewards = scores.map(_ => 1)
-	for(let i=1; i < scores.length; i++){
-		let j = i - 1;
-		if(scores[i] > scores[j]){
-			rewards[i] = rewards[j] + 1
-		}else{
-			while(j >= 0 && scores[j] > scores[j+1]){
-				rewards[j] = Math.max(rewards[j], rewards[j+1] + 1)
-				j--
-			}
-		}
-	}
-	return rewards.reduce((a, b) => a + b)
+// function minRewards(scores) {
+//   // O(n^2) time | O(n) space. Where n is the length of the input scores
+// 	const rewards = scores.map(_ => 1)
+// 	for(let i=1; i < scores.length; i++){
+// 		let j = i - 1;
+// 		if(scores[i] > scores[j]){
+// 			rewards[i] = rewards[j] + 1
+// 		}else{
+// 			while(j >= 0 && scores[j] > scores[j+1]){
+// 				rewards[j] = Math.max(rewards[j], rewards[j+1] + 1)
+// 				j--
+// 			}
+// 		}
+// 	}
+// 	return rewards.reduce((a, b) => a + b)
+// }
+
+// // Do not edit the line below.
+// exports.minRewards = minRewards;
+
+
+function addBinary(a,b){
+  let result = '';
+  let carry = 0;
+
+  while(a || b || carry){
+    let sum = +a.slice(-1) + +b.slice(-1) + carry;
+    if(sum > 1){
+      result = sum % 2 + result;
+      carry = 1
+    }else{
+      result = sum + result;
+      carry = 0;
+    }
+    a = a.slice(0, -1);
+    b = b.slice(0, -1);
+  }
+  return result;
 }
 
-// Do not edit the line below.
-exports.minRewards = minRewards;
+let c = "1010";
+let d = "1011";
+console.log(addBinary(c, d))
+// Output: "10101"
 
 
 
