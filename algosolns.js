@@ -3962,29 +3962,53 @@
 // exports.minRewards = minRewards;
 
 
-function addBinary(a,b){
-  let result = '';
-  let carry = 0;
+// function addBinary(a,b){
+//   let result = '';
+//   let carry = 0;
 
-  while(a || b || carry){
-    let sum = +a.slice(-1) + +b.slice(-1) + carry;
-    if(sum > 1){
-      result = sum % 2 + result;
-      carry = 1
-    }else{
-      result = sum + result;
-      carry = 0;
-    }
-    a = a.slice(0, -1);
-    b = b.slice(0, -1);
-  }
-  return result;
+//   while(a || b || carry){
+//     let sum = +a.slice(-1) + +b.slice(-1) + carry;
+//     if(sum > 1){
+//       result = sum % 2 + result;
+//       carry = 1
+//     }else{
+//       result = sum + result;
+//       carry = 0;
+//     }
+//     a = a.slice(0, -1);
+//     b = b.slice(0, -1);
+//   }
+//   return result;
+// }
+
+// let c = "1010";
+// let d = "1011";
+// console.log(addBinary(c, d))
+// Output: "10101"
+
+// a = '1010'
+
+// console.log(a.pop());
+
+function minRewards(scores) {
+  // O(n) time | O(n) space.
+	const rewards = scores.map(_ => 1);
+	for(let i=1; i < scores.length; i++){
+		if(scores[i] > scores[i-1]){
+			rewards[i] = rewards[i-1] + 1
+		}
+		for(let i = scores.length - 2; i >= 0; i--){
+			if(scores[i] > scores[i+1]){
+				rewards[i] = Math.max(rewards[i], rewards[i+1] + 1)
+			}
+		}
+	}
+	return rewards.reduce((a,b) => a + b);
 }
 
-let c = "1010";
-let d = "1011";
-console.log(addBinary(c, d))
-// Output: "10101"
+// Do not edit the line below.
+exports.minRewards = minRewards;
+
 
 
 

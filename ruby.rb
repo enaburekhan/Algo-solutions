@@ -1064,5 +1064,9 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 # transform = ['dog', 'cat'].map(&:capitalize)
 # p transform
 
-p [48, 75, 19, 12, 21].sort_by { |n| n.to_s[-1] }
+# p [48, 75, 19, 12, 21].sort_by { |n| n.to_s[-1] }
+
+big_array = Array[5]
+
+p big_array
 
