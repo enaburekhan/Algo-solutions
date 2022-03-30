@@ -1066,7 +1066,37 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 
 # p [48, 75, 19, 12, 21].sort_by { |n| n.to_s[-1] }
 
-big_array = Array[5]
+# big_array = Array[5]
 
-p big_array
+# p big_array
 
+# def my_method
+#   {a: 2}
+# end
+
+#  p my_method[:a]
+
+# def f(n)
+#   return 1 if n == 1 or n == 2
+
+#   f(n-1) + f(n-2)
+# end
+
+# p f(10)
+
+def sumFibs(n)
+ prevNum = 0
+ currNum = 1
+ result = 0
+
+ while currNum <= n do
+   if currNum % 2 == 1
+    result += currNum
+   end
+   currNum = currNum + prevNum
+   prevNum = currNum - prevNum
+ end
+  result
+end
+
+p sumFibs(10)
