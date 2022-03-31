@@ -4009,6 +4009,16 @@ function minRewards(scores) {
 // Do not edit the line below.
 exports.minRewards = minRewards;
 
-
+function kadanesAlgorithm(array) {
+  O(n) time | O(1) space.
+	let maxEndingHere = array[0];
+	let maxSoFar = array[0];
+	for(let i=1; i < array.length; i++){
+		let num = array[i];
+		maxEndingHere = Math.max(num, maxEndingHere + num);
+		maxSoFar = Math.max(maxSoFar, maxEndingHere)
+	}
+	 return maxSoFar
+}
 
 
