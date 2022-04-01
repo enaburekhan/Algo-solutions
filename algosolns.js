@@ -3990,35 +3990,41 @@
 
 // console.log(a.pop());
 
-function minRewards(scores) {
+// function minRewards(scores) {
   // O(n) time | O(n) space.
-	const rewards = scores.map(_ => 1);
-	for(let i=1; i < scores.length; i++){
-		if(scores[i] > scores[i-1]){
-			rewards[i] = rewards[i-1] + 1
-		}
-		for(let i = scores.length - 2; i >= 0; i--){
-			if(scores[i] > scores[i+1]){
-				rewards[i] = Math.max(rewards[i], rewards[i+1] + 1)
-			}
-		}
-	}
-	return rewards.reduce((a,b) => a + b);
-}
+// 	const rewards = scores.map(_ => 1);
+// 	for(let i=1; i < scores.length; i++){
+// 		if(scores[i] > scores[i-1]){
+// 			rewards[i] = rewards[i-1] + 1
+// 		}
+// 		for(let i = scores.length - 2; i >= 0; i--){
+// 			if(scores[i] > scores[i+1]){
+// 				rewards[i] = Math.max(rewards[i], rewards[i+1] + 1)
+// 			}
+// 		}
+// 	}
+// 	return rewards.reduce((a,b) => a + b);
+// }
 
 // Do not edit the line below.
-exports.minRewards = minRewards;
+// exports.minRewards = minRewards;
 
-function kadanesAlgorithm(array) {
-  O(n) time | O(1) space.
-	let maxEndingHere = array[0];
-	let maxSoFar = array[0];
-	for(let i=1; i < array.length; i++){
-		let num = array[i];
-		maxEndingHere = Math.max(num, maxEndingHere + num);
-		maxSoFar = Math.max(maxSoFar, maxEndingHere)
-	}
-	 return maxSoFar
+// function kadanesAlgorithm(array) {
+//   O(n) time | O(1) space.
+// 	let maxEndingHere = array[0];
+// 	let maxSoFar = array[0];
+// 	for(let i=1; i < array.length; i++){
+// 		let num = array[i];
+// 		maxEndingHere = Math.max(num, maxEndingHere + num);
+// 		maxSoFar = Math.max(maxSoFar, maxEndingHere)
+// 	}
+// 	 return maxSoFar
+// }
+
+
+function sqrt(x){
+  return parseInt(Math.sqrt(x).toString().split('.')[0])
 }
 
-
+console.log(sqrt(4))
+// 2
