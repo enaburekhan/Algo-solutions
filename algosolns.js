@@ -4022,9 +4022,27 @@
 // }
 
 
-function sqrt(x){
-  return parseInt(Math.sqrt(x).toString().split('.')[0])
+// function sqrt(x){
+//   return parseInt(Math.sqrt(x).toString().split('.')[0])
+// }
+
+// console.log(sqrt(4))
+// 2
+
+
+function removeDuplicates(num){
+  let i = 0;
+  let j = i+1;
+  while(j < num.length){
+    if(num[i] !== num[j]){
+      i++;
+      num[i] = num[j]
+    }
+    j++;
+  }
+   return i+1;
 }
 
-console.log(sqrt(4))
-// 2
+
+const nums = [6,6,1,1,1,2,2,3,3,4]
+console.log(removeDuplicates(nums))
