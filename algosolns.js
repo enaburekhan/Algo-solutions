@@ -4046,3 +4046,17 @@ function removeDuplicates(num){
 
 const nums = [6,6,1,1,1,2,2,3,3,4]
 console.log(removeDuplicates(nums))
+
+
+function getNthFib(n) {
+  // O(2^n) time | O(n) space
+	if (n === 2) {
+		return 1
+	}else if(n === 1){
+		return 0
+	}else{
+		return getNthFib(n-1) + getNthFib(n-2)
+	}
+}
+// Do not edit the line below.
+exports.getNthFib = getNthFib;

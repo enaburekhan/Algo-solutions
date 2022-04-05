@@ -1084,19 +1084,45 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 
 # p f(10)
 
-def sumFibs(n)
- prevNum = 0
- currNum = 1
- result = 0
+# def sumFibs(n)
+#  prevNum = 0
+#  currNum = 1
+#  result = 0
 
- while currNum <= n do
-   if currNum % 2 == 1
-    result += currNum
-   end
-   currNum = currNum + prevNum
-   prevNum = currNum - prevNum
- end
-  result
+#  while currNum <= n do
+#    if currNum % 2 == 1
+#     result += currNum
+#    end
+#    currNum = currNum + prevNum
+#    prevNum = currNum - prevNum
+#  end
+#   result
+# end
+
+# p sumFibs(10)
+
+
+# def find_by(&block)
+#   arr = []
+#   block.each do |m|
+#     arr << m
+#   end
+#   arr
+# end
+
+# [1, 2, 3, 4].find_by {|n| n < 1}  # [2, 3, 4] 
+# nums = [1, 2, 3, 4]
+# puts find_by
+
+def f(n)
+  if n === 2 
+    return 1
+  elsif n === 1
+    return 0
+  else
+    return f(n-1) + f(n-2)
+  end
 end
 
-p sumFibs(10)
+n = 6
+p f(n)
