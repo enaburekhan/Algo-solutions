@@ -1124,13 +1124,25 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 #   end
 # end
 
-def f(n, memoize = {1 => 0, 2 => 1})
-  if(memoize.include?(n))
-    return memoize[n]
-  else
-    memoize[n] = f(n-1, memoize) + f(n-2, memoize)
+# def f(n, memoize = {1 => 0, 2 => 1})
+#   if(memoize.include?(n))
+#     return memoize[n]
+#   else
+#     memoize[n] = f(n-1, memoize) + f(n-2, memoize)
+#   end
+#   memoize[n]
+# end
+
+def f(n)
+  last_two = [0, 1]
+  counter = 3
+  while(counter <= n)
+    next_fib = last_two[0] + last_two[1]
+    last_two[0] = last_two[1]
+    last_two[1] = next_fib
+    counter += 1
   end
-  memoize[n]
+  n > 1 ? last_two[1] : last_two[0]
 end
 
 n = 6
