@@ -1114,15 +1114,24 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 # nums = [1, 2, 3, 4]
 # puts find_by
 
-def f(n)
-  if n === 2 
-    return 1
-  elsif n === 1
-    return 0
+# def f(n)
+#   if n === 2 
+#     return 1
+#   elsif n === 1
+#     return 0
+#   else
+#     return f(n-1) + f(n-2)
+#   end
+# end
+
+def f(n, memoize = {1 => 0, 2 => 1})
+  if(memoize.include?(n))
+    return memoize[n]
   else
-    return f(n-1) + f(n-2)
+    memoize[n] = f(n-1, memoize) + f(n-2, memoize)
   end
+  memoize[n]
 end
 
 n = 6
-p f(n)
+p f(n)  # 5
