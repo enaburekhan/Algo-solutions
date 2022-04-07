@@ -1133,17 +1133,39 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 #   memoize[n]
 # end
 
-def f(n)
-  last_two = [0, 1]
-  counter = 3
-  while(counter <= n)
-    next_fib = last_two[0] + last_two[1]
-    last_two[0] = last_two[1]
-    last_two[1] = next_fib
-    counter += 1
-  end
-  n > 1 ? last_two[1] : last_two[0]
-end
+# O(n) time | O(1) space
+# def f(n)
+#   last_two = [0, 1]
+#   counter = 3
+#   while(counter <= n)
+#     next_fib = last_two[0] + last_two[1]
+#     last_two[0] = last_two[1]
+#     last_two[1] = next_fib
+#     counter += 1
+#   end
+#   n > 1 ? last_two[1] : last_two[0]
+# end
 
-n = 6
-p f(n)  # 5
+# n = 6
+# p f(n)  # 5
+
+# Two number sum
+
+def two_number_sum(array, target_sum)
+  # O(n^2) time | O(1) space
+  (0...(array.size - 1)).each do |num|
+    first_num = array[num]
+    p first_num
+    ((num+1)..array.size - 1).each do |inner_num|
+      second_num = array[inner_num]
+      p second_num
+      if first_num + second_num == target_sum
+        return [first_num, second_num]
+      end
+    end
+  end
+   return []
+end
+array = [3, 5, -4, 8, 11, 1, -1, 6]
+target_sum = 10
+p two_number_sum(array, target_sum) # [-1, 11]
