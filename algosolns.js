@@ -4030,33 +4030,88 @@
 // 2
 
 
-function removeDuplicates(num){
-  let i = 0;
-  let j = i+1;
-  while(j < num.length){
-    if(num[i] !== num[j]){
-      i++;
-      num[i] = num[j]
-    }
-    j++;
-  }
-   return i+1;
-}
+// function removeDuplicates(num){
+//   let i = 0;
+//   let j = i+1;
+//   while(j < num.length){
+//     if(num[i] !== num[j]){
+//       i++;
+//       num[i] = num[j]
+//     }
+//     j++;
+//   }
+//    return i+1;
+// }
 
 
-const nums = [6,6,1,1,1,2,2,3,3,4]
-console.log(removeDuplicates(nums))
+// const nums = [6,6,1,1,1,2,2,3,3,4]
+// console.log(removeDuplicates(nums))
 
 
-function getNthFib(n) {
+// function getNthFib(n) {
   // O(2^n) time | O(n) space
-	if (n === 2) {
-		return 1
-	}else if(n === 1){
-		return 0
-	}else{
-		return getNthFib(n-1) + getNthFib(n-2)
-	}
-}
+// 	if (n === 2) {
+// 		return 1
+// 	}else if(n === 1){
+// 		return 0
+// 	}else{
+// 		return getNthFib(n-1) + getNthFib(n-2)
+// 	}
+// }
 // Do not edit the line below.
-exports.getNthFib = getNthFib;
+// exports.getNthFib = getNthFib;
+
+
+// This is an input class. Do not edit.
+class LinkedList {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+function removeDuplicatesFromLinkedList(linkedList) {
+  // O(n) time | O(1) space.
+  let currentNode = linkedList;
+	while(currentNode !== null){
+		let nextDistinctNode = currentNode.next;
+		while(nextDistinctNode !== null && nextDistinctNode.value === currentNode.value){
+			nextDistinctNode = nextDistinctNode.next 
+		}
+		currentNode.next = nextDistinctNode;
+		currentNode = nextDistinctNode;
+	}
+	 return linkedList;
+}
+
+// Do not edit the lines below.
+exports.LinkedList = LinkedList;
+exports.removeDuplicatesFromLinkedList = removeDuplicatesFromLinkedList;
+
+
+
+// function meetingPlanner(slotsA, slotsB, dur) {
+//   // your code goes here
+//   let ia = 0;
+//   let ib = 0;
+
+//   while(ia < slotsA.length && ib < slotsB.length){
+//     const start = Math.max(slotsA[ia][0], slotsB[ib][0]);
+//     const end = Math.min(slotsA[ia][1], slotsB[ib][1]);
+
+//     if(start + dur <= end) return [start, start + dur];
+
+//     slotsA[ia][1] < slotsB[ib][1] ? ia++ : ib++
+//   }
+
+//   return [];
+// }
+
+// const slotA = [[10, 50], [60, 120], [140, 210]]
+// const slotB = [[0, 15], [60, 70]]
+// const  dur = 8
+// console.log(meetingPlanner(slotA, slotB, dur)) //output: [60, 68]
+
+
+
+

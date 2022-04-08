@@ -1151,21 +1151,41 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 
 # Two number sum
 
-def two_number_sum(array, target_sum)
+# def two_number_sum(array, target_sum)
   # O(n^2) time | O(1) space
-  (0...(array.size - 1)).each do |num|
-    first_num = array[num]
-    p first_num
-    ((num+1)..array.size - 1).each do |inner_num|
-      second_num = array[inner_num]
-      p second_num
-      if first_num + second_num == target_sum
-        return [first_num, second_num]
-      end
-    end
+#   (0...(array.size - 1)).each do |num|
+#     first_num = array[num]
+#     p first_num
+#     ((num+1)..array.size - 1).each do |inner_num|
+#       second_num = array[inner_num]
+#       p second_num
+#       if first_num + second_num == target_sum
+#         return [first_num, second_num]
+#       end
+#     end
+#   end
+#    return []
+# end
+
+def two_number_sum(array, target_sum)
+
+  nums = {}
+  (0..(array.size - 1)).each do |num|
+    p array[num]
+    potential_match = target_sum - array[num]
+    p potential_match
+    if nums.include?(potential_match)
+      return [array[num], potential_match]
+    else 
+      nums[num] = true
+    end  
   end
-   return []
+   []
 end
+
+# def two_number_sum(array, target_sum)
+  
+# end
 array = [3, 5, -4, 8, 11, 1, -1, 6]
 target_sum = 10
 p two_number_sum(array, target_sum) # [-1, 11]
