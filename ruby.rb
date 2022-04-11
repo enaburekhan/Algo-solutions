@@ -1167,25 +1167,139 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 #    return []
 # end
 
-def two_number_sum(array, target_sum)
-
-  nums = {}
-  (0..(array.size - 1)).each do |num|
-    p array[num]
-    potential_match = target_sum - array[num]
-    p potential_match
-    if nums.include?(potential_match)
-      return [array[num], potential_match]
-    else 
-      nums[num] = true
-    end  
-  end
-   []
-end
+# def two_number_sum(array, target_sum)
+#   result = {}
+#  array.each do |value|
+#   potential_match = target_sum - value
+#   if result.include?(potential_match)
+#     return [value, potential_match]
+#   else
+#     result[value] = true
+#   end
+#  end
+#   []
+# end
 
 # def two_number_sum(array, target_sum)
-  
+#   (0...(array.size - 1)).each do |val|
+#     ((val+1)..array.size - 1).each do |num|
+#       if array[val] + array[num] == target_sum
+#         return [array[val], array[num]]
+#       end
+#     end
+#   end
+#   []
 # end
-array = [3, 5, -4, 8, 11, 1, -1, 6]
-target_sum = 10
-p two_number_sum(array, target_sum) # [-1, 11]
+# array = [3, 5, -4, 8, 11, 1, -1, 6]
+# target_sum = 10
+# p two_number_sum(array, target_sum) # [-1, 11]
+
+
+
+# def validate_subsequence(array, sequence)
+#   # O(n) time | O(1) space
+#   seq_idx = 0
+#   arr_idx = 0
+
+#   while seq_idx < sequence.length && arr_idx < array.length
+#     seq_idx += 1 if(sequence[seq_idx] == array[arr_idx])
+#     arr_idx += 1  
+#   end
+#   seq_idx == sequence.length
+# end
+
+# def validate_subsequence(array, sequence)
+#   seq_idx = 0
+#   array.each do |value|
+#     seq_idx += 1 if sequence[seq_idx] == value
+#   end
+#   seq_idx == sequence.length
+# end
+
+# array = [5, 1, 22, 25, 6, -1, 8, 10]
+# seq = [1, 6, -1, 10]
+# p validate_subsequence(array, seq) # true
+
+# def sorted_sq_array(array)
+#   # O(nlogn) time | O(n) time 
+#   result = []
+#   array.each do |value|
+#    sq_value = value * value
+#    result << sq_value 
+#   end
+#   result.sort()
+# end
+# def sorted_sq_array(array)
+#   sorted_squares = Array.new(array.size).fill(0)
+#   start_idx = 0
+#   end_idx = array.size - 1
+#   (0..(array.size - 1)).reverse_each do |value|
+#     start_value = array[start_idx]
+#     end_value = array[end_idx]
+#     if start_value.abs > end_value.abs
+#       sorted_squares[value] = start_value * start_value
+#       start_idx += 1
+#     else
+#       sorted_squares[value] = end_value * end_value
+#       end_idx -= 1
+#     end
+#   end
+#    sorted_squares
+# end
+
+
+# array = [-3, 1, 2, 4, 5, 6, 7, 8, 9]
+# p sorted_sq_array(array) # [1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+# arr = [1, 2, 3, 4, 5, 6]
+# p Array.new(arr.size).fill(0)
+
+# def tournament_winner(competitions, results)
+#   current_best_team = ''
+#   scores = { current_best_team => 0 }
+#   (0..(competitions.size - 1)).each do |idx|
+#     result = results[idx]
+#     home_team, away_team = competitions[idx]
+#     winning_team = result == 1 ? home_team : away_team
+#     update_scores(winning_team, 3, scores)
+
+#     if (scores[winning_team] > scores[current_best_team])
+#       current_best_team = winning_team
+#     end
+#   end
+#   current_best_team
+# end
+
+# def update_scores(team, points, scores)
+#   if !scores.include?(team)
+#     scores[team] = 0
+#   else
+#     scores[team] += points
+#   end
+# end
+# competitions = [
+#   ['html', 'C#'],
+#   ['c#', 'Python'],
+#   ['Python', 'HTML']
+# ]
+# results = [0, 0, 1]
+# p tournament_winner(competitions, results) #python
+
+
+
+def non_constructible_change(coins)
+  sorted_coins = coins.sort
+  current_change_created = 0
+  sorted_coins.each do |coin|
+    if coin > (current_change_created + 1)
+      return current_change_created + 1
+    else
+      current_change_created += coin
+    end
+  end
+  current_change_created + 1
+end
+
+coins = [5, 7, 1, 1, 2, 3, 22]
+
+p non_constructible_change(coins)  # 20
