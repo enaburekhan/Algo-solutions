@@ -1285,21 +1285,83 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 # results = [0, 0, 1]
 # p tournament_winner(competitions, results) #python
 
+# def non_constructible_change(coins)
+#   sorted_coins = coins.sort
+#   current_change_created = 0
+#   sorted_coins.each do |coin|
+#     if coin > (current_change_created + 1)
+#       return current_change_created + 1
+#     else
+#       current_change_created += coin
+#     end
+#   end
+#   current_change_created + 1
+# end
 
+# coins = [5, 7, 1, 1, 2, 3, 22]
 
-def non_constructible_change(coins)
-  sorted_coins = coins.sort
-  current_change_created = 0
-  sorted_coins.each do |coin|
-    if coin > (current_change_created + 1)
-      return current_change_created + 1
+# p non_constructible_change(coins)  # 20
+
+# def three_number_sum(array, target_sum)
+#   triplets = []
+#   sorted_array = array.sort
+#   (0..(sorted_array.size - 2)).each do |idx|
+#     left = idx + 1
+#     right = sorted_array.size - 1 
+#     while left < right
+#       current_sum = sorted_array[idx] + sorted_array[left] + sorted_array[right]
+#       if current_sum == target_sum
+#         triplets << [sorted_array[idx], sorted_array[left], sorted_array[right]]
+#         left += 1
+#         right -= 1
+#       elsif current_sum < target_sum
+#         left += 1
+#       elsif current_sum > target_sum
+#         right -= 1
+#       end
+#     end
+#   end
+#   triplets
+# end
+
+# array = [12, 3, 1, 2, -6, 5, -8, 6]
+# target_sum = 0
+
+# p three_number_sum(array, target_sum) # [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
+
+def smallest_difference(array_one, array_two)
+  sorted_array_one = array_one.sort
+  sorted_array_two = array_two.sort
+  current = Float::INFINITY 
+  smallest = Float::INFINITY 
+  idx_one = 0
+  idx_two = 0
+  smallest_pairs = []
+  while idx_one < sorted_array_one.size && idx_two < sorted_array_two.size
+    first_num = sorted_array_one[idx_one]
+    second_num = sorted_array_two[idx_two]
+    if first_num < second_num
+      current = second_num - first_num
+      idx_one += 1
+    elsif first_num > second_num
+      current = first_num - second_num
+      idx_two += 1
     else
-      current_change_created += coin
+      return [first_num, second_num]
+    end
+    if smallest > current
+      smallest = current
+      smallest_pairs = [first_num, second_num]
     end
   end
-  current_change_created + 1
+   smallest_pairs
 end
+array_one = [-1, 5, 10, 20, 28, 3]
+array_two = [26, 134, 135, 15, 17]
+p smallest_difference(array_one, array_two)
 
-coins = [5, 7, 1, 1, 2, 3, 22]
 
-p non_constructible_change(coins)  # 20
+
+
+
+
