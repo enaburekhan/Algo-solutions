@@ -1329,36 +1329,76 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 
 # p three_number_sum(array, target_sum) # [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
 
-def smallest_difference(array_one, array_two)
-  sorted_array_one = array_one.sort
-  sorted_array_two = array_two.sort
-  current = Float::INFINITY 
-  smallest = Float::INFINITY 
-  idx_one = 0
-  idx_two = 0
-  smallest_pairs = []
-  while idx_one < sorted_array_one.size && idx_two < sorted_array_two.size
-    first_num = sorted_array_one[idx_one]
-    second_num = sorted_array_two[idx_two]
-    if first_num < second_num
-      current = second_num - first_num
-      idx_one += 1
-    elsif first_num > second_num
-      current = first_num - second_num
-      idx_two += 1
+# def smallest_difference(array_one, array_two)
+#   sorted_array_one = array_one.sort
+#   sorted_array_two = array_two.sort
+#   current = Float::INFINITY 
+#   smallest = Float::INFINITY 
+#   idx_one = 0
+#   idx_two = 0
+#   smallest_pairs = []
+#   while idx_one < sorted_array_one.size && idx_two < sorted_array_two.size
+#     first_num = sorted_array_one[idx_one]
+#     second_num = sorted_array_two[idx_two]
+#     if first_num < second_num
+#       current = second_num - first_num
+#       idx_one += 1
+#     elsif first_num > second_num
+#       current = first_num - second_num
+#       idx_two += 1
+#     else
+#       return [first_num, second_num]
+#     end
+#     if smallest > current
+#       smallest = current
+#       smallest_pairs = [first_num, second_num]
+#     end
+#   end
+#    smallest_pairs
+# end
+# array_one = [-1, 5, 10, 20, 28, 3]
+# array_two = [26, 134, 135, 15, 17]
+# p smallest_difference(array_one, array_two)
+
+
+def move_element_to_end(array, to_move)
+  # [1, 2, 2, 2, 2, 2, 3, 4]
+  array_sort = array.sort
+  left = 0
+  right = array_sort.size - 1
+  while left < right
+    if array_sort[left] == to_move
+      swap(left, right, array_sort)
+      left += 1
+      right -= 1
     else
-      return [first_num, second_num]
-    end
-    if smallest > current
-      smallest = current
-      smallest_pairs = [first_num, second_num]
+      left += 1
     end
   end
-   smallest_pairs
+  array_sort
 end
-array_one = [-1, 5, 10, 20, 28, 3]
-array_two = [26, 134, 135, 15, 17]
-p smallest_difference(array_one, array_two)
+
+def swap(left, right, array_sort)
+  array_sort[left], array_sort[right] = array_sort[right], array_sort[left]
+end
+
+array = [2, 1, 2, 2, 2, 3, 4, 2]
+to_move = 2
+p move_element_to_end(array, to_move) # [1, 3, 4, 2, 2, 2, 2, 2]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
