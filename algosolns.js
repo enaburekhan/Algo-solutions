@@ -4063,30 +4063,30 @@
 
 
 // This is an input class. Do not edit.
-class LinkedList {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
-}
+// class LinkedList {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null;
+//   }
+// }
 
-function removeDuplicatesFromLinkedList(linkedList) {
-  // O(n) time | O(1) space.
-  let currentNode = linkedList;
-	while(currentNode !== null){
-		let nextDistinctNode = currentNode.next;
-		while(nextDistinctNode !== null && nextDistinctNode.value === currentNode.value){
-			nextDistinctNode = nextDistinctNode.next 
-		}
-		currentNode.next = nextDistinctNode;
-		currentNode = nextDistinctNode;
-	}
-	 return linkedList;
-}
+// function removeDuplicatesFromLinkedList(linkedList) {
+//   // O(n) time | O(1) space.
+//   let currentNode = linkedList;
+// 	while(currentNode !== null){
+// 		let nextDistinctNode = currentNode.next;
+// 		while(nextDistinctNode !== null && nextDistinctNode.value === currentNode.value){
+// 			nextDistinctNode = nextDistinctNode.next 
+// 		}
+// 		currentNode.next = nextDistinctNode;
+// 		currentNode = nextDistinctNode;
+// 	}
+// 	 return linkedList;
+// }
 
 // Do not edit the lines below.
-exports.LinkedList = LinkedList;
-exports.removeDuplicatesFromLinkedList = removeDuplicatesFromLinkedList;
+// exports.LinkedList = LinkedList;
+// exports.removeDuplicatesFromLinkedList = removeDuplicatesFromLinkedList;
 
 
 
@@ -4112,6 +4112,37 @@ exports.removeDuplicatesFromLinkedList = removeDuplicatesFromLinkedList;
 // const  dur = 8
 // console.log(meetingPlanner(slotA, slotB, dur)) //output: [60, 68]
 
+// const numbers = [2,3,4,4,2,3,3,4,4,5,5,6,6,7,5,32,3,4,5]
+
+// //spreading numbers of the object into an array using the new operator
+// console.log([...new Set(numbers)]) 
+
+// function winningCard(cards) {
+//   const uniq = []
+//   const flattenCards = cards.flat()
+//   console.log(flattenCards)
+//   for (let i = 0; i < flattenCards.length; i++) {
+//     for (let j = 0; j < flattenCards.length; j++) {
+//       if (flattenCards[i] === flattenCards[j] && i !== j) break;
+//       if (j === flattenCards.length - 1) uniq.push(flattenCards[i])
+//     }
+//   }
+
+//   return Math.max(...uniq);
+// }
+
+// const cards = [[5, 7, 3, 9, 4, 9, 8, 3, 1], [1, 2, 2, 4, 4, 1], [1, 2, 3]]
+// console.log(winningCard(cards)) // 8
+
+const obj = {
+  "user": 
+   {
+      "email": "fadagmail.com",
+      "password": "fada123"
+   }
+}
+
+console.log(obj.user.email)
 
 
 

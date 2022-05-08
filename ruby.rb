@@ -1361,30 +1361,77 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 # p smallest_difference(array_one, array_two)
 
 
-def move_element_to_end(array, to_move)
-  # [1, 2, 2, 2, 2, 2, 3, 4]
-  array_sort = array.sort
-  left = 0
-  right = array_sort.size - 1
-  while left < right
-    if array_sort[left] == to_move
-      swap(left, right, array_sort)
-      left += 1
-      right -= 1
-    else
-      left += 1
+# def move_element_to_end(array, to_move)
+#   # [1, 2, 2, 2, 2, 2, 3, 4]
+#   array_sort = array.sort
+#   left = 0
+#   right = array_sort.size - 1
+#   while left < right
+#     if array_sort[left] == to_move
+#       swap(left, right, array_sort)
+#       left += 1
+#       right -= 1
+#     else
+#       left += 1
+#     end
+#   end
+#   array_sort
+# end
+
+# def swap(left, right, array_sort)
+#   array_sort[left], array_sort[right] = array_sort[right], array_sort[left]
+# end
+
+# def move_element_to_end(array, to_move)
+#   # O(n) time | O(1) space
+#   left = 0
+#   right = array.size - 1
+#   while left < right
+#     while left < right && array[right] == to_move
+#       right -= 1
+#     end
+#     if array[left] === to_move
+#       swap(left, right, array)
+#     end
+#     left += 1
+#   end
+#   array
+# end
+
+# def swap(left, right, array)
+#   array[left], array[right] = array[right], array[left]
+# end
+
+# array = [2, 1, 2, 2, 2, 3, 4, 2]
+# to_move = 2
+# p move_element_to_end(array, to_move) # [1, 3, 4, 2, 2, 2, 2, 2]
+
+
+def winning_card(cards)
+  unique = []
+  flatten_cards = cards.flatten
+  (0..(flatten_cards.size - 1)).each do |i|
+    first_num = flatten_cards[i]
+    (0..(flatten_cards.size - 1)).each do |j|
+      second_num = flatten_cards[j]
+      if first_num == second_num && i != j
+        break
+      elsif j == flatten_cards.size - 1
+        unique << flatten_cards[i] 
+      end
     end
   end
-  array_sort
+   unique.max
 end
+cards = [[5,7,3,9,4,9,8,3,1], [1,2,2,4,4,1], [1,2,3]]
+p winning_card(cards) # 8
 
-def swap(left, right, array_sort)
-  array_sort[left], array_sort[right] = array_sort[right], array_sort[left]
-end
 
-array = [2, 1, 2, 2, 2, 3, 4, 2]
-to_move = 2
-p move_element_to_end(array, to_move) # [1, 3, 4, 2, 2, 2, 2, 2]
+
+
+
+
+
 
 
 
