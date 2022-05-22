@@ -93,4 +93,33 @@
 
 # p merged_over_lapping_intervals(interval) #[[1,2], [3,8], [9,10]]
 
+def four_number_sum(array, target_sum)
+ all_pairs_sum = {}
+ quadruplets = []
+   (1...(array.size - 1)).each do |i|
+      ((i+1)..(array.size - 1)).each do |j|
+         current_sum = array[i] + array[j]
+         diff = target_sum - current_sum
+         if all_pairs_sum.include?(diff)
+            all_pairs_sum[diff].each do |pairs|
+                p all_pairs_sum[diff]
+                quadruplets << pairs.concat([array[i], array[j]])
+            end
+         end    
+      end
+      (0...i).each do |k|
+          current_sum = array[k] + array[i]
+          if !all_pairs_sum.include?(current_sum)
+            all_pairs_sum[current_sum] = [[array[k], array[i]]]
+          else
+              all_pairs_sum[current_sum] << [[array[k], array[i]]]
+          end
+      end
+   end
+    quadruplets     
+end
 
+array = [7, 6, 4, -1, 1, 2]
+target_sum = 16
+
+p four_number_sum(array, target_sum); #[[7, 6, 4, -1], [7, 6, 1, 2]]
