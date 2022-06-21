@@ -31,40 +31,104 @@
 
 // console.log(fourNumberSum(array, targetValue)); //[[7, 6, 4, -1], [7, 6, 1, 2]]
 
+// O(n) time | O(1) space
+// function subarraySort(array) {
+//   let minOutOfOrder = Infinity;
+//   let maxOutOfOrder = -Infinity;
+//   for (let i = 0; i < array.length; i++) {
+//     let num = array[i];
+//     if (isOutOfOrder(i, num, array)) {
+//       minOutOfOrder = Math.min(minOutOfOrder, num);
+//       maxOutOfOrder = Math.max(maxOutOfOrder, num)
+//     }
+//   }
+//   if(minOutOfOrder === Infinity) return [-1,-1];
+//   let leftSubArrayIdx = 0;
+//   while(minOutOfOrder >= array[leftSubArrayIdx]){
+//     leftSubArrayIdx += 1;
+//   }
 
-function subarraySort(array) {
-  let minOutOfOrder = Infinity;
-  let maxOutOfOrder = -Infinity;
-  for (let i = 0; i < array.length; i++) {
-    let num = array[i];
-    if (isOutOfOrder(i, num, array)) {
-      minOutOfOrder = Math.min(minOutOfOrder, num);
-      maxOutOfOrder = Math.max(maxOutOfOrder, num)
+//   let rightSubArrayIdx = array.length - 1;
+//   while(maxOutOfOrder <= array[rightSubArrayIdx]){
+//     rightSubArrayIdx -= 1;
+//   }
+//   return [leftSubArrayIdx, rightSubArrayIdx];
+// }
+
+// function isOutOfOrder(i, num, array) {
+//   if (i === 0) {
+//     array[i + 1] < num
+//   }
+//   if (i === array.length - 1) {
+//     array[i - 1] > num
+//   }
+//   return array[i - 1] > num || array[i + 1] < num
+// }
+
+// const array = [1, 2, 4, 7, 10, 11, 7, 12, 6, 7, 16, 18, 19]
+
+// console.log(subarraySort(array)) // [3, 9]
+
+
+// function largestRange(array){
+//  const nums = {};
+//  let bestRange = [];
+//  let longestRange = 0;
+
+//  for(const num of array){
+//    num[num] = true;
+//  }
+
+//  for(const num of array){
+//    if(!nums[num]) continue;
+//    nums[num] = false; 
+//    let currentLength = 1;
+//    let left = num - 1;
+//    let right = num + 1;
+//    while(left in nums){
+//      nums[left] = false;
+//      currentLength++;
+//      left--;
+//    }
+//    while(right in nums){
+//      nums[right] = false;
+//      currentLength++;
+//      right++;
+//    }
+//    if(currentLength > longestRange){
+//      longestRange = currentLength
+//      console.log(longestRange);
+//      bestRange = [left + 1, right - 1]
+//    }
+   
+//  }
+
+//  return bestRange;
+
+// }
+
+
+
+// const array = [1, 11, 3, 0, 15, 5, 2, 4, 10, 7, 12, 6]
+// console.log(largestRange(array)) //[0, 7];
+
+
+function minRewards(scores){
+  const rewards = Array(scores.length).fill(1)
+  for(let i=0; i < scores.length; i++){
+    if(scores[i] > scores[i-1]){
+      rewards[i] = rewards[i-1] + 1
     }
   }
-  if(minOutOfOrder === Infinity) return [-1,-1];
-  let leftSubArrayIdx = 0;
-  while(minOutOfOrder >= array[leftSubArrayIdx]){
-    leftSubArrayIdx += 1;
+
+  for(let i = scores.length - 2; i >=0; i--){
+    if(scores[i] > scores[i+1]){
+      rewards[i] = Math.max(rewards[i], rewards[i+1] + 1)
+    }
   }
 
-  let rightSubArrayIdx = array.length - 1;
-  while(maxOutOfOrder <= array[rightSubArrayIdx]){
-    rightSubArrayIdx -= 1;
-  }
-  return [leftSubArrayIdx, rightSubArrayIdx];
+  return rewards.reduce((a,b) => a + b, 0)
 }
 
-function isOutOfOrder(i, num, array) {
-  if (i === 0) {
-    array[i + 1] < num
-  }
-  if (i === array.length - 1) {
-    array[i - 1] > num
-  }
-  return array[i - 1] > num || array[i + 1] < num
-}
-
-const array = [1, 2, 4, 7, 10, 11, 7, 12, 6, 7, 16, 18, 19]
-
-console.log(subarraySort(array)) // [3, 9]
+const scores = [8, 4, 2, 1, 3, 6, 7, 9, 5]
+console.log(minRewards(scores));
