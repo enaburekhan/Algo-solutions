@@ -93,33 +93,54 @@
 
 # p merged_over_lapping_intervals(interval) #[[1,2], [3,8], [9,10]]
 
-def four_number_sum(array, target_sum)
- all_pairs_sum = {}
- quadruplets = []
-   (1...(array.size - 1)).each do |i|
-      ((i+1)..(array.size - 1)).each do |j|
-         current_sum = array[i] + array[j]
-         diff = target_sum - current_sum
-         if all_pairs_sum.include?(diff)
-            all_pairs_sum[diff].each do |pairs|
-                p all_pairs_sum[diff]
-                quadruplets << pairs.concat([array[i], array[j]])
-            end
-         end    
-      end
-      (0...i).each do |k|
-          current_sum = array[k] + array[i]
-          if !all_pairs_sum.include?(current_sum)
-            all_pairs_sum[current_sum] = [[array[k], array[i]]]
-          else
-              all_pairs_sum[current_sum] << [[array[k], array[i]]]
-          end
-      end
-   end
-    quadruplets     
+# def four_number_sum(array, target_sum)
+#  all_pairs_sum = {}
+#  quadruplets = []
+#    (1...(array.size - 1)).each do |i|
+#       ((i+1)..(array.size - 1)).each do |j|
+#          current_sum = array[i] + array[j]
+#          diff = target_sum - current_sum
+#          if all_pairs_sum.include?(diff)
+#             all_pairs_sum[diff].each do |pairs|
+#                 p all_pairs_sum[diff]
+#                 quadruplets << pairs.concat([array[i], array[j]])
+#             end
+#          end    
+#       end
+#       (0...i).each do |k|
+#           current_sum = array[k] + array[i]
+#           if !all_pairs_sum.include?(current_sum)
+#             all_pairs_sum[current_sum] = [[array[k], array[i]]]
+#           else
+#               all_pairs_sum[current_sum] << [[array[k], array[i]]]
+#           end
+#       end
+#    end
+#     quadruplets     
+# end
+
+# array = [7, 6, 4, -1, 1, 2]
+# target_sum = 16
+
+# p four_number_sum(array, target_sum); #[[7, 6, 4, -1], [7, 6, 1, 2]]
+
+def min_rewards(scores)
+  rewards = Array.new(scores.size).fill(1)
+  (0..(scores.size - 1)).each do |i|
+    if scores[i] > scores[i-1]
+        rewards[i] = rewards[i-1] + 1
+    end
+  end
+
+  (0...(scores.size - 1)).reverse_each do |i|
+    if scores[i] > scores[i+1]
+      rewards[i] = (rewards[i], (rewards[i+1] + 1)).max()
+    end
+  end
+   rewards 
 end
 
-array = [7, 6, 4, -1, 1, 2]
-target_sum = 16
+scores = [8, 4, 2, 1, 3, 6, 7, 9, 5]   
+p min_rewards(scores);   # 25 [4, 3, 2, 1, 2, 3, 4, 5, 1]
 
-p four_number_sum(array, target_sum); #[[7, 6, 4, -1], [7, 6, 1, 2]]
+

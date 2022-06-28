@@ -58,7 +58,7 @@
 # numbers = [3, 7, 12, 2, 49]
 # p numbers.select {|n| n > 10 }
 
-list = [1,1,2,2,2,3,3,3,3,4,4,4]
+# list = [1,1,2,2,2,3,3,3,3,4,4,4]
 # p list.uniq
 
 # p list.sample
@@ -1407,24 +1407,24 @@ list = [1,1,2,2,2,3,3,3,3,4,4,4]
 # p move_element_to_end(array, to_move) # [1, 3, 4, 2, 2, 2, 2, 2]
 
 
-def winning_card(cards)
-  unique = []
-  flatten_cards = cards.flatten
-  (0..(flatten_cards.size - 1)).each do |i|
-    first_num = flatten_cards[i]
-    (0..(flatten_cards.size - 1)).each do |j|
-      second_num = flatten_cards[j]
-      if first_num == second_num && i != j
-        break
-      elsif j == flatten_cards.size - 1
-        unique << flatten_cards[i] 
-      end
-    end
-  end
-   unique.max
-end
-cards = [[5,7,3,9,4,9,8,3,1], [1,2,2,4,4,1], [1,2,3]]
-p winning_card(cards) # 8
+# def winning_card(cards)
+#   unique = []
+#   flatten_cards = cards.flatten
+#   (0..(flatten_cards.size - 1)).each do |i|
+#     first_num = flatten_cards[i]
+#     (0..(flatten_cards.size - 1)).each do |j|
+#       second_num = flatten_cards[j]
+#       if first_num == second_num && i != j
+#         break
+#       elsif j == flatten_cards.size - 1
+#         unique << flatten_cards[i] 
+#       end
+#     end
+#   end
+#    unique.max
+# end
+# cards = [[5,7,3,9,4,9,8,3,1], [1,2,2,4,4,1], [1,2,3]]
+# p winning_card(cards) # 8
 
 
 

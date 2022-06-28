@@ -113,22 +113,80 @@
 // console.log(largestRange(array)) //[0, 7];
 
 
-function minRewards(scores){
-  const rewards = Array(scores.length).fill(1)
-  for(let i=0; i < scores.length; i++){
-    if(scores[i] > scores[i-1]){
-      rewards[i] = rewards[i-1] + 1
+// function minRewards(scores){
+//   const rewards = Array(scores.length).fill(1);
+//   for(let i=0; i < scores.length; i++){
+//     if(scores[i] > scores[i-1]){
+//       rewards[i] = rewards[i-1] + 1
+//     }
+//   }
+
+//   for(let i=scores.length - 2; i >= 0; i--){
+//     if(scores[i] > scores[i+1]){
+//       rewards[i] = Math.max(rewards[i], rewards[i+1] + 1)
+//     }
+//   }
+//   return rewards.reduce((a,b) => a + b, 0);
+// }
+
+// const scores = [8, 4, 2, 1, 3, 6, 7, 9, 5]   
+// console.log(minRewards(scores));  // 25 [4, 3, 2, 1, 2, 3, 4, 5, 1]
+
+// const operator = {
+//   id: 3,
+//   name: 'operator1'
+// }
+
+// console.log(operator.id);
+
+function zigzagTraverse(array) {
+  const height = array.length - 1;
+  const width = array[0].length - 1;
+  let row = 0;
+  let col = 0;
+  const result = [];
+  let goingDown = true;
+
+  while(!isOutOfBounds(row, col, height, width)){
+    result.push(array[row][col])
+    if(goingDown){
+      if(col === 0 || row === height){
+        goingDown = false;
+        if(row === height){
+           col += 1;
+        }else {
+          row += 1
+        }
+      }else{
+        row += 1;
+        col -= 1;
+      }
+    }else{
+      if(row === 0 || col === width){
+        goingDown = true;
+        if(col === width){
+          row += 1;
+        }else {
+          col += 1
+        }
+      }else{
+        row -= 1;
+        col += 1;
+      }
     }
   }
-
-  for(let i = scores.length - 2; i >=0; i--){
-    if(scores[i] > scores[i+1]){
-      rewards[i] = Math.max(rewards[i], rewards[i+1] + 1)
-    }
-  }
-
-  return rewards.reduce((a,b) => a + b, 0)
+   return result
 }
 
-const scores = [8, 4, 2, 1, 3, 6, 7, 9, 5]
-console.log(minRewards(scores));
+function isOutOfBounds(row, col, height, width){
+  return row < 0 || row > height || col < 0 || col > width
+}
+
+const array = [
+  [1, 3, 4, 10],
+  [2, 5, 9, 11],
+  [6, 8, 12, 15],
+  [7, 13, 14, 16],
+]
+
+console.log(zigzagTraverse(array)); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
