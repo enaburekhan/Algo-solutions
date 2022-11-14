@@ -124,23 +124,134 @@
 
 # p four_number_sum(array, target_sum); #[[7, 6, 4, -1], [7, 6, 1, 2]]
 
-def min_rewards(scores)
-  rewards = Array.new(scores.size).fill(1)
-  (0..(scores.size - 1)).each do |i|
-    if scores[i] > scores[i-1]
-        rewards[i] = rewards[i-1] + 1
-    end
-  end
+# def min_rewards(scores)
+#   rewards = Array.new(scores.size).fill(1)
+#   (0..(scores.size - 1)).each do |i|
+#     if scores[i] > scores[i-1]
+#         rewards[i] = rewards[i-1] + 1
+#     end
+#   end
 
-  (0...(scores.size - 1)).reverse_each do |i|
-    if scores[i] > scores[i+1]
-      rewards[i] = (rewards[i], (rewards[i+1] + 1)).max()
-    end
-  end
-   rewards 
+#   (0...(scores.size - 1)).reverse_each do |i|
+#     if scores[i] > scores[i+1]
+#       rewards[i] = (rewards[i], (rewards[i+1] + 1)).max()
+#     end
+#   end
+#    rewards 
+# end
+
+# scores = [8, 4, 2, 1, 3, 6, 7, 9, 5]   
+# p min_rewards(scores);   # 25 [4, 3, 2, 1, 2, 3, 4, 5, 1]
+
+# def zigzag_traverse(array)
+#   height = array.size - 1
+#   width = array[0].size - 1
+#   row = 0
+#   col = 0
+#   going_down = true
+#   result = []
+
+#   while !is_out_of_bounds(row, col, height, width)
+#     result << array[row][col]
+#    if going_down
+#     if col == 0 or row == height
+#       going_down = false
+#       if row == height
+#         col += 1
+#       else
+#         row += 1
+#       end
+#     else
+#       row += 1
+#       col -= 1
+#     end
+#   else
+#     if row == 0 or col == width
+#       going_down = true
+#       if col == width
+#         row += 1
+#       else
+#         col += 1
+#       end
+#     else
+#       row -= 1
+#       col += 1
+#     end
+#    end
+#   end
+#   result
+# end
+
+# def is_out_of_bounds(row, col, height, width)
+#   row < 0 or row > height or col < 0 or col > width
+# end
+
+#  array = [
+#   [1, 3, 4, 10],
+#   [2, 5, 9, 11],
+#   [6, 8, 12, 15],
+#   [7, 13, 14, 16],
+# ]
+
+# p zigzag_traverse(array); # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+
+# def is_toeplitz(arr)
+#   (0..(arr.size - 1)).each do |row|
+#     (0..(arr[0].size - 1)).each do |col|
+#       if ((arr[row + 1] != undefined )
+#         & (arr[row + 1][col + 1] != undefined)
+#         & (arr[row + 1][col + 1] != arr[row][col]))
+#         return false
+#       end
+#     end
+#   end
+#    true
+# end
+
+# arr1 = [[1,2,3,4],
+#         [5,1,2,3],
+#         [6,5,1,2]]
+
+# arr2 = [[1,2,3,4],
+#         [5,1,9,3],
+#         [6,5,1,2]]              
+
+# p is_toeplitz(arr1);
+
+
+#----------Reload------------#
+
+# Two number sum
+# O(n) time | O(n) space 
+# def two_number_sum(array, target_sum)
+#     nums = {}
+#     array.each do |num|
+#         potential_match = target_sum - num
+#         return [potential_match, num] if nums.key?(potential_match) 
+
+#         nums[num] = true
+#     end
+#     []
+# end
+
+# O(nlogn) time | O(1) space
+def two_number_sum(array, target_sum)
+  array.sort
+  left = 0
+  right = array.size - 1 
+  while left < right
+    current_sum = array[left] + array[right]
+     if current_sum == target_sum
+        return [array[left], array[right]]
+     elsif current_sum < target_sum
+         left += 1 
+     else
+        right -= 1 
+     end
+  end   
+   []   
 end
-
-scores = [8, 4, 2, 1, 3, 6, 7, 9, 5]   
-p min_rewards(scores);   # 25 [4, 3, 2, 1, 2, 3, 4, 5, 1]
-
+array = [3, 5, -4, 8, 11, 1, -1, 6]
+target_sum = 10
+ p two_number_sum(array, target_sum)
 

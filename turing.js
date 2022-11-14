@@ -196,7 +196,7 @@ function isToeplitz(arr) {
     for(let col=0; col < arr[0].length; col++){
       if(arr[row+1] !== undefined  // has next row
          && arr[row + 1][col + 1] !== undefined   // has next column
-         && arr[row + 1][col + 1] !== arr[row][col]  // 
+         && arr[row + 1][col + 1] !== arr[row][col]  // current item isn't equal to the next item in the diagonal
         ){
         return false
       }
