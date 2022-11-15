@@ -253,5 +253,23 @@ def two_number_sum(array, target_sum)
 end
 array = [3, 5, -4, 8, 11, 1, -1, 6]
 target_sum = 10
- p two_number_sum(array, target_sum)
+ p two_number_sum(array, target_sum)  #[11, -1]
+
+
+#  validate subsequence
+#  O(n) time | O(1) space
+def validate_subsequence(array, sequence)
+  seq_idx = 0
+  arr_idx = 0
+  while seq_idx < sequence.size and arr_idx < array.size
+    seq_idx += 1 if sequence[seq_idx] == array[arr_idx]
+    arr_idx += 1
+  end
+   seq_idx == sequence.size
+end
+
+ array = [5, 1, 22, 25, 6, -1, 8, 10]
+ sequence = [1, 6, -1, 10]
+
+ p validate_subsequence(array, sequence)  # true
 
