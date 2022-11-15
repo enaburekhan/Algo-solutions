@@ -273,3 +273,33 @@ end
 
  p validate_subsequence(array, sequence)  # true
 
+
+#  Sorted Square Array
+# O(nlogn) time | O(n) space
+# def sorted_square_array(array)
+#   result = array.map {|item| item * item}
+#   result.sort
+# end
+
+def sorted_square_array(array)
+  sorted_array = Array.new(array.size).fill(0)
+  start_idx = 0
+  end_idx = array.length - 1
+  (0..(array.size-1)).reverse_each do |idx|
+    start_value = array[start_idx]
+    end_value = array[end_idx]
+    if start_value.abs > end_value.abs
+      sorted_array[idx] = start_value * start_value
+      start_idx += 1
+    else
+      sorted_array[idx] = end_value * end_value
+      end_idx -= 1
+    end
+  end
+  sorted_array
+end
+
+array = [-7, -5, -3, 4, 6, 8]
+
+p sorted_square_array(array)  # [9, 16, 25, 36, 49, 64]
+
