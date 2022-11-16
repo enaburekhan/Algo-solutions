@@ -303,3 +303,34 @@ array = [-7, -5, -3, 4, 6, 8]
 
 p sorted_square_array(array)  # [9, 16, 25, 36, 49, 64]
 
+# Tournament Winner
+# HOME_TEAM_WON = 1  # No answer yet
+# def tournament_winner(competitions, results)
+#   current_best_team = ''
+#   scores = {current_best_team: 0} 
+#   (0..(competitions.length - 1)).each do |idx|
+#     result = results[idx]
+#     home_team, away_team = competitions[idx]
+#     winning_team = result == 1 ? home_team : away_team
+#     p winning_team
+#     update_scores(winning_team, 3, scores)
+#     p current_best_team
+#     p scores[winning_team]
+#     p scores[current_best_team]
+#     if scores[winning_team] > scores[current_best_team]
+#       current_best_team = winning_team
+#     end
+#   end
+#   current_best_team
+# end
+
+# def update_scores(team, points, scores)
+#   scores[team] = 0 unless scores.key?(team)
+#   scores[team] += points
+# end
+
+# competitions = [['HTML', 'C#'], ['C#', 'Python'], ['Python', 'HTML']]
+# results = [0, 0, 1]
+
+# p tournament_winner(competitions, results) # 'python'
+
