@@ -334,16 +334,46 @@
 
 # p tournament_winner(competitions, results) # 'python'
 
-def non_constructible_change(coins)
-  # O(nlogn) time | O(1) space
-  coins = coins.sort
-  current_created_change = 0
-  coins.each do |coin|
-    return current_created_change + 1 if coin > current_created_change + 1
-    current_created_change += coin
-  end 
-  current_created_change + 1   
+# def non_constructible_change(coins)
+#   # O(nlogn) time | O(1) space
+#   coins = coins.sort
+#   current_created_change = 0
+#   coins.each do |coin|
+#     return current_created_change + 1 if coin > current_created_change + 1
+#     current_created_change += coin
+#   end 
+#   current_created_change + 1   
+# end
+
+# coins = [5, 7, 1, 1, 2, 3, 22]
+# p non_constructible_change(coins) # 20
+
+
+# Three number sum
+# O(n^2) time | O(n) space
+def three_number_sum(array, target_sum)
+  array = array.sort
+  triplets = []
+  (0..(array.size - 3)).each do |idx|
+    left = idx+1
+    right = array.size - 1
+    while left < right
+      current_sum = array[idx] + array[left] + array[right]
+      if current_sum == target_sum
+        triplets << [array[idx], array[left], array[right]]
+        left += 1
+        right -= 1
+      elsif current_sum > target_sum
+        right -= 1
+      else
+        left += 1
+      end
+    end
+  end
+  triplets
 end
 
-coins = [5, 7, 1, 1, 2, 3, 22]
-p non_constructible_change(coins) # 20
+array = [12, 3, 1, 2, -6, 5, -8, 6]
+target_sum = 0
+
+p three_number_sum(array, target_sum) # [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
