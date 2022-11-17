@@ -235,43 +235,43 @@
 # end
 
 # O(nlogn) time | O(1) space
-def two_number_sum(array, target_sum)
-  array.sort
-  left = 0
-  right = array.size - 1 
-  while left < right
-    current_sum = array[left] + array[right]
-     if current_sum == target_sum
-        return [array[left], array[right]]
-     elsif current_sum < target_sum
-         left += 1 
-     else
-        right -= 1 
-     end
-  end   
-   []   
-end
-array = [3, 5, -4, 8, 11, 1, -1, 6]
-target_sum = 10
- p two_number_sum(array, target_sum)  #[11, -1]
+# def two_number_sum(array, target_sum)
+#   array.sort
+#   left = 0
+#   right = array.size - 1 
+#   while left < right
+#     current_sum = array[left] + array[right]
+#      if current_sum == target_sum
+#         return [array[left], array[right]]
+#      elsif current_sum < target_sum
+#          left += 1 
+#      else
+#         right -= 1 
+#      end
+#   end   
+#    []   
+# end
+# array = [3, 5, -4, 8, 11, 1, -1, 6]
+# target_sum = 10
+#  p two_number_sum(array, target_sum)  #[11, -1]
 
 
 #  validate subsequence
 #  O(n) time | O(1) space
-def validate_subsequence(array, sequence)
-  seq_idx = 0
-  arr_idx = 0
-  while seq_idx < sequence.size and arr_idx < array.size
-    seq_idx += 1 if sequence[seq_idx] == array[arr_idx]
-    arr_idx += 1
-  end
-   seq_idx == sequence.size
-end
+# def validate_subsequence(array, sequence)
+#   seq_idx = 0
+#   arr_idx = 0
+#   while seq_idx < sequence.size and arr_idx < array.size
+#     seq_idx += 1 if sequence[seq_idx] == array[arr_idx]
+#     arr_idx += 1
+#   end
+#    seq_idx == sequence.size
+# end
 
- array = [5, 1, 22, 25, 6, -1, 8, 10]
- sequence = [1, 6, -1, 10]
+#  array = [5, 1, 22, 25, 6, -1, 8, 10]
+#  sequence = [1, 6, -1, 10]
 
- p validate_subsequence(array, sequence)  # true
+#  p validate_subsequence(array, sequence)  # true
 
 
 #  Sorted Square Array
@@ -281,27 +281,27 @@ end
 #   result.sort
 # end
 
-def sorted_square_array(array)
-  sorted_array = Array.new(array.size).fill(0)
-  start_idx = 0
-  end_idx = array.length - 1
-  (0..(array.size-1)).reverse_each do |idx|
-    start_value = array[start_idx]
-    end_value = array[end_idx]
-    if start_value.abs > end_value.abs
-      sorted_array[idx] = start_value * start_value
-      start_idx += 1
-    else
-      sorted_array[idx] = end_value * end_value
-      end_idx -= 1
-    end
-  end
-  sorted_array
-end
+# def sorted_square_array(array)
+#   sorted_array = Array.new(array.size).fill(0)
+#   start_idx = 0
+#   end_idx = array.length - 1
+#   (0..(array.size-1)).reverse_each do |idx|
+#     start_value = array[start_idx]
+#     end_value = array[end_idx]
+#     if start_value.abs > end_value.abs
+#       sorted_array[idx] = start_value * start_value
+#       start_idx += 1
+#     else
+#       sorted_array[idx] = end_value * end_value
+#       end_idx -= 1
+#     end
+#   end
+#   sorted_array
+# end
 
-array = [-7, -5, -3, 4, 6, 8]
+# array = [-7, -5, -3, 4, 6, 8]
 
-p sorted_square_array(array)  # [9, 16, 25, 36, 49, 64]
+# p sorted_square_array(array)  # [9, 16, 25, 36, 49, 64]
 
 # Tournament Winner
 # HOME_TEAM_WON = 1  # No answer yet
@@ -334,3 +334,16 @@ p sorted_square_array(array)  # [9, 16, 25, 36, 49, 64]
 
 # p tournament_winner(competitions, results) # 'python'
 
+def non_constructible_change(coins)
+  # O(nlogn) time | O(1) space
+  coins = coins.sort
+  current_created_change = 0
+  coins.each do |coin|
+    return current_created_change + 1 if coin > current_created_change + 1
+    current_created_change += coin
+  end 
+  current_created_change + 1   
+end
+
+coins = [5, 7, 1, 1, 2, 3, 22]
+p non_constructible_change(coins) # 20
