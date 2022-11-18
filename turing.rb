@@ -351,29 +351,61 @@
 
 # Three number sum
 # O(n^2) time | O(n) space
-def three_number_sum(array, target_sum)
-  array = array.sort
-  triplets = []
-  (0..(array.size - 3)).each do |idx|
-    left = idx+1
-    right = array.size - 1
-    while left < right
-      current_sum = array[idx] + array[left] + array[right]
-      if current_sum == target_sum
-        triplets << [array[idx], array[left], array[right]]
-        left += 1
-        right -= 1
-      elsif current_sum > target_sum
-        right -= 1
-      else
-        left += 1
-      end
+# def three_number_sum(array, target_sum)
+#   array = array.sort
+#   triplets = []
+#   (0..(array.size - 3)).each do |idx|
+#     left = idx+1
+#     right = array.size - 1
+#     while left < right
+#       current_sum = array[idx] + array[left] + array[right]
+#       if current_sum == target_sum
+#         triplets << [array[idx], array[left], array[right]]
+#         left += 1
+#         right -= 1
+#       elsif current_sum > target_sum
+#         right -= 1
+#       else
+#         left += 1
+#       end
+#     end
+#   end
+#   triplets
+# end
+
+# array = [12, 3, 1, 2, -6, 5, -8, 6]
+# target_sum = 0
+
+# p three_number_sum(array, target_sum) # [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
+
+# Smallest Difference
+def Smallest_difference(array_one, array_two)
+  array_one = array_one.sort
+  array_two =array_two.sort
+  idx_one = 0
+  idx_two = 0
+  smallest = Float::INFINITY
+  while idx_one < array_one.length and idx_two < array_two.length
+    first_num = array_one[idx_one]
+    second_num = array_two[idx_two]
+    if first_num < second_num 
+      current = second_num - first_num
+      idx_one += 1
+    elsif second_num < first_num
+      current = first_num - second_num
+      idx_two += 1
+    else
+      return [first_num, second_num]
+    end
+    if smallest > current
+      smallest = current
+      smallest_pairs = [first_num, second_num]
     end
   end
-  triplets
+  smallest_pairs
 end
 
-array = [12, 3, 1, 2, -6, 5, -8, 6]
-target_sum = 0
+array_one = [-1, 5, 10, 20, 28, 3]
+array_two = [26, 134, 135, 15, 17]
 
-p three_number_sum(array, target_sum) # [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
+p Smallest_difference(array_one, array_two) # [28, 26]
