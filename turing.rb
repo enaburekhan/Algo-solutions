@@ -409,3 +409,28 @@ array_one = [-1, 5, 10, 20, 28, 3]
 array_two = [26, 134, 135, 15, 17]
 
 p Smallest_difference(array_one, array_two) # [28, 26]
+
+# Move Element To End
+
+def move_element_to_end(array, to_move)
+  i=0
+  j=array.size - 1
+  while i < j
+    while i < j and array[j] == to_move
+      j -= 1
+    end
+    if array[i] == to_move
+      swap(i, j, array)
+    end
+    i += 1
+  end
+  array
+end
+
+ def swap(i, j, array)
+  array[i], array[j] = array[j], array[i]
+ end
+array = [2, 1, 2, 2, 2, 3, 4, 2]
+to_move = 2
+
+p move_element_to_end(array, to_move) # [4, 1, 3, 2, 2, 2, 2, 2]
