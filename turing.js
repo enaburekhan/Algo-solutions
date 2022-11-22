@@ -20,7 +20,7 @@
 //             allPairsSum[currentSum] = [[array[k], array[i]]]
 //         }else{
 //             allPairsSum[currentSum].push([[array[k], array[i]]])
-//         }   
+//         }
 //       }
 //   }
 //    return quadruplets
@@ -69,7 +69,6 @@
 
 // console.log(subarraySort(array)) // [3, 9]
 
-
 // function largestRange(array){
 //  const nums = {};
 //  let bestRange = [];
@@ -81,7 +80,7 @@
 
 //  for(const num of array){
 //    if(!nums[num]) continue;
-//    nums[num] = false; 
+//    nums[num] = false;
 //    let currentLength = 1;
 //    let left = num - 1;
 //    let right = num + 1;
@@ -100,18 +99,15 @@
 //      console.log(longestRange);
 //      bestRange = [left + 1, right - 1]
 //    }
-   
+
 //  }
 
 //  return bestRange;
 
 // }
 
-
-
 // const array = [1, 11, 3, 0, 15, 5, 2, 4, 10, 7, 12, 6]
 // console.log(largestRange(array)) //[0, 7];
-
 
 // function minRewards(scores){
 //   const rewards = Array(scores.length).fill(1);
@@ -129,7 +125,7 @@
 //   return rewards.reduce((a,b) => a + b, 0);
 // }
 
-// const scores = [8, 4, 2, 1, 3, 6, 7, 9, 5]   
+// const scores = [8, 4, 2, 1, 3, 6, 7, 9, 5]
 // console.log(minRewards(scores));  // 25 [4, 3, 2, 1, 2, 3, 4, 5, 1]
 
 // const operator = {
@@ -191,25 +187,84 @@
 
 // console.log(zigzagTraverse(array)); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 
-function isToeplitz(arr) {
-  for(let row=0; row < arr.length; row++){
-    for(let col=0; col < arr[0].length; col++){
-      if(arr[row+1] !== undefined  // has next row
-         && arr[row + 1][col + 1] !== undefined   // has next column
-         && arr[row + 1][col + 1] !== arr[row][col]  // current item isn't equal to the next item in the diagonal
-        ){
-        return false
-      }
+// function isToeplitz(arr) {
+//   for(let row=0; row < arr.length; row++){
+//     for(let col=0; col < arr[0].length; col++){
+//       if(arr[row+1] !== undefined  // has next row
+//          && arr[row + 1][col + 1] !== undefined   // has next column
+//          && arr[row + 1][col + 1] !== arr[row][col]  // current item isn't equal to the next item in the diagonal
+//         ){
+//         return false
+//       }
+//     }
+//   }
+//    return true
+// }
+// const arr1 = [[1,2,3,4],
+//               [5,1,2,3],
+//               [6,5,1,2]]
+
+// const arr2 = [[1,2,3,4],
+//               [5,1,9,3],
+//               [6,5,1,2]]
+
+// console.log(isToeplitz(arr2));
+
+// function lastNumber(arr) {
+//   const arr1 = [];
+//   const arr2 = [];
+//   for (let i = 0; i < arr.length; i += 2, arr1.push(i)) {
+//     console.log(arr1);
+//   }
+//   let isLeft = true;
+//   while (true) {
+//     const len = arr1.length;
+//     if (len === 1) return arr1;
+//     let idx = 1;
+//     if (isLeft) {
+//     }
+//   }
+//   return arr;
+// }
+
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// console.log(lastNumber(arr));
+
+// function mostRepeatedChar(str) {
+//   let highestcount = 0;
+//   let highestRepeatedChar = '';
+//   const charDictionary = {};
+//   for (let i = 0; i < str.length; i++) {
+//     const char = str[i];
+//     if (!/^[a-zA-Z]+$/.test(char)) continue;
+//     // console.log(char);
+//     charDictionary[char] = (charDictionary[char] || 0) + 1;
+//     if (charDictionary[char] > highestcount) {
+//       highestcount = charDictionary[char];
+//       highestRepeatedChar = char;
+//     }
+//   }
+//   return highestRepeatedChar;
+// }
+// const str = 'a,b,c,d,d,d,a,2,3,3,3,3,3,3,d,2,1,1,3';
+
+// console.log(mostRepeatedChar(str)); // d
+
+function frequentRepeatedChar(str) {
+  let highestCount = 0;
+  let highestRepeatedChar = '';
+  const dict = {};
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    dict[char] = (dict[char] || 0) + 1;
+
+    if (dict[char] > highestCount) {
+      highestCount = dict[char];
+      highestRepeatedChar = char;
     }
   }
-   return true
+  return highestRepeatedChar;
 }
-const arr1 = [[1,2,3,4],
-              [5,1,2,3],
-              [6,5,1,2]]
 
-const arr2 = [[1,2,3,4],
-              [5,1,9,3],
-              [6,5,1,2]]              
-
-console.log(isToeplitz(arr2));
+const str = 'aabbccdbb';
+console.log(frequentRepeatedChar(str));
