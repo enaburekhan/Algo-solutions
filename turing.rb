@@ -379,58 +379,58 @@
 # p three_number_sum(array, target_sum) # [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
 
 # Smallest Difference
-def Smallest_difference(array_one, array_two)
-  array_one = array_one.sort
-  array_two =array_two.sort
-  idx_one = 0
-  idx_two = 0
-  smallest = Float::INFINITY
-  while idx_one < array_one.length and idx_two < array_two.length
-    first_num = array_one[idx_one]
-    second_num = array_two[idx_two]
-    if first_num < second_num 
-      current = second_num - first_num
-      idx_one += 1
-    elsif second_num < first_num
-      current = first_num - second_num
-      idx_two += 1
-    else
-      return [first_num, second_num]
-    end
-    if smallest > current
-      smallest = current
-      smallest_pairs = [first_num, second_num]
-    end
-  end
-  smallest_pairs
-end
+# def Smallest_difference(array_one, array_two)
+#   array_one = array_one.sort
+#   array_two =array_two.sort
+#   idx_one = 0
+#   idx_two = 0
+#   smallest = Float::INFINITY
+#   while idx_one < array_one.length and idx_two < array_two.length
+#     first_num = array_one[idx_one]
+#     second_num = array_two[idx_two]
+#     if first_num < second_num 
+#       current = second_num - first_num
+#       idx_one += 1
+#     elsif second_num < first_num
+#       current = first_num - second_num
+#       idx_two += 1
+#     else
+#       return [first_num, second_num]
+#     end
+#     if smallest > current
+#       smallest = current
+#       smallest_pairs = [first_num, second_num]
+#     end
+#   end
+#   smallest_pairs
+# end
 
-array_one = [-1, 5, 10, 20, 28, 3]
-array_two = [26, 134, 135, 15, 17]
+# array_one = [-1, 5, 10, 20, 28, 3]
+# array_two = [26, 134, 135, 15, 17]
 
-p Smallest_difference(array_one, array_two) # [28, 26]
+# p Smallest_difference(array_one, array_two) # [28, 26]
 
-# Move Element To End
+# # Move Element To End
 
-def move_element_to_end(array, to_move)
-  i=0
-  j=array.size - 1
-  while i < j
-    while i < j and array[j] == to_move
-      j -= 1
-    end
-    if array[i] == to_move
-      swap(i, j, array)
-    end
-    i += 1
-  end
-  array
-end
+# def move_element_to_end(array, to_move)
+#   i=0
+#   j=array.size - 1
+#   while i < j
+#     while i < j and array[j] == to_move
+#       j -= 1
+#     end
+#     if array[i] == to_move
+#       swap(i, j, array)
+#     end
+#     i += 1
+#   end
+#   array
+# end
 
- def swap(i, j, array)
-  array[i], array[j] = array[j], array[i]
- end
-array = [2, 1, 2, 2, 2, 3, 4, 2]
-to_move = 2
+#  def swap(i, j, array)
+#   array[i], array[j] = array[j], array[i]
+#  end
+# array = [2, 1, 2, 2, 2, 3, 4, 2]
+# to_move = 2
 
-p move_element_to_end(array, to_move) # [4, 1, 3, 2, 2, 2, 2, 2]
+# p move_element_to_end(array, to_move) # [4, 1, 3, 2, 2, 2, 2, 2]

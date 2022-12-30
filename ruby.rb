@@ -1426,7 +1426,39 @@
 # cards = [[5,7,3,9,4,9,8,3,1], [1,2,2,4,4,1], [1,2,3]]
 # p winning_card(cards) # 8
 
+def largest_range(array)
+  nums = {}
+  best_range = []
+  longest_length = 0
+  array.each do |num|
+    nums[num] = true
+  end
+  array.each do |num|
+    next if !nums[num]
+    nums[num] = false
+    current_length = 1
+    left = num - 1
+    right = num + 1
+    while nums.include?(left)
+      nums[left] = false
+      current_length += 1
+      left -= 1
+    end 
+    while nums.include?(right)
+      nums[right] = false
+      current_length += 1
+      right += 1
+    end
+    if current_length > longest_length
+      longest_length = current_length
+      best_range = [left + 1, right - 1]
+    end
+  end
+  best_range
+end
 
+array = [1, 11, 3, 0, 15, 5, 2, 4, 10, 7, 12, 6]
+p largest_range(array)
 
 
 
