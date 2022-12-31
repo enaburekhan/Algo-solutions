@@ -1427,39 +1427,59 @@
 # p winning_card(cards) # 8
 
 # O(n) time | O(n) space
-def largest_range(array)
-  nums = {}
-  best_range = []
-  longest_length = 0
-  array.each do |num|
-    nums[num] = true
-  end
-  array.each do |num|
-    next if !nums[num]
-    nums[num] = false
-    current_length = 1
-    left = num - 1
-    right = num + 1
-    while nums.include?(left)
-      nums[left] = false
-      current_length += 1
-      left -= 1
-    end 
-    while nums.include?(right)
-      nums[right] = false
-      current_length += 1
-      right += 1
-    end
-    if current_length > longest_length
-      longest_length = current_length
-      best_range = [left + 1, right - 1]
-    end
-  end
-  best_range
+# def largest_range(array)
+#   nums = {}
+#   best_range = []
+#   longest_length = 0
+#   array.each do |num|
+#     nums[num] = true
+#   end
+#   array.each do |num|
+#     next if !nums[num]
+#     nums[num] = false
+#     current_length = 1
+#     left = num - 1
+#     right = num + 1
+#     while nums.include?(left)
+#       nums[left] = false
+#       current_length += 1
+#       left -= 1
+#     end 
+#     while nums.include?(right)
+#       nums[right] = false
+#       current_length += 1
+#       right += 1
+#     end
+#     if current_length > longest_length
+#       longest_length = current_length
+#       best_range = [left + 1, right - 1]
+#     end
+#   end
+#   best_range
+# end
+
+# array = [1, 11, 3, 0, 15, 5, 2, 4, 10, 7, 12, 6]
+# p largest_range(array)
+
+def min_rewards(scores)
+  # O(n^2) time || O(n) space
+  rewards = Array.new(scores.length).fill(1)
+ (1..(scores.size - 1)).each do |i|
+   j = i - 1
+   if scores[i] > scores[j]
+     rewards[i] = rewards[j] + 1
+   else
+     while j >=0 and scores[j] > scores[j+1]
+       rewards[j] = [rewards[j], rewards[j+1] + 1].max
+       j -= 1
+     end
+   end
+ end
+   rewards.reduce(&:+)
 end
 
-array = [1, 11, 3, 0, 15, 5, 2, 4, 10, 7, 12, 6]
-p largest_range(array)
+scores = [8, 4, 2, 1, 3, 6, 7, 9, 5]
+p min_rewards(scores)  # [4, 3, 2, 1, 2, 3, 4, 5, 1]
 
 
 
