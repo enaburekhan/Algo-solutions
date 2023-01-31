@@ -3949,3 +3949,16 @@ function longestPeak(array) {
 
 const array = [1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3];
 console.log(longestPeak(array));
+
+// Valid palindrome
+const validPalindrome = (s) => {
+  if (s === '') return true;
+  const str = s.replace(/[^A-Z0-9]/gi, '').toLowerCase('');
+  const revStr = str.split('').reverse('').join('');
+  if (str === revStr) return true;
+  return false;
+};
+
+const s = 'A man, a plan, a canal: Panama';
+
+console.log(validPalindrome(s)); // true

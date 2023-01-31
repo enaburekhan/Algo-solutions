@@ -1461,25 +1461,25 @@
 # array = [1, 11, 3, 0, 15, 5, 2, 4, 10, 7, 12, 6]
 # p largest_range(array)
 
-def min_rewards(scores)
+# def min_rewards(scores)
   # O(n^2) time || O(n) space
-  rewards = Array.new(scores.length).fill(1)
- (1..(scores.size - 1)).each do |i|
-   j = i - 1
-   if scores[i] > scores[j]
-     rewards[i] = rewards[j] + 1
-   else
-     while j >=0 and scores[j] > scores[j+1]
-       rewards[j] = [rewards[j], rewards[j+1] + 1].max
-       j -= 1
-     end
-   end
- end
-   rewards.reduce(&:+)
-end
+#   rewards = Array.new(scores.length).fill(1)
+#  (1..(scores.size - 1)).each do |i|
+#    j = i - 1
+#    if scores[i] > scores[j]
+#      rewards[i] = rewards[j] + 1
+#    else
+#      while j >=0 and scores[j] > scores[j+1]
+#        rewards[j] = [rewards[j], rewards[j+1] + 1].max
+#        j -= 1
+#      end
+#    end
+#  end
+#    rewards.reduce(&:+)
+# end
 
-scores = [8, 4, 2, 1, 3, 6, 7, 9, 5]
-p min_rewards(scores)  # [4, 3, 2, 1, 2, 3, 4, 5, 1]
+# scores = [8, 4, 2, 1, 3, 6, 7, 9, 5]
+# p min_rewards(scores)  # [4, 3, 2, 1, 2, 3, 4, 5, 1]
 
 
 
