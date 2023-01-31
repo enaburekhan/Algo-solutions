@@ -1481,6 +1481,16 @@
 # scores = [8, 4, 2, 1, 3, 6, 7, 9, 5]
 # p min_rewards(scores)  # [4, 3, 2, 1, 2, 3, 4, 5, 1]
 
+def valid_palindrome(s)
+  str = s.gsub(/\s*\W+\s*/, "").downcase
+  rev_str = str.split('').reverse().join('')
+  return true if(str == rev_str)
+  return false
+end
+s = 'A man, a plan, a canal: Panama';
+
+p valid_palindrome(s) #true
+
 
 
 
