@@ -3922,43 +3922,51 @@
 
 // console.log(obj.user.email)
 
-function longestPeak(array) {
-  // O(n) time | O(1) space
-  let i = 1;
-  let longestPeakLength = 0;
-  while (i < array.length - 1) {
-    let isPeak = array[i - 1] < array[i] && array[i + 1] < array[i];
-    if (!isPeak) {
-      i++;
-      continue;
-    }
-    let leftIdx = i - 2;
-    while (leftIdx >= 0 && array[leftIdx] < array[leftIdx + 1]) {
-      leftIdx--;
-    }
-    let rightIdx = i + 2;
-    while (rightIdx < array.length && array[rightIdx] < array[rightIdx - 1]) {
-      rightIdx++;
-    }
-    const currentPeakLength = rightIdx - leftIdx - 1;
-    longestPeakLength = Math.max(longestPeakLength, currentPeakLength);
-    i = rightIdx;
-  }
-  return longestPeakLength;
-}
+// function longestPeak(array) {
+//   // O(n) time | O(1) space
+//   let i = 1;
+//   let longestPeakLength = 0;
+//   while (i < array.length - 1) {
+//     let isPeak = array[i - 1] < array[i] && array[i + 1] < array[i];
+//     if (!isPeak) {
+//       i++;
+//       continue;
+//     }
+//     let leftIdx = i - 2;
+//     while (leftIdx >= 0 && array[leftIdx] < array[leftIdx + 1]) {
+//       leftIdx--;
+//     }
+//     let rightIdx = i + 2;
+//     while (rightIdx < array.length && array[rightIdx] < array[rightIdx - 1]) {
+//       rightIdx++;
+//     }
+//     const currentPeakLength = rightIdx - leftIdx - 1;
+//     longestPeakLength = Math.max(longestPeakLength, currentPeakLength);
+//     i = rightIdx;
+//   }
+//   return longestPeakLength;
+// }
 
-const array = [1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3];
-console.log(longestPeak(array));
+// const array = [1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3];
+// console.log(longestPeak(array));
 
 // Valid palindrome
-const validPalindrome = (s) => {
-  if (s === '') return true;
-  const str = s.replace(/[^A-Z0-9]/gi, '').toLowerCase('');
-  const revStr = str.split('').reverse('').join('');
-  if (str === revStr) return true;
-  return false;
+// const validPalindrome = (s) => {
+//   if (s === '') return true;
+//   const str = s.replace(/[^A-Z0-9]/gi, '').toLowerCase('');
+//   const revStr = str.split('').reverse('').join('');
+//   if (str === revStr) return true;
+//   return false;
+// };
+
+// const s = 'A man, a plan, a canal: Panama';
+
+// console.log(validPalindrome(s)); // true
+
+const findKthLargest = (nums, k) => {
+  return nums.sort((a, b) => b - a)[k - 1];
 };
+const nums = [3, 2, 1, 5, 6, 4];
+const k = 2;
 
-const s = 'A man, a plan, a canal: Panama';
-
-console.log(validPalindrome(s)); // true
+console.log(findKthLargest(nums, k)); // 5
