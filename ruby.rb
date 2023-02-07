@@ -1491,36 +1491,66 @@
 
 # p valid_palindrome(s) #true
 
-def search_range(nums, target)
-  left = 0
-  right = nums.size - 1
-  output = [-1, -1]
-  while left < right
-    mid = ((left + right) / 2).round
-    if nums[mid] < target
-      left = mid + 1
-    else
-      right = mid
-    end
-  end
-  return output if nums[left] != target
-  output[0] = left
-  right = nums.size - 1
-  while left < right 
-    mid = (((left + right) / 2) + 1).round
-    if nums[mid] <= target
-      left = mid
-    else
-      right = mid - 1
-    end
-  end
-  output[1] = right
-  output
-end
-nums = [5,7,7,8,8,10]
-target = 8
+# def search_range(nums, target)
+#   left = 0
+#   right = nums.size - 1
+#   output = [-1, -1]
+#   while left < right
+#     mid = ((left + right) / 2).round
+#     if nums[mid] < target
+#       left = mid + 1
+#     else
+#       right = mid
+#     end
+#   end
+#   return output if nums[left] != target
+#   output[0] = left
+#   right = nums.size - 1
+#   while left < right 
+#     mid = (((left + right) / 2) + 1).round
+#     if nums[mid] <= target
+#       left = mid
+#     else
+#       right = mid - 1
+#     end
+#   end
+#   output[1] = right
+#   output
+# end
+# nums = [5,7,7,8,8,10]
+# target = 8
 
-p search_range(nums, target) # [3, 4]
+# p search_range(nums, target) # [3, 4]
+
+class TreeNode
+    attr_accessor :val, :left, :right
+    def initialize(val = 0, left = nil, right = nil)
+        @val = val
+        @left = left
+        @right = right
+    end
+end
+
+def is_symmetric(root)
+  # O(n) time | O(h) space
+  stack_left = [root.left]
+  stack_right = [root.right]
+  while stack_left.length > 0
+    left = stack_left.pop()
+    right = stack_right.pop()
+    next if left == nil and right == nil
+    return false if left == nil or right == nil or left.val != right.val
+
+    stack_left << left.left
+    stack_left << left.right
+    stack_right << right.right
+    stack_right << right.left
+  end
+  true
+end
+
+root = [1,2,2,3,4,4,3]
+p is_symmetric(root) # true
 
 
 
