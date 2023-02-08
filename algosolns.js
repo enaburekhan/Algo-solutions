@@ -3963,10 +3963,27 @@
 
 // console.log(validPalindrome(s)); // true
 
-const findKthLargest = (nums, k) => {
-  return nums.sort((a, b) => b - a)[k - 1];
-};
-const nums = [3, 2, 1, 5, 6, 4];
-const k = 2;
+// const findKthLargest = (nums, k) => {
+//   return nums.sort((a, b) => b - a)[k - 1];
+// };
+// const nums = [3, 2, 1, 5, 6, 4];
+// const k = 2;
 
-console.log(findKthLargest(nums, k)); // 5
+// console.log(findKthLargest(nums, k)); // 5
+
+var generateParenthesis = function (n) {
+  const res = [];
+  let iterate = (str, open, close) => {
+    if (open > n || close > n || close > open) return;
+    if (str.length === n * 2 && open === close) {
+      res.push(str);
+      return;
+    }
+    iterate(str + '(', open + 1, close);
+    iterate(str + ')', open, close + 1);
+  };
+  iterate('', 0, 0);
+  return res;
+};
+n = 3;
+console.log(generateParenthesis(n)); //["((()))","(()())","(())()","()(())","()()()"]
