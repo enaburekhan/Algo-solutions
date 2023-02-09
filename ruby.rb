@@ -1522,35 +1522,57 @@
 
 # p search_range(nums, target) # [3, 4]
 
-class TreeNode
-    attr_accessor :val, :left, :right
-    def initialize(val = 0, left = nil, right = nil)
-        @val = val
-        @left = left
-        @right = right
+# class TreeNode
+#     attr_accessor :val, :left, :right
+#     def initialize(val = 0, left = nil, right = nil)
+#         @val = val
+#         @left = left
+#         @right = right
+#     end
+# end
+
+# def is_symmetric(root)
+#   # O(n) time | O(h) space
+#   stack_left = [root.left]
+#   stack_right = [root.right]
+#   while stack_left.length > 0
+#     left = stack_left.pop()
+#     right = stack_right.pop()
+#     next if left == nil and right == nil
+#     return false if left == nil or right == nil or left.val != right.val
+
+#     stack_left << left.left
+#     stack_left << left.right
+#     stack_right << right.right
+#     stack_right << right.left
+#   end
+#   true
+# end
+
+# root = [1,2,2,3,4,4,3]
+# p is_symmetric(root) # true
+
+
+def can_complete_circuit(gas, cost)
+  # O(n) time | O(1) space
+    start = gas.size - 1
+    last = 0
+    gas_in_tank = gas[start] - cost[start]
+    while start >= last 
+      if gas_in_tank >= 0
+        gas_in_tank += gas[last] - cost[last]
+        last += 1
+      else
+        start -= 1
+        gas_in_tank += gas[start] - cost[start]
+      end
     end
-end
+    gas_in_tank >= 0 ? start : -1 
+ end
 
-def is_symmetric(root)
-  # O(n) time | O(h) space
-  stack_left = [root.left]
-  stack_right = [root.right]
-  while stack_left.length > 0
-    left = stack_left.pop()
-    right = stack_right.pop()
-    next if left == nil and right == nil
-    return false if left == nil or right == nil or left.val != right.val
-
-    stack_left << left.left
-    stack_left << left.right
-    stack_right << right.right
-    stack_right << right.left
-  end
-  true
-end
-
-root = [1,2,2,3,4,4,3]
-p is_symmetric(root) # true
+ gas = [1,2,3,4,5]
+ cost = [3,4,5,1,2]
+ p can_complete_circuit(gas, cost) # 3
 
 
 
