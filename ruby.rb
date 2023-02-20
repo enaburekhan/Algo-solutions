@@ -1553,27 +1553,35 @@
 # p is_symmetric(root) # true
 
 
-def can_complete_circuit(gas, cost)
+# def can_complete_circuit(gas, cost)
   # O(n) time | O(1) space
-    start = gas.size - 1
-    last = 0
-    gas_in_tank = gas[start] - cost[start]
-    while start >= last 
-      if gas_in_tank >= 0
-        gas_in_tank += gas[last] - cost[last]
-        last += 1
-      else
-        start -= 1
-        gas_in_tank += gas[start] - cost[start]
-      end
-    end
-    gas_in_tank >= 0 ? start : -1 
- end
+#     start = gas.size - 1
+#     last = 0
+#     gas_in_tank = gas[start] - cost[start]
+#     while start >= last 
+#       if gas_in_tank >= 0
+#         gas_in_tank += gas[last] - cost[last]
+#         last += 1
+#       else
+#         start -= 1
+#         gas_in_tank += gas[start] - cost[start]
+#       end
+#     end
+#     gas_in_tank >= 0 ? start : -1 
+#  end
 
- gas = [1,2,3,4,5]
- cost = [3,4,5,1,2]
- p can_complete_circuit(gas, cost) # 3
+#  gas = [1,2,3,4,5]
+#  cost = [3,4,5,1,2]
+#  p can_complete_circuit(gas, cost) # 3
 
+
+# Palindrome check
+def is_palindrome(x)
+  x.to_s == x.to_s.split('').reverse().join('')
+end
+
+x = 121
+p is_palindrome(x)  # true
 
 
 
