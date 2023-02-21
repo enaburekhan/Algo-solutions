@@ -3988,27 +3988,46 @@
 // n = 3;
 // console.log(generateParenthesis(n)); //["((()))","(()())","(())()","()(())","()()()"]
 
-function getPermutations(array) {
-  const permutations = [];
-  permutationsHelper(0, array, permutations);
-  return permutations;
-}
+// function getPermutations(array) {
+//   const permutations = [];
+//   permutationsHelper(0, array, permutations);
+//   return permutations;
+// }
 
-function permutationsHelper(i, array, permutations) {
-  if (i === array.length - 1) {
-    permutations.push(array.slice());
-  } else {
-    for (let j = i; j < array.length; j++) {
-      swap(i, j, array);
-      permutationsHelper(i + 1, array, permutations);
-      swap(i, j, array);
+// function permutationsHelper(i, array, permutations) {
+//   if (i === array.length - 1) {
+//     permutations.push(array.slice());
+//   } else {
+//     for (let j = i; j < array.length; j++) {
+//       swap(i, j, array);
+//       permutationsHelper(i + 1, array, permutations);
+//       swap(i, j, array);
+//     }
+//   }
+// }
+
+// function swap(i, j, array) {
+//   [array[i], array[j]] = [array[j], array[i]];
+// }
+
+// const array = [1, 2, 3];
+// console.log(getPermutations(array));
+
+function mergeSortedArray(nums1, m, nums2, n) {
+  // O(n) time | O(1) space
+  let count = 0;
+  for (let i = 0; i < nums1.length; i++) {
+    if (i >= m) {
+      nums1.splice(i, 1, nums2[count]);
+      count++;
     }
   }
+  return nums1.sort((a, b) => a - b);
 }
 
-function swap(i, j, array) {
-  [array[i], array[j]] = [array[j], array[i]];
-}
+const nums1 = [1, 2, 3, 0, 0, 0],
+  m = 3,
+  nums2 = [2, 5, 6],
+  n = 3;
 
-const array = [1, 2, 3];
-console.log(getPermutations(array));
+console.log(mergeSortedArray(nums1, m, nums2, n)); // [1,2,2,3,5,6]
