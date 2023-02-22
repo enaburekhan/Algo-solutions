@@ -4013,21 +4013,38 @@
 // const array = [1, 2, 3];
 // console.log(getPermutations(array));
 
-function mergeSortedArray(nums1, m, nums2, n) {
-  // O(n) time | O(1) space
-  let count = 0;
-  for (let i = 0; i < nums1.length; i++) {
-    if (i >= m) {
-      nums1.splice(i, 1, nums2[count]);
-      count++;
+// function mergeSortedArray(nums1, m, nums2, n) {
+//   // O(n) time | O(1) space
+//   let count = 0;
+//   for (let i = 0; i < nums1.length; i++) {
+//     if (i >= m) {
+//       nums1.splice(i, 1, nums2[count]);
+//       count++;
+//     }
+//   }
+//   return nums1.sort((a, b) => a - b);
+// }
+
+// const nums1 = [1, 2, 3, 0, 0, 0],
+//   m = 3,
+//   nums2 = [2, 5, 6],
+//   n = 3;
+
+// console.log(mergeSortedArray(nums1, m, nums2, n)); // [1,2,2,3,5,6]
+
+function singleNumber(nums) {
+  const set = new Set();
+  for (let i = 0; i < nums.length; i++) {
+    if (set.has(nums[i])) {
+      set.delete(nums[i]);
+    } else {
+      set.add(nums[i]);
     }
   }
-  return nums1.sort((a, b) => a - b);
+  const [index] = set;
+  return index;
 }
 
-const nums1 = [1, 2, 3, 0, 0, 0],
-  m = 3,
-  nums2 = [2, 5, 6],
-  n = 3;
+const nums = [4, 1, 2, 1, 2]; // 4
 
-console.log(mergeSortedArray(nums1, m, nums2, n)); // [1,2,2,3,5,6]
+console.log(singleNumber(nums));
