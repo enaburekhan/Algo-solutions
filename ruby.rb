@@ -1583,30 +1583,38 @@
 # x = 121
 # p is_palindrome(x)  # true
 
-def majority_element(nums)
+# def majority_element(nums)
   # O(n) time | O(n) space
-  count = {}
-  max_num = 1
-  maj = nums[0]
-  nums.each do |num|
-    if count.key?(num)
-      count[num] += 1
-    else
-      count[num] = 1
-    end
-    if count[num] > max_num
-      max_num = count[num]
-      maj = num
-    end
-  end
-  maj  
+#   count = {}
+#   max_num = 1
+#   maj = nums[0]
+#   nums.each do |num|
+#     if count.key?(num)
+#       count[num] += 1
+#     else
+#       count[num] = 1
+#     end
+#     if count[num] > max_num
+#       max_num = count[num]
+#       maj = num
+#     end
+#   end
+#   maj  
+# end
+
+# nums = [2,2,1,1,1,2,2]
+# nums2 = [3,2,3]
+# p majority_element(nums) # 2
+# p majority_element(nums2) # 3
+
+def is_anagram(s, t)
+  return false if s.size != t.size
+  s.split('').sort().join('') == t.split('').sort().join('')
 end
 
-nums = [2,2,1,1,1,2,2]
-nums2 = [3,2,3]
-p majority_element(nums) # 2
-p majority_element(nums2) # 3
-
+s = "anagram"
+t = "nagaram"
+p  is_anagram(s, t)  # true
 
 
 
