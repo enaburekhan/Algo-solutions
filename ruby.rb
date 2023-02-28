@@ -1607,14 +1607,45 @@
 # p majority_element(nums) # 2
 # p majority_element(nums2) # 3
 
-def is_anagram(s, t)
-  return false if s.size != t.size
-  s.split('').sort().join('') == t.split('').sort().join('')
+# def is_anagram(s, t)
+#   return false if s.size != t.size
+#   s.split('').sort().join('') == t.split('').sort().join('')
+# end
+
+# s = "anagram"
+# t = "nagaram"
+# p  is_anagram(s, t)  # true
+
+def search_range(nums, target)
+  left = 0
+  right = nums.size - 1
+  output = [-1,-1]
+  while left < right
+    mid = ((left + right) / 2).round
+    if nums[mid] < target
+      left = mid + 1
+    else
+      right = mid
+    end
+  end
+  return output if nums[left] != target
+  output[0] = left
+  right = nums.size - 1
+  while left < right
+    mid = (((left + right) / 2) + 1)
+    if nums[mid] <= target
+      left = mid
+    else
+      right = mid - 1
+    end
+  end
+  output[1] = right
+  output
 end
 
-s = "anagram"
-t = "nagaram"
-p  is_anagram(s, t)  # true
+nums = [5,7,7,8,8,10]
+target = 8
+p search_range(nums, target) # [3,4]
 
 
 
