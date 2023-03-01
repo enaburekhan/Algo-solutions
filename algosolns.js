@@ -4032,19 +4032,31 @@
 
 // console.log(mergeSortedArray(nums1, m, nums2, n)); // [1,2,2,3,5,6]
 
-function singleNumber(nums) {
-  const set = new Set();
-  for (let i = 0; i < nums.length; i++) {
-    if (set.has(nums[i])) {
-      set.delete(nums[i]);
-    } else {
-      set.add(nums[i]);
-    }
+// function singleNumber(nums) {
+//   const set = new Set();
+//   for (let i = 0; i < nums.length; i++) {
+//     if (set.has(nums[i])) {
+//       set.delete(nums[i]);
+//     } else {
+//       set.add(nums[i]);
+//     }
+//   }
+//   const [index] = set;
+//   return index;
+// }
+
+// const nums = [4, 1, 2, 1, 2]; // 4
+// console.log(singleNumber(nums));
+
+function sum(arr) {
+  const min = Math.min(arr[0], arr[1]);
+  const max = Math.max(arr[0], arr[1]);
+  let temp = 0;
+  for (let i = min; i <= max; i++) {
+    temp += i;
   }
-  const [index] = set;
-  return index;
+  return temp;
 }
 
-const nums = [4, 1, 2, 1, 2]; // 4
-
-console.log(singleNumber(nums));
+console.log(sum([1, 4]));
+console.log(sum([4, 1]));

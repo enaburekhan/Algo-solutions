@@ -1616,36 +1616,38 @@
 # t = "nagaram"
 # p  is_anagram(s, t)  # true
 
-def search_range(nums, target)
-  left = 0
-  right = nums.size - 1
-  output = [-1,-1]
-  while left < right
-    mid = ((left + right) / 2).round
-    if nums[mid] < target
-      left = mid + 1
-    else
-      right = mid
-    end
-  end
-  return output if nums[left] != target
-  output[0] = left
-  right = nums.size - 1
-  while left < right
-    mid = (((left + right) / 2) + 1)
-    if nums[mid] <= target
-      left = mid
-    else
-      right = mid - 1
-    end
-  end
-  output[1] = right
-  output
-end
+# def search_range(nums, target)
+#   left = 0
+#   right = nums.size - 1
+#   output = [-1,-1]
+#   while left < right
+#     mid = ((left + right) / 2).round
+#     if nums[mid] < target
+#       left = mid + 1
+#     else
+#       right = mid
+#     end
+#   end
+#   return output if nums[left] != target
+#   output[0] = left
+#   right = nums.size - 1
+#   while left < right
+#     mid = (((left + right) / 2) + 1)
+#     if nums[mid] <= target
+#       left = mid
+#     else
+#       right = mid - 1
+#     end
+#   end
+#   output[1] = right
+#   output
+# end
 
-nums = [5,7,7,8,8,10]
-target = 8
-p search_range(nums, target) # [3,4]
+# nums = [5,7,7,8,8,10]
+# target = 8
+# p search_range(nums, target) # [3,4]
+
+
 
 
 
