@@ -4048,15 +4048,23 @@
 // const nums = [4, 1, 2, 1, 2]; // 4
 // console.log(singleNumber(nums));
 
-function sum(arr) {
-  const min = Math.min(arr[0], arr[1]);
-  const max = Math.max(arr[0], arr[1]);
-  let temp = 0;
-  for (let i = min; i <= max; i++) {
-    temp += i;
-  }
-  return temp;
+// function sum(arr) {
+//   const min = Math.min(arr[0], arr[1]);
+//   const max = Math.max(arr[0], arr[1]);
+//   let temp = 0;
+//   for (let i = min; i <= max; i++) {
+//     temp += i;
+//   }
+//   return temp;
+// }
+
+// console.log(sum([1, 4]));
+// console.log(sum([4, 1]));
+
+function factorial(num) {
+  if (num === 0 || num === 1) return 1;
+  return num * factorial(num - 1);
 }
 
-console.log(sum([1, 4]));
-console.log(sum([4, 1]));
+console.log(factorial(4)); // 24
+console.log(factorial(5)); // 120

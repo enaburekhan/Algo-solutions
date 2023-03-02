@@ -1647,20 +1647,20 @@
 # target = 8
 # p search_range(nums, target) # [3,4]
 
-def sum(arr)
-  min = arr.min
-  max = arr.max
-  temp = 0
- (min..max).each do |num|
-    temp += num
- end
- temp
-end
+# def sum(arr)
+#   min = arr.min
+#   max = arr.max
+#   temp = 0
+#  (min..max).each do |num|
+#     temp += num
+#  end
+#  temp
+# end
 
-arr = [1, 4]
-arr2 = [4, 1]
-p sum(arr) # 10
-p sum(arr2) # 10
+# arr = [1, 4]
+# arr2 = [4, 1]
+# p sum(arr) # 10
+# p sum(arr2) # 10
 
 
 
