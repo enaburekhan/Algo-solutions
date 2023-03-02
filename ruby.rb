@@ -1662,6 +1662,14 @@
 # p sum(arr) # 10
 # p sum(arr2) # 10
 
+def factorial(num)
+  return 1 if num == 0 or num == 1
+  num * factorial(num - 1)
+end
+
+p factorial(4) # 24
+p factorial(5) # 120
+
 
 
 
