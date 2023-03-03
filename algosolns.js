@@ -4061,10 +4061,23 @@
 // console.log(sum([1, 4]));
 // console.log(sum([4, 1]));
 
-function factorial(num) {
-  if (num === 0 || num === 1) return 1;
-  return num * factorial(num - 1);
+// function factorial(num) {
+//   if (num === 0 || num === 1) return 1;
+//   return num * factorial(num - 1);
+// }
+
+// console.log(factorial(4)); // 24
+// console.log(factorial(5)); // 120
+
+function printFibonacci(n) {
+  for (let i = 0; i < n; i++) {
+    console.log(fibonacci(i));
+  }
 }
 
-console.log(factorial(4)); // 24
-console.log(factorial(5)); // 120
+function fibonacci(n) {
+  if (n < 2) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+printFibonacci(2); // returns 0 1
+printFibonacci(7); // returns 0 1 1 2 3 5 8
