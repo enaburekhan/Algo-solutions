@@ -1662,14 +1662,27 @@
 # p sum(arr) # 10
 # p sum(arr2) # 10
 
-def factorial(num)
-  return 1 if num == 0 or num == 1
-  num * factorial(num - 1)
+# def factorial(num)
+#   return 1 if num == 0 or num == 1
+#   num * factorial(num - 1)
+# end
+
+# p factorial(4) # 24
+# p factorial(5) # 120
+
+def print_fibonacci(n)
+  (0...n).each do |i|
+    p fibonacci(i)
+  end
 end
 
-p factorial(4) # 24
-p factorial(5) # 120
+def fibonacci(n)
+  return n if n < 2
+  fibonacci(n-1) + fibonacci(n-2)  
+end
 
+print_fibonacci(2) # 0 1
+print_fibonacci(7) # 0 1 1 2 3 5 8
 
 
 
