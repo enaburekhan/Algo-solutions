@@ -4069,15 +4069,38 @@
 // console.log(factorial(4)); // 24
 // console.log(factorial(5)); // 120
 
-function printFibonacci(n) {
-  for (let i = 0; i < n; i++) {
-    console.log(fibonacci(i));
+// function printFibonacci(n) {
+//   for (let i = 0; i < n; i++) {
+//     console.log(fibonacci(i));
+//   }
+// }
+
+// function fibonacci(n) {
+//   if (n < 2) return n;
+//   return fibonacci(n - 1) + fibonacci(n - 2);
+// }
+// printFibonacci(2); // returns 0 1
+// printFibonacci(7); // returns 0 1 1 2 3 5 8
+
+function printPrime(min, max) {
+  for (let i = min; i <= max; i++) {
+    if (i == 0 || i === 1) {
+      continue;
+    }
+    isPrime(i);
   }
 }
 
-function fibonacci(n) {
-  if (n < 2) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
+function isPrime(n) {
+  let primeFlag = true;
+  for (let i = 2; i <= n / 2; i++) {
+    if (n % i === 0) {
+      primeFlag = false;
+      break;
+    }
+  }
+  if (primeFlag) console.log(n);
 }
-printFibonacci(2); // returns 0 1
-printFibonacci(7); // returns 0 1 1 2 3 5 8
+
+printPrime(0, 20); // Returns 2 3 5 7 11 13 17 19
+// isPrime(20);
