@@ -1670,19 +1670,25 @@
 # p factorial(4) # 24
 # p factorial(5) # 120
 
-def print_fibonacci(n)
-  (0...n).each do |i|
-    p fibonacci(i)
-  end
-end
+# def print_fibonacci(n)
+#   (0...n).each do |i|
+#     p fibonacci(i)
+#   end
+# end
 
-def fibonacci(n)
-  return n if n < 2
-  fibonacci(n-1) + fibonacci(n-2)  
-end
+# def fibonacci(n)
+#   return n if n < 2
+#   fibonacci(n-1) + fibonacci(n-2)  
+# end
 
-print_fibonacci(2) # 0 1
-print_fibonacci(7) # 0 1 1 2 3 5 8
+# print_fibonacci(2) # 0 1
+# print_fibonacci(7) # 0 1 1 2 3 5 8
+
+def isPalindrome(str)
+  str == str.split('').reverse().join('')
+end
+p isPalindrome('racecar') # true
+p isPalindrome('race') # false
 
 
 
