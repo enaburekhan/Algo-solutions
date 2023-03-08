@@ -4082,24 +4082,30 @@
 // printFibonacci(2); // returns 0 1
 // printFibonacci(7); // returns 0 1 1 2 3 5 8
 
-function printPrime(min, max) {
-  const isPrime = (n) => {
-    let primeFlag = true;
-    for (let i = 2; i <= n / 2; i++) {
-      if (n % i === 0) {
-        primeFlag = false;
-        break;
-      }
-    }
-    if (primeFlag) console.log(n);
-  };
-  for (let i = min; i <= max; i++) {
-    if (i === 0 || i === 1) {
-      continue;
-    }
-    isPrime(i);
-  }
-}
+// function printPrime(min, max) {
+//   const isPrime = (n) => {
+//     let primeFlag = true;
+//     for (let i = 2; i <= n / 2; i++) {
+//       if (n % i === 0) {
+//         primeFlag = false;
+//         break;
+//       }
+//     }
+//     if (primeFlag) console.log(n);
+//   };
+//   for (let i = min; i <= max; i++) {
+//     if (i === 0 || i === 1) {
+//       continue;
+//     }
+//     isPrime(i);
+//   }
+// }
 
-printPrime(0, 20); // Returns 2 3 5 7 11 13 17 19
-// isPrime(20);
+// printPrime(0, 20); // Returns 2 3 5 7 11 13 17 19
+
+function isPalindrome(str) {
+  return str === str.split('').reverse().join('');
+}
+console.log(isPalindrome('racecar')); // Returns true
+
+console.log(isPalindrome('race')); // Returns false
