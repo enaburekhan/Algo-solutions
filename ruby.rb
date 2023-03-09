@@ -1684,11 +1684,23 @@
 # print_fibonacci(2) # 0 1
 # print_fibonacci(7) # 0 1 1 2 3 5 8
 
-def isPalindrome(str)
-  str == str.split('').reverse().join('')
+# def isPalindrome(str)
+#   str == str.split('').reverse().join('')
+# end
+# p isPalindrome('racecar') # true
+# p isPalindrome('race') # false
+
+def is_anagram(str1, str2)
+  str1 = str1.downcase
+  str2 = str2.downcase
+  return false if str1.size != str2.size
+  str1.split('').sort().join('') == str2.split('').sort().join('')
 end
-p isPalindrome('racecar') # true
-p isPalindrome('race') # false
+
+p is_anagram('racecar', 'carrace'); # Returns true
+
+p is_anagram('racecar', 'carracr'); # Returns false
+
 
 
 
