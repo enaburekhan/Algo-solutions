@@ -4103,9 +4103,20 @@
 
 // printPrime(0, 20); // Returns 2 3 5 7 11 13 17 19
 
-function isPalindrome(str) {
-  return str === str.split('').reverse().join('');
-}
-console.log(isPalindrome('racecar')); // Returns true
+// function isPalindrome(str) {
+//   return str === str.split('').reverse().join('');
+// }
+// console.log(isPalindrome('racecar')); // Returns true
 
-console.log(isPalindrome('race')); // Returns false
+// console.log(isPalindrome('race')); // Returns false
+
+function isAnagram(str1, str2) {
+  str1 = str1.toLowerCase();
+  str2 = str2.toLowerCase();
+  if (str1.length !== str2.length) return false;
+  return str1.split('').sort().join('') === str2.split('').sort().join('');
+}
+
+console.log(isAnagram('racecar', 'carrace')); // Returns true
+
+console.log(isAnagram('racecar', 'carracr')); // Returns false
