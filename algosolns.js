@@ -4110,13 +4110,20 @@
 
 // console.log(isPalindrome('race')); // Returns false
 
-function isAnagram(str1, str2) {
-  str1 = str1.toLowerCase();
-  str2 = str2.toLowerCase();
-  if (str1.length !== str2.length) return false;
-  return str1.split('').sort().join('') === str2.split('').sort().join('');
+// function isAnagram(str1, str2) {
+//   str1 = str1.toLowerCase();
+//   str2 = str2.toLowerCase();
+//   if (str1.length !== str2.length) return false;
+//   return str1.split('').sort().join('') === str2.split('').sort().join('');
+// }
+
+// console.log(isAnagram('racecar', 'carrace')); // Returns true
+
+// console.log(isAnagram('racecar', 'carracr')); // Returns false
+
+function reverseWords(str) {
+  return str.split(/\s+/).reverse().join(' ');
 }
+console.log(reverseWords('Hello World')); // Returns 'World Hello'
 
-console.log(isAnagram('racecar', 'carrace')); // Returns true
-
-console.log(isAnagram('racecar', 'carracr')); // Returns false
+console.log(reverseWords(' This is  a  test string ')); // Returns 'string test a is This'

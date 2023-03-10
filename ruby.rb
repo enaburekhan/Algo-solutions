@@ -1690,16 +1690,16 @@
 # p isPalindrome('racecar') # true
 # p isPalindrome('race') # false
 
-def is_anagram(str1, str2)
-  str1 = str1.downcase
-  str2 = str2.downcase
-  return false if str1.size != str2.size
-  str1.split('').sort().join('') == str2.split('').sort().join('')
-end
+# def is_anagram(str1, str2)
+#   str1 = str1.downcase
+#   str2 = str2.downcase
+#   return false if str1.size != str2.size
+#   str1.split('').sort().join('') == str2.split('').sort().join('')
+# end
 
-p is_anagram('racecar', 'carrace'); # Returns true
+# p is_anagram('racecar', 'carrace'); # Returns true
 
-p is_anagram('racecar', 'carracr'); # Returns false
+# p is_anagram('racecar', 'carracr'); # Returns false
 
 
 
