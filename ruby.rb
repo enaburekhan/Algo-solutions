@@ -1701,7 +1701,12 @@
 
 # p is_anagram('racecar', 'carracr'); # Returns false
 
+def reverseWords(str)
+  str.split(/\s+/).reverse().join(' ')
+end
+p reverseWords('Hello World') #Returns 'World Hello'
 
+p reverseWords(' This is  a  test string ') # Returns 'string test a is This'
 
 
 
