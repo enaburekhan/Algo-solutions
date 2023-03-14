@@ -1701,15 +1701,23 @@
 
 # p is_anagram('racecar', 'carracr'); # Returns false
 
-def reverseWords(str)
-  str.split(/\s+/).reverse().join(' ')
+# def reverseWords(str)
+#   str.split(/\s+/).reverse().join(' ')
+# end
+# p reverseWords('Hello World') #Returns 'World Hello'
+
+# p reverseWords(' This is  a  test string ') # Returns 'string test a is This'
+
+
+# class User < ActiveRecord::Base 
+#   scope :recently_created, -> {where("created_at <= #{Date.today - 2.days}")}
+# end
+
+def removeVowels (str) 
+  str.gsub(/[aeiou]/, '')
 end
-p reverseWords('Hello World') #Returns 'World Hello'
 
-p reverseWords(' This is  a  test string ') # Returns 'string test a is This'
-
-
-
+p removeVowels('Hello World') # Returns Hll Wrld
 
 
 

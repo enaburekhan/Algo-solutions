@@ -4121,9 +4121,15 @@
 
 // console.log(isAnagram('racecar', 'carracr')); // Returns false
 
-function reverseWords(str) {
-  return str.split(/\s+/).reverse().join(' ');
-}
-console.log(reverseWords('Hello World')); // Returns 'World Hello'
+// function reverseWords(str) {
+//   return str.split(/\s+/).reverse().join(' ');
+// }
+// console.log(reverseWords('Hello World')); // Returns 'World Hello'
 
-console.log(reverseWords(' This is  a  test string ')); // Returns 'string test a is This'
+// console.log(reverseWords(' This is  a  test string ')); // Returns 'string test a is This'
+
+function removeVowels(str) {
+  return str.replace(/[aeiou]/gi, '');
+}
+
+console.log(removeVowels('Hello World')); // Returns Hll Wrld
