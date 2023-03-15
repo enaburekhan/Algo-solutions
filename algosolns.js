@@ -4128,8 +4128,35 @@
 
 // console.log(reverseWords(' This is  a  test string ')); // Returns 'string test a is This'
 
-function removeVowels(str) {
-  return str.replace(/[aeiou]/gi, '');
+// function removeVowels(str) {
+//   return str.replace(/[aeiou]/gi, '');
+// }
+
+// console.log(removeVowels('Hello World')); // Returns Hll Wrld
+
+function countPalindromicSubstrings(str) {
+  let count = 0;
+  if (!str) return 0;
+  for (let i = 0; i < str.length; i++) {
+    count += countPalindrome(str, i, i); // odd length
+    count += countPalindrome(str, i, i + 1); // even length
+  }
+  return count;
 }
 
-console.log(removeVowels('Hello World')); // Returns Hll Wrld
+function countPalindrome(str, left, right) {
+  let count = 0;
+  while (
+    left >= 0 &&
+    right < str.length &&
+    str.charAt(left) === str.charAt(right)
+  ) {
+    count++;
+    left--;
+    right++;
+  }
+  return count;
+}
+console.log(countPalindromicSubstrings('abcd')); // Returns 4 (a, b, c, d)
+
+console.log(countPalindromicSubstrings('aaa')); // Returns 6 (a, a, a, aa, aa, aaa)
