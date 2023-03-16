@@ -1713,11 +1713,36 @@
 #   scope :recently_created, -> {where("created_at <= #{Date.today - 2.days}")}
 # end
 
-def removeVowels (str) 
-  str.gsub(/[aeiou]/, '')
+# def removeVowels (str) 
+#   str.gsub(/[aeiou]/, '')
+# end
+
+# p removeVowels('Hello World') # Returns Hll Wrld
+
+def countPalindromicSubstrings(str) 
+  count = 0
+  return 0 if !str
+
+  (0..str.size).each do |i|
+    count += countPalindrome(str, i, i) # odd length
+    count += countPalindrome(str, i, i+1) # even length
+  end
+  count
 end
 
-p removeVowels('Hello World') # Returns Hll Wrld
+def countPalindrome(str, left, right)
+  count = 0
+  while left >= 0 and right < str.size and str.index(left) == str.index(right)
+    left -= 1
+    right += 1
+    count += 1
+  end
+  count
+end
+
+p countPalindromicSubstrings('abcd') # Returns 4 (a, b, c, d)
+
+p countPalindromicSubstrings('aaa')  # Returns 6 (a, a, a, aa, aa, aaa)
 
 
 

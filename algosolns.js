@@ -4134,29 +4134,40 @@
 
 // console.log(removeVowels('Hello World')); // Returns Hll Wrld
 
-function countPalindromicSubstrings(str) {
-  let count = 0;
-  if (!str) return 0;
-  for (let i = 0; i < str.length; i++) {
-    count += countPalindrome(str, i, i); // odd length
-    count += countPalindrome(str, i, i + 1); // even length
-  }
-  return count;
+// function countPalindromicSubstrings(str) {
+//   let count = 0;
+//   if (!str) return 0;
+//   for (let i = 0; i < str.length; i++) {
+//     count += countPalindrome(str, i, i); // odd length
+//     count += countPalindrome(str, i, i + 1); // even length
+//   }
+//   return count;
+// }
+
+// function countPalindrome(str, left, right) {
+//   let count = 0;
+//   while (
+//     left >= 0 &&
+//     right < str.length &&
+//     str.charAt(left) === str.charAt(right)
+//   ) {
+//     count++;
+//     left--;
+//     right++;
+//   }
+//   return count;
+// }
+// console.log(countPalindromicSubstrings('abcd')); // Returns 4 (a, b, c, d)
+
+// console.log(countPalindromicSubstrings('aaa')); // Returns 6 (a, a, a, aa, aa, aaa)
+
+function fullNames(names) {
+  return names.map((name) => `${name.firstname} ${name.lastname}`);
 }
 
-function countPalindrome(str, left, right) {
-  let count = 0;
-  while (
-    left >= 0 &&
-    right < str.length &&
-    str.charAt(left) === str.charAt(right)
-  ) {
-    count++;
-    left--;
-    right++;
-  }
-  return count;
-}
-console.log(countPalindromicSubstrings('abcd')); // Returns 4 (a, b, c, d)
+const names = [
+  { firstname: 'Bruce', lastname: 'Wayne' },
+  { firstname: 'Clark', lastname: 'Kent' },
+];
 
-console.log(countPalindromicSubstrings('aaa')); // Returns 6 (a, a, a, aa, aa, aaa)
+console.log(fullNames(names)); // - Returns ['Bruce Wayne', 'Clark Kent']
