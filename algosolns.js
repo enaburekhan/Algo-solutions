@@ -4161,13 +4161,40 @@
 
 // console.log(countPalindromicSubstrings('aaa')); // Returns 6 (a, a, a, aa, aa, aaa)
 
-function fullNames(names) {
-  return names.map((name) => `${name.firstname} ${name.lastname}`);
+// function fullNames(names) {
+//   return names.map((name) => `${name.firstname} ${name.lastname}`);
+// }
+
+// const names = [
+//   { firstname: 'Bruce', lastname: 'Wayne' },
+//   { firstname: 'Clark', lastname: 'Kent' },
+// ];
+
+// console.log(fullNames(names)); // - Returns ['Bruce Wayne', 'Clark Kent']
+
+function longestWord(str) {
+  //loop thru the str
+  // for each word, track the longest word and return it.
+  // if two longest word found, return the first
+  const longestStr = str.split(' ');
+  return longestStr.reduce((acc, curr) => {
+    return acc.length >= curr.length ? acc : curr;
+  }, '');
 }
 
-const names = [
-  { firstname: 'Bruce', lastname: 'Wayne' },
-  { firstname: 'Clark', lastname: 'Kent' },
-];
+console.log(longestWord('My name is Vishwas')); // - Returns 'Vishwas'
 
-console.log(fullNames(names)); // - Returns ['Bruce Wayne', 'Clark Kent']
+console.log(longestWord('Hello world')); //- Returns 'Hello'
+
+// function myArrayWithNoDuplicates(myArray) {
+//   return myArray.reduce((acc, curr) => {
+//     if (!acc.includes(curr)) {
+//       return [...acc, curr];
+//     }
+//     return acc;
+//   }, []);
+// }
+
+// const myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
+
+// console.log(myArrayWithNoDuplicates(myArray));
