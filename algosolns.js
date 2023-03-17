@@ -4172,29 +4172,23 @@
 
 // console.log(fullNames(names)); // - Returns ['Bruce Wayne', 'Clark Kent']
 
-function longestWord(str) {
-  //loop thru the str
-  // for each word, track the longest word and return it.
-  // if two longest word found, return the first
-  const longestStr = str.split(' ');
-  return longestStr.reduce((acc, curr) => {
-    return acc.length >= curr.length ? acc : curr;
-  }, '');
-}
-
-console.log(longestWord('My name is Vishwas')); // - Returns 'Vishwas'
-
-console.log(longestWord('Hello world')); //- Returns 'Hello'
-
-// function myArrayWithNoDuplicates(myArray) {
-//   return myArray.reduce((acc, curr) => {
-//     if (!acc.includes(curr)) {
-//       return [...acc, curr];
-//     }
-//     return acc;
-//   }, []);
+// function longestWord(str) {
+//   const longestStr = str.split(' ');
+//   return longestStr.reduce((acc, curr) => {
+//     return acc.length >= curr.length ? acc : curr;
+//   }, '');
 // }
 
-// const myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
+// console.log(longestWord('My name is Vishwas')); // - Returns 'Vishwas'
 
-// console.log(myArrayWithNoDuplicates(myArray));
+// console.log(longestWord('Hello world')); //- Returns 'Hello'
+
+function myArrayWithNoDuplicates(myArray) {
+  return myArray.reduce((acc, curr) => {
+    return !acc.includes(curr) ? [...acc, curr] : acc;
+  }, []);
+}
+
+const myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
+
+console.log(myArrayWithNoDuplicates(myArray));
