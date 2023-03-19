@@ -4183,12 +4183,14 @@
 
 // console.log(longestWord('Hello world')); //- Returns 'Hello'
 
-function myArrayWithNoDuplicates(myArray) {
-  return myArray.reduce((acc, curr) => {
-    return !acc.includes(curr) ? [...acc, curr] : acc;
-  }, []);
-}
+// function myArrayWithNoDuplicates(myArray) {
+//   return myArray.reduce((acc, curr) => {
+//     return !acc.includes(curr) ? [...acc, curr] : acc;
+//   }, []);
+// }
 
-const myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
+// const myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
 
-console.log(myArrayWithNoDuplicates(myArray));
+// console.log(myArrayWithNoDuplicates(myArray));
+
+postgres://rails_api_user:sMZt1CoqElWXw9F1nxHzH5hnW9X8nuSh@dpg-cgbgfqg2qv267u8jfahg-a/rails_api

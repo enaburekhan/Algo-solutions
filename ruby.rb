@@ -1746,20 +1746,42 @@
 # p countPalindromicSubstrings('aaa')  # Returns 6 (a, a, a, aa, aa, aaa)
 
 
-def full_names(names) 
-  h = names.each_with_object({}) do |g, h|
-    first_name, last_name = g.values_at(:first_name, :last_name )
-    h[first_name] = last_name
-  end
-  h.map {|name, value| `#{name}, #{value}` }
+# def full_names(names) 
+#   # incomplete solution
+#   h = names.each_with_object({}) do |g, h|
+#     first_name, last_name = g.values_at(:first_name, :last_name )
+#     h[first_name] = last_name
+#   end
+#   h.map {|name, value| `#{name}, #{value}` }
+# end
+
+# names = [
+#   { first_name: 'Bruce', last_name: 'Wayne' },
+#   { first_name: 'Clark', last_name: 'Kent' },
+# ]
+
+# p full_names(names) # - Returns ['Bruce Wayne', 'Clark Kent']
+
+# def longestWord(str)
+#   str.split(' ').reduce('') { |acc, curr| acc.size >= curr.size ? acc : curr }
+# end
+
+# p longestWord('My name is Vishwas') # Returns 'Vishwas'
+
+# p longestWord('Hello world') # Returns 'Hello'
+
+# postgres://rails_api_user:sMZt1CoqElWXw9F1nxHzH5hnW9X8nuSh@dpg-cgbgfqg2qv267u8jfahg-a/rails_api
+
+def my_array_with_no_duplicates(my_array)
+  my_array.reduce([]) {|acc, curr| !acc.include?(curr) ? (acc << curr ) : acc }
 end
+my_array = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
 
-names = [
-  { first_name: 'Bruce', last_name: 'Wayne' },
-  { first_name: 'Clark', last_name: 'Kent' },
-]
+p my_array_with_no_duplicates(my_array) # ['a', 'b', 'c', 'e', 'd']
 
-p full_names(names) # - Returns ['Bruce Wayne', 'Clark Kent']
+
+
+
 
 
 
