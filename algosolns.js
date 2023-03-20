@@ -4193,4 +4193,17 @@
 
 // console.log(myArrayWithNoDuplicates(myArray));
 
-postgres://rails_api_user:sMZt1CoqElWXw9F1nxHzH5hnW9X8nuSh@dpg-cgbgfqg2qv267u8jfahg-a/rails_api
+// postgres://rails_api_user:sMZt1CoqElWXw9F1nxHzH5hnW9X8nuSh@dpg-cgbgfqg2qv267u8jfahg-a/rails_api
+
+function createArray(nums, index) {
+  const target = [];
+  for (let i = 0; i < nums.length; i++) {
+    target.splice(index[i], 0, nums[i]);
+  }
+  return target;
+}
+
+const nums = [0, 1, 2, 3, 4];
+const index = [0, 1, 2, 2, 1];
+
+console.log(createArray(nums, index)); // Returns [0,4,1,3,2]
