@@ -1772,13 +1772,26 @@
 
 # postgres://rails_api_user:sMZt1CoqElWXw9F1nxHzH5hnW9X8nuSh@dpg-cgbgfqg2qv267u8jfahg-a/rails_api
 
-def my_array_with_no_duplicates(my_array)
-  my_array.reduce([]) {|acc, curr| !acc.include?(curr) ? (acc << curr ) : acc }
+# def my_array_with_no_duplicates(my_array)
+#   my_array.reduce([]) {|acc, curr| !acc.include?(curr) ? (acc << curr ) : acc }
+# end
+# my_array = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
+
+# p my_array_with_no_duplicates(my_array) # ['a', 'b', 'c', 'e', 'd']
+
+
+def create_array(nums, index) 
+  target = []
+  (0..nums.size).each do |i|
+    target.slice!(index[i], nums[i])
+  end
+  target
 end
-my_array = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
 
-p my_array_with_no_duplicates(my_array) # ['a', 'b', 'c', 'e', 'd']
+nums = [0,1,2,3,4]
+index = [0,1,2,2,1]
 
+p create_array(nums, index) # Returns [0,4,1,3,2]
 
 
 

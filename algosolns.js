@@ -4195,15 +4195,48 @@
 
 // postgres://rails_api_user:sMZt1CoqElWXw9F1nxHzH5hnW9X8nuSh@dpg-cgbgfqg2qv267u8jfahg-a/rails_api
 
-function createArray(nums, index) {
-  const target = [];
-  for (let i = 0; i < nums.length; i++) {
-    target.splice(index[i], 0, nums[i]);
-  }
-  return target;
+// function createArray(nums, index) {
+//   const target = [];
+//   for (let i = 0; i < nums.length; i++) {
+//     target.splice(index[i], 0, nums[i]);
+//   }
+//   return target;
+// }
+
+// const nums = [0, 1, 2, 3, 4];
+// const index = [0, 1, 2, 2, 1];
+
+// console.log(createArray(nums, index)); // Returns [0,4,1,3,2]
+
+function union(arr1, arr2) {
+  return [...arr1, ...arr2];
+}
+const arr1 = [1, 2, 3];
+const arr2 = [2, 3, 4];
+
+console.log(union(arr1, arr2)); // Returns [1, 2, 3, 2, 3, 4]
+
+function intersection(arr1, arr2) {
+  return arr1.filter((item) => arr2.includes(item));
 }
 
-const nums = [0, 1, 2, 3, 4];
-const index = [0, 1, 2, 2, 1];
+console.log(intersection(arr1, arr2)); // Returns [2, 3]
 
-console.log(createArray(nums, index)); // Returns [0,4,1,3,2]
+function difference(arr1, arr2) {
+  return arr1.filter((item) => !arr2.includes(item));
+}
+
+function difference(arr2, arr1) {
+  return arr2.filter((item) => !arr1.includes(item));
+}
+
+console.log(difference(arr1, arr2)); // Returns [1]
+
+console.log(difference(arr2, arr1)); // Returns [4]
+
+function symmetricDifference(arr1, arr2) {
+  return arr1
+    .filter((item) => !arr2.includes(item))
+    .concat(arr2.filter((item) => !arr1.includes(item)));
+}
+console.log(symmetricDifference(arr1, arr2)); // Returns [1, 4]
