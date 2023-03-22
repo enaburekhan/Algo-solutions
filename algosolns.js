@@ -4243,8 +4243,16 @@
 
 // npx eslint "**/*.{js,jsx}"
 
+// function flattenArray(arr) {
+//   return arr.flat(3);
+// }
+
 function flattenArray(arr) {
-  return arr.flat(3);
+  return arr.reduce(
+    (acc, curr) =>
+      Array.isArray(curr) ? acc.concat(flattenArray(curr)) : acc.concat(curr),
+    []
+  );
 }
 
 const arr = [1, [2], [3, [[4]]]];
