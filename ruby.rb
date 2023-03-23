@@ -1780,18 +1780,31 @@
 # p my_array_with_no_duplicates(my_array) # ['a', 'b', 'c', 'e', 'd']
 
 
-def create_array(nums, index) 
-  target = []
-  (0..nums.size).each do |i|
-    target.slice!(index[i], nums[i])
+# def create_array(nums, index) 
+#   target = []
+#   (0..nums.size).each do |i|
+#     target.slice!(index[i], nums[i])
+#   end
+#   target
+# end
+
+# nums = [0,1,2,3,4]
+# index = [0,1,2,2,1]
+
+# p create_array(nums, index) # Returns [0,4,1,3,2]
+
+require 'set'
+def findDuplicate(arr) 
+  set_num = Set.new
+  arr.each do |num|
+    return num if set_num.include?(num)
+    set_num.add(num)
   end
-  target
 end
 
-nums = [0,1,2,3,4]
-index = [0,1,2,2,1]
+arr = [2,4,6,8,2]
 
-p create_array(nums, index) # Returns [0,4,1,3,2]
+p findDuplicate(arr) # Returns 2
 
 
 
