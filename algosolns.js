@@ -4247,14 +4247,29 @@
 //   return arr.flat(3);
 // }
 
-function flattenArray(arr) {
-  return arr.reduce(
-    (acc, curr) =>
-      Array.isArray(curr) ? acc.concat(flattenArray(curr)) : acc.concat(curr),
-    []
-  );
+// function flattenArray(arr) {
+//   return arr.reduce(
+//     (acc, curr) =>
+//       Array.isArray(curr) ? acc.concat(flattenArray(curr)) : acc.concat(curr),
+//     []
+//   );
+// }
+
+// const arr = [1, [2], [3, [[4]]]];
+
+// console.log(flattenArray(arr)); // Returns [1, 2, 3, 4]
+
+function findDuplicate(arr) {
+  const set = new Set();
+  for (let i = 0; i < arr.length; i++) {
+    if (set.has(arr[i])) {
+      return arr[i];
+    } else {
+      set.add(arr[i]);
+    }
+  }
 }
 
-const arr = [1, [2], [3, [[4]]]];
+const arr = [2, 4, 6, 8, 2];
 
-console.log(flattenArray(arr)); // Returns [1, 2, 3, 4]
+console.log(findDuplicate(arr)); // Returns 2
