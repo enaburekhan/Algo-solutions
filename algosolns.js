@@ -4259,17 +4259,39 @@
 
 // console.log(flattenArray(arr)); // Returns [1, 2, 3, 4]
 
-function findDuplicate(arr) {
-  const set = new Set();
-  for (let i = 0; i < arr.length; i++) {
-    if (set.has(arr[i])) {
-      return arr[i];
-    } else {
-      set.add(arr[i]);
-    }
+// function findDuplicate(arr) {
+//   const set = new Set();
+//   for (let i = 0; i < arr.length; i++) {
+//     if (set.has(arr[i])) {
+//       return arr[i];
+//     } else {
+//       set.add(arr[i]);
+//     }
+//   }
+// }
+
+// const arr = [2, 4, 6, 8, 2];
+
+// console.log(findDuplicate(arr)); // Returns 2
+
+function nonRepeatingWords(str1, str2) {
+  const map = new Map();
+  const result = [];
+  const str = str1 + ' ' + str2;
+  str.split(' ').forEach((word) => {
+    map.has(word) ? map.set(word, map.get(word) + 1) : map.set(word, 1);
+  });
+  for (const [key, val] of map) {
+    if (val === 1) result.push(key);
   }
+  return result;
 }
 
-const arr = [2, 4, 6, 8, 2];
+const str1 = 'Hello world';
+const str2 = 'Hello Vishwas';
 
-console.log(findDuplicate(arr)); // Returns 2
+console.log(nonRepeatingWords(str1, str2)); // Returns ['world', 'Vishwas']
+
+const str3 = 'Hello Hello';
+const str4 = 'Welcome Vishwas';
+console.log(nonRepeatingWords(str3, str4)); // Returns ['Welcome', 'Vishwas']
