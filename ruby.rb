@@ -1793,18 +1793,44 @@
 
 # p create_array(nums, index) # Returns [0,4,1,3,2]
 
-require 'set'
-def findDuplicate(arr) 
-  set_num = Set.new
-  arr.each do |num|
-    return num if set_num.include?(num)
-    set_num.add(num)
+# require 'set'
+# def findDuplicate(arr) 
+#   set_num = Set.new
+#   arr.each do |num|
+#     return num if set_num.include?(num)
+#     set_num.add(num)
+#   end
+# end
+
+# arr = [2,4,6,8,2]
+
+# p findDuplicate(arr) # Returns 2
+
+def non_repeating_words(str1, str2) 
+  str = str1 + ' ' + str2
+  obj = {}
+  result = []
+  str.split(' ').each do |word|
+    obj.key?(word) ? obj[word] += 1 : obj[word] = 1
   end
+  obj.each do |key, val|
+    result << key if val == 1
+  end
+  result
 end
 
-arr = [2,4,6,8,2]
 
-p findDuplicate(arr) # Returns 2
+
+str1 = 'Hello world'
+str2 = 'Hello Vishwas'
+
+p non_repeating_words(str1, str2) # Returns ['world', 'Vishwas']
+str3 = 'Hello Hello'
+str4 = 'Welcome Vishwas'
+
+p non_repeating_words(str3, str4) # Returns ['Welcome', 'Vishwas']
+
+
 
 
 
