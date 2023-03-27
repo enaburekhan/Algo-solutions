@@ -4274,24 +4274,44 @@
 
 // console.log(findDuplicate(arr)); // Returns 2
 
-function nonRepeatingWords(str1, str2) {
-  const map = new Map();
-  const result = [];
-  const str = str1 + ' ' + str2;
-  str.split(' ').forEach((word) => {
-    map.has(word) ? map.set(word, map.get(word) + 1) : map.set(word, 1);
-  });
-  for (const [key, val] of map) {
-    if (val === 1) result.push(key);
+// function nonRepeatingWords(str1, str2) {
+//   const map = new Map();
+//   const result = [];
+//   const str = str1 + ' ' + str2;
+//   str.split(' ').forEach((word) => {
+//     map.has(word) ? map.set(word, map.get(word) + 1) : map.set(word, 1);
+//   });
+//   for (const [key, val] of map) {
+//     if (val === 1) result.push(key);
+//   }
+//   return result;
+// }
+
+// const str1 = 'Hello world';
+// const str2 = 'Hello Vishwas';
+
+// console.log(nonRepeatingWords(str1, str2)); // Returns ['world', 'Vishwas']
+
+// const str3 = 'Hello Hello';
+// const str4 = 'Welcome Vishwas';
+// console.log(nonRepeatingWords(str3, str4)); // Returns ['Welcome', 'Vishwas']
+
+function longestPalindrome(str) {
+  const set = new Set();
+  let length = 0;
+  for (const c of str) {
+    if (set.has(c)) {
+      set.delete(c);
+      length++;
+    } else {
+      set.add(c);
+    }
   }
-  return result;
+  if (set.size) {
+    return 2 * length + 1;
+  } else {
+    return 2 * length;
+  }
 }
 
-const str1 = 'Hello world';
-const str2 = 'Hello Vishwas';
-
-console.log(nonRepeatingWords(str1, str2)); // Returns ['world', 'Vishwas']
-
-const str3 = 'Hello Hello';
-const str4 = 'Welcome Vishwas';
-console.log(nonRepeatingWords(str3, str4)); // Returns ['Welcome', 'Vishwas']
+console.log(longestPalindrome('abccccdd')); // Returns 7 ('dccaccd')
