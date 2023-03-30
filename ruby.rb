@@ -1806,29 +1806,53 @@
 
 # p findDuplicate(arr) # Returns 2
 
-def non_repeating_words(str1, str2) 
-  str = str1 + ' ' + str2
-  obj = {}
-  result = []
-  str.split(' ').each do |word|
-    obj.key?(word) ? obj[word] += 1 : obj[word] = 1
-  end
-  obj.each do |key, val|
-    result << key if val == 1
-  end
-  result
+# def non_repeating_words(str1, str2) 
+#   str = str1 + ' ' + str2
+#   obj = {}
+#   result = []
+#   str.split(' ').each do |word|
+#     obj.key?(word) ? obj[word] += 1 : obj[word] = 1
+#   end
+#   obj.each do |key, val|
+#     result << key if val == 1
+#   end
+#   result
+# end
+# str1 = 'Hello world'
+# str2 = 'Hello Vishwas'
+
+# p non_repeating_words(str1, str2) # Returns ['world', 'Vishwas']
+# str3 = 'Hello Hello'
+# str4 = 'Welcome Vishwas'
+
+# p non_repeating_words(str3, str4) # Returns ['Welcome', 'Vishwas']
+
+require 'set'
+def longestSubstringLength(str) 
+  set = Set.new()
+  # i = 0
+  # j = 0
+  max = 0
+  
+    str.each_char do |ch|
+      if !set.include?(ch)
+        set.add(ch)
+        max = [max, set.size].max
+      else
+        set.delete(ch)
+      end
+    end
+
+  max
 end
 
+p longestSubstringLength('abcabcbd') # Returns 3 ('abc')
+
+p longestSubstringLength('aaaa') # Returns 1 ('a')
+
+p longestSubstringLength('abbcdb') # Returns 3 ('bcd')
 
 
-str1 = 'Hello world'
-str2 = 'Hello Vishwas'
-
-p non_repeating_words(str1, str2) # Returns ['world', 'Vishwas']
-str3 = 'Hello Hello'
-str4 = 'Welcome Vishwas'
-
-p non_repeating_words(str3, str4) # Returns ['Welcome', 'Vishwas']
 
 
 
