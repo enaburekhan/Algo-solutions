@@ -1827,30 +1827,28 @@
 
 # p non_repeating_words(str3, str4) # Returns ['Welcome', 'Vishwas']
 
-require 'set'
-def longestSubstringLength(str) 
-  set = Set.new()
-  # i = 0
-  # j = 0
-  max = 0
+# require 'set'
+# def longestSubstringLength(str) 
+#   set = Set.new()
+#   max = 0
   
-    str.each_char do |ch|
-      if !set.include?(ch)
-        set.add(ch)
-        max = [max, set.size].max
-      else
-        set.delete(ch)
-      end
-    end
+#     str.each_char do |ch|
+#       if !set.include?(ch)
+#         set.add(ch)
+#         max = [max, set.size].max
+#       else
+#         set.delete(ch)
+#       end
+#     end
 
-  max
-end
+#   max
+# end
 
-p longestSubstringLength('abcabcbd') # Returns 3 ('abc')
+# p longestSubstringLength('abcabcbd') # Returns 3 ('abc')
 
-p longestSubstringLength('aaaa') # Returns 1 ('a')
+# p longestSubstringLength('aaaa') # Returns 1 ('a')
 
-p longestSubstringLength('abbcdb') # Returns 3 ('bcd')
+# p longestSubstringLength('abbcdb') # Returns 3 ('bcd')
 
 
 
