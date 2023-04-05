@@ -4338,20 +4338,122 @@
 
 // console.log(longestSubstringLength('abbcdb')); // Returns 3 ('bcd')
 
-function groupAnagrams(arr) {
-  const map = new Map();
-  for (const word of arr) {
-    const key = [...word].sort().join('');
-    if (!map.has(key)) {
-      map.set(key, [word]);
-    } else {
-      let curr = map.get(key);
-      map.set(key, [...curr, word]);
+// function groupAnagrams(arr) {
+//   const map = new Map();
+//   for (const word of arr) {
+//     const key = [...word].sort().join('');
+//     if (!map.has(key)) {
+//       map.set(key, [word]);
+//     } else {
+//       let curr = map.get(key);
+//       map.set(key, [...curr, word]);
+//     }
+//   }
+//   return map.values();
+// }
+
+// const arr = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat'];
+
+// console.log(groupAnagrams(arr)); // Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
+
+// function searchRange(nums, target) {
+//   let left = 0;
+//   let right = nums.length - 1;
+//   let output = [-1, -1];
+//   while (left < right) {
+//     let mid = Math.floor((left + right) / 2);
+//     if (nums[mid] < target) {
+//       left = mid + 1;
+//     } else {
+//       right = mid;
+//     }
+//   }
+//   if (nums[left] !== target) return output;
+//   output[0] = left;
+//   right = nums.length - 1;
+//   while (left < right) {
+//     let mid = Math.floor((left + right) / 2 + 1);
+//     if (nums[mid] <= target) {
+//       left = mid;
+//     } else {
+//       right = mid - 1;
+//     }
+//   }
+//   output[1] = right;
+//   return output;
+// }
+
+// const nums = [5, 7, 7, 8, 8, 10];
+// const target = 8;
+
+// console.log(searchRange(nums, target));
+
+function quickSort(array) {
+  quickSortHelper(array, 0, array.length - 1);
+  return array;
+}
+function quickSortHelper(array, startIdx, endIdx) {
+  if (startIdx >= endIdx) return;
+  const pivotIdx = startIdx;
+  let leftIdx = startIdx + 1;
+  let rightIdx = endIdx;
+  while (leftIdx <= rightIdx) {
+    if (array[leftIdx] > array[pivotIdx] && array[rightIdx] < array[pivotIdx]) {
+      swap(leftIdx, rightIdx, array);
     }
+    if (array[leftIdx] <= array[pivotIdx]) leftIdx++;
+    if (array[rightIdx] >= array[pivotIdx]) rightIdx--;
   }
-  return map.values();
+  swap(pivotIdx, rightIdx, array);
+  const isSmallestSubarray = rightIdx - 1 - startIdx < endIdx - (rightIdx + 1);
+  if (isSmallestSubarray) {
+    quickSortHelper(array, startIdx, rightIdx - 1);
+    quickSortHelper(array, rightIdx + 1, endIdx);
+  } else {
+    quickSortHelper(array, rightIdx + 1, endIdx);
+    quickSortHelper(array, startIdx, rightIdx - 1);
+  }
+}
+function swap(i, j, array) {
+  [array[i], array[j]] = [array[j], array[i]];
 }
 
-const arr = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat'];
+const array = [8, 5, 2, 9, 5, 6, 3];
+console.log(quickSort(array)); // [2, 3, 5, 5, 6, 8, 9]
 
-console.log(groupAnagrams(arr)); // Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
+// function findKthLargest(nums, k) {
+//   let left = 0;
+//   let right = nums.length - 1;
+//   while (true) {
+//     let pos = position(nums, left, right);
+//     if (pos === k - 1) return nums[pos];
+//     else if (pos > k - 1) right = pos - 1;
+//     else left = pos + 1;
+//   }
+// }
+
+// function position(nums, left, right) {
+//   let pivot = nums[left];
+//   let l = left + 1;
+//   let r = right;
+//   while (l <= r) {
+//     if (nums[l] < pivot && nums[r] > pivot) {
+//       swap(nums, l++, r--);
+//     }
+//     if (nums[l] >= pivot) l++;
+//     if (nums[r] <= pivot) r--;
+//   }
+//   swap(nums, left, r);
+//   return r;
+// }
+
+// function swap(nums, l, r) {
+//   [nums[l], nums[r]] = [nums[r], nums[l]];
+// }
+
+// const nums1 = [3, 2, 1, 5, 6, 4];
+// const k1 = 2;
+// const nums2 = [3, 2, 3, 1, 2, 4, 5, 5, 6];
+// const k2 = 4;
+// console.log(findKthLargest(nums1, k1)); // 5
+// console.log(findKthLargest(nums2, k2)); // 4

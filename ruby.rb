@@ -1850,6 +1850,27 @@
 
 # p longestSubstringLength('abbcdb') # Returns 3 ('bcd')
 
+# incomplete
+# def groupAnagrams(arr) 
+#   hash = Hash.new([])
+#   arr.each do |word|
+#     key = [word].sort().join('')
+#     if !hash.key?(key)
+#       hash << [key, [word]]
+#     else
+#       curr = hash.get(key)
+#       hash << (key, [curr, word]]
+#     end
+#   end
+#   hash
+# end
+
+# arr = ["eat", "tea", "tan", "ate", "nat", "bat"]
+
+# p groupAnagrams(arr)  # Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
+
+
+
 
 
 
