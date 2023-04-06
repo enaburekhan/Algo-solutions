@@ -4415,45 +4415,55 @@ function quickSortHelper(array, startIdx, endIdx) {
   }
 }
 function swap(i, j, array) {
-  [array[i], array[j]] = [array[j], array[i]];
+  const temp = array[i];
+  array[i] = array[j];
+  array[j] = temp;
 }
 
 const array = [8, 5, 2, 9, 5, 6, 3];
 console.log(quickSort(array)); // [2, 3, 5, 5, 6, 8, 9]
 
-// function findKthLargest(nums, k) {
-//   let left = 0;
-//   let right = nums.length - 1;
-//   while (true) {
-//     let pos = position(nums, left, right);
-//     if (pos === k - 1) return nums[pos];
-//     else if (pos > k - 1) right = pos - 1;
-//     else left = pos + 1;
-//   }
-// }
+function findKthLargest(nums, k) {
+  const position = k - 1;
+  return quickselect(nums, 0, nums.length - 1, position);
+}
 
-// function position(nums, left, right) {
-//   let pivot = nums[left];
-//   let l = left + 1;
-//   let r = right;
-//   while (l <= r) {
-//     if (nums[l] < pivot && nums[r] > pivot) {
-//       swap(nums, l++, r--);
-//     }
-//     if (nums[l] >= pivot) l++;
-//     if (nums[r] <= pivot) r--;
-//   }
-//   swap(nums, left, r);
-//   return r;
-// }
+function quickselect(nums, startIdx, endIdx, position) {
+  while (true) {
+    if (startIdx > endIdx) {
+      throw new Error("This code shouldn't get here");
+    }
+    const pivotIdx = startIdx;
+    let leftIdx = startIdx + 1;
+    let rightIdx = endIdx;
+    while (leftIdx <= rightIdx) {
+      if (nums[leftIdx] < nums[pivotIdx] && nums[rightIdx] > nums[pivotIdx]) {
+        swap(leftIdx, rightIdx, nums);
+      }
+      if (nums[leftIdx] >= nums[pivotIdx]) leftIdx++;
+      if (nums[rightIdx] <= nums[pivotIdx]) rightIdx--;
+    }
+    swap(pivotIdx, rightIdx, nums);
+    if (rightIdx === position) {
+      return nums[rightIdx];
+    } else if (rightIdx < position) {
+      startIdx = rightIdx + 1;
+    } else {
+      endIdx = rightIdx - 1;
+    }
+  }
+}
 
-// function swap(nums, l, r) {
-//   [nums[l], nums[r]] = [nums[r], nums[l]];
-// }
+function swap(i, j, nums) {
+  const temp = nums[i];
+  nums[i] = nums[j];
+  nums[j] = temp;
+}
 
-// const nums1 = [3, 2, 1, 5, 6, 4];
-// const k1 = 2;
-// const nums2 = [3, 2, 3, 1, 2, 4, 5, 5, 6];
-// const k2 = 4;
-// console.log(findKthLargest(nums1, k1)); // 5
-// console.log(findKthLargest(nums2, k2)); // 4
+const nums1 = [3, 2, 1, 5, 6, 4];
+
+const k1 = 2;
+const nums2 = [3, 2, 3, 1, 2, 4, 5, 5, 6];
+const k2 = 4;
+console.log(findKthLargest(nums1, k1)); // 5
+console.log(findKthLargest(nums2, k2)); // 4
