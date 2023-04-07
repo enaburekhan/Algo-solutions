@@ -4388,82 +4388,104 @@
 
 // console.log(searchRange(nums, target));
 
-function quickSort(array) {
-  quickSortHelper(array, 0, array.length - 1);
-  return array;
-}
-function quickSortHelper(array, startIdx, endIdx) {
-  if (startIdx >= endIdx) return;
-  const pivotIdx = startIdx;
-  let leftIdx = startIdx + 1;
-  let rightIdx = endIdx;
-  while (leftIdx <= rightIdx) {
-    if (array[leftIdx] > array[pivotIdx] && array[rightIdx] < array[pivotIdx]) {
-      swap(leftIdx, rightIdx, array);
-    }
-    if (array[leftIdx] <= array[pivotIdx]) leftIdx++;
-    if (array[rightIdx] >= array[pivotIdx]) rightIdx--;
-  }
-  swap(pivotIdx, rightIdx, array);
-  const isSmallestSubarray = rightIdx - 1 - startIdx < endIdx - (rightIdx + 1);
-  if (isSmallestSubarray) {
-    quickSortHelper(array, startIdx, rightIdx - 1);
-    quickSortHelper(array, rightIdx + 1, endIdx);
-  } else {
-    quickSortHelper(array, rightIdx + 1, endIdx);
-    quickSortHelper(array, startIdx, rightIdx - 1);
-  }
-}
-function swap(i, j, array) {
-  const temp = array[i];
-  array[i] = array[j];
-  array[j] = temp;
-}
+// function quickSort(array) {
+//   quickSortHelper(array, 0, array.length - 1);
+//   return array;
+// }
+// function quickSortHelper(array, startIdx, endIdx) {
+//   if (startIdx >= endIdx) return;
+//   const pivotIdx = startIdx;
+//   let leftIdx = startIdx + 1;
+//   let rightIdx = endIdx;
+//   while (leftIdx <= rightIdx) {
+//     if (array[leftIdx] > array[pivotIdx] && array[rightIdx] < array[pivotIdx]) {
+//       swap(leftIdx, rightIdx, array);
+//     }
+//     if (array[leftIdx] <= array[pivotIdx]) leftIdx++;
+//     if (array[rightIdx] >= array[pivotIdx]) rightIdx--;
+//   }
+//   swap(pivotIdx, rightIdx, array);
+//   const isSmallestSubarray = rightIdx - 1 - startIdx < endIdx - (rightIdx + 1);
+//   if (isSmallestSubarray) {
+//     quickSortHelper(array, startIdx, rightIdx - 1);
+//     quickSortHelper(array, rightIdx + 1, endIdx);
+//   } else {
+//     quickSortHelper(array, rightIdx + 1, endIdx);
+//     quickSortHelper(array, startIdx, rightIdx - 1);
+//   }
+// }
+// function swap(i, j, array) {
+//   const temp = array[i];
+//   array[i] = array[j];
+//   array[j] = temp;
+// }
 
-const array = [8, 5, 2, 9, 5, 6, 3];
-console.log(quickSort(array)); // [2, 3, 5, 5, 6, 8, 9]
+// const array = [8, 5, 2, 9, 5, 6, 3];
+// console.log(quickSort(array)); // [2, 3, 5, 5, 6, 8, 9]
 
-function findKthLargest(nums, k) {
-  const position = k - 1;
-  return quickselect(nums, 0, nums.length - 1, position);
-}
+// function findKthLargest(nums, k) {
+//   const position = k - 1;
+//   return quickselect(nums, 0, nums.length - 1, position);
+// }
 
-function quickselect(nums, startIdx, endIdx, position) {
-  while (true) {
-    if (startIdx > endIdx) {
-      throw new Error("This code shouldn't get here");
-    }
-    const pivotIdx = startIdx;
-    let leftIdx = startIdx + 1;
-    let rightIdx = endIdx;
-    while (leftIdx <= rightIdx) {
-      if (nums[leftIdx] < nums[pivotIdx] && nums[rightIdx] > nums[pivotIdx]) {
-        swap(leftIdx, rightIdx, nums);
-      }
-      if (nums[leftIdx] >= nums[pivotIdx]) leftIdx++;
-      if (nums[rightIdx] <= nums[pivotIdx]) rightIdx--;
-    }
-    swap(pivotIdx, rightIdx, nums);
-    if (rightIdx === position) {
-      return nums[rightIdx];
-    } else if (rightIdx < position) {
-      startIdx = rightIdx + 1;
+// function quickselect(nums, startIdx, endIdx, position) {
+//   while (true) {
+//     if (startIdx > endIdx) {
+//       throw new Error("This code shouldn't get here");
+//     }
+//     const pivotIdx = startIdx;
+//     let leftIdx = startIdx + 1;
+//     let rightIdx = endIdx;
+//     while (leftIdx <= rightIdx) {
+//       if (nums[leftIdx] < nums[pivotIdx] && nums[rightIdx] > nums[pivotIdx]) {
+//         swap(leftIdx, rightIdx, nums);
+//       }
+//       if (nums[leftIdx] >= nums[pivotIdx]) leftIdx++;
+//       if (nums[rightIdx] <= nums[pivotIdx]) rightIdx--;
+//     }
+//     swap(pivotIdx, rightIdx, nums);
+//     if (rightIdx === position) {
+//       return nums[rightIdx];
+//     } else if (rightIdx < position) {
+//       startIdx = rightIdx + 1;
+//     } else {
+//       endIdx = rightIdx - 1;
+//     }
+//   }
+// }
+
+// function swap(i, j, nums) {
+//   const temp = nums[i];
+//   nums[i] = nums[j];
+//   nums[j] = temp;
+// }
+
+// const nums1 = [3, 2, 1, 5, 6, 4];
+
+// const k1 = 2;
+// const nums2 = [3, 2, 3, 1, 2, 4, 5, 5, 6];
+// const k2 = 4;
+// console.log(findKthLargest(nums1, k1)); // 5
+// console.log(findKthLargest(nums2, k2)); // 4
+
+function binarySearch(array, target) {
+  // O(logn) time | O(1) space
+  let left = 0;
+  let right = array.length - 1;
+  while (left <= right) {
+    const middle = Math.floor((left + right) / 2);
+    const potentialMatch = array[middle];
+    if (target === potentialMatch) {
+      return middle;
+    } else if (target < potentialMatch) {
+      right = middle - 1;
     } else {
-      endIdx = rightIdx - 1;
+      left = middle + 1;
     }
   }
+  return -1;
 }
 
-function swap(i, j, nums) {
-  const temp = nums[i];
-  nums[i] = nums[j];
-  nums[j] = temp;
-}
-
-const nums1 = [3, 2, 1, 5, 6, 4];
-
-const k1 = 2;
-const nums2 = [3, 2, 3, 1, 2, 4, 5, 5, 6];
-const k2 = 4;
-console.log(findKthLargest(nums1, k1)); // 5
-console.log(findKthLargest(nums2, k2)); // 4
+const array = [0, 1, 21, 33, 45, 45, 61, 71, 72, 73];
+const target = 33;
+console.log(binarySearch(array, target)); // 3
