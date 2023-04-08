@@ -4468,24 +4468,63 @@
 // console.log(findKthLargest(nums1, k1)); // 5
 // console.log(findKthLargest(nums2, k2)); // 4
 
-function binarySearch(array, target) {
+// function binarySearch(array, target) {
+//   // O(logn) time | O(1) space
+//   let left = 0;
+//   let right = array.length - 1;
+//   while (left <= right) {
+//     const middle = Math.floor((left + right) / 2);
+//     const potentialMatch = array[middle];
+//     if (target === potentialMatch) {
+//       return middle;
+//     } else if (target < potentialMatch) {
+//       right = middle - 1;
+//     } else {
+//       left = middle + 1;
+//     }
+//   }
+//   return -1;
+// }
+
+// const array = [0, 1, 21, 33, 45, 45, 61, 71, 72, 73];
+// const target = 33;
+// console.log(binarySearch(array, target)); // 3
+
+function searchRange(nums, target) {
   // O(logn) time | O(1) space
-  let left = 0;
-  let right = array.length - 1;
-  while (left <= right) {
-    const middle = Math.floor((left + right) / 2);
-    const potentialMatch = array[middle];
-    if (target === potentialMatch) {
-      return middle;
-    } else if (target < potentialMatch) {
-      right = middle - 1;
-    } else {
-      left = middle + 1;
-    }
-  }
-  return -1;
+  const finalRange = [-1, -1];
+  searchRangeHelper(nums, target, 0, nums.length - 1, finalRange, true);
+  searchRangeHelper(nums, target, 0, nums.length - 1, finalRange, false);
+  return finalRange;
 }
 
-const array = [0, 1, 21, 33, 45, 45, 61, 71, 72, 73];
-const target = 33;
-console.log(binarySearch(array, target)); // 3
+function searchRangeHelper(nums, target, left, right, finalRange, goLeft) {
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (target < nums[mid]) {
+      right = mid - 1;
+    } else if (target > nums[mid]) {
+      left = mid + 1;
+    } else {
+      if (goLeft) {
+        if (mid === 0 || nums[mid - 1] !== target) {
+          finalRange[0] = mid;
+          return;
+        } else {
+          right = mid - 1;
+        }
+      } else {
+        if (mid === nums.length - 1 || nums[mid + 1] !== target) {
+          finalRange[1] = mid;
+          return;
+        } else {
+          left = mid + 1;
+        }
+      }
+    }
+  }
+}
+
+const nums = [5, 7, 7, 8, 8, 10];
+const target = 8;
+console.log(searchRange(nums, target)); // [3, 4]
