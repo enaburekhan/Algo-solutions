@@ -4490,41 +4490,58 @@
 // const target = 33;
 // console.log(binarySearch(array, target)); // 3
 
-function searchRange(nums, target) {
-  // O(logn) time | O(1) space
-  const finalRange = [-1, -1];
-  searchRangeHelper(nums, target, 0, nums.length - 1, finalRange, true);
-  searchRangeHelper(nums, target, 0, nums.length - 1, finalRange, false);
-  return finalRange;
-}
+// function searchRange(nums, target) {
+//   // O(logn) time | O(1) space
+//   const finalRange = [-1, -1];
+//   searchRangeHelper(nums, target, 0, nums.length - 1, finalRange, true);
+//   searchRangeHelper(nums, target, 0, nums.length - 1, finalRange, false);
+//   return finalRange;
+// }
 
-function searchRangeHelper(nums, target, left, right, finalRange, goLeft) {
-  while (left <= right) {
-    const mid = Math.floor((left + right) / 2);
-    if (target < nums[mid]) {
-      right = mid - 1;
-    } else if (target > nums[mid]) {
-      left = mid + 1;
-    } else {
-      if (goLeft) {
-        if (mid === 0 || nums[mid - 1] !== target) {
-          finalRange[0] = mid;
-          return;
-        } else {
-          right = mid - 1;
-        }
-      } else {
-        if (mid === nums.length - 1 || nums[mid + 1] !== target) {
-          finalRange[1] = mid;
-          return;
-        } else {
-          left = mid + 1;
-        }
-      }
+// function searchRangeHelper(nums, target, left, right, finalRange, goLeft) {
+//   while (left <= right) {
+//     const mid = Math.floor((left + right) / 2);
+//     if (target < nums[mid]) {
+//       right = mid - 1;
+//     } else if (target > nums[mid]) {
+//       left = mid + 1;
+//     } else {
+//       if (goLeft) {
+//         if (mid === 0 || nums[mid - 1] !== target) {
+//           finalRange[0] = mid;
+//           return;
+//         } else {
+//           right = mid - 1;
+//         }
+//       } else {
+//         if (mid === nums.length - 1 || nums[mid + 1] !== target) {
+//           finalRange[1] = mid;
+//           return;
+//         } else {
+//           left = mid + 1;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// const nums = [5, 7, 7, 8, 8, 10];
+// const target = 8;
+// console.log(searchRange(nums, target)); // [3, 4]
+
+function generateParenthesis(n) {
+  const res = [];
+  const iterate = (str, open, close) => {
+    if (open > n || close > n || close > open) return;
+    if (str.length === n * 2 && close === open) {
+      res.push(str);
+      return;
     }
-  }
+    iterate(str + '(', open + 1, close);
+    iterate(str + ')', open, close + 1);
+  };
+  iterate('', 0, 0);
+  return res;
 }
-
-const nums = [5, 7, 7, 8, 8, 10];
-const target = 8;
-console.log(searchRange(nums, target)); // [3, 4]
+const n = 3;
+console.log(generateParenthesis(n));
