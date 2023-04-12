@@ -4529,19 +4529,38 @@
 // const target = 8;
 // console.log(searchRange(nums, target)); // [3, 4]
 
-function generateParenthesis(n) {
-  const res = [];
-  const iterate = (str, open, close) => {
-    if (open > n || close > n || close > open) return;
-    if (str.length === n * 2 && close === open) {
-      res.push(str);
-      return;
+// function generateParenthesis(n) {
+//   const res = [];
+//   const iterate = (str, open, close) => {
+//     if (open > n || close > n || close > open) return;
+//     if (str.length === n * 2 && close === open) {
+//       res.push(str);
+//       return;
+//     }
+//     iterate(str + '(', open + 1, close);
+//     iterate(str + ')', open, close + 1);
+//   };
+//   iterate('', 0, 0);
+//   return res;
+// }
+// const n = 3;
+// console.log(generateParenthesis(n));
+
+function canCompleteCircuit(gas, cost) {
+  let start = gas.length - 1;
+  let end = 0;
+  let gasInTank = gas[start] - cost[start];
+  while (start >= end) {
+    if (gasInTank >= 0) {
+      gasInTank += gas[end] - cost[end];
+      end++;
+    } else {
+      start--;
+      gasInTank += gas[start] - cost[start];
     }
-    iterate(str + '(', open + 1, close);
-    iterate(str + ')', open, close + 1);
-  };
-  iterate('', 0, 0);
-  return res;
+  }
+  return gasInTank >= 0 ? start : -1;
 }
-const n = 3;
-console.log(generateParenthesis(n));
+const gas = [1, 2, 3, 4, 5];
+const cost = [3, 4, 5, 1, 2];
+console.log(canCompleteCircuit(gas, cost));
