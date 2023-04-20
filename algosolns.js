@@ -4546,21 +4546,101 @@
 // const n = 3;
 // console.log(generateParenthesis(n));
 
-function canCompleteCircuit(gas, cost) {
-  let start = gas.length - 1;
-  let end = 0;
-  let gasInTank = gas[start] - cost[start];
-  while (start >= end) {
-    if (gasInTank >= 0) {
-      gasInTank += gas[end] - cost[end];
-      end++;
-    } else {
-      start--;
-      gasInTank += gas[start] - cost[start];
+// function canCompleteCircuit(gas, cost) {
+//   let start = gas.length - 1;
+//   let end = 0;
+//   let gasInTank = gas[start] - cost[start];
+//   while (start >= end) {
+//     if (gasInTank >= 0) {
+//       gasInTank += gas[end] - cost[end];
+//       end++;
+//     } else {
+//       start--;
+//       gasInTank += gas[start] - cost[start];
+//     }
+//   }
+//   return gasInTank >= 0 ? start : -1;
+// }
+// const gas = [1, 2, 3, 4, 5];
+// const cost = [3, 4, 5, 1, 2];
+// console.log(canCompleteCircuit(gas, cost));
+
+// function canFinish(numCourses, prerequisites) {
+//   let adjList = {};
+//   let visited = new Set();
+
+//   for (let [a, b] of prerequisites) {
+//     if (!adjList[a]) {
+//       adjList[a] = [b];
+//     } else {
+//       adjList[a].push(b);
+//     }
+//   }
+
+//   function dfs(curr) {
+//     if (visited.has(curr)) return false;
+//     if (adjList[curr] === []) return true;
+//     visited.add(curr);
+
+//     if (adjList[curr]) {
+//       for (let neigh of adjList[curr]) {
+//         if (!dfs(neigh)) {
+//           return false;
+//         }
+//       }
+//     }
+//     visited.delete(curr);
+//     adjList[curr] = [];
+
+//     return true;
+//   }
+
+//   for (let key in adjList) {
+//     if (!dfs(key)) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+function canFinish(numCourses, prerequisites) {
+  // initialize an adjList and inDegree array
+  const adjList = Array.from({ length: numCourses }, () => []);
+  const inDegree = Array(numCourses).fill(0);
+  // populate the adjList and inDegree array
+  for (const [course, prereq] of prerequisites) {
+    adjList[prereq].push(course);
+    inDegree[course]++;
+  }
+  // initialize a queue with virtices with inDegree 0
+  const queue = [];
+  for (let i = 0; i < numCourses; i++) {
+    if (inDegree[i] === 0) {
+      queue.push(i);
     }
   }
-  return gasInTank >= 0 ? start : -1;
+  // process the virtices in the queue
+  let count = 0;
+  while (queue.length > 0) {
+    const vertex = queue.shift();
+    count++;
+    for (const neighbor of adjList[vertex]) {
+      inDegree[neighbor]--;
+      if (inDegree[neighbor] === 0) {
+        queue.push(neighbor);
+      }
+    }
+  }
+  // check if count === numCourses and return it.
+  return count === numCourses;
 }
-const gas = [1, 2, 3, 4, 5];
-const cost = [3, 4, 5, 1, 2];
-console.log(canCompleteCircuit(gas, cost));
+const numCourses1 = 2;
+const prerequisites1 = [[1, 0]];
+console.log(canFinish(numCourses1, prerequisites1)); // true
+
+const numCourses2 = 2;
+const prerequisites2 = [
+  [1, 0],
+  [0, 1],
+];
+console.log(canFinish(numCourses2, prerequisites2)); // false
