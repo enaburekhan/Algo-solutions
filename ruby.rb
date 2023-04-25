@@ -1869,8 +1869,19 @@
 
 # p groupAnagrams(arr)  # Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
 
+def sum(arr) 
+ min = [arr[0], arr[1]].min
+ max = [arr[0], arr[1]].max 
+ temp = 0
+ (min..max).each do |i|
+   temp += i
+ end
+ temp
+end
 
+p sum([1, 4]) # Returns 10
 
+p sum([4, 1]) # Returns 10
 
 
 
