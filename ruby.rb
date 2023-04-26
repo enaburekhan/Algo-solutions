@@ -1869,19 +1869,43 @@
 
 # p groupAnagrams(arr)  # Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
 
-def sum(arr) 
- min = [arr[0], arr[1]].min
- max = [arr[0], arr[1]].max 
- temp = 0
- (min..max).each do |i|
-   temp += i
- end
- temp
+# def sum(arr) 
+#  min = [arr[0], arr[1]].min
+#  max = [arr[0], arr[1]].max 
+#  temp = 0
+#  (min..max).each do |i|
+#    temp += i
+#  end
+#  temp
+# end
+
+# p sum([1, 4]) # Returns 10
+
+# p sum([4, 1]) # Returns 10
+
+
+
+# Give an integer (num), find the factorial of that integer.
+
+# If the integer is represented as num, the factorial of num is the product of all positive integers less than or equal to num.
+
+# Example
+
+# Factorial of 4 = 4 * 3 * 2 * 1
+
+# Factorial of 4 = 24
+
+def factorial(num) 
+  (num == 0 or num == 1) ? 1 : num * factorial(num - 1)
 end
 
-p sum([1, 4]) # Returns 10
+p factorial(0) # Returns 1 (We're not going to understand the math behind this)
 
-p sum([4, 1]) # Returns 10
+p factorial(1) # Returns 1
+
+p factorial(4) # Returns 24
+
+p factorial(5) # Returns 120
 
 
 
