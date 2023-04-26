@@ -4645,16 +4645,37 @@
 // ];
 // console.log(canFinish(numCourses2, prerequisites2)); // false
 
-function sum(arr) {
-  const min = Math.min(arr[0], arr[1]);
-  const max = Math.max(arr[0], arr[1]);
-  let temp = 0;
-  for (let i = min; i <= max; i++) {
-    temp += i;
-  }
-  return temp;
+// function sum(arr) {
+//   const min = Math.min(arr[0], arr[1]);
+//   const max = Math.max(arr[0], arr[1]);
+//   let temp = 0;
+//   for (let i = min; i <= max; i++) {
+//     temp += i;
+//   }
+//   return temp;
+// }
+
+// console.log(sum([1, 4])); // Returns 10
+
+// console.log(sum([4, 1])); // Returns 10
+
+/*Give an integer (num), find the factorial of that integer.
+
+If the integer is represented as num, the factorial of num is the product of all positive integers less than or equal to num.
+
+Example
+
+Factorial of 4 = 4 * 3 * 2 * 1
+
+Factorial of 4 = 24
+*/
+
+function factorial(num) {
+  if (num === 0 || num === 1) return 1;
+  return num * factorial(num - 1);
 }
 
-console.log(sum([1, 4])); // Returns 10
-
-console.log(sum([4, 1])); // Returns 10
+console.log(factorial(0)); // Returns 1 (We're not going to understand the math behind this)
+console.log(factorial(1)); // Returns 1
+console.log(factorial(4)); // Returns 24
+console.log(factorial(5)); // Returns 120
