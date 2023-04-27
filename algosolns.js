@@ -4670,12 +4670,32 @@ Factorial of 4 = 4 * 3 * 2 * 1
 Factorial of 4 = 24
 */
 
-function factorial(num) {
-  if (num === 0 || num === 1) return 1;
-  return num * factorial(num - 1);
+// function factorial(num) {
+//   if (num === 0 || num === 1) return 1;
+//   return num * factorial(num - 1);
+// }
+
+// console.log(factorial(0)); // Returns 1 (We're not going to understand the math behind this)
+// console.log(factorial(1)); // Returns 1
+// console.log(factorial(4)); // Returns 24
+// console.log(factorial(5)); // Returns 120
+
+// Given two numbers min and max, find all the prime numbers in the range of min to max. (min and max included)
+
+function printPrime(min, max) {
+  const primes = [];
+  for (let num = min; num <= max; num++) {
+    let isPrime = true;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) {
+        console.log(i);
+        isPrime = false;
+        break;
+      }
+    }
+    if (isPrime && num >= 2) primes.push(num);
+  }
+  return primes;
 }
 
-console.log(factorial(0)); // Returns 1 (We're not going to understand the math behind this)
-console.log(factorial(1)); // Returns 1
-console.log(factorial(4)); // Returns 24
-console.log(factorial(5)); // Returns 120
+console.log(printPrime(0, 20)); // Returns 2 3 5 7 11 13 17 19
