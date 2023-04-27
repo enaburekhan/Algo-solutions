@@ -1895,17 +1895,40 @@
 
 # Factorial of 4 = 24
 
-def factorial(num) 
-  (num == 0 or num == 1) ? 1 : num * factorial(num - 1)
+# def factorial(num) 
+#   (num == 0 or num == 1) ? 1 : num * factorial(num - 1)
+# end
+
+# p factorial(0) # Returns 1 (We're not going to understand the math behind this)
+
+# p factorial(1) # Returns 1
+
+# p factorial(4) # Returns 24
+
+# p factorial(5) # Returns 120
+
+
+# Given two numbers min and max, find all the prime numbers in the range of min to max. (min and max included)
+
+
+def printPrime (min, max)
+  primes = []
+  (min..max).each do |num|
+    is_prime = true
+    (2..Math.sqrt(num)).each do |i|
+      if num % i === 0
+        is_prime = false
+        break
+      end
+    end
+    primes << num if is_prime and num >= 2
+  end
+  primes
 end
 
-p factorial(0) # Returns 1 (We're not going to understand the math behind this)
+p printPrime(0, 20) # Returns 2 3 5 7 11 13 17 19
 
-p factorial(1) # Returns 1
 
-p factorial(4) # Returns 24
-
-p factorial(5) # Returns 120
 
 
 
