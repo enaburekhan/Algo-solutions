@@ -1911,22 +1911,35 @@
 # Given two numbers min and max, find all the prime numbers in the range of min to max. (min and max included)
 
 
-def print_prime (min, max)
-  primes = []
-  (min..max).each do |num|
-    is_prime = true
-    (2..Math.sqrt(num)).each do |i|
-      if (num % i).zero?
-        is_prime = false
-        break
-      end
-    end
-    primes << num if is_prime and num >= 2
-  end
-  primes
+# def print_prime (min, max)
+#   primes = []
+#   (min..max).each do |num|
+#     is_prime = true
+#     (2..Math.sqrt(num)).each do |i|
+#       if (num % i).zero?
+#         is_prime = false
+#         break
+#       end
+#     end
+#     primes << num if is_prime and num >= 2
+#   end
+#   primes
+# end
+
+# p print_prime(0, 20) # Returns 2 3 5 7 11 13 17 19
+
+
+# Given a string (str), determine if it is a palindrome.
+
+# Note: A plaindrome is a word, phrase, or sequence that reads the same backwards as forwards, e.g. madam.
+
+def isPalindrome (str) 
+  str == str.split('').reverse().join('')
 end
 
-p print_prime(0, 20) # Returns 2 3 5 7 11 13 17 19
+p isPalindrome('racecar') # Returns true
+
+p isPalindrome('race') # Returns false
 
 
 
