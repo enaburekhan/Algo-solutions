@@ -1911,12 +1911,12 @@
 # Given two numbers min and max, find all the prime numbers in the range of min to max. (min and max included)
 
 
-def printPrime (min, max)
+def print_prime (min, max)
   primes = []
   (min..max).each do |num|
     is_prime = true
     (2..Math.sqrt(num)).each do |i|
-      if num % i === 0
+      if (num % i).zero?
         is_prime = false
         break
       end
@@ -1926,7 +1926,7 @@ def printPrime (min, max)
   primes
 end
 
-p printPrime(0, 20) # Returns 2 3 5 7 11 13 17 19
+p print_prime(0, 20) # Returns 2 3 5 7 11 13 17 19
 
 
 
