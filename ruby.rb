@@ -1933,14 +1933,23 @@
 
 # Note: A plaindrome is a word, phrase, or sequence that reads the same backwards as forwards, e.g. madam.
 
-def isPalindrome (str) 
-  str == str.split('').reverse().join('')
+# def isPalindrome (str) 
+#   str == str.split('').reverse().join('')
+# end
+
+# p isPalindrome('racecar') # Returns true
+
+# p isPalindrome('race') # Returns false
+
+
+def isAnagram (str1, str2) 
+  return false if str1.size != str2.size
+  str1.split('').sort().join('') == str2.split('').sort().join('')
 end
 
-p isPalindrome('racecar') # Returns true
+p isAnagram('racecar', 'carrace') # Returns true
 
-p isPalindrome('race') # Returns false
-
+p isAnagram('racecar', 'carracr') # Returns false
 
 
 
