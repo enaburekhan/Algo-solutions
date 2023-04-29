@@ -268,5 +268,3 @@ function frequentRepeatedChar(str) {
 
 const str = 'aabbccdbb';
 console.log(frequentRepeatedChar(str));
-
-// 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

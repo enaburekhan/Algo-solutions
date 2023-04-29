@@ -4705,10 +4705,19 @@ Factorial of 4 = 24
 Note: A plaindrome is a word, phrase, or sequence that reads the same backwards as forwards, e.g. madam.
 */
 
-function isPalindrome(str) {
-  return str === str.split('').reverse().join('');
+// function isPalindrome(str) {
+//   return str === str.split('').reverse().join('');
+// }
+
+// console.log(isPalindrome('racecar')); // Returns true
+
+// console.log(isPalindrome('race')); // Returns false
+
+function isAnagram(str1, str2) {
+  if (str1.length !== str2.length) return false;
+  return str1.split('').sort().join('') === str2.split('').sort().join('');
 }
 
-console.log(isPalindrome('racecar')); // Returns true
+console.log(isAnagram('racecar', 'carrace')); // Returns true
 
-console.log(isPalindrome('race')); // Returns false
+console.log(isAnagram('racecar', 'carracr')); // Returns false
