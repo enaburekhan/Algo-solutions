@@ -1951,7 +1951,11 @@
 
 # p isAnagram('racecar', 'carracr') # Returns false
 
-
+def reverse_str(str)
+  str.chars.reduce { |x, y| y + x }
+end
+str = 'mango'
+p reverse_str(str)
 
 
 

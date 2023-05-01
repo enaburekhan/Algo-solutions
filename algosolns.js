@@ -4724,11 +4724,12 @@ Note: A plaindrome is a word, phrase, or sequence that reads the same backwards 
 
 function reverseStr(str) {
   const strArr = str.split('');
-  let result = '';
-  for (let i = strArr.length - 1; i >= 0; i--) {
-    result += strArr[i];
-  }
-  return result;
+  // let result = '';
+  // for (let i = strArr.length - 1; i >= 0; i--) {
+  //   result += strArr[i];
+  // }
+  // return result;
+  return strArr.reduce((x, y) => y + x);
 }
 
 const str = 'mango';
