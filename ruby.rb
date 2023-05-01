@@ -1942,14 +1942,16 @@
 # p isPalindrome('race') # Returns false
 
 
-def isAnagram (str1, str2) 
-  return false if str1.size != str2.size
-  str1.split('').sort().join('') == str2.split('').sort().join('')
-end
+# def isAnagram (str1, str2) 
+#   return false if str1.size != str2.size
+#   str1.split('').sort().join('') == str2.split('').sort().join('')
+# end
 
-p isAnagram('racecar', 'carrace') # Returns true
+# p isAnagram('racecar', 'carrace') # Returns true
 
-p isAnagram('racecar', 'carracr') # Returns false
+# p isAnagram('racecar', 'carracr') # Returns false
+
+
 
 
 

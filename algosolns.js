@@ -4713,11 +4713,23 @@ Note: A plaindrome is a word, phrase, or sequence that reads the same backwards 
 
 // console.log(isPalindrome('race')); // Returns false
 
-function isAnagram(str1, str2) {
-  if (str1.length !== str2.length) return false;
-  return str1.split('').sort().join('') === str2.split('').sort().join('');
+// function isAnagram(str1, str2) {
+//   if (str1.length !== str2.length) return false;
+//   return str1.split('').sort().join('') === str2.split('').sort().join('');
+// }
+
+// console.log(isAnagram('racecar', 'carrace')); // Returns true
+
+// console.log(isAnagram('racecar', 'carracr')); // Returns false
+
+function reverseStr(str) {
+  const strArr = str.split('');
+  let result = '';
+  for (let i = strArr.length - 1; i >= 0; i--) {
+    result += strArr[i];
+  }
+  return result;
 }
 
-console.log(isAnagram('racecar', 'carrace')); // Returns true
-
-console.log(isAnagram('racecar', 'carracr')); // Returns false
+const str = 'mango';
+console.log(reverseStr(str));
