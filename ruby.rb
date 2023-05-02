@@ -1951,11 +1951,18 @@
 
 # p isAnagram('racecar', 'carracr') # Returns false
 
-def reverse_str(str)
-  str.chars.reduce { |x, y| y + x }
+# def reverse_str(str)
+#   str.chars.reduce { |x, y| y + x }
+# end
+# str = 'mango'
+# p reverse_str(str)
+
+
+def remove_vowels (str)
+  str.gsub(/[aeiou]/, '')
 end
-str = 'mango'
-p reverse_str(str)
+
+p remove_vowels('Hello World') # Returns Hll Wrld
 
 
 
