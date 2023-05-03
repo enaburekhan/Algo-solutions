@@ -1958,11 +1958,32 @@
 # p reverse_str(str)
 
 
-def remove_vowels (str)
-  str.gsub(/[aeiou]/, '')
+# def remove_vowels (str)
+#   str.gsub(/[aeiou]/, '')
+# end
+
+# p remove_vowels('Hello World') # Returns Hll Wrld
+
+def count_palindromic_substrings(str) 
+  count = 0
+  (0...str.size).each do |i|
+    (i...str.size).each do |j|
+      sub = str[i..j]
+      if is_palindrome(sub)
+         count += 1
+      end
+    end
+  end
+  count
 end
 
-p remove_vowels('Hello World') # Returns Hll Wrld
+def is_palindrome(str)
+  str == str.reverse
+end
+
+p count_palindromic_substrings('abcd') # Returns 4 (a, b, c, d)
+
+p count_palindromic_substrings('aaa')  # Returns 6 (a, a, a, aa, aa, aaa)
 
 
 

@@ -4766,13 +4766,8 @@ function countPalindromicSubstrings(str) {
   return count;
 }
 
-function isPalindrome(sub) {
-  for (let i = 0; i < sub.length / 2; i++) {
-    if (sub[i] !== sub[sub.length - 1 - i]) {
-      return false;
-    }
-  }
-  return true;
+function isPalindrome(str) {
+  return str === str.split('').reverse().join('');
 }
 
 console.log(countPalindromicSubstrings('abcd')); // Returns 4 (a, b, c, d)
