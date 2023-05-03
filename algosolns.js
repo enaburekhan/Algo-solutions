@@ -4743,8 +4743,38 @@ Note: A plaindrome is a word, phrase, or sequence that reads the same backwards 
 
 // console.log(reverseWords(' This is  a  test string ')); // Returns 'string test a is This'
 
-function removeVowels(str) {
-  return str.replace(/[aeiou]/gi, '');
+// function removeVowels(str) {
+//   return str.replace(/[aeiou]/gi, '');
+// }
+
+// console.log(removeVowels('Hello World')); // Returns Hll Wrld
+
+// Given a string str, return the number of palindromic substrings in str.
+
+// Note: The substrings with different start indexes or end indexes are counted as different substrings even they consist of same characters.
+
+function countPalindromicSubstrings(str) {
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    for (let j = i; j < str.length; j++) {
+      const sub = str.substring(i, j + 1);
+      if (isPalindrome(sub)) {
+        count++;
+      }
+    }
+  }
+  return count;
 }
 
-console.log(removeVowels('Hello World')); // Returns Hll Wrld
+function isPalindrome(sub) {
+  for (let i = 0; i < sub.length / 2; i++) {
+    if (sub[i] !== sub[sub.length - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(countPalindromicSubstrings('abcd')); // Returns 4 (a, b, c, d)
+
+console.log(countPalindromicSubstrings('aaa')); // Returns 6 (a, a, a, aa, aa, aaa)
