@@ -4753,23 +4753,38 @@ Note: A plaindrome is a word, phrase, or sequence that reads the same backwards 
 
 // Note: The substrings with different start indexes or end indexes are counted as different substrings even they consist of same characters.
 
-function countPalindromicSubstrings(str) {
-  let count = 0;
-  for (let i = 0; i < str.length; i++) {
-    for (let j = i; j < str.length; j++) {
-      const sub = str.substring(i, j + 1);
-      if (isPalindrome(sub)) {
-        count++;
-      }
-    }
-  }
-  return count;
+// function countPalindromicSubstrings(str) {
+//   let count = 0;
+//   for (let i = 0; i < str.length; i++) {
+//     for (let j = i; j < str.length; j++) {
+//       const sub = str.substring(i, j + 1);
+//       if (isPalindrome(sub)) {
+//         count++;
+//       }
+//     }
+//   }
+//   return count;
+// }
+
+// function isPalindrome(str) {
+//   return str === str.split('').reverse().join('');
+// }
+
+// console.log(countPalindromicSubstrings('abcd')); // Returns 4 (a, b, c, d)
+
+// console.log(countPalindromicSubstrings('aaa')); // Returns 6 (a, a, a, aa, aa, aaa)
+
+// Given an array (names) of objects where each object contains the firstname and lastname of a person, return an array that contains the fullname of each person.
+
+function fullNames(names) {
+  const fullNames = names.map((name) => Object.values(name).join(' '));
+
+  return fullNames;
 }
 
-function isPalindrome(str) {
-  return str === str.split('').reverse().join('');
-}
+const names = [
+  { firstname: 'Bruce', lastname: 'Wayne' },
+  { firstname: 'Clark', lastname: 'Kent' },
+];
 
-console.log(countPalindromicSubstrings('abcd')); // Returns 4 (a, b, c, d)
-
-console.log(countPalindromicSubstrings('aaa')); // Returns 6 (a, a, a, aa, aa, aaa)
+console.log(fullNames(names)); // Returns ['Bruce Wayne', 'Clark Kent']
