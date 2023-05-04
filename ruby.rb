@@ -1964,26 +1964,40 @@
 
 # p remove_vowels('Hello World') # Returns Hll Wrld
 
-def count_palindromic_substrings(str) 
-  count = 0
-  (0...str.size).each do |i|
-    (i...str.size).each do |j|
-      sub = str[i..j]
-      if is_palindrome(sub)
-         count += 1
-      end
-    end
+# def count_palindromic_substrings(str) 
+#   count = 0
+#   (0...str.size).each do |i|
+#     (i...str.size).each do |j|
+#       sub = str[i..j]
+#       if is_palindrome(sub)
+#          count += 1
+#       end
+#     end
+#   end
+#   count
+# end
+
+# def is_palindrome(str)
+#   str == str.reverse
+# end
+
+# p count_palindromic_substrings('abcd') # Returns 4 (a, b, c, d)
+
+# p count_palindromic_substrings('aaa')  # Returns 6 (a, a, a, aa, aa, aaa)
+
+
+
+def full_names(names)
+  result = [] 
+  names.each do |name|
+    result << name.values.join(' ')
   end
-  count
+  result
 end
 
-def is_palindrome(str)
-  str == str.reverse
-end
+names = [{firstname: 'Bruce', lastname: 'Wayne'}, {firstname: 'Clark', lastname: 'Kent'}]
 
-p count_palindromic_substrings('abcd') # Returns 4 (a, b, c, d)
-
-p count_palindromic_substrings('aaa')  # Returns 6 (a, a, a, aa, aa, aaa)
+p full_names(names) # Returns ['Bruce Wayne', 'Clark Kent']
 
 
 
