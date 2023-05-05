@@ -4776,15 +4776,38 @@ Note: A plaindrome is a word, phrase, or sequence that reads the same backwards 
 
 // Given an array (names) of objects where each object contains the firstname and lastname of a person, return an array that contains the fullname of each person.
 
-function fullNames(names) {
-  const fullNames = names.map((name) => Object.values(name).join(' '));
+// function fullNames(names) {
+//   const fullNames = names.map((name) => Object.values(name).join(' '));
 
-  return fullNames;
+//   return fullNames;
+// }
+
+// const names = [
+//   { firstname: 'Bruce', lastname: 'Wayne' },
+//   { firstname: 'Clark', lastname: 'Kent' },
+// ];
+
+// console.log(fullNames(names)); // Returns ['Bruce Wayne', 'Clark Kent']
+
+// Given a string (str), find the longest word in the string.
+
+// Note: If one more more words have the same length, return the first occuring word of the same length.
+
+function longestWord(str) {
+  const strArr = str.split(' ');
+  // let longestStr = '';
+  // for (let i = 0; i < strArr.length; i++) {
+  //   const word = strArr[i];
+  //   if (word.length > longestStr.length) {
+  //     longestStr = word;
+  //   }
+  // }
+  const longestStr = strArr.reduce((acc, curr) => {
+    return acc.length >= curr.length ? acc : curr;
+  }, '');
+  return longestStr;
 }
 
-const names = [
-  { firstname: 'Bruce', lastname: 'Wayne' },
-  { firstname: 'Clark', lastname: 'Kent' },
-];
+console.log(longestWord('My name is Vishwas')); // Returns 'Vishwas'
 
-console.log(fullNames(names)); // Returns ['Bruce Wayne', 'Clark Kent']
+console.log(longestWord('Hello world')); // Returns 'Hello'
