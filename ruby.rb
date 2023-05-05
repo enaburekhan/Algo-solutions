@@ -1987,20 +1987,34 @@
 
 
 
-def full_names(names)
-  result = [] 
-  names.each do |name|
-    result << name.values.join(' ')
-  end
-  result
+# def full_names(names)
+#   result = [] 
+#   names.each do |name|
+#     result << name.values.join(' ')
+#   end
+#   result
+# end
+
+# names = [{firstname: 'Bruce', lastname: 'Wayne'}, {firstname: 'Clark', lastname: 'Kent'}]
+
+# p full_names(names) # Returns ['Bruce Wayne', 'Clark Kent']
+
+
+def longest_word(str)
+  str = str.split(' ')
+  # longest_str = ''
+  # str.each do |word|
+  #   if word.size > longest_str.size
+  #     longest_str = word
+  #   end
+  # end
+  str.reduce { |acc, curr| acc.size >= curr.size ? acc : curr}
+  
 end
 
-names = [{firstname: 'Bruce', lastname: 'Wayne'}, {firstname: 'Clark', lastname: 'Kent'}]
+p longest_word('My name is Vishwas') # Returns 'Vishwas'
 
-p full_names(names) # Returns ['Bruce Wayne', 'Clark Kent']
-
-
-
+p longest_word('Hello world') # Returns 'Hello'
 
 
 
