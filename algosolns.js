@@ -4793,21 +4793,46 @@ Note: A plaindrome is a word, phrase, or sequence that reads the same backwards 
 
 // Note: If one more more words have the same length, return the first occuring word of the same length.
 
-function longestWord(str) {
-  const strArr = str.split(' ');
-  // let longestStr = '';
-  // for (let i = 0; i < strArr.length; i++) {
-  //   const word = strArr[i];
-  //   if (word.length > longestStr.length) {
-  //     longestStr = word;
-  //   }
-  // }
-  const longestStr = strArr.reduce((acc, curr) => {
-    return acc.length >= curr.length ? acc : curr;
-  }, '');
-  return longestStr;
+// function longestWord(str) {
+//   const strArr = str.split(' ');
+// let longestStr = '';
+// for (let i = 0; i < strArr.length; i++) {
+//   const word = strArr[i];
+//   if (word.length > longestStr.length) {
+//     longestStr = word;
+//   }
+// }
+//   const longestStr = strArr.reduce((acc, curr) => {
+//     return acc.length >= curr.length ? acc : curr;
+//   }, '');
+//   return longestStr;
+// }
+
+// console.log(longestWord('My name is Vishwas')); // Returns 'Vishwas'
+
+// console.log(longestWord('Hello world')); // Returns 'Hello'
+
+// Given two arrays (arr1) and (arr2) return the union, intersection, difference and symmetric difference of the two arrays.
+const arr1 = [1, 2, 3];
+const arr2 = [2, 3, 4];
+
+function union(arr1, arr2) {
+  return arr1.concat(arr2);
 }
 
-console.log(longestWord('My name is Vishwas')); // Returns 'Vishwas'
-
-console.log(longestWord('Hello world')); // Returns 'Hello'
+console.log(union(arr1, arr2)); // Returns [1, 2, 3, 2, 3, 4]
+function intersection(arr1, arr2) {
+  return arr1.filter((item) => arr2.includes(item));
+}
+console.log(intersection(arr1, arr2)); // Returns [2, 3]
+function difference(arr1, arr2) {
+  return arr1.filter((item) => !arr2.includes(item));
+}
+console.log(difference(arr1, arr2)); // Returns [1]
+console.log(difference(arr2, arr1)); // Returns [4]
+function symmetricDifference(arr1, arr2) {
+  return arr1
+    .filter((item) => !arr2.includes(item))
+    .concat(arr2.filter((item) => !arr1.includes(item)));
+}
+console.log(symmetricDifference(arr1, arr2)); // Returns [1, 4]
