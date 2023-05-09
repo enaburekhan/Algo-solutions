@@ -4813,26 +4813,48 @@ Note: A plaindrome is a word, phrase, or sequence that reads the same backwards 
 // console.log(longestWord('Hello world')); // Returns 'Hello'
 
 // Given two arrays (arr1) and (arr2) return the union, intersection, difference and symmetric difference of the two arrays.
-const arr1 = [1, 2, 3];
-const arr2 = [2, 3, 4];
+// const arr1 = [1, 2, 3];
+// const arr2 = [2, 3, 4];
 
-function union(arr1, arr2) {
-  return arr1.concat(arr2);
+// function union(arr1, arr2) {
+//   return arr1.concat(arr2);
+// }
+
+// console.log(union(arr1, arr2)); // Returns [1, 2, 3, 2, 3, 4]
+// function intersection(arr1, arr2) {
+//   return arr1.filter((item) => arr2.includes(item));
+// }
+// console.log(intersection(arr1, arr2)); // Returns [2, 3]
+// function difference(arr1, arr2) {
+//   return arr1.filter((item) => !arr2.includes(item));
+// }
+// console.log(difference(arr1, arr2)); // Returns [1]
+// console.log(difference(arr2, arr1)); // Returns [4]
+// function symmetricDifference(arr1, arr2) {
+//   return arr1
+//     .filter((item) => !arr2.includes(item))
+//     .concat(arr2.filter((item) => !arr1.includes(item)));
+// }
+// console.log(symmetricDifference(arr1, arr2)); // Returns [1, 4]
+
+/*Given two arrays of integers (nums) and (index), create and return a new array (arr) which satisfies the following rules:
+
+Initially array (arr) is empty.
+
+From left to right read nums[i] and index[i] and insert at index index[i] the value nums[i] in array (arr) .
+
+Repeat the previous step until there are no elements to read in nums and index.
+*/
+
+function createArray(nums, index) {
+  const target = [];
+  for (let i = 0; i < nums.length; i++) {
+    target.splice(index[i], 0, nums[i]);
+  }
+  return target;
 }
 
-console.log(union(arr1, arr2)); // Returns [1, 2, 3, 2, 3, 4]
-function intersection(arr1, arr2) {
-  return arr1.filter((item) => arr2.includes(item));
-}
-console.log(intersection(arr1, arr2)); // Returns [2, 3]
-function difference(arr1, arr2) {
-  return arr1.filter((item) => !arr2.includes(item));
-}
-console.log(difference(arr1, arr2)); // Returns [1]
-console.log(difference(arr2, arr1)); // Returns [4]
-function symmetricDifference(arr1, arr2) {
-  return arr1
-    .filter((item) => !arr2.includes(item))
-    .concat(arr2.filter((item) => !arr1.includes(item)));
-}
-console.log(symmetricDifference(arr1, arr2)); // Returns [1, 4]
+const nums = [0, 1, 2, 3, 4];
+const index = [0, 1, 2, 2, 1];
+
+console.log(createArray(nums, index)); // Returns [0,4,1,3,2]
