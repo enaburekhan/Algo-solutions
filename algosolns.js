@@ -4846,15 +4846,25 @@ From left to right read nums[i] and index[i] and insert at index index[i] the va
 Repeat the previous step until there are no elements to read in nums and index.
 */
 
-function createArray(nums, index) {
-  const target = [];
-  for (let i = 0; i < nums.length; i++) {
-    target.splice(index[i], 0, nums[i]);
-  }
-  return target;
+// function createArray(nums, index) {
+//   const target = [];
+//   for (let i = 0; i < nums.length; i++) {
+//     target.splice(index[i], 0, nums[i]);
+//   }
+//   return target;
+// }
+
+// const nums = [0, 1, 2, 3, 4];
+// const index = [0, 1, 2, 2, 1];
+
+// console.log(createArray(nums, index)); // Returns [0,4,1,3,2]
+
+// Given a nested array (arr), return the flattened array.
+
+function flattenArray(arr) {
+  return arr.flat(Infinity);
 }
 
-const nums = [0, 1, 2, 3, 4];
-const index = [0, 1, 2, 2, 1];
+const arr = [1, [2], [3, [[4]]]];
 
-console.log(createArray(nums, index)); // Returns [0,4,1,3,2]
+console.log(flattenArray(arr)); // Returns [1, 2, 3, 4]
