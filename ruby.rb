@@ -2000,21 +2000,34 @@
 # p full_names(names) # Returns ['Bruce Wayne', 'Clark Kent']
 
 
-def longest_word(str)
-  str = str.split(' ')
+# def longest_word(str)
+  # str = str.split(' ')
   # longest_str = ''
   # str.each do |word|
   #   if word.size > longest_str.size
   #     longest_str = word
   #   end
   # end
-  str.reduce { |acc, curr| acc.size >= curr.size ? acc : curr}
+  # str.reduce { |acc, curr| acc.size >= curr.size ? acc : curr}
   
+# end
+
+# p longest_word('My name is Vishwas') # Returns 'Vishwas'
+
+# p longest_word('Hello world') # Returns 'Hello'
+
+require 'set'
+def findDuplicate(arr) 
+  set = Set.new
+  arr.each do |num|
+    return num if set.include?(num)
+    set.add(num)
+  end
 end
 
-p longest_word('My name is Vishwas') # Returns 'Vishwas'
+arr = [2,4,6,8,2]
 
-p longest_word('Hello world') # Returns 'Hello'
+p findDuplicate(arr) # Returns 2
 
 
 

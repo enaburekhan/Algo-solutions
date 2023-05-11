@@ -250,21 +250,21 @@
 
 // console.log(mostRepeatedChar(str)); // d
 
-function frequentRepeatedChar(str) {
-  let highestCount = 0;
-  let highestRepeatedChar = '';
-  const dict = {};
-  for (let i = 0; i < str.length; i++) {
-    const char = str[i];
-    dict[char] = (dict[char] || 0) + 1;
+// function frequentRepeatedChar(str) {
+//   let highestCount = 0;
+//   let highestRepeatedChar = '';
+//   const dict = {};
+//   for (let i = 0; i < str.length; i++) {
+//     const char = str[i];
+//     dict[char] = (dict[char] || 0) + 1;
 
-    if (dict[char] > highestCount) {
-      highestCount = dict[char];
-      highestRepeatedChar = char;
-    }
-  }
-  return highestRepeatedChar;
-}
+//     if (dict[char] > highestCount) {
+//       highestCount = dict[char];
+//       highestRepeatedChar = char;
+//     }
+//   }
+//   return highestRepeatedChar;
+// }
 
-const str = 'aabbccdbb';
-console.log(frequentRepeatedChar(str));
+// const str = 'aabbccdbb';
+// console.log(frequentRepeatedChar(str));

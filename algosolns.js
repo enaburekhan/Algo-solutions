@@ -4861,10 +4861,27 @@ Repeat the previous step until there are no elements to read in nums and index.
 
 // Given a nested array (arr), return the flattened array.
 
-function flattenArray(arr) {
-  return arr.flat(Infinity);
+// function flattenArray(arr) {
+//   return arr.flat(Infinity);
+// }
+
+// const arr = [1, [2], [3, [[4]]]];
+
+// console.log(flattenArray(arr)); // Returns [1, 2, 3, 4]
+
+// Given an array (arr) of elements, one element in the array occurs twice. Find the element.
+
+function findDuplicate(arr) {
+  const set = new Set();
+  for (const num of arr) {
+    if (set.has(num)) {
+      return num;
+    } else {
+      set.add(num);
+    }
+  }
 }
 
-const arr = [1, [2], [3, [[4]]]];
+const arr = [2, 4, 6, 8, 2];
 
-console.log(flattenArray(arr)); // Returns [1, 2, 3, 4]
+console.log(findDuplicate(arr)); // Returns 2
