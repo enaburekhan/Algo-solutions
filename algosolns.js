@@ -4871,17 +4871,52 @@ Repeat the previous step until there are no elements to read in nums and index.
 
 // Given an array (arr) of elements, one element in the array occurs twice. Find the element.
 
-function findDuplicate(arr) {
-  const set = new Set();
-  for (const num of arr) {
-    if (set.has(num)) {
-      return num;
+// function findDuplicate(arr) {
+//   const set = new Set();
+//   for (const num of arr) {
+//     if (set.has(num)) {
+//       return num;
+//     } else {
+//       set.add(num);
+//     }
+//   }
+// }
+
+// const arr = [2, 4, 6, 8, 2];
+
+// console.log(findDuplicate(arr)); // Returns 2
+
+// Given two strings (str1) and (str2), return a list of all non-repeating words.
+
+function nonRepeatingWords(str1, str2) {
+  const str = str1 + ' ' + str2;
+  const strArr = str.split(' ');
+  const wordCount = {};
+  const uniqueWord = [];
+
+  for (let i = 0; i < strArr.length; i++) {
+    const word = strArr[i];
+    if (!wordCount[word]) {
+      wordCount[word] = 1;
     } else {
-      set.add(num);
+      wordCount[word]++;
     }
   }
+
+  for (const word in wordCount) {
+    if (wordCount[word] === 1) {
+      uniqueWord.push(word);
+    }
+  }
+  return uniqueWord;
 }
 
-const arr = [2, 4, 6, 8, 2];
+const str1 = 'Hello world';
+const str2 = 'Hello Vishwas';
 
-console.log(findDuplicate(arr)); // Returns 2
+console.log(nonRepeatingWords(str1, str2)); // Returns ['world', 'Vishwas']
+
+const str3 = 'Hello Hello';
+const str4 = 'Welcome Vishwas';
+
+console.log(nonRepeatingWords(str3, str4)); // Returns ['Welcome', 'Vishwas']
