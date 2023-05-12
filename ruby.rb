@@ -2016,18 +2016,52 @@
 
 # p longest_word('Hello world') # Returns 'Hello'
 
-require 'set'
-def findDuplicate(arr) 
-  set = Set.new
-  arr.each do |num|
-    return num if set.include?(num)
-    set.add(num)
+# require 'set'
+# def findDuplicate(arr) 
+#   set = Set.new
+#   arr.each do |num|
+#     return num if set.include?(num)
+#     set.add(num)
+#   end
+# end
+
+# arr = [2,4,6,8,2]
+
+# p findDuplicate(arr) # Returns 2
+
+
+
+# Given two strings (str1) and (str2), return a list of all non-repeating words.
+
+def nonRepeatingWords(str1, str2) 
+  str = str1 + ' ' + str2
+  word_count = {}
+  unique_word = []
+  str.split(' ').each do |word|
+    if !word_count[word]
+      word_count[word] = 1
+    else
+      word_count[word] += 1
+    end
   end
+  
+  word_count.each do |key, val|
+    unique_word << key if val == 1
+  end
+  unique_word
 end
 
-arr = [2,4,6,8,2]
+str1 = 'Hello world' 
+str2 = 'Hello Vishwas'
 
-p findDuplicate(arr) # Returns 2
+ p nonRepeatingWords(str1, str2) # Returns ['world', 'Vishwas']
+
+
+
+str3 = 'Hello Hello' 
+str4 = 'Welcome Vishwas'
+
+p nonRepeatingWords(str3, str4) # Returns ['Welcome', 'Vishwas']
 
 
 
