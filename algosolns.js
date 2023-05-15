@@ -4888,35 +4888,62 @@ Repeat the previous step until there are no elements to read in nums and index.
 
 // Given two strings (str1) and (str2), return a list of all non-repeating words.
 
-function nonRepeatingWords(str1, str2) {
-  const str = str1 + ' ' + str2;
-  const strArr = str.split(' ');
-  const wordCount = {};
-  const uniqueWord = [];
+// function nonRepeatingWords(str1, str2) {
+//   const str = str1 + ' ' + str2;
+//   const strArr = str.split(' ');
+//   const wordCount = {};
+//   const uniqueWord = [];
 
-  for (let i = 0; i < strArr.length; i++) {
-    const word = strArr[i];
-    if (!wordCount[word]) {
-      wordCount[word] = 1;
+//   for (let i = 0; i < strArr.length; i++) {
+//     const word = strArr[i];
+//     if (!wordCount[word]) {
+//       wordCount[word] = 1;
+//     } else {
+//       wordCount[word]++;
+//     }
+//   }
+
+//   for (const word in wordCount) {
+//     if (wordCount[word] === 1) {
+//       uniqueWord.push(word);
+//     }
+//   }
+//   return uniqueWord;
+// }
+
+// const str1 = 'Hello world';
+// const str2 = 'Hello Vishwas';
+
+// console.log(nonRepeatingWords(str1, str2)); // Returns ['world', 'Vishwas']
+
+// const str3 = 'Hello Hello';
+// const str4 = 'Welcome Vishwas';
+
+// console.log(nonRepeatingWords(str3, str4)); // Returns ['Welcome', 'Vishwas']
+
+/*Given a string (str) which consists of lowercase or uppercase letters, find the length of the longest
+
+palindromes that can be built with those letters.
+
+Note: This is case sensitive, for example "Aa" is not considered a palindrome.*/
+
+function longestPalindrome(str) {
+  const set = new Set();
+  let length = 0;
+  for (const c of str) {
+    if (set.has(c)) {
+      set.delete(c);
+      length++;
     } else {
-      wordCount[word]++;
+      set.add(c);
     }
   }
 
-  for (const word in wordCount) {
-    if (wordCount[word] === 1) {
-      uniqueWord.push(word);
-    }
+  if (set.size) {
+    return 2 * length + 1;
+  } else {
+    return 2 * length;
   }
-  return uniqueWord;
 }
 
-const str1 = 'Hello world';
-const str2 = 'Hello Vishwas';
-
-console.log(nonRepeatingWords(str1, str2)); // Returns ['world', 'Vishwas']
-
-const str3 = 'Hello Hello';
-const str4 = 'Welcome Vishwas';
-
-console.log(nonRepeatingWords(str3, str4)); // Returns ['Welcome', 'Vishwas']
+console.log(longestPalindrome('abccccdd')); // Returns 7 ('dccaccd')
