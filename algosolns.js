@@ -4927,23 +4927,47 @@ palindromes that can be built with those letters.
 
 Note: This is case sensitive, for example "Aa" is not considered a palindrome.*/
 
-function longestPalindrome(str) {
+// function longestPalindrome(str) {
+//   const set = new Set();
+//   let length = 0;
+//   for (const c of str) {
+//     if (set.has(c)) {
+//       set.delete(c);
+//       length++;
+//     } else {
+//       set.add(c);
+//     }
+//   }
+
+//   if (set.size) {
+//     return 2 * length + 1;
+//   } else {
+//     return 2 * length;
+//   }
+// }
+
+// console.log(longestPalindrome('abccccdd')); // Returns 7 ('dccaccd')
+
+// Given a string (str), find the length of the longest substring without repeating characters.
+
+function longestSubstringLength(str) {
   const set = new Set();
-  let length = 0;
-  for (const c of str) {
-    if (set.has(c)) {
-      set.delete(c);
-      length++;
+  let i = 0;
+  let j = 0;
+  let max = 0;
+  while (i < str.length) {
+    if (!set.has(str.charAt(i))) {
+      set.add(str.charAt(i++));
+      max = Math.max(max, set.size);
     } else {
-      set.add(c);
+      set.delete(str.charAt(j++));
     }
   }
-
-  if (set.size) {
-    return 2 * length + 1;
-  } else {
-    return 2 * length;
-  }
+  return max;
 }
 
-console.log(longestPalindrome('abccccdd')); // Returns 7 ('dccaccd')
+console.log(longestSubstringLength('abcabcbd')); // Returns 3 ('abc')
+
+console.log(longestSubstringLength('aaaa')); // Returns 1 ('a')
+
+console.log(longestSubstringLength('abbcdb')); // Returns 3 ('bcd')

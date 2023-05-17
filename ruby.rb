@@ -2064,7 +2064,6 @@
 
 require 'set'
 def longest_palindrome(str) 
-  # str = str.split('')
   set = Set.new
   length = 0
   str.each_char do |c|
