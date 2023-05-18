@@ -2062,27 +2062,54 @@
 # p nonRepeatingWords(str3, str4) # Returns ['Welcome', 'Vishwas']
 
 
+# require 'set'
+# def longest_palindrome(str) 
+#   set = Set.new
+#   length = 0
+#   str.each_char do |c|
+#     if set.include?(c)
+#       set.delete(c)
+#       length += 1
+#     else
+#       set.add(c)
+#     end
+#   end
+
+#   if set.size > 0
+#     return 2 * length + 1
+#   else
+#     return 2 * length
+#   end
+# end
+
+# p longest_palindrome('abccccdd') # Returns 7 ('dccaccd')
+
+
+
 require 'set'
-def longest_palindrome(str) 
+def longest_substring_length(str) 
   set = Set.new
-  length = 0
-  str.each_char do |c|
-    if set.include?(c)
-      set.delete(c)
-      length += 1
+  i = 0
+  j = 0
+  max = 0
+  while i < str.size
+    if !set.include?(str[i])
+      set.add(str[i])
+      max = [max, set.size].max
+      i += 1
     else
-      set.add(c)
+      set.delete(str[j])
+      j += 1
     end
   end
-
-  if set.size > 0
-    return 2 * length + 1
-  else
-    return 2 * length
-  end
+  max
 end
 
-p longest_palindrome('abccccdd') # Returns 7 ('dccaccd')
+p longest_substring_length('abcabcbd') # Returns 3 ('abc')
+
+p longest_substring_length('aaaa') # Returns 1 ('a')
+
+p longest_substring_length('abbcdb') # Returns 3 ('bcd')
 
 
 

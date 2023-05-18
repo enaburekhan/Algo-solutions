@@ -4956,11 +4956,13 @@ function longestSubstringLength(str) {
   let j = 0;
   let max = 0;
   while (i < str.length) {
-    if (!set.has(str.charAt(i))) {
-      set.add(str.charAt(i++));
+    if (!set.has(str[i])) {
+      set.add(str[i]);
       max = Math.max(max, set.size);
+      i++;
     } else {
-      set.delete(str.charAt(j++));
+      set.delete(str[j]);
+      j++;
     }
   }
   return max;
