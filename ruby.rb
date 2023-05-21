@@ -2113,23 +2113,43 @@
 
 
 
-def group_anagrams(arr) 
-  hash = {}
-  arr.each do |word|
-    key = word.chars.sort().join('')
-    if !hash.has_key?(key)
-      hash[key] = [word]
-    else
-      curr = hash[key]
-      hash[key] = [*curr, word]
-    end
+# def group_anagrams(arr) 
+#   hash = {}
+#   arr.each do |word|
+#     key = word.chars.sort().join('')
+#     if !hash.has_key?(key)
+#       hash[key] = [word]
+#     else
+#       curr = hash[key]
+#       hash[key] = [*curr, word]
+#     end
+#   end
+#   return hash.values
+# end
+
+# arr = ["eat", "tea", "tan", "ate", "nat", "bat"]
+
+# p group_anagrams(arr) # Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
+
+
+
+# You are given an array of two numbers [a,b]. Find the sum of those two numbers plus the sum of all the numbers between them.
+
+# (Note: The lower number may not always be the first element in the array)
+
+def sum(arr) 
+  max = [arr[0], arr[1]].max
+  min = [arr[0], arr[1]].min
+  total = 0
+  (min..max).each do |num|
+    total += num
   end
-  return hash.values
+  total
 end
 
-arr = ["eat", "tea", "tan", "ate", "nat", "bat"]
+p sum([1, 4]) # Returns 10
 
-p group_anagrams(arr) # Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
+p sum([4, 1]) # Returns 10
 
 
 

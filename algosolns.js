@@ -4976,20 +4976,38 @@ Note: This is case sensitive, for example "Aa" is not considered a palindrome.*/
 
 // Given an array (arr) of strings, group anagrams together.
 
-function groupAnagrams(arr) {
-  const map = new Map();
-  for (const word of arr) {
-    const key = [...word].sort().join('');
-    if (!map.has(key)) {
-      map.set(key, [word]);
-    } else {
-      let curr = map.get(key);
-      map.set(key, [...curr, word]);
-    }
+// function groupAnagrams(arr) {
+//   const map = new Map();
+//   for (const word of arr) {
+//     const key = [...word].sort().join('');
+//     if (!map.has(key)) {
+//       map.set(key, [word]);
+//     } else {
+//       let curr = map.get(key);
+//       map.set(key, [...curr, word]);
+//     }
+//   }
+//   return map.values();
+// }
+
+// const arr = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat'];
+
+// console.log(groupAnagrams(arr)); // Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
+
+// You are given an array of two numbers [a,b]. Find the sum of those two numbers plus the sum of all the numbers between them.
+
+// (Note: The lower number may not always be the first element in the array)
+
+function sum(arr) {
+  let total = 0;
+  const min = Math.min(arr[0], arr[1]);
+  const max = Math.max(arr[0], arr[1]);
+  for (let i = min; i <= max; i++) {
+    total += i;
   }
-  return map.values();
+  return total;
 }
 
-const arr = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat'];
+console.log(sum([1, 4])); // Returns 10
 
-console.log(groupAnagrams(arr)); // Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
+console.log(sum([4, 1])); // Returns 10
