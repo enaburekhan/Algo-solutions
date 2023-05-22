@@ -2137,19 +2137,19 @@
 
 # (Note: The lower number may not always be the first element in the array)
 
-def sum(arr) 
-  max = [arr[0], arr[1]].max
-  min = [arr[0], arr[1]].min
-  total = 0
-  (min..max).each do |num|
-    total += num
-  end
-  total
-end
+# def sum(arr) 
+#   max = [arr[0], arr[1]].max
+#   min = [arr[0], arr[1]].min
+#   total = 0
+#   (min..max).each do |num|
+#     total += num
+#   end
+#   total
+# end
 
-p sum([1, 4]) # Returns 10
+# p sum([1, 4]) # Returns 10
 
-p sum([4, 1]) # Returns 10
+# p sum([4, 1]) # Returns 10
 
 
 
