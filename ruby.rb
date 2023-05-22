@@ -2154,7 +2154,18 @@
 
 
 
+def factorial(num) 
+  return 1 if num == 0 or num == 1
+  num * factorial(num - 1)
+end
 
+p factorial(0) # Returns 1 (We're not going to understand the math behind this)
+
+p factorial(1) # Returns 1
+
+p factorial(4) # Returns 24
+
+p factorial(5) # Returns 120
 
 
 
