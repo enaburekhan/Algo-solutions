@@ -2154,19 +2154,37 @@
 
 
 
-def factorial(num) 
-  return 1 if num == 0 or num == 1
-  num * factorial(num - 1)
+# def factorial(num) 
+#   return 1 if num == 0 or num == 1
+#   num * factorial(num - 1)
+# end
+
+# p factorial(0) # Returns 1 (We're not going to understand the math behind this)
+
+# p factorial(1) # Returns 1
+
+# p factorial(4) # Returns 24
+
+# p factorial(5) # Returns 120
+
+
+
+def printFibonacci(n) 
+  fib = []
+  (0...n).each do |num|
+    fib << fibonacci(num)
+  end
+  fib
 end
 
-p factorial(0) # Returns 1 (We're not going to understand the math behind this)
+def fibonacci(n)
+  return n if n < 2
+  fibonacci(n-1) + fibonacci(n-2)
+end
 
-p factorial(1) # Returns 1
+p printFibonacci(2) # Returns 0 1
 
-p factorial(4) # Returns 24
-
-p factorial(5) # Returns 120
-
+p printFibonacci(7) # Returns 0 1 1 2 3 5 8
 
 
 

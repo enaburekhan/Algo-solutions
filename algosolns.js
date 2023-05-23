@@ -5023,15 +5023,39 @@ Factorial of 4 = 4 * 3 * 2 * 1
 Factorial of 4 = 24
 */
 
-function factorial(num) {
-  if (num === 0 || num === 1) return 1;
-  return num * factorial(num - 1);
+// function factorial(num) {
+//   if (num === 0 || num === 1) return 1;
+//   return num * factorial(num - 1);
+// }
+
+// console.log(factorial(0)); // Returns 1 (We're not going to understand the math behind this)
+
+// console.log(factorial(1)); // Returns 1
+
+// console.log(factorial(4)); // Returns 24
+
+// console.log(factorial(5)); // Returns 120
+
+/*Give a number n, find the first n elements of the fibonacci seriies.
+
+Now what is fibonacci series? Well it is a series of numbers in which each number ( Fibonacci number ) is the sum of the two preceding numbers.
+
+The first two numbers in the series are 0 and 1.
+
+*/
+
+function printFibonacci(n) {
+  const fib = [];
+  for (let i = 0; i < n; i++) {
+    fib.push(fibonacci(i));
+  }
+  return fib;
 }
 
-console.log(factorial(0)); // Returns 1 (We're not going to understand the math behind this)
+function fibonacci(n) {
+  if (n < 2) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+console.log(printFibonacci(2)); // Returns 0 1
 
-console.log(factorial(1)); // Returns 1
-
-console.log(factorial(4)); // Returns 24
-
-console.log(factorial(5)); // Returns 120
+console.log(printFibonacci(7)); // Returns 0 1 1 2 3 5 8
