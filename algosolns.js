@@ -5044,18 +5044,42 @@ The first two numbers in the series are 0 and 1.
 
 */
 
-function printFibonacci(n) {
-  const fib = [];
-  for (let i = 0; i < n; i++) {
-    fib.push(fibonacci(i));
+// function printFibonacci(n) {
+//   const fib = [];
+//   for (let i = 0; i < n; i++) {
+//     fib.push(fibonacci(i));
+//   }
+//   return fib;
+// }
+
+// function fibonacci(n) {
+//   if (n < 2) return n;
+//   return fibonacci(n - 1) + fibonacci(n - 2);
+// }
+// console.log(printFibonacci(2)); // Returns 0 1
+
+// console.log(printFibonacci(7)); // Returns 0 1 1 2 3 5 8
+
+// Given two numbers min and max, find all the prime numbers in the range of min to max. (min and max included)
+
+function printPrime(min, max) {
+  const primes = [];
+  for (num = min; num <= max; num++) {
+    if (isPrimes(num)) {
+      primes.push(num);
+    }
   }
-  return fib;
+  return primes;
 }
 
-function fibonacci(n) {
-  if (n < 2) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
+function isPrimes(num) {
+  if (num < 2) return false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
 }
-console.log(printFibonacci(2)); // Returns 0 1
 
-console.log(printFibonacci(7)); // Returns 0 1 1 2 3 5 8
+console.log(printPrime(0, 20)); // Returns 2 3 5 7 11 13 17 19
