@@ -2169,22 +2169,51 @@
 
 
 
-def printFibonacci(n) 
-  fib = []
-  (0...n).each do |num|
-    fib << fibonacci(num)
+# def printFibonacci(n) 
+#   fib = []
+#   (0...n).each do |num|
+#     fib << fibonacci(num)
+#   end
+#   fib
+# end
+
+# def fibonacci(n)
+#   return n if n < 2
+#   fibonacci(n-1) + fibonacci(n-2)
+# end
+
+# p printFibonacci(2) # Returns 0 1
+
+# p printFibonacci(7) # Returns 0 1 1 2 3 5 8
+
+
+
+# Given two numbers min and max, find all the prime numbers in the range of min to max. (min and max included)
+
+
+def print_prime (min, max)
+  primes = []
+  (min..max).each do |num|
+    if is_primes?(num)
+      primes << num
+    end
   end
-  fib
+  primes
 end
 
-def fibonacci(n)
-  return n if n < 2
-  fibonacci(n-1) + fibonacci(n-2)
+def is_primes?(num)
+  return false if num < 2
+  (2..Math.sqrt(num)).each do |i|
+    if num % i == 0
+      return false
+    end
+  end
+  true
 end
 
-p printFibonacci(2) # Returns 0 1
+p print_prime(0, 20) # Returns 2 3 5 7 11 13 17 19
 
-p printFibonacci(7) # Returns 0 1 1 2 3 5 8
+
 
 
 
