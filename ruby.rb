@@ -2191,27 +2191,37 @@
 # Given two numbers min and max, find all the prime numbers in the range of min to max. (min and max included)
 
 
-def print_prime (min, max)
-  primes = []
-  (min..max).each do |num|
-    if is_primes?(num)
-      primes << num
-    end
-  end
-  primes
+# def print_prime (min, max)
+#   primes = []
+#   (min..max).each do |num|
+#     if is_primes?(num)
+#       primes << num
+#     end
+#   end
+#   primes
+# end
+
+# def is_primes?(num)
+#   return false if num < 2
+#   (2..Math.sqrt(num)).each do |i|
+#     if num % i == 0
+#       return false
+#     end
+#   end
+#   true
+# end
+
+# p print_prime(0, 20) # Returns 2 3 5 7 11 13 17 19
+
+
+
+def isPalindrome (str) 
+  str.downcase == str.downcase.split('').reverse.join('')
 end
 
-def is_primes?(num)
-  return false if num < 2
-  (2..Math.sqrt(num)).each do |i|
-    if num % i == 0
-      return false
-    end
-  end
-  true
-end
+p isPalindrome('racecar') # Returns true
 
-p print_prime(0, 20) # Returns 2 3 5 7 11 13 17 19
+p isPalindrome('race') # Returns false
 
 
 
