@@ -5089,10 +5089,25 @@ console.log(printPrime(0, 20)); // Returns 2 3 5 7 11 13 17 19
 
 Note: A plaindrome is a word, phrase, or sequence that reads the same backwards as forwards, e.g. madam.
 */
-function isPalindrome(str) {
-  return str.toLowerCase() === str.toLowerCase().split('').reverse().join('');
+// function isPalindrome(str) {
+//   return str.toLowerCase() === str.toLowerCase().split('').reverse().join('');
+// }
+
+// console.log(isPalindrome('racecar')); // Returns true
+
+// console.log(isPalindrome('race')); // Returns false
+
+/*Given two strings (str1 and str2), determine if str1 is anagram of str2.
+
+Note: An anagram is a word, phrase, or name formed by rearranging the letters of another, such as spar, formed from rasp.
+*/
+function isAnagram(str1, str2) {
+  const sortedStr1 = str1.split('').sort().join('');
+  const sortedStr2 = str2.split('').sort().join('');
+  if (str1.length !== str2.length) return false;
+  return sortedStr1.toLowerCase() === sortedStr2.toLowerCase();
 }
 
-console.log(isPalindrome('racecar')); // Returns true
+console.log(isAnagram('racecar', 'carrace')); // Returns true
 
-console.log(isPalindrome('race')); // Returns false
+console.log(isAnagram('racecar', 'carracr')); // Returns false

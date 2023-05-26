@@ -2215,13 +2215,24 @@
 
 
 
-def isPalindrome (str) 
-  str.downcase == str.downcase.split('').reverse.join('')
+# def isPalindrome (str) 
+#   str.downcase == str.downcase.split('').reverse.join('')
+# end
+
+# p isPalindrome('racecar') # Returns true
+
+# p isPalindrome('race') # Returns false
+
+
+
+
+def isAnagram (str) 
+
 end
 
-p isPalindrome('racecar') # Returns true
+p isAnagram('racecar', 'carrace') # Returns true
 
-p isPalindrome('race') # Returns false
+p isAnagram('racecar', 'carracr') # Returns false
 
 
 
