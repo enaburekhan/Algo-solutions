@@ -2226,13 +2226,16 @@
 
 
 
-def isAnagram (str) 
-
+def is_anagram (str1, str2) 
+  sorted_str1 = str1.split('').sort().join('');
+  sorted_str2 = str2.split('').sort().join('');
+  return false if str1.size != str2.size
+  sorted_str1.downcase == sorted_str2.downcase
 end
 
-p isAnagram('racecar', 'carrace') # Returns true
+p is_anagram('racecar', 'carrace') # Returns true
 
-p isAnagram('racecar', 'carracr') # Returns false
+p is_anagram('racecar', 'carracr') # Returns false
 
 
 
