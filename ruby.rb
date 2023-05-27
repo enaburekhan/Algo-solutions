@@ -2226,16 +2226,26 @@
 
 
 
-def is_anagram (str1, str2) 
-  sorted_str1 = str1.split('').sort().join('');
-  sorted_str2 = str2.split('').sort().join('');
-  return false if str1.size != str2.size
-  sorted_str1.downcase == sorted_str2.downcase
+# def is_anagram (str1, str2) 
+#   sorted_str1 = str1.split('').sort().join('');
+#   sorted_str2 = str2.split('').sort().join('');
+#   return false if str1.size != str2.size
+#   sorted_str1.downcase == sorted_str2.downcase
+# end
+
+# p is_anagram('racecar', 'carrace') # Returns true
+
+# p is_anagram('racecar', 'carracr') # Returns false
+
+
+
+def reverseWords (str) 
+  str.split(' ').reverse.join(' ')
 end
 
-p is_anagram('racecar', 'carrace') # Returns true
+p reverseWords('Hello World') # Returns 'World Hello'
 
-p is_anagram('racecar', 'carracr') # Returns false
+p reverseWords(' This is  a  test string ') # Returns 'string test a is This'
 
 
 
