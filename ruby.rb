@@ -2239,13 +2239,23 @@
 
 
 
-def reverseWords (str) 
-  str.split(' ').reverse.join(' ')
+# def reverseWords (str) 
+#   str.split(' ').reverse.join(' ')
+# end
+
+# p reverseWords('Hello World') # Returns 'World Hello'
+
+# p reverseWords(' This is  a  test string ') # Returns 'string test a is This'
+
+
+
+def removeVowels (str) 
+  str.gsub(/[aeiou]/i, '')
 end
 
-p reverseWords('Hello World') # Returns 'World Hello'
+p removeVowels('Hello World') # Returns Hll Wrld
 
-p reverseWords(' This is  a  test string ') # Returns 'string test a is This'
+
 
 
 

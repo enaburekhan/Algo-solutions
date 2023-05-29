@@ -5112,10 +5112,18 @@ Note: An anagram is a word, phrase, or name formed by rearranging the letters of
 
 // console.log(isAnagram('racecar', 'carracr')); // Returns false
 
-function reverseWords(str) {
-  return str.split(' ').reverse().join(' ');
+// function reverseWords(str) {
+//   return str.split(' ').reverse().join(' ');
+// }
+
+// console.log(reverseWords('Hello World')); // Returns 'World Hello'
+
+// console.log(reverseWords(' This is  a  test string ')); // Returns 'string test a is This'
+
+// Given an input string (str), remove all vowels from the string.
+
+function removeVowels(str) {
+  return str.replace(/[aeiou]/gi, '');
 }
 
-console.log(reverseWords('Hello World')); // Returns 'World Hello'
-
-console.log(reverseWords(' This is  a  test string ')); // Returns 'string test a is This'
+console.log(removeVowels('Hello World')); // Returns Hll Wrld
