@@ -2249,13 +2249,44 @@
 
 
 
-def removeVowels (str) 
-  str.gsub(/[aeiou]/i, '')
+# def removeVowels (str) 
+#   str.gsub(/[aeiou]/i, '')
+# end
+
+# p removeVowels('Hello World') # Returns Hll Wrld
+
+
+
+# Given a string str, return the number of palindromic substrings in str.
+
+# Note: The substrings with different start indexes or end indexes
+#  are counted as different substrings even they consist of same characters.
+
+
+def count_palindromic_substrings(str) 
+  count = 0
+  return 0 unless str
+  
+  (0..str.size).each do |i|
+    count += count_palindrome(str, i, i)  # even numbers
+    count += count_palindrome(str, i, i+1) # odd numbers
+  end
+  count
 end
 
-p removeVowels('Hello World') # Returns Hll Wrld
+def count_palindrome(str, left, right)
+  count = 0
+  while left >= 0 and right < str.size and str[left] == str[right]
+    count += 1
+    left -= 1
+    right += 1
+  end
+  count
+end
 
+p count_palindromic_substrings('abcd') # Returns 4 (a, b, c, d)
 
+p count_palindromic_substrings('aaa') # Returns 6 (a, a, a, aa, aa, aaa)
 
 
 
