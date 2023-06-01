@@ -2263,32 +2263,42 @@
 #  are counted as different substrings even they consist of same characters.
 
 
-def count_palindromic_substrings(str) 
-  count = 0
-  return 0 unless str
+# def count_palindromic_substrings(str) 
+#   count = 0
+#   return 0 unless str
   
-  (0..str.size).each do |i|
-    count += count_palindrome(str, i, i)  # even numbers
-    count += count_palindrome(str, i, i+1) # odd numbers
-  end
-  count
+#   (0..str.size).each do |i|
+#     count += count_palindrome(str, i, i)  # even numbers
+#     count += count_palindrome(str, i, i+1) # odd numbers
+#   end
+#   count
+# end
+
+# def count_palindrome(str, left, right)
+#   count = 0
+#   while left >= 0 and right < str.size and str[left] == str[right]
+#     count += 1
+#     left -= 1
+#     right += 1
+#   end
+#   count
+# end
+
+# p count_palindromic_substrings('abcd') # Returns 4 (a, b, c, d)
+
+
+# p count_palindromic_substrings('aaa') # Returns 6 (a, a, a, aa, aa, aaa)
+
+
+
+
+def full_names(names) 
+  names.map {|name| "#{name['firstname']} #{name['lastname']}"} 
 end
 
-def count_palindrome(str, left, right)
-  count = 0
-  while left >= 0 and right < str.size and str[left] == str[right]
-    count += 1
-    left -= 1
-    right += 1
-  end
-  count
-end
+names = [{'firstname' => 'Bruce', 'lastname' => 'Wayne'}, {'firstname' => 'Clark', 'lastname' => 'Kent'}]
 
-p count_palindromic_substrings('abcd') # Returns 4 (a, b, c, d)
-
-p count_palindromic_substrings('aaa') # Returns 6 (a, a, a, aa, aa, aaa)
-
-
+p full_names(names) # Returns ['Bruce Wayne', 'Clark Kent']
 
 
 
