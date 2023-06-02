@@ -2292,13 +2292,32 @@
 
 
 
-def full_names(names) 
-  names.map {|name| "#{name['firstname']} #{name['lastname']}"} 
+# def full_names(names) 
+#   names.map {|name| "#{name['firstname']} #{name['lastname']}"} 
+# end
+
+# names = [{'firstname' => 'Bruce', 'lastname' => 'Wayne'}, {'firstname' => 'Clark', 'lastname' => 'Kent'}]
+
+# p full_names(names) # Returns ['Bruce Wayne', 'Clark Kent']
+
+
+
+def longest_word (str) 
+  # longest_word = ''
+  str_arr = str.split(' ')
+  # (0...str_arr.size).each do |i|
+  #   word = str_arr[i]
+  #   if longest_word.size < word.size
+  #     longest_word = word
+  #   end
+  # end
+  # longest_word
+  str_arr.reduce { |acc, curr| acc.size >= curr.size ? acc : curr }
 end
 
-names = [{'firstname' => 'Bruce', 'lastname' => 'Wayne'}, {'firstname' => 'Clark', 'lastname' => 'Kent'}]
+p longest_word('My name is Vishwas') # Returns 'Vishwas'
 
-p full_names(names) # Returns ['Bruce Wayne', 'Clark Kent']
+p longest_word('Hello world') # Returns 'Hello'
 
 
 
