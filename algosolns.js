@@ -5165,13 +5165,36 @@ substrings even they consist of same characters.
 // Given an array (names) of objects where each object contains the firstname and lastname of a person,
 // return an array that contains the fullname of each person.
 
-function fullNames(names) {
-  return names.map((name) => `${name.firstname} ${name.lastname}`);
+// function fullNames(names) {
+//   return names.map((name) => `${name.firstname} ${name.lastname}`);
+// }
+
+// const names = [
+//   { firstname: 'Bruce', lastname: 'Wayne' },
+//   { firstname: 'Clark', lastname: 'Kent' },
+// ];
+
+// console.log(fullNames(names)); // Returns ['Bruce Wayne', 'Clark Kent']
+
+// Given a string (str), find the longest word in the string.
+
+// Note: If one more more words have the same length, return the first occuring word of the same length.
+
+function longestWord(str) {
+  // let longestWord = '';
+  const strArr = str.split(' ');
+  // for (let i = 0; i < strArr.length; i++) {
+  //   const word = strArr[i];
+  //   if (longestWord.length < word.length) {
+  //     longestWord = word;
+  //   }
+  // }
+  // return longestWord;
+  return strArr.reduce((acc, curr) => {
+    return acc.length >= curr.length ? acc : curr;
+  }, '');
 }
 
-const names = [
-  { firstname: 'Bruce', lastname: 'Wayne' },
-  { firstname: 'Clark', lastname: 'Kent' },
-];
+console.log(longestWord('My name is Vishwas')); // Returns 'Vishwas'
 
-console.log(fullNames(names)); // Returns ['Bruce Wayne', 'Clark Kent']
+console.log(longestWord('Hello world')); // Returns 'Hello'
