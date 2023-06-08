@@ -2322,14 +2322,30 @@
 
 
 
-def flattenArray(arr) 
-  arr.flatten(4)
+# def flattenArray(arr) 
+#   arr.flatten(+infinity)
+# end
+
+# arr = [1, [2], [3, [[4]]]]
+
+# p flattenArray(arr) # Returns [1, 2, 3, 4]
+
+
+
+# Given an array (arr) of elements, one element in the array occurs twice. Find the element.
+
+require 'set'
+def findDuplicate(arr) 
+  set = Set.new
+  arr.each do |num|
+    return num if set.include?(num)
+    set.add(num)
+  end
 end
 
-arr = [1, [2], [3, [[4]]]]
+arr = [2,4,6,8,2]
 
-p flattenArray(arr) # Returns [1, 2, 3, 4]
-
+p findDuplicate(arr) # Returns 2
 
 
 
