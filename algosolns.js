@@ -5180,21 +5180,48 @@ substrings even they consist of same characters.
 
 // Note: If one more more words have the same length, return the first occuring word of the same length.
 
-function longestWord(str) {
-  // let longestWord = '';
-  const strArr = str.split(' ');
-  // for (let i = 0; i < strArr.length; i++) {
-  //   const word = strArr[i];
-  //   if (longestWord.length < word.length) {
-  //     longestWord = word;
-  //   }
-  // }
-  // return longestWord;
-  return strArr.reduce((acc, curr) => {
-    return acc.length >= curr.length ? acc : curr;
-  }, '');
+// function longestWord(str) {
+// let longestWord = '';
+// const strArr = str.split(' ');
+// for (let i = 0; i < strArr.length; i++) {
+//   const word = strArr[i];
+//   if (longestWord.length < word.length) {
+//     longestWord = word;
+//   }
+// }
+// return longestWord;
+//   return strArr.reduce((acc, curr) => {
+//     return acc.length >= curr.length ? acc : curr;
+//   }, '');
+// }
+
+// console.log(longestWord('My name is Vishwas')); // Returns 'Vishwas'
+
+// console.log(longestWord('Hello world')); // Returns 'Hello'
+
+// Given a nested array (arr), return the flattened array.
+
+// function flattenArray(arr) {
+//   return arr.flat(Infinity);
+// }
+
+// const arr = [1, [2], [3, [[4]]]];
+
+// console.log(flattenArray(arr)); // Returns [1, 2, 3, 4]
+
+// Given an array (arr) of elements, one element in the array occurs twice. Find the element.
+
+function findDuplicate(arr) {
+  const set = new Set();
+  for (const num of arr) {
+    if (set.has(num)) {
+      return num;
+    } else {
+      set.add(num);
+    }
+  }
 }
 
-console.log(longestWord('My name is Vishwas')); // Returns 'Vishwas'
+const arr = [2, 4, 6, 8, 2];
 
-console.log(longestWord('Hello world')); // Returns 'Hello'
+console.log(findDuplicate(arr)); // Returns 2

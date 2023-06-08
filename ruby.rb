@@ -2302,9 +2302,9 @@
 
 
 
-def longest_word (str) 
+# def longest_word (str) 
   # longest_word = ''
-  str_arr = str.split(' ')
+  # str_arr = str.split(' ')
   # (0...str_arr.size).each do |i|
   #   word = str_arr[i]
   #   if longest_word.size < word.size
@@ -2312,17 +2312,23 @@ def longest_word (str)
   #   end
   # end
   # longest_word
-  str_arr.reduce { |acc, curr| acc.size >= curr.size ? acc : curr }
+  # str_arr.reduce { |acc, curr| acc.size >= curr.size ? acc : curr }
+# end
+
+# p longest_word('My name is Vishwas') # Returns 'Vishwas'
+
+# p longest_word('Hello world') # Returns 'Hello'
+
+
+
+
+def flattenArray(arr) 
+  arr.flatten(4)
 end
 
-p longest_word('My name is Vishwas') # Returns 'Vishwas'
+arr = [1, [2], [3, [[4]]]]
 
-p longest_word('Hello world') # Returns 'Hello'
-
-
-
-
-
+p flattenArray(arr) # Returns [1, 2, 3, 4]
 
 
 
