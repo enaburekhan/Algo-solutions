@@ -5211,17 +5211,72 @@ substrings even they consist of same characters.
 
 // Given an array (arr) of elements, one element in the array occurs twice. Find the element.
 
-function findDuplicate(arr) {
-  const set = new Set();
-  for (const num of arr) {
-    if (set.has(num)) {
-      return num;
-    } else {
-      set.add(num);
+// function findDuplicate(arr) {
+//   const set = new Set();
+//   for (const num of arr) {
+//     if (set.has(num)) {
+//       return num;
+//     } else {
+//       set.add(num);
+//     }
+//   }
+// }
+
+// const arr = [2, 4, 6, 8, 2];
+
+// console.log(findDuplicate(arr)); // Returns 2
+
+// Given two strings (str1) and (str2), return a list of all non-repeating words.
+
+function nonRepeatingWords(str1, str2) {
+  // const strA = str1.split(' ');
+  // const strB = str2.split(' ');
+  // const countWord = {};
+  const uniqueWords = [];
+
+  // for (const word of strA) {
+  //   if (!countWord[word]) {
+  //     countWord[word] = 1;
+  //   } else {
+  //     countWord[word] += 1;
+  //   }
+  // }
+
+  // for (const word of strB) {
+  //   if (!countWord[word]) {
+  //     countWord[word] = 1;
+  //   } else {
+  //     countWord[word] += 1;
+  //   }
+  // }
+
+  // for (const word in countWord) {
+  //   if (countWord[word] === 1) {
+  //     uniqueWords.push(word);
+  //   }
+  // }
+  // return uniqueWords;
+  const str = str1 + ' ' + str2;
+  const map = new Map();
+  const strArr = str.split(' ');
+  strArr.forEach((word) => {
+    map.has(word) ? map.set(word, map.get(word) + 1) : map.set(word, 1);
+  });
+
+  for (const [key, val] of map) {
+    if (val === 1) {
+      uniqueWords.push(key);
     }
   }
+  return uniqueWords;
 }
 
-const arr = [2, 4, 6, 8, 2];
+const str1 = 'Hello world';
+const str2 = 'Hello Vishwas';
 
-console.log(findDuplicate(arr)); // Returns 2
+console.log(nonRepeatingWords(str1, str2)); // Returns ['world', 'Vishwas']
+
+const str3 = 'Hello Hello';
+const str4 = 'Welcome Vishwas';
+
+console.log(nonRepeatingWords(str3, str4)); // Returns [('Welcome', 'Vishwas')];
