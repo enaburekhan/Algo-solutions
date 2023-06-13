@@ -5228,55 +5228,83 @@ substrings even they consist of same characters.
 
 // Given two strings (str1) and (str2), return a list of all non-repeating words.
 
-function nonRepeatingWords(str1, str2) {
-  // const strA = str1.split(' ');
-  // const strB = str2.split(' ');
-  // const countWord = {};
-  const uniqueWords = [];
+// function nonRepeatingWords(str1, str2) {
+// const strA = str1.split(' ');
+// const strB = str2.split(' ');
+// const countWord = {};
+// const uniqueWords = [];
 
-  // for (const word of strA) {
-  //   if (!countWord[word]) {
-  //     countWord[word] = 1;
-  //   } else {
-  //     countWord[word] += 1;
-  //   }
-  // }
+// for (const word of strA) {
+//   if (!countWord[word]) {
+//     countWord[word] = 1;
+//   } else {
+//     countWord[word] += 1;
+//   }
+// }
 
-  // for (const word of strB) {
-  //   if (!countWord[word]) {
-  //     countWord[word] = 1;
-  //   } else {
-  //     countWord[word] += 1;
-  //   }
-  // }
+// for (const word of strB) {
+//   if (!countWord[word]) {
+//     countWord[word] = 1;
+//   } else {
+//     countWord[word] += 1;
+//   }
+// }
 
-  // for (const word in countWord) {
-  //   if (countWord[word] === 1) {
-  //     uniqueWords.push(word);
-  //   }
-  // }
-  // return uniqueWords;
-  const str = str1 + ' ' + str2;
-  const map = new Map();
-  const strArr = str.split(' ');
-  strArr.forEach((word) => {
-    map.has(word) ? map.set(word, map.get(word) + 1) : map.set(word, 1);
-  });
+// for (const word in countWord) {
+//   if (countWord[word] === 1) {
+//     uniqueWords.push(word);
+//   }
+// }
+// return uniqueWords;
+//   const str = str1 + ' ' + str2;
+//   const map = new Map();
+//   const strArr = str.split(' ');
+//   strArr.forEach((word) => {
+//     map.has(word) ? map.set(word, map.get(word) + 1) : map.set(word, 1);
+//   });
 
-  for (const [key, val] of map) {
-    if (val === 1) {
-      uniqueWords.push(key);
+//   for (const [key, val] of map) {
+//     if (val === 1) {
+//       uniqueWords.push(key);
+//     }
+//   }
+//   return uniqueWords;
+// }
+
+// const str1 = 'Hello world';
+// const str2 = 'Hello Vishwas';
+
+// console.log(nonRepeatingWords(str1, str2)); // Returns ['world', 'Vishwas']
+
+// const str3 = 'Hello Hello';
+// const str4 = 'Welcome Vishwas';
+
+// console.log(nonRepeatingWords(str3, str4)); // Returns [('Welcome', 'Vishwas')];
+
+/*Given a string (str) which consists of lowercase or uppercase letters, find the length of the longest
+
+palindromes that can be built with those letters.
+
+Note: This is case sensitive, for example "Aa" is not considered a palindrome.
+*/
+
+function longestPalindrome(str) {
+  const set = new Set();
+  let length = 0;
+  for (const char of str) {
+    if (set.has(char)) {
+      set.delete(char);
+      length++;
+    } else {
+      set.add(char);
     }
   }
-  return uniqueWords;
+
+  if (set.size) {
+    return 2 * length + 1;
+  } else {
+    return 2 * length;
+  }
 }
 
-const str1 = 'Hello world';
-const str2 = 'Hello Vishwas';
-
-console.log(nonRepeatingWords(str1, str2)); // Returns ['world', 'Vishwas']
-
-const str3 = 'Hello Hello';
-const str4 = 'Welcome Vishwas';
-
-console.log(nonRepeatingWords(str3, str4)); // Returns [('Welcome', 'Vishwas')];
+console.log(longestPalindrome('abccccdd')); // Returns 7 ('dccaccd')
