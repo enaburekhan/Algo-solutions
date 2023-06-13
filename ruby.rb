@@ -2335,17 +2335,41 @@
 # Given an array (arr) of elements, one element in the array occurs twice. Find the element.
 
 require 'set'
-def findDuplicate(arr) 
-  set = Set.new
-  arr.each do |num|
-    return num if set.include?(num)
-    set.add(num)
+# def findDuplicate(arr) 
+#   set = Set.new
+#   arr.each do |num|
+#     return num if set.include?(num)
+#     set.add(num)
+#   end
+# end
+
+# arr = [2,4,6,8,2]
+
+# p findDuplicate(arr) # Returns 2
+
+
+def longestPalindrome(str) 
+   set = Set.new
+   length = 0
+   str.split('').each do |char|
+     if set.include?(char)
+       set.delete(char)
+       length += 1
+     else
+       set.add(char)
+     end
+   end
+  
+  if set.size
+    return 2 * length + 1
+  else
+    return 2 * length
   end
 end
 
-arr = [2,4,6,8,2]
+p longestPalindrome('abccccdd') # Returns 7 ('dccaccd')
 
-p findDuplicate(arr) # Returns 2
+
 
 
 
