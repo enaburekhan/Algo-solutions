@@ -2348,26 +2348,54 @@ require 'set'
 # p findDuplicate(arr) # Returns 2
 
 
-def longestPalindrome(str) 
-   set = Set.new
-   length = 0
-   str.split('').each do |char|
-     if set.include?(char)
-       set.delete(char)
-       length += 1
-     else
-       set.add(char)
-     end
-   end
+# def longestPalindrome(str) 
+#    set = Set.new
+#    length = 0
+#    str.split('').each do |char|
+#      if set.include?(char)
+#        set.delete(char)
+#        length += 1
+#      else
+#        set.add(char)
+#      end
+#    end
   
-  if set.size
-    return 2 * length + 1
-  else
-    return 2 * length
+#   if set.size
+#     return 2 * length + 1
+#   else
+#     return 2 * length
+#   end
+# end
+
+# p longestPalindrome('abccccdd') # Returns 7 ('dccaccd')
+
+
+
+def longestSubstringLength(str) 
+  set = Set.new
+  i = 0
+  j = 0
+  max = 0
+  while i < str.size
+    if !set.include?(str[i])
+      set.add(str[i])
+      max = [max, set.size].max
+      i += 1
+    else
+      set.delete(str[j])
+      j += 1
+    end
   end
+  max
 end
 
-p longestPalindrome('abccccdd') # Returns 7 ('dccaccd')
+p longestSubstringLength('abcabcbd') # Returns 3 ('abc')
+
+p longestSubstringLength('aaaa') # Returns 1 ('a')
+
+p longestSubstringLength('abbcdb') # Returns 3 ('bcd')
+
+
 
 
 
