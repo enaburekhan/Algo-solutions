@@ -2371,31 +2371,44 @@ require 'set'
 
 
 
-def longestSubstringLength(str) 
-  set = Set.new
-  i = 0
-  j = 0
-  max = 0
-  while i < str.size
-    if !set.include?(str[i])
-      set.add(str[i])
-      max = [max, set.size].max
-      i += 1
-    else
-      set.delete(str[j])
-      j += 1
-    end
+# def longestSubstringLength(str) 
+#   set = Set.new
+#   i = 0
+#   j = 0
+#   max = 0
+#   while i < str.size
+#     if !set.include?(str[i])
+#       set.add(str[i])
+#       max = [max, set.size].max
+#       i += 1
+#     else
+#       set.delete(str[j])
+#       j += 1
+#     end
+#   end
+#   max
+# end
+
+# p longestSubstringLength('abcabcbd') # Returns 3 ('abc')
+
+# p longestSubstringLength('aaaa') # Returns 1 ('a')
+
+# p longestSubstringLength('abbcdb') # Returns 3 ('bcd')
+
+
+
+def groupAnagrams(arr) 
+  group_words = Hash.new { |hash, key| hash[key] = [] }
+  arr.each do |word|
+    sorted_word = word.chars.sort.join
+    group_words[sorted_word] << word
   end
-  max
+  group_words.values
 end
 
-p longestSubstringLength('abcabcbd') # Returns 3 ('abc')
+arr = ["eat", "tea", "tan", "ate", "nat", "bat"]
 
-p longestSubstringLength('aaaa') # Returns 1 ('a')
-
-p longestSubstringLength('abbcdb') # Returns 3 ('bcd')
-
-
+p groupAnagrams(arr) # Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
 
 
 
