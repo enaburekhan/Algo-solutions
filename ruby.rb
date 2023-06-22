@@ -2412,19 +2412,33 @@ require 'set'
 
 
 
-def sum(arr) 
-  min = [arr[0], arr[1]].min
-  max = [arr[0], arr[1]].max
-  sum = 0
-  (min..max).each do |num|
-    sum += num
-  end
-  sum 
+# def sum(arr) 
+#   min = [arr[0], arr[1]].min
+#   max = [arr[0], arr[1]].max
+#   sum = 0
+#   (min..max).each do |num|
+#     sum += num
+#   end
+#   sum 
+# end
+
+# p sum([1, 4]) # Returns 10
+
+# p sum([4, 1]) # Returns 10
+
+
+def factorial(num) 
+  return 1 if num == 0 || num == 1
+  num * factorial(num - 1)
 end
 
-p sum([1, 4]) # Returns 10
+p factorial(0) # Returns 1 (We're not going to understand the math behind this)
 
-p sum([4, 1]) # Returns 10
+p factorial(1) # Returns 1
+
+p factorial(4) # Returns 24
+
+p factorial(5) # Returns 120
 
 
 
