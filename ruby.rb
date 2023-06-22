@@ -2397,22 +2397,34 @@ require 'set'
 
 
 
-def groupAnagrams(arr) 
-  group_words = Hash.new { |hash, key| hash[key] = [] }
-  arr.each do |word|
-    sorted_word = word.chars.sort.join
-    group_words[sorted_word] << word
+# def groupAnagrams(arr) 
+#   group_words = Hash.new { |hash, key| hash[key] = [] }
+#   arr.each do |word|
+#     sorted_word = word.chars.sort.join
+#     group_words[sorted_word] << word
+#   end
+#   group_words.values
+# end
+
+# arr = ["eat", "tea", "tan", "ate", "nat", "bat"]
+
+# p groupAnagrams(arr) # Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
+
+
+
+def sum(arr) 
+  min = [arr[0], arr[1]].min
+  max = [arr[0], arr[1]].max
+  sum = 0
+  (min..max).each do |num|
+    sum += num
   end
-  group_words.values
+  sum 
 end
 
-arr = ["eat", "tea", "tan", "ate", "nat", "bat"]
+p sum([1, 4]) # Returns 10
 
-p groupAnagrams(arr) # Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
-
-
-
-
+p sum([4, 1]) # Returns 10
 
 
 
