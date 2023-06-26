@@ -5407,19 +5407,45 @@ The first two numbers in the series are 0 and 1.
 
 */
 
-function printFibonacci(n) {
-  let result = [];
-  for (let i = 0; i < n; i++) {
-    result.push(fibonacci(i));
+// function printFibonacci(n) {
+//   let result = [];
+//   for (let i = 0; i < n; i++) {
+//     result.push(fibonacci(i));
+//   }
+//   return result;
+// }
+
+// function fibonacci(n) {
+//   if (n < 2) return n;
+//   return fibonacci(n - 1) + fibonacci(n - 2);
+// }
+
+// console.log(printFibonacci(2)); // Returns 0 1
+
+// console.log(printFibonacci(7)); // Returns 0 1 1 2 3 5 8
+
+// Given two numbers min and max, find all the prime numbers in the range of min to max. (min and max included)
+
+function printPrime(min, max) {
+  for (let i = min; i <= max; i++) {
+    if (i === 0 || i === 1) {
+      continue;
+    }
+    isPrime(i);
   }
-  return result;
 }
 
-function fibonacci(n) {
-  if (n < 2) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
+function isPrime(n) {
+  let primeFlag = true;
+  for (let i = 2; i <= n / 2; i++) {
+    if (n % i === 0) {
+      primeFlag = false;
+      break;
+    }
+  }
+  if (primeFlag) {
+    console.log(n);
+  }
 }
 
-console.log(printFibonacci(2)); // Returns 0 1
-
-console.log(printFibonacci(7)); // Returns 0 1 1 2 3 5 8
+console.log(printPrime(0, 20)); // Returns 2 3 5 7 11 13 17 19

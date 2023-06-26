@@ -2442,22 +2442,41 @@ require 'set'
 
 
 
-def printFibonacci(n) 
-  result = []
-  (0...n).each do |i|
-    result << fibonacci(i)
-  end
-  result
+# def printFibonacci(n) 
+#   result = []
+#   (0...n).each do |i|
+#     result << fibonacci(i)
+#   end
+#   result
+# end
+
+# def fibonacci(n)
+#   return n if n < 2
+#   fibonacci(n-1) + fibonacci(n-2)
+# end
+
+# p printFibonacci(2) # Returns 0 1
+
+# p printFibonacci(7) # Returns 0 1 1 2 3 5 8
+
+
+
+def print_prime (min, max) 
+  prime = []
+  (min..max).each do |num|
+    prime << num if is_prime?(num)
+  end 
+  prime 
 end
 
-def fibonacci(n)
-  return n if n < 2
-  fibonacci(n-1) + fibonacci(n-2)
+def is_prime?(n)
+  return false if n < 2
+  (2..Math.sqrt(n)).none? { |i| n % i == 0 }
 end
 
-p printFibonacci(2) # Returns 0 1
+p print_prime(0, 20) # Returns 2 3 5 7 11 13 17 19
 
-p printFibonacci(7) # Returns 0 1 1 2 3 5 8
+
 
 
 
