@@ -5426,21 +5426,34 @@ The first two numbers in the series are 0 and 1.
 
 // Given two numbers min and max, find all the prime numbers in the range of min to max. (min and max included)
 
-function printPrime(min, max) {
-  const primes = [];
-  for (let num = min; num <= max; num++) {
-    if (isPrime(num)) {
-      primes.push(num);
-    }
-  }
-  return primes;
+// function printPrime(min, max) {
+//   const primes = [];
+//   for (let num = min; num <= max; num++) {
+//     if (isPrime(num)) {
+//       primes.push(num);
+//     }
+//   }
+//   return primes;
+// }
+
+// function isPrime(n) {
+//   for (let i = 2; i <= Math.sqrt(n); i++) {
+//     if (n % i === 0) return false;
+//   }
+//   return true;
+// }
+
+// console.log(printPrime(0, 20)); // Returns 2 3 5 7 11 13 17 19
+
+/*Given a string (str), determine if it is a palindrome.
+
+Note: A plaindrome is a word, phrase, or sequence that reads the same backwards as forwards, e.g. madam.
+*/
+
+function isPalindrome(str) {
+  return str === str.split('').reverse().join('');
 }
 
-function isPrime(n) {
-  for (let i = 2; i <= Math.sqrt(n); i++) {
-    if (n % i === 0) return false;
-  }
-  return true;
-}
+console.log(isPalindrome('racecar')); // Returns true
 
-console.log(printPrime(0, 20)); // Returns 2 3 5 7 11 13 17 19
+console.log(isPalindrome('race')); // Returns false

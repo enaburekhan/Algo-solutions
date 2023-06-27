@@ -2461,20 +2461,32 @@ require 'set'
 
 
 
-def print_prime (min, max) 
-  prime = []
-  (min..max).each do |num|
-    prime << num if is_prime?(num)
-  end 
-  prime 
+# def print_prime (min, max) 
+#   prime = []
+#   (min..max).each do |num|
+#     prime << num if is_prime?(num)
+#   end 
+#   prime 
+# end
+
+# def is_prime?(n)
+#   return false if n < 2
+#   (2..Math.sqrt(n)).none? { |i| n % i == 0 }
+# end
+
+# p print_prime(0, 20) # Returns 2 3 5 7 11 13 17 19
+
+
+
+def palindrome? (str) 
+  str == str.split('').reverse.join('')
 end
 
-def is_prime?(n)
-  return false if n < 2
-  (2..Math.sqrt(n)).none? { |i| n % i == 0 }
-end
+p palindrome?('racecar') # Returns true
 
-p print_prime(0, 20) # Returns 2 3 5 7 11 13 17 19
+p palindrome?('race') # Returns false
+
+
 
 
 
