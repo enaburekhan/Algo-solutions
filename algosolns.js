@@ -5427,25 +5427,20 @@ The first two numbers in the series are 0 and 1.
 // Given two numbers min and max, find all the prime numbers in the range of min to max. (min and max included)
 
 function printPrime(min, max) {
-  for (let i = min; i <= max; i++) {
-    if (i === 0 || i === 1) {
-      continue;
+  const primes = [];
+  for (let num = min; num <= max; num++) {
+    if (isPrime(num)) {
+      primes.push(num);
     }
-    isPrime(i);
   }
+  return primes;
 }
 
 function isPrime(n) {
-  let primeFlag = true;
-  for (let i = 2; i <= n / 2; i++) {
-    if (n % i === 0) {
-      primeFlag = false;
-      break;
-    }
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) return false;
   }
-  if (primeFlag) {
-    console.log(n);
-  }
+  return true;
 }
 
 console.log(printPrime(0, 20)); // Returns 2 3 5 7 11 13 17 19
