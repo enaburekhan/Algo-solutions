@@ -5450,10 +5450,24 @@ The first two numbers in the series are 0 and 1.
 Note: A plaindrome is a word, phrase, or sequence that reads the same backwards as forwards, e.g. madam.
 */
 
-function isPalindrome(str) {
-  return str === str.split('').reverse().join('');
+// function isPalindrome(str) {
+//   return str === str.split('').reverse().join('');
+// }
+
+// console.log(isPalindrome('racecar')); // Returns true
+
+// console.log(isPalindrome('race')); // Returns false
+
+/*Given two strings (str1 and str2), determine if str1 is anagram of str2.
+
+Note: An anagram is a word, phrase, or name formed by rearranging the letters 
+of another, such as spar, formed from rasp.
+*/
+function isAnagram(str1, str2) {
+  if (str1.length !== str2.length) return false;
+  return str1.split('').sort().join('') === str2.split('').sort().join('');
 }
 
-console.log(isPalindrome('racecar')); // Returns true
+console.log(isAnagram('racecar', 'carrace')); // Returns true
 
-console.log(isPalindrome('race')); // Returns false
+console.log(isAnagram('racecar', 'carracr')); // Returns false

@@ -2478,14 +2478,25 @@ require 'set'
 
 
 
-def palindrome? (str) 
-  str == str.split('').reverse.join('')
+# def palindrome? (str) 
+#   str == str.split('').reverse.join('')
+# end
+
+# p palindrome?('racecar') # Returns true
+
+# p palindrome?('race') # Returns false
+
+
+
+def is_anagram (str1, str2) 
+  return false if str1.length != str2.length
+
+  str1.split('').sort.join('') == str2.split('').sort.join('')
 end
 
-p palindrome?('racecar') # Returns true
+p is_anagram('racecar', 'carrace') # Returns true
 
-p palindrome?('race') # Returns false
-
+p is_anagram('racecar', 'carracr') # Returns false
 
 
 
