@@ -2488,15 +2488,25 @@ require 'set'
 
 
 
-def is_anagram (str1, str2) 
-  return false if str1.length != str2.length
+# def is_anagram (str1, str2) 
+#   return false if str1.length != str2.length
 
-  str1.split('').sort.join('') == str2.split('').sort.join('')
+#   str1.split('').sort.join('') == str2.split('').sort.join('')
+# end
+
+# p is_anagram('racecar', 'carrace') # Returns true
+
+# p is_anagram('racecar', 'carracr') # Returns false
+
+
+
+def reverseWords (str) 
+  str.split(/\s+/).reverse.join(' ')
 end
 
-p is_anagram('racecar', 'carrace') # Returns true
+p reverseWords('Hello World') # Returns 'World Hello'
 
-p is_anagram('racecar', 'carracr') # Returns false
+p reverseWords(' This is  a  test string ') # Returns 'string test a is This'
 
 
 

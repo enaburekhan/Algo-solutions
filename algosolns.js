@@ -5463,11 +5463,29 @@ Note: A plaindrome is a word, phrase, or sequence that reads the same backwards 
 Note: An anagram is a word, phrase, or name formed by rearranging the letters 
 of another, such as spar, formed from rasp.
 */
-function isAnagram(str1, str2) {
-  if (str1.length !== str2.length) return false;
-  return str1.split('').sort().join('') === str2.split('').sort().join('');
+// function isAnagram(str1, str2) {
+//   if (str1.length !== str2.length) return false;
+//   return str1.split('').sort().join('') === str2.split('').sort().join('');
+// }
+
+// console.log(isAnagram('racecar', 'carrace')); // Returns true
+
+// console.log(isAnagram('racecar', 'carracr')); // Returns false
+
+/*Given an input string (str), reverse the string word by word.
+
+Note: 
+
+1. Your reversed string should not contain leading or trailing spaces
+
+2. You need to reduce multiple spaces between two words to a single space in the reversed string.
+*/
+
+function reverseWords(str) {
+  if (!str) return;
+  return str.trim().split(/\s+/).reverse().join(' ');
 }
 
-console.log(isAnagram('racecar', 'carrace')); // Returns true
+console.log(reverseWords('Hello World')); // Returns 'World Hello'
 
-console.log(isAnagram('racecar', 'carracr')); // Returns false
+console.log(reverseWords(' This is  a  test string ')); // Returns 'string test a is This'
