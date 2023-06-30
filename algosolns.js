@@ -5481,11 +5481,19 @@ Note:
 2. You need to reduce multiple spaces between two words to a single space in the reversed string.
 */
 
-function reverseWords(str) {
-  if (!str) return;
-  return str.trim().split(/\s+/).reverse().join(' ');
+// function reverseWords(str) {
+//   if (!str) return;
+//   return str.trim().split(/\s+/).reverse().join(' ');
+// }
+
+// console.log(reverseWords('Hello World')); // Returns 'World Hello'
+
+// console.log(reverseWords(' This is  a  test string ')); // Returns 'string test a is This'
+
+//Given an input string (str), remove all vowels from the string.
+
+function removeVowels(str) {
+  return str.replace(/[aeiou]/gi, '');
 }
 
-console.log(reverseWords('Hello World')); // Returns 'World Hello'
-
-console.log(reverseWords(' This is  a  test string ')); // Returns 'string test a is This'
+console.log(removeVowels('Hello World')); // Returns Hll Wrld

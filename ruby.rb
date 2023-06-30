@@ -2500,16 +2500,21 @@ require 'set'
 
 
 
-def reverseWords (str) 
-  str.split(/\s+/).reverse.join(' ')
+# def reverseWords (str) 
+#   str.split(/\s+/).reverse.join(' ')
+# end
+
+# p reverseWords('Hello World') # Returns 'World Hello'
+
+# p reverseWords(' This is  a  test string ') # Returns 'string test a is This'
+
+
+
+def removeVowels (str) 
+  str.gsub(/[aeiou]/, '')
 end
 
-p reverseWords('Hello World') # Returns 'World Hello'
-
-p reverseWords(' This is  a  test string ') # Returns 'string test a is This'
-
-
-
+p removeVowels('Hello World') # Returns Hll Wrld
 
 
 
