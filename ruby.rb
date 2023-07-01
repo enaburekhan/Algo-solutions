@@ -2510,11 +2510,38 @@ require 'set'
 
 
 
-def removeVowels (str) 
-  str.gsub(/[aeiou]/, '')
+# def removeVowels (str) 
+#   str.gsub(/[aeiou]/, '')
+# end
+
+# p removeVowels('Hello World') # Returns Hll Wrld
+
+
+
+def count_palindromic_substrings(str) 
+  count = 0
+  (0..str.size).each do |i|
+    count += count_palindrome(str, i, i) # even-length count_palindromes
+    count += count_palindrome(str, i, i+1) # odd-length count_palindromes
+  end
+  count
 end
 
-p removeVowels('Hello World') # Returns Hll Wrld
+def count_palindrome(str, left, right)
+  count = 0
+  while left >= 0 && right < str.size && str[left] == str[right]
+    left -= 1
+    right += 1
+    count += 1
+  end
+  count
+end
+
+p count_palindromic_substrings('abcd') # Returns 4 (a, b, c, d)
+
+p count_palindromic_substrings('aaa') # Returns 6 (a, a, a, aa, aa, aaa)
+
+
 
 
 

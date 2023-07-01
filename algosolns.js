@@ -5492,8 +5492,41 @@ Note:
 
 //Given an input string (str), remove all vowels from the string.
 
-function removeVowels(str) {
-  return str.replace(/[aeiou]/gi, '');
+// function removeVowels(str) {
+//   return str.replace(/[aeiou]/gi, '');
+// }
+
+// console.log(removeVowels('Hello World')); // Returns Hll Wrld
+
+/*Given a string str, return the number of palindromic substrings in str.
+
+Note: The substrings with different start indexes or end indexes are counted as different substrings even they consist of same characters.
+*/
+
+function countPalindromicSubstrings(str) {
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    count += countPalindrome(str, i, i); // odd-length palindromes
+    count += countPalindrome(str, i, i + 1); //even-length palindromes
+  }
+  return count;
 }
 
-console.log(removeVowels('Hello World')); // Returns Hll Wrld
+function countPalindrome(str, left, right) {
+  let count = 0;
+
+  while (
+    left >= 0 &&
+    right < str.length &&
+    str.charAt(left) === str.charAt(right)
+  ) {
+    count++;
+    left--;
+    right++;
+  }
+  return count;
+}
+
+console.log(countPalindromicSubstrings('abcd')); // Returns 4 (a, b, c, d)
+
+console.log(countPalindromicSubstrings('aaa')); // Returns 6 (a, a, a, aa, aa, aaa)
