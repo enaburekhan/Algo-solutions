@@ -5503,30 +5503,45 @@ Note:
 Note: The substrings with different start indexes or end indexes are counted as different substrings even they consist of same characters.
 */
 
-function countPalindromicSubstrings(str) {
-  let count = 0;
-  for (let i = 0; i < str.length; i++) {
-    count += countPalindrome(str, i, i); // odd-length palindromes
-    count += countPalindrome(str, i, i + 1); //even-length palindromes
-  }
-  return count;
+// function countPalindromicSubstrings(str) {
+//   let count = 0;
+//   for (let i = 0; i < str.length; i++) {
+//     count += countPalindrome(str, i, i); // odd-length palindromes
+//     count += countPalindrome(str, i, i + 1); //even-length palindromes
+//   }
+//   return count;
+// }
+
+// function countPalindrome(str, left, right) {
+//   let count = 0;
+
+//   while (
+//     left >= 0 &&
+//     right < str.length &&
+//     str.charAt(left) === str.charAt(right)
+//   ) {
+//     count++;
+//     left--;
+//     right++;
+//   }
+//   return count;
+// }
+
+// console.log(countPalindromicSubstrings('abcd')); // Returns 4 (a, b, c, d)
+
+// console.log(countPalindromicSubstrings('aaa')); // Returns 6 (a, a, a, aa, aa, aaa)
+
+/*Given an array (names) of objects where each object contains the firstname and lastname 
+of a person, return an array that contains the fullname of each person.
+*/
+
+function fullNames(names) {
+  return names.map((name) => `${name.firstname} ${name.lastname}`);
 }
 
-function countPalindrome(str, left, right) {
-  let count = 0;
+const names = [
+  { firstname: 'Bruce', lastname: 'Wayne' },
+  { firstname: 'Clark', lastname: 'Kent' },
+];
 
-  while (
-    left >= 0 &&
-    right < str.length &&
-    str.charAt(left) === str.charAt(right)
-  ) {
-    count++;
-    left--;
-    right++;
-  }
-  return count;
-}
-
-console.log(countPalindromicSubstrings('abcd')); // Returns 4 (a, b, c, d)
-
-console.log(countPalindromicSubstrings('aaa')); // Returns 6 (a, a, a, aa, aa, aaa)
+console.log(fullNames(names)); // Returns ['Bruce Wayne', 'Clark Kent']
