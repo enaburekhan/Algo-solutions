@@ -2543,15 +2543,32 @@ require 'set'
 
 
 
-def full_names(names) 
-  names.map { |name| "#{name['firstname']} #{name['lastname']}" }
+# def full_names(names) 
+#   names.map { |name| "#{name['firstname']} #{name['lastname']}" }
+# end
+
+# names = [{'firstname' => 'Bruce', 'lastname' => 'Wayne'}, {'firstname' => 'Clark', 'lastname' => 'Kent'}]
+
+# p full_names(names) # Returns ['Bruce Wayne', 'Clark Kent']
+
+
+
+
+def find_longest_word (str) 
+  # longest_word = ''
+  # str.split(' ').each do |word|
+  #   if longest_word.size < word.size
+  #     longest_word = word
+  #   end
+  # end
+  # longest_word
+
+  str.split(' ').reduce { |acc, curr| acc.length >= curr.length ? acc : curr }
 end
 
-names = [{'firstname' => 'Bruce', 'lastname' => 'Wayne'}, {'firstname' => 'Clark', 'lastname' => 'Kent'}]
+p find_longest_word('My name is Vishwas') # Returns 'Vishwas'
 
-p full_names(names) # Returns ['Bruce Wayne', 'Clark Kent']
-
-
+p find_longest_word('Hello world') # Returns 'Hello'
 
 
 
