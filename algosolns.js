@@ -5551,20 +5551,54 @@ of a person, return an array that contains the fullname of each person.
 Note: If one more more words have the same length, return the first occuring word of the same length.
 */
 
-function findLongestWord(str) {
-  // return str.split(' ').reduce((acc, curr) => {
-  //   return acc.length >= curr.length ? acc : curr;
-  // }, '');
-  let longestWord = '';
-  const wordStr = str.split(' ');
-  for (const word of wordStr) {
-    if (longestWord.length < word.length) {
-      longestWord = word;
-    }
-  }
-  return longestWord;
+// function findLongestWord(str) {
+// return str.split(' ').reduce((acc, curr) => {
+//   return acc.length >= curr.length ? acc : curr;
+// }, '');
+//   let longestWord = '';
+//   const wordStr = str.split(' ');
+//   for (const word of wordStr) {
+//     if (longestWord.length < word.length) {
+//       longestWord = word;
+//     }
+//   }
+//   return longestWord;
+// }
+
+// console.log(findLongestWord('My name is Vishwas')); // Returns 'Vishwas'
+
+// console.log(findLongestWord('Hello world')); // Returns 'Hello'
+
+/*Given two arrays (arr1) and (arr2) return the union, intersection, difference and symmetric difference 
+of the two arrays.
+*/
+
+function union(arr1, arr2) {
+  return [...arr1, ...arr2];
 }
 
-console.log(findLongestWord('My name is Vishwas')); // Returns 'Vishwas'
+function intersection(arr1, arr2) {
+  return arr1.filter((item) => arr2.includes(item));
+}
+const arr1 = [1, 2, 3];
+const arr2 = [2, 3, 4];
+console.log(union(arr1, arr2)); // Returns [1, 2, 3, 2, 3, 4]
 
-console.log(findLongestWord('Hello world')); // Returns 'Hello'
+console.log(intersection(arr1, arr2)); // Returns[(2, 3)];
+
+function difference(arr1, arr2) {
+  return arr1.filter((item) => !arr2.includes(item));
+}
+console.log(difference(arr1, arr2)); // Returns[1];
+
+function difference(arr2, arr1) {
+  return arr2.filter((item) => !arr1.includes(item));
+}
+console.log(difference(arr2, arr1)); // Returns[4];
+
+function symmetricDifference(arr1, arr2) {
+  return arr1
+    .filter((item) => !arr2.includes(item))
+    .concat(arr2.filter((item) => !arr1.includes(item)));
+}
+console.log(symmetricDifference(arr1, arr2)); // Returns[(1, 4)];
