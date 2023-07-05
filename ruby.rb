@@ -2554,7 +2554,7 @@ require 'set'
 
 
 
-def find_longest_word (str) 
+# def find_longest_word (str) 
   # longest_word = ''
   # str.split(' ').each do |word|
   #   if longest_word.size < word.size
@@ -2563,12 +2563,50 @@ def find_longest_word (str)
   # end
   # longest_word
 
-  str.split(' ').reduce { |acc, curr| acc.length >= curr.length ? acc : curr }
+#   str.split(' ').reduce { |acc, curr| acc.length >= curr.length ? acc : curr }
+# end
+
+# p find_longest_word('My name is Vishwas') # Returns 'Vishwas'
+
+# p find_longest_word('Hello world') # Returns 'Hello'
+
+
+
+
+# Given two arrays (arr1) and (arr2) return the union, intersection, difference and symmetric difference 
+# of the two arrays.
+
+
+
+arr1 = [1, 2, 3] 
+arr2 = [2, 3, 4]
+
+def union(arr1, arr2)
+  [*arr1, *arr2]
 end
 
-p find_longest_word('My name is Vishwas') # Returns 'Vishwas'
+p union(arr1, arr2) # Returns [1, 2, 3, 2, 3, 4]
 
-p find_longest_word('Hello world') # Returns 'Hello'
+def intersection(arr1, arr2)
+  arr1.filter { |item| arr2.include?(item) }
+end
+p intersection(arr1, arr2) # Returns [2, 3]
+
+def difference(arr1, arr2)
+  arr1.filter { |item| !arr2.include?(item) }
+end
+p difference(arr1, arr2) # Returns [1]
+
+def difference(arr2, arr1)
+  arr2.filter { |item| !arr1.include?(item) }
+end
+p difference(arr2, arr1) # Returns [4]
+
+def symmetric_difference(arr1, arr2)
+  arr1.filter { |item| !arr2.include?(item) }
+    .concat(arr2.filter { |item| !arr1.include?(item) })
+end
+p symmetric_difference(arr1, arr2) # Returns [1, 4]
 
 
 
