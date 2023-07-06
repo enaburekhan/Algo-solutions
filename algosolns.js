@@ -5573,32 +5573,42 @@ Note: If one more more words have the same length, return the first occuring wor
 of the two arrays.
 */
 
-function union(arr1, arr2) {
-  return [...arr1, ...arr2];
+// function union(arr1, arr2) {
+//   return [...arr1, ...arr2];
+// }
+
+// function intersection(arr1, arr2) {
+//   return arr1.filter((item) => arr2.includes(item));
+// }
+// const arr1 = [1, 2, 3];
+// const arr2 = [2, 3, 4];
+// console.log(union(arr1, arr2)); // Returns [1, 2, 3, 2, 3, 4]
+
+// console.log(intersection(arr1, arr2)); // Returns[(2, 3)];
+
+// function difference(arr1, arr2) {
+//   return arr1.filter((item) => !arr2.includes(item));
+// }
+// console.log(difference(arr1, arr2)); // Returns[1];
+
+// function difference(arr2, arr1) {
+//   return arr2.filter((item) => !arr1.includes(item));
+// }
+// console.log(difference(arr2, arr1)); // Returns[4];
+
+// function symmetricDifference(arr1, arr2) {
+//   return arr1
+//     .filter((item) => !arr2.includes(item))
+//     .concat(arr2.filter((item) => !arr1.includes(item)));
+// }
+// console.log(symmetricDifference(arr1, arr2)); // Returns[(1, 4)];
+
+// Given a nested array (arr), return the flattened array.
+
+function flattenArray(arr) {
+  return arr.flat(Infinity);
 }
 
-function intersection(arr1, arr2) {
-  return arr1.filter((item) => arr2.includes(item));
-}
-const arr1 = [1, 2, 3];
-const arr2 = [2, 3, 4];
-console.log(union(arr1, arr2)); // Returns [1, 2, 3, 2, 3, 4]
+const arr = [1, [2], [3, [[4]]]];
 
-console.log(intersection(arr1, arr2)); // Returns[(2, 3)];
-
-function difference(arr1, arr2) {
-  return arr1.filter((item) => !arr2.includes(item));
-}
-console.log(difference(arr1, arr2)); // Returns[1];
-
-function difference(arr2, arr1) {
-  return arr2.filter((item) => !arr1.includes(item));
-}
-console.log(difference(arr2, arr1)); // Returns[4];
-
-function symmetricDifference(arr1, arr2) {
-  return arr1
-    .filter((item) => !arr2.includes(item))
-    .concat(arr2.filter((item) => !arr1.includes(item)));
-}
-console.log(symmetricDifference(arr1, arr2)); // Returns[(1, 4)];
+console.log(flattenArray(arr)); // Returns[(1, 2, 3, 4)];

@@ -2578,36 +2578,48 @@ require 'set'
 
 
 
-arr1 = [1, 2, 3] 
-arr2 = [2, 3, 4]
+# arr1 = [1, 2, 3] 
+# arr2 = [2, 3, 4]
 
-def union(arr1, arr2)
-  [*arr1, *arr2]
+# def union(arr1, arr2)
+#   [*arr1, *arr2]
+# end
+
+# p union(arr1, arr2) # Returns [1, 2, 3, 2, 3, 4]
+
+# def intersection(arr1, arr2)
+#   arr1.filter { |item| arr2.include?(item) }
+# end
+# p intersection(arr1, arr2) # Returns [2, 3]
+
+# def difference(arr1, arr2)
+#   arr1.filter { |item| !arr2.include?(item) }
+# end
+# p difference(arr1, arr2) # Returns [1]
+
+# def difference(arr2, arr1)
+#   arr2.filter { |item| !arr1.include?(item) }
+# end
+# p difference(arr2, arr1) # Returns [4]
+
+# def symmetric_difference(arr1, arr2)
+#   arr1.filter { |item| !arr2.include?(item) }
+#     .concat(arr2.filter { |item| !arr1.include?(item) })
+# end
+# p symmetric_difference(arr1, arr2) # Returns [1, 4]
+
+
+
+# Given a nested array (arr), return the flattened array.
+
+
+def flatten_array(arr) 
+  arr.flatten
 end
 
-p union(arr1, arr2) # Returns [1, 2, 3, 2, 3, 4]
+arr = [1, [2], [3, [[4]]]]
 
-def intersection(arr1, arr2)
-  arr1.filter { |item| arr2.include?(item) }
-end
-p intersection(arr1, arr2) # Returns [2, 3]
-
-def difference(arr1, arr2)
-  arr1.filter { |item| !arr2.include?(item) }
-end
-p difference(arr1, arr2) # Returns [1]
-
-def difference(arr2, arr1)
-  arr2.filter { |item| !arr1.include?(item) }
-end
-p difference(arr2, arr1) # Returns [4]
-
-def symmetric_difference(arr1, arr2)
-  arr1.filter { |item| !arr2.include?(item) }
-    .concat(arr2.filter { |item| !arr1.include?(item) })
-end
-p symmetric_difference(arr1, arr2) # Returns [1, 4]
-
+p flatten_array(arr) # Returns [1, 2, 3, 4]
 
 
 
