@@ -2613,13 +2613,31 @@ require 'set'
 # Given a nested array (arr), return the flattened array.
 
 
-def flatten_array(arr) 
-  arr.flatten
+# def flatten_array(arr) 
+#   arr.flatten
+# end
+
+# arr = [1, [2], [3, [[4]]]]
+
+# p flatten_array(arr) # Returns [1, 2, 3, 4]
+
+
+
+# Given an array (arr) of elements, one element in the array occurs twice. Find the element.
+
+def find_duplicate(arr) 
+  set = Set.new
+  arr.each do |num|
+    if set.include?(num)
+      return num
+    end
+    set.add(num)
+  end
 end
 
-arr = [1, [2], [3, [[4]]]]
+arr = [2,4,6,8,2]
 
-p flatten_array(arr) # Returns [1, 2, 3, 4]
+p find_duplicate(arr) # Returns 2
 
 
 
