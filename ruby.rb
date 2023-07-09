@@ -2625,19 +2625,45 @@ require 'set'
 
 # Given an array (arr) of elements, one element in the array occurs twice. Find the element.
 
-def find_duplicate(arr) 
-  set = Set.new
-  arr.each do |num|
-    if set.include?(num)
-      return num
-    end
-    set.add(num)
+# def find_duplicate(arr) 
+#   set = Set.new
+#   arr.each do |num|
+#     if set.include?(num)
+#       return num
+#     end
+#     set.add(num)
+#   end
+# end
+
+# arr = [2,4,6,8,2]
+
+# p find_duplicate(arr) # Returns 2
+
+
+
+# Given two strings (str1) and (str2), return a list of all non-repeating words.
+
+
+def find_nonrepeating_words(str1, str2) 
+  str = "#{str1}  #{str2}"
+  words = str.split(' ')
+  word_count = {}
+  words.each do |word|
+    word_count[word] = (word_count[word] || 0) + 1
   end
+  word_count.select { |_key, value| value == 1}.keys
 end
 
-arr = [2,4,6,8,2]
+str1 = 'Hello world' 
+str2 = 'Hello Vishwas'
 
-p find_duplicate(arr) # Returns 2
+p find_nonrepeating_words(str1, str2) # Returns ['world', 'Vishwas']
+str3 = 'Hello Hello' 
+str4 = 'Welcome Vishwas'
+
+p find_nonrepeating_words(str3, str4) # Returns ['Welcome', 'Vishwas']
+
+
 
 
 
