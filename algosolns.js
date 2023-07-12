@@ -5631,26 +5631,53 @@ of the two arrays.
 
 // Given two strings (str1) and (str2), return a list of all non-repeating words.
 
-function nonRepeatingWords(str1, str2) {
-  // const uniqueWords = [];
-  const wordCount = {};
-  const str = str1 + ' ' + str2;
-  const words = str.split(' ');
-  for (const word of words) {
-    wordCount[word] = (wordCount[word] || 0) + 1;
+// function nonRepeatingWords(str1, str2) {
+// const uniqueWords = [];
+//   const wordCount = {};
+//   const str = str1 + ' ' + str2;
+//   const words = str.split(' ');
+//   for (const word of words) {
+//     wordCount[word] = (wordCount[word] || 0) + 1;
+//   }
+//   const uniqueWords = Object.keys(wordCount).filter(
+//     (word) => wordCount[word] === 1
+//   );
+//   return uniqueWords;
+// }
+
+// const str1 = 'Hello world';
+// const str2 = 'Hello Vishwas';
+
+// console.log(nonRepeatingWords(str1, str2)); // Returns ['world', 'Vishwas']
+
+// const str3 = 'Hello Hello';
+// const str4 = 'Welcome Vishwas';
+
+// console.log(nonRepeatingWords(str3, str4)); // Returns ['Welcome', 'Vishwas']
+
+/*Given a string (str) which consists of lowercase or uppercase letters, find the length of the longest
+
+palindromes that can be built with those letters.
+
+Note: This is case sensitive, for example "Aa" is not considered a palindrome.
+*/
+
+function longestPalindrome(str) {
+  const set = new Set();
+  let length = 0;
+  for (const char of str) {
+    if (set.has(char)) {
+      set.delete(char);
+      length++;
+    } else {
+      set.add(char);
+    }
   }
-  const uniqueWords = Object.keys(wordCount).filter(
-    (word) => wordCount[word] === 1
-  );
-  return uniqueWords;
+  if (set.size) {
+    return 2 * length + 1;
+  } else {
+    return 2 * length;
+  }
 }
 
-const str1 = 'Hello world';
-const str2 = 'Hello Vishwas';
-
-console.log(nonRepeatingWords(str1, str2)); // Returns ['world', 'Vishwas']
-
-const str3 = 'Hello Hello';
-const str4 = 'Welcome Vishwas';
-
-console.log(nonRepeatingWords(str3, str4)); // Returns ['Welcome', 'Vishwas']
+console.log(longestPalindrome('abccccdd')); // Returns 7 ('dccaccd')
