@@ -2644,27 +2644,47 @@ require 'set'
 # Given two strings (str1) and (str2), return a list of all non-repeating words.
 
 
-def find_nonrepeating_words(str1, str2) 
-  str = "#{str1}  #{str2}"
-  words = str.split(' ')
-  word_count = {}
-  words.each do |word|
-    word_count[word] = (word_count[word] || 0) + 1
+# def find_nonrepeating_words(str1, str2) 
+#   str = "#{str1}  #{str2}"
+#   words = str.split(' ')
+#   word_count = {}
+#   words.each do |word|
+#     word_count[word] = (word_count[word] || 0) + 1
+#   end
+#   word_count.select { |_key, value| value == 1}.keys
+# end
+
+# str1 = 'Hello world' 
+# str2 = 'Hello Vishwas'
+
+# p find_nonrepeating_words(str1, str2) # Returns ['world', 'Vishwas']
+# str3 = 'Hello Hello' 
+# str4 = 'Welcome Vishwas'
+
+# p find_nonrepeating_words(str3, str4) # Returns ['Welcome', 'Vishwas']
+
+
+
+
+def longestPalindrome(str) 
+  set = Set.new
+  length = 0
+  str.each_char do |char|
+    if set.include?(char)
+      set.delete(char)
+      length += 1
+    else
+      set.add(char)
+    end
   end
-  word_count.select { |_key, value| value == 1}.keys
+  if set.size
+    2 * length + 1
+  else
+    2 * length
+  end
 end
 
-str1 = 'Hello world' 
-str2 = 'Hello Vishwas'
-
-p find_nonrepeating_words(str1, str2) # Returns ['world', 'Vishwas']
-str3 = 'Hello Hello' 
-str4 = 'Welcome Vishwas'
-
-p find_nonrepeating_words(str3, str4) # Returns ['Welcome', 'Vishwas']
-
-
-
+p longestPalindrome('abccccdd') # Returns 7 ('dccaccd')
 
 
 
