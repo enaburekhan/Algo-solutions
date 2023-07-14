@@ -2666,25 +2666,55 @@ require 'set'
 
 
 
-def longestPalindrome(str) 
+# def longestPalindrome(str) 
+#   set = Set.new
+#   length = 0
+#   str.each_char do |char|
+#     if set.include?(char)
+#       set.delete(char)
+#       length += 1
+#     else
+#       set.add(char)
+#     end
+#   end
+#   if set.size
+#     2 * length + 1
+#   else
+#     2 * length
+#   end
+# end
+
+# p longestPalindrome('abccccdd') # Returns 7 ('dccaccd')
+
+
+
+
+def longest_substring_length(str) 
   set = Set.new
-  length = 0
-  str.each_char do |char|
-    if set.include?(char)
-      set.delete(char)
-      length += 1
+  max = 0
+  i = 0
+  j = 0
+  while i < str.size
+    if !set.include?(str[i])
+      set.add(str[i])
+      max = [max, set.size].max
+      i += 1
     else
-      set.add(char)
+      # j += 1
+      set.delete(str[j])
+      j += 1
     end
   end
-  if set.size
-    2 * length + 1
-  else
-    2 * length
-  end
+  max
 end
 
-p longestPalindrome('abccccdd') # Returns 7 ('dccaccd')
+p longest_substring_length('abcabcbd') # Returns 3 ('abc')
+
+p longest_substring_length('aaaa') # Returns 1 ('a')
+
+p longest_substring_length('abbcdb') # Returns 3 ('bcd')
+
+
 
 
 
