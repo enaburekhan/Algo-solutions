@@ -5684,24 +5684,44 @@ Note: This is case sensitive, for example "Aa" is not considered a palindrome.
 
 // Given a string (str), find the length of the longest substring without repeating characters.
 
-function longestSubstringLength(str) {
-  const set = new Set();
-  let max = 0;
-  let i = 0;
-  let j = 0;
-  while (i < str.length) {
-    if (!set.has(str.charAt(i))) {
-      set.add(str.charAt(i++));
-      max = Math.max(max, set.size);
+// function longestSubstringLength(str) {
+//   const set = new Set();
+//   let max = 0;
+//   let i = 0;
+//   let j = 0;
+//   while (i < str.length) {
+//     if (!set.has(str.charAt(i))) {
+//       set.add(str.charAt(i++));
+//       max = Math.max(max, set.size);
+//     } else {
+//       set.delete(str.charAt(j++));
+//     }
+//   }
+//   return max;
+// }
+
+// console.log(longestSubstringLength('abcabcbd')); // Returns 3 ('abc')
+
+// console.log(longestSubstringLength('aaaa')); // Returns 1 ('a')
+
+// console.log(longestSubstringLength('abbcdb')); // Returns 3 ('bcd')
+
+// Given an array (arr) of strings, group anagrams together.
+
+function groupAnagrams(arr) {
+  const map = new Map();
+  for (const word of arr) {
+    const key = [...word].sort().join('');
+    if (!map.has(key)) {
+      map.set(key, [word]);
     } else {
-      set.delete(str.charAt(j++));
+      let curr = map.get(key);
+      map.set(key, [...curr, word]);
     }
   }
-  return max;
+  return map.values();
 }
 
-console.log(longestSubstringLength('abcabcbd')); // Returns 3 ('abc')
+const arr = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat'];
 
-console.log(longestSubstringLength('aaaa')); // Returns 1 ('a')
-
-console.log(longestSubstringLength('abbcdb')); // Returns 3 ('bcd')
+console.log(groupAnagrams(arr)); // Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
