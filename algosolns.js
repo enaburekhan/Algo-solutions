@@ -5722,6 +5722,19 @@ function groupAnagrams(arr) {
   return map.values();
 }
 
+// function groupAnagrams(arr) {
+//   const anagrams = {};
+//   for (const word of arr) {
+//     const key = [...word].sort().join('');
+//     if (anagrams[key]) {
+//       anagrams[key].push(word);
+//     } else {
+//       anagrams[key] = [word];
+//     }
+//   }
+//   return Object.values(anagrams);
+// }
+
 const arr = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat'];
 
 console.log(groupAnagrams(arr)); // Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
