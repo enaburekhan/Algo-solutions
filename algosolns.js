@@ -5708,19 +5708,19 @@ Note: This is case sensitive, for example "Aa" is not considered a palindrome.
 
 // Given an array (arr) of strings, group anagrams together.
 
-function groupAnagrams(arr) {
-  const map = new Map();
-  for (const word of arr) {
-    const key = [...word].sort().join('');
-    if (!map.has(key)) {
-      map.set(key, [word]);
-    } else {
-      let curr = map.get(key);
-      map.set(key, [...curr, word]);
-    }
-  }
-  return map.values();
-}
+// function groupAnagrams(arr) {
+//   const map = new Map();
+//   for (const word of arr) {
+//     const key = [...word].sort().join('');
+//     if (!map.has(key)) {
+//       map.set(key, [word]);
+//     } else {
+//       let curr = map.get(key);
+//       map.set(key, [...curr, word]);
+//     }
+//   }
+//   return map.values();
+// }
 
 // function groupAnagrams(arr) {
 //   const anagrams = {};

@@ -2689,30 +2689,51 @@ require 'set'
 
 
 
-def longest_substring_length(str) 
-  set = Set.new
-  max = 0
-  i = 0
-  j = 0
-  while i < str.size
-    if !set.include?(str[i])
-      set.add(str[i])
-      max = [max, set.size].max
-      i += 1
+# def longest_substring_length(str) 
+#   set = Set.new
+#   max = 0
+#   i = 0
+#   j = 0
+#   while i < str.size
+#     if !set.include?(str[i])
+#       set.add(str[i])
+#       max = [max, set.size].max
+#       i += 1
+#     else
+#       # j += 1
+#       set.delete(str[j])
+#       j += 1
+#     end
+#   end
+#   max
+# end
+
+# p longest_substring_length('abcabcbd') # Returns 3 ('abc')
+
+# p longest_substring_length('aaaa') # Returns 1 ('a')
+
+# p longest_substring_length('abbcdb') # Returns 3 ('bcd')
+
+
+
+
+def groupAnagrams(arr) 
+  sort_anagrams = {}
+  arr.each do |word|
+    key = word.chars.sort.join('')
+    if sort_anagrams[key]
+      sort_anagrams[key] << word
     else
-      # j += 1
-      set.delete(str[j])
-      j += 1
+      sort_anagrams[key] = [word]
     end
   end
-  max
+  sort_anagrams.values
 end
 
-p longest_substring_length('abcabcbd') # Returns 3 ('abc')
+arr = ["eat", "tea", "tan", "ate", "nat", "bat"]
 
-p longest_substring_length('aaaa') # Returns 1 ('a')
+p groupAnagrams(arr) # Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
 
-p longest_substring_length('abbcdb') # Returns 3 ('bcd')
 
 
 
