@@ -2717,22 +2717,24 @@ require 'set'
 
 
 
-def groupAnagrams(arr) 
-  sort_anagrams = {}
-  arr.each do |word|
-    key = word.chars.sort.join('')
-    if sort_anagrams[key]
-      sort_anagrams[key] << word
-    else
-      sort_anagrams[key] = [word]
-    end
-  end
-  sort_anagrams.values
-end
+# def groupAnagrams(arr) 
+#   sort_anagrams = {}
+#   arr.each do |word|
+#     key = word.chars.sort.join('')
+#     if sort_anagrams[key]
+#       sort_anagrams[key] << word
+#     else
+#       sort_anagrams[key] = [word]
+#     end
+#   end
+#   sort_anagrams.values
+# end
 
-arr = ["eat", "tea", "tan", "ate", "nat", "bat"]
+# arr = ["eat", "tea", "tan", "ate", "nat", "bat"]
 
-p groupAnagrams(arr) # Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
+# p groupAnagrams(arr) # Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
+
+
 
 
 
