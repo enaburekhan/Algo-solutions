@@ -2737,6 +2737,22 @@ require 'set'
 
 
 
+def remove_elements(nums, val)
+  elements = []
+  nums.each do |num|
+    if num != val
+      elements << num
+    end
+    next
+  end
+  elements.size
+end
+
+nums = [0, 1, 2, 2, 3, 0, 4, 2]
+val = 2
+p remove_elements(nums, val)
+
+
 
 
 

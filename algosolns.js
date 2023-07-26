@@ -5739,17 +5739,32 @@ Note: This is case sensitive, for example "Aa" is not considered a palindrome.
 
 // console.log(groupAnagrams(arr)); // Groups into ["ate","eat","tea"], ["nat","tan"], ["bat"]
 
-function removeDuplicates(nums) {
-  const set = new Set();
+// function removeDuplicates(nums) {
+//   const set = new Set();
+//   for (const num of nums) {
+//     if (set.has(num)) {
+//       continue;
+//     } else {
+//       set.add(num);
+//     }
+//   }
+//   return set.size;
+// }
+
+// const nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+// console.log(removeDuplicates(nums));
+
+function removeElements(nums, val) {
+  const elements = [];
   for (const num of nums) {
-    if (set.has(num)) {
-      continue;
-    } else {
-      set.add(num);
+    if (num !== val) {
+      elements.push(num);
     }
+    continue;
   }
-  return set.size;
+  return elements.length;
 }
 
-const nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
-console.log(removeDuplicates(nums));
+const nums = [0, 1, 2, 2, 3, 0, 4, 2];
+const val = 2;
+console.log(removeElements(nums, val));
